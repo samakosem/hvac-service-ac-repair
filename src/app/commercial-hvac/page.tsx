@@ -1,0 +1,13 @@
+import type { Metadata } from "next";
+import { buildServiceMetadata, resolveService } from "@/lib/seo/buildServicePage";
+import ServicePageTemplate from "@/components/service/ServicePageTemplate";
+import { IMG_COMMERCIAL_PRIMARY } from "@/lib/config/images";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return buildServiceMetadata("commercial-hvac");
+}
+
+export default function Page() {
+  const service = resolveService("commercial-hvac");
+  return <ServicePageTemplate service={service} image={IMG_COMMERCIAL_PRIMARY} />;
+}
