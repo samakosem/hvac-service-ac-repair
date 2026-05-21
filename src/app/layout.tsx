@@ -6,6 +6,8 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import StickyMobileCta from "@/components/ui/StickyMobileCta";
 import FloatingCallButton from "@/components/ui/FloatingCallButton";
+import JsonLd from "@/components/ui/JsonLd";
+import { schemaWebSite } from "@/lib/seo/schema";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,7 +24,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE.name} | AC Repair & HVAC Services in Orange County, CA`,
+    default: `AC Repair & HVAC Service in Orange County, CA | ${SITE.name}`,
     template: `%s | ${SITE.name}`,
   },
   description:
@@ -50,6 +52,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-900">
+        <JsonLd data={schemaWebSite()} />
         <Header />
         <main className="flex-1 pb-16 md:pb-0">{children}</main>
         <Footer />

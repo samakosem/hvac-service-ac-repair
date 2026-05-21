@@ -24,7 +24,7 @@ export function buildMetadata({
   openGraphImage,
 }: BuildMetadataOptions): Metadata {
   const url = `${SITE.domain}${path}`;
-  const fullTitle = path === "" ? `${title} | ${SITE.serviceArea}` : `${title} | ${SITE.name}`;
+  const fullTitle = `${title} | ${SITE.name}`;
 
   // Use explicitly passed image, or fall back to default only if the file exists
   const resolvedImage = openGraphImage ?? (HAS_OG_IMAGE ? OG_DEFAULT : undefined);

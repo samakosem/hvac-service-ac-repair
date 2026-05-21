@@ -15,12 +15,13 @@ import CalculatorTeaser from "@/components/home/CalculatorTeaser";
 import GalleryPreview from "@/components/home/GalleryPreview";
 import ReviewsSection from "@/components/home/ReviewsSection";
 import FinancingCta from "@/components/home/FinancingCta";
+import PromoSection from "@/components/home/PromoSection";
 import HowItWorks from "@/components/home/HowItWorks";
 import FaqSection from "@/components/home/FaqSection";
 import CtaBand from "@/components/home/CtaBand";
 
 export const metadata: Metadata = buildMetadata({
-  title: "HVAC Service & AC Repair in Yorba Linda, Orange County, CA",
+  title: "AC Repair & HVAC Service in Yorba Linda & Orange County, CA",
   description:
     "Local HVAC company based in Yorba Linda. Same-day AC repair, AC installation, heating, ductless systems, commercial HVAC, and air duct services across Orange County. Call (714) 410-2784.",
   path: "",
@@ -42,6 +43,7 @@ export default function HomePage() {
       <GalleryPreview />
       <ReviewsSection />
       <FinancingCta />
+      <PromoSection />
       <HowItWorks />
       <FaqSection />
       <CtaBand />

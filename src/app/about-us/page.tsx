@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { SITE } from "@/lib/config/site";
+import { buildMetadata } from "@/lib/seo/metadata";
 import { IMG_LENNOX_INSTALL } from "@/lib/config/images";
 import JsonLd from "@/components/ui/JsonLd";
 import { schemaOrganization } from "@/lib/seo/schema";
@@ -9,12 +10,12 @@ import PhoneLink from "@/components/ui/PhoneLink";
 import CtaSection from "@/components/ui/CtaSection";
 import InteriorHero from "@/components/layout/InteriorHero";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "About Us | Local HVAC Company in Yorba Linda, CA",
   description:
     "HVAC Service & AC Repair is a locally operated HVAC company based in Yorba Linda, CA. We serve Orange County and surrounding areas with honest, reliable service.",
-  alternates: { canonical: "/about-us" },
-};
+  path: "/about-us",
+});
 
 const VALUES = [
   {

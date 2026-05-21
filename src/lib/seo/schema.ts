@@ -5,14 +5,29 @@ type BreadcrumbItem = {
   href: string;
 };
 
+const BUSINESS_ID = `${SITE.domain}/#hvacbusiness`;
+
+export function schemaWebSite() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${SITE.domain}/#website`,
+    name: SITE.name,
+    url: SITE.domain,
+    publisher: { "@type": "HVACBusiness", "@id": BUSINESS_ID },
+  };
+}
+
 export function schemaHvacBusiness() {
   return {
     "@context": "https://schema.org",
     "@type": "HVACBusiness",
+    "@id": BUSINESS_ID,
     name: SITE.name,
     url: SITE.domain,
     telephone: SITE.phone,
     email: SITE.email,
+    image: `${SITE.domain}/uploads/ac-unit-installation (4).jpeg`,
     address: {
       "@type": "PostalAddress",
       streetAddress: SITE.address.street,
@@ -40,13 +55,28 @@ export function schemaHvacBusiness() {
         closes: "17:00",
       },
     ],
-    areaServed: {
-      "@type": "State",
-      name: "California",
-    },
+    areaServed: [
+      { "@type": "County", name: "Orange County", containedInPlace: { "@type": "State", name: "California" } },
+      { "@type": "County", name: "Riverside County", containedInPlace: { "@type": "State", name: "California" } },
+      { "@type": "County", name: "San Bernardino County", containedInPlace: { "@type": "State", name: "California" } },
+    ],
     priceRange: "$$",
     currenciesAccepted: "USD",
     paymentAccepted: "Cash, Credit Card, Financing",
+    sameAs: ([SITE.social.google, SITE.social.yelp, SITE.social.facebook] as string[]).filter(Boolean),
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "HVAC Services",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "AC Repair", url: `${SITE.domain}/air-conditioning/ac-repair` } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "AC Installation", url: `${SITE.domain}/air-conditioning/ac-installation` } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "AC Maintenance", url: `${SITE.domain}/air-conditioning/ac-maintenance` } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Furnace Repair", url: `${SITE.domain}/heating/furnace-repair` } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Ductless Mini-Split Installation", url: `${SITE.domain}/ductless/mini-split-installation` } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Air Duct Cleaning", url: `${SITE.domain}/air-duct-services/air-duct-cleaning` } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Commercial HVAC", url: `${SITE.domain}/commercial-hvac` } },
+      ],
+    },
   };
 }
 
@@ -54,7 +84,7 @@ export function schemaService({
   name,
   description,
   url,
-  areaServed = "Orange County, CA",
+  areaServed = "Orange County",
 }: {
   name: string;
   description: string;
@@ -67,21 +97,12 @@ export function schemaService({
     name,
     description,
     url: `${SITE.domain}${url}`,
-    provider: {
-      "@type": "HVACBusiness",
-      name: SITE.name,
-      url: SITE.domain,
-      telephone: SITE.phone,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: SITE.address.street,
-        addressLocality: SITE.address.city,
-        addressRegion: SITE.address.state,
-        postalCode: SITE.address.zip,
-        addressCountry: "US",
-      },
+    provider: { "@type": "HVACBusiness", "@id": BUSINESS_ID },
+    areaServed: {
+      "@type": "County",
+      name: areaServed,
+      containedInPlace: { "@type": "State", name: "California" },
     },
-    areaServed,
     serviceType: "HVAC",
   };
 }
@@ -118,6 +139,7 @@ export function schemaLocalBusiness() {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": BUSINESS_ID,
     name: SITE.name,
     url: SITE.domain,
     telephone: SITE.phone,
@@ -139,35 +161,7 @@ export function schemaContactPage() {
     name: `Contact ${SITE.name}`,
     url: `${SITE.domain}/contact`,
     description: `Contact ${SITE.name} for AC repair, HVAC installation, and heating service in Orange County, CA.`,
-    mainEntity: {
-      "@type": "HVACBusiness",
-      name: SITE.name,
-      url: SITE.domain,
-      telephone: SITE.phone,
-      email: SITE.email,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: SITE.address.street,
-        addressLocality: SITE.address.city,
-        addressRegion: SITE.address.state,
-        postalCode: SITE.address.zip,
-        addressCountry: "US",
-      },
-      openingHoursSpecification: [
-        {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          opens: "07:00",
-          closes: "19:00",
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: ["Saturday"],
-          opens: "08:00",
-          closes: "17:00",
-        },
-      ],
-    },
+    mainEntity: { "@type": "HVACBusiness", "@id": BUSINESS_ID },
   };
 }
 
@@ -244,6 +238,7 @@ export function schemaOrganization() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": BUSINESS_ID,
     name: SITE.name,
     url: SITE.domain,
     telephone: SITE.phone,
