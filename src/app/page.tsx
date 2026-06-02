@@ -39,8 +39,6 @@ export default function HomePage() {
       <EmergencyStrip />
       {/* Trust bar immediately below hero for PPC + organic visitors */}
       <ConversionTrustBar variant="light" />
-      {/* Lead form 1: below hero */}
-      <HomeLeadForm variant="hero" />
       <ServicesGrid />
       <RepairVsInstall />
       {/* Summer cooling season banner — seasonal relevance */}
