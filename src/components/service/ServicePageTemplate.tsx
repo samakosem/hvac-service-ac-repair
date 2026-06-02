@@ -6,6 +6,9 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import PhoneLink from "@/components/ui/PhoneLink";
 import JsonLd from "@/components/ui/JsonLd";
+import ConversionTrustBar from "@/components/ui/ConversionTrustBar";
+import EmergencyCallout from "@/components/ui/EmergencyCallout";
+import FinancingTeaser from "@/components/ui/FinancingTeaser";
 import { schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import { SITE } from "@/lib/config/site";
 import { serviceHref, SILO_PARENTS } from "@/lib/config/routes";
@@ -136,6 +139,9 @@ export default function ServicePageTemplate({ service, image }: Props) {
         </div>
       </section>
 
+      {/* ── Trust bar ────────────────────────────────────────────────────── */}
+      <ConversionTrustBar variant="light" />
+
       {/* ── What's Included ──────────────────────────────────────────────── */}
       <section className="py-14 lg:py-20 bg-warm-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -194,6 +200,12 @@ export default function ServicePageTemplate({ service, image }: Props) {
                   />
                 </div>
               </div>
+
+              {/* Emergency callout card */}
+              <EmergencyCallout variant="card" />
+
+              {/* Financing teaser */}
+              <FinancingTeaser variant="inline" />
             </div>
           </div>
         </div>

@@ -3,6 +3,8 @@ import Link from "next/link";
 import JsonLd from "@/components/ui/JsonLd";
 import QuoteForm from "@/components/ui/QuoteForm";
 import PhoneLink from "@/components/ui/PhoneLink";
+import ConversionTrustBar from "@/components/ui/ConversionTrustBar";
+import FinancingTeaser from "@/components/ui/FinancingTeaser";
 import { SITE } from "@/lib/config/site";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import type { PPCCity } from "@/lib/config/ppc-cities";
@@ -110,13 +112,6 @@ function BoltIcon({ className }: { className?: string }) {
   );
 }
 
-function CreditCardIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
-    </svg>
-  );
-}
 
 // ── Rating stars ─────────────────────────────────────────────────────────────
 
@@ -209,11 +204,17 @@ export default function PPCLandingTemplate({ city }: Props) {
             {/* ── LEFT: Content ── */}
             <div className="flex flex-col gap-5">
 
-              {/* Emergency badge */}
-              <div className="flex items-center gap-2 w-fit">
+              {/* Badges row */}
+              <div className="flex items-center gap-2 w-fit flex-wrap">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-500/15 border border-red-400/25 text-red-300 text-xs font-bold uppercase tracking-wider">
                   <BoltIcon className="w-3 h-3" />
                   Emergency Service Available
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-hvac-blue-500/15 border border-hvac-blue-400/25 text-hvac-blue-200 text-xs font-bold uppercase tracking-wider">
+                  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clipRule="evenodd" />
+                  </svg>
+                  Summer Cooling Season
                 </span>
               </div>
 
@@ -299,6 +300,11 @@ export default function PPCLandingTemplate({ city }: Props) {
                   subheading="We respond within 1 hour during business hours."
                 />
               </div>
+
+              {/* Financing teaser — desktop only */}
+              <div className="hidden lg:block">
+                <FinancingTeaser variant="inline" />
+              </div>
             </div>
           </div>
         </div>
@@ -319,29 +325,7 @@ export default function PPCLandingTemplate({ city }: Props) {
       </div>
 
       {/* ── 2. TRUST BAR ─────────────────────────────────────────────────────── */}
-      <section className="bg-navy-900 border-y border-white/6 py-4" aria-label="Trust bar">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center lg:justify-between items-center gap-4 lg:gap-0">
-            {[
-              { label: "Licensed California Contractor", sub: "CSLB #" },
-              { label: "EPA Section 608 Certified", sub: "All refrigerant types" },
-              { label: "Fully Insured", sub: "Liability & workers' comp" },
-              { label: "Same-Day Availability", sub: "Call before noon" },
-              { label: "5-Star Google Rated", sub: "100+ verified reviews" },
-            ].map((item) => (
-              <div key={item.label} className="flex items-center gap-2.5 px-4">
-                <div className="w-8 h-8 rounded-lg bg-copper-500/15 flex items-center justify-center shrink-0">
-                  <CheckIcon className="w-4 h-4 text-copper-400" />
-                </div>
-                <div>
-                  <p className="text-white text-sm font-semibold leading-tight">{item.label}</p>
-                  <p className="text-slate-400 text-xs">{item.sub}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ConversionTrustBar variant="dark" />
 
       {/* ── 3. FREE ESTIMATE PROMO ────────────────────────────────────────────── */}
       <section className="bg-copper-gradient py-10 px-4" aria-label="Free estimate promotion">
@@ -603,45 +587,7 @@ export default function PPCLandingTemplate({ city }: Props) {
       </section>
 
       {/* ── 10. FINANCING ────────────────────────────────────────────────────── */}
-      <section className="py-14 lg:py-18 bg-warm-tint" aria-labelledby="financing-heading">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-sm border border-slate-100 flex flex-col lg:flex-row gap-8 items-center">
-            <div className="w-16 h-16 rounded-2xl bg-hvac-blue-50 flex items-center justify-center shrink-0">
-              <CreditCardIcon className="w-8 h-8 text-hvac-blue-600" />
-            </div>
-            <div className="flex flex-col gap-3 flex-1 text-center lg:text-left">
-              <div className="section-label section-label-blue w-fit mx-auto lg:mx-0">Financing Available</div>
-              <h2 id="financing-heading" className="text-2xl sm:text-3xl font-bold text-slate-900">
-                Don&rsquo;t Let Budget Hold Back Your Comfort
-              </h2>
-              <p className="text-slate-600 leading-relaxed">
-                We offer flexible financing options including <strong>0% interest promotions</strong> for qualified buyers. Split your new system into manageable monthly payments — and start saving on energy bills right away.
-              </p>
-              <ul className="flex flex-wrap gap-3 justify-center lg:justify-start">
-                {["0% interest options", "Low monthly payments", "Fast approval", "No prepayment penalties"].map((item) => (
-                  <li key={item} className="flex items-center gap-1.5 text-sm text-slate-700">
-                    <CheckIcon className="w-3.5 h-3.5 text-hvac-blue-600" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="flex flex-col gap-3 shrink-0 w-full lg:w-auto">
-              <PhoneLink
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 bg-copper-gradient text-white font-bold rounded-xl shadow-glow-copper hover:opacity-90 active:scale-[0.98] transition-all text-base"
-                showIcon
-                label="Ask About Financing"
-              />
-              <Link
-                href="/financing"
-                className="text-center text-sm text-hvac-blue-600 hover:text-hvac-blue-700 font-medium underline underline-offset-2"
-              >
-                View all financing options →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <FinancingTeaser variant="full" />
 
       {/* ── 11. FAQ ──────────────────────────────────────────────────────────── */}
       <section className="py-16 lg:py-20 bg-warm-white" aria-labelledby="faq-heading">

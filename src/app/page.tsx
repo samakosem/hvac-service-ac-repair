@@ -19,6 +19,9 @@ import PromoSection from "@/components/home/PromoSection";
 import HowItWorks from "@/components/home/HowItWorks";
 import FaqSection from "@/components/home/FaqSection";
 import CtaBand from "@/components/home/CtaBand";
+import ConversionTrustBar from "@/components/ui/ConversionTrustBar";
+import SummerBanner from "@/components/ui/SummerBanner";
+import FinancingTeaser from "@/components/ui/FinancingTeaser";
 
 export const metadata: Metadata = buildMetadata({
   title: "AC Repair & HVAC Service in Yorba Linda & Orange County, CA",
@@ -33,8 +36,12 @@ export default function HomePage() {
       <JsonLd data={schemaHvacBusiness()} />
       <Hero />
       <EmergencyStrip />
+      {/* Trust bar immediately below hero for PPC + organic visitors */}
+      <ConversionTrustBar variant="light" />
       <ServicesGrid />
       <RepairVsInstall />
+      {/* Summer cooling season banner — seasonal relevance */}
+      <SummerBanner />
       <WhyChooseUs />
       <MaintenancePlan />
       <CommercialHvac />
@@ -43,6 +50,12 @@ export default function HomePage() {
       <GalleryPreview />
       <ReviewsSection />
       <FinancingCta />
+      {/* Financing teaser — visible before users reach /financing page */}
+      <section className="py-6 bg-warm-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FinancingTeaser variant="inline" />
+        </div>
+      </section>
       <PromoSection />
       <HowItWorks />
       <FaqSection />
