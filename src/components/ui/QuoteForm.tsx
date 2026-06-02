@@ -3,7 +3,6 @@
 import { useState, useId } from "react";
 import { useRouter } from "next/navigation";
 import { SITE } from "@/lib/config/site";
-import { SERVICE_AREA_COUNTIES } from "@/lib/config/locations";
 import { pushEvent } from "@/lib/gtm";
 
 const SERVICES = [
@@ -21,18 +20,30 @@ const SERVICES = [
   "Not Sure — Need Diagnosis",
 ];
 
+// Field length limits — defence against injection / oversized payloads
+const LIMITS = {
+  name: 100,
+  phone: 30,
+  email: 120,
+  service: 80,
+  address: 200,
+  message: 1000,
+  // honeypot fields must stay empty
+};
+
 type FormData = {
   name: string;
   phone: string;
   email: string;
   service: string;
-  county: string;
-  city: string;
+  address: string;
   propertyType: "residential" | "commercial" | "";
   isEmergency: boolean;
   interestedInFinancing: boolean;
   message: string;
+  // honeypots — must stay empty
   website: string;
+  faxNumber: string;
 };
 
 type Errors = Partial<Record<keyof FormData, string>>;
@@ -42,14 +53,18 @@ const EMPTY: FormData = {
   phone: "",
   email: "",
   service: "",
-  county: "",
-  city: "",
+  address: "",
   propertyType: "",
   isEmergency: false,
   interestedInFinancing: false,
   message: "",
   website: "",
+  faxNumber: "",
 };
+
+function sanitize(v: string, max: number): string {
+  return v.slice(0, max);
+}
 
 function validateStep1(data: FormData): Errors {
   const errs: Errors = {};
@@ -64,6 +79,8 @@ function validateStep2(data: FormData): Errors {
   const errs: Errors = {};
   if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
     errs.email = "Enter a valid email address.";
+  if (!data.address.trim()) errs.address = "Service address is required.";
+  else if (data.address.trim().length < 8) errs.address = "Enter your full address (street, city, ZIP).";
   return errs;
 }
 
@@ -88,11 +105,13 @@ export default function QuoteForm({
 
   const isCompact = variant === "compact";
 
-  const countyObj = SERVICE_AREA_COUNTIES.find((c) => c.slug === data.county);
-  const availableCities = countyObj?.cities ?? [];
-
   function set<K extends keyof FormData>(key: K, value: FormData[K]) {
-    setData((prev) => ({ ...prev, [key]: value }));
+    // Apply char limits to string fields
+    const limited =
+      typeof value === "string" && key in LIMITS
+        ? sanitize(value as string, LIMITS[key as keyof typeof LIMITS])
+        : value;
+    setData((prev) => ({ ...prev, [key]: limited }));
     if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }));
   }
 
@@ -114,11 +133,27 @@ export default function QuoteForm({
       setErrors(errs);
       return;
     }
+    // Bot check — honeypots must be empty
+    if (data.website || data.faxNumber) {
+      // Silently redirect without firing GTM event
+      router.push("/thank-you");
+      return;
+    }
     setSubmitting(true);
     setSubmitError(null);
     try {
       const payload = {
-        ...data,
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        service: data.service,
+        address: data.address,
+        propertyType: data.propertyType,
+        isEmergency: data.isEmergency,
+        interestedInFinancing: data.interestedInFinancing,
+        message: data.message,
+        website: data.website,
+        faxNumber: data.faxNumber,
         pageUrl: typeof window !== "undefined" ? window.location.href : "",
       };
       const res = await fetch("/api/contact", {
@@ -169,6 +204,7 @@ export default function QuoteForm({
     </div>
   );
 
+  /* ── Step 1 ─────────────────────────────────────────────────────────────── */
   if (step === 1) {
     return (
       <form onSubmit={handleNextStep} noValidate aria-label="Request a free HVAC estimate — step 1">
@@ -193,6 +229,7 @@ export default function QuoteForm({
               autoComplete="name"
               placeholder="Jane Smith"
               value={data.name}
+              maxLength={LIMITS.name}
               onChange={(e) => set("name", e.target.value)}
               className={`form-field ${errors.name ? "form-field-error" : ""}`}
               aria-describedby={errors.name ? `${id}-name-err` : undefined}
@@ -212,6 +249,7 @@ export default function QuoteForm({
               autoComplete="tel"
               placeholder="(714) 555-0100"
               value={data.phone}
+              maxLength={LIMITS.phone}
               onChange={(e) => set("phone", e.target.value)}
               className={`form-field ${errors.phone ? "form-field-error" : ""}`}
               aria-describedby={errors.phone ? `${id}-phone-err` : undefined}
@@ -242,7 +280,7 @@ export default function QuoteForm({
           </div>
         </div>
 
-        {/* Honeypot */}
+        {/* Honeypot 1 — visually hidden */}
         <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
           <label htmlFor={`${id}-website`}>Website</label>
           <input
@@ -277,6 +315,7 @@ export default function QuoteForm({
     );
   }
 
+  /* ── Step 2 ─────────────────────────────────────────────────────────────── */
   return (
     <form onSubmit={handleSubmit} noValidate aria-label="Request a free HVAC estimate — step 2">
       {(heading || subheading) && (
@@ -290,7 +329,7 @@ export default function QuoteForm({
 
       {/* Step 1 summary */}
       <div className="mb-4 rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 flex items-center justify-between">
-        <div className="text-sm text-slate-700">
+        <div className="text-sm text-slate-700 truncate">
           <span className="font-semibold">{data.name}</span>
           <span className="text-slate-400 mx-1.5">·</span>
           <span>{data.phone}</span>
@@ -318,6 +357,7 @@ export default function QuoteForm({
             autoComplete="email"
             placeholder="jane@example.com"
             value={data.email}
+            maxLength={LIMITS.email}
             onChange={(e) => set("email", e.target.value)}
             className={`form-field ${errors.email ? "form-field-error" : ""}`}
             aria-describedby={errors.email ? `${id}-email-err` : undefined}
@@ -325,42 +365,28 @@ export default function QuoteForm({
           {errors.email && <p id={`${id}-email-err`} className="form-error-msg" role="alert">{errors.email}</p>}
         </div>
 
-        {/* County + City (hidden in compact) */}
-        {!isCompact && (
-          <>
-            <div>
-              <label htmlFor={`${id}-county`} className="form-label">County</label>
-              <select
-                id={`${id}-county`}
-                value={data.county}
-                onChange={(e) => { set("county", e.target.value); set("city", ""); }}
-                className="form-field"
-              >
-                <option value="">Select county…</option>
-                {SERVICE_AREA_COUNTIES.map((c) => (
-                  <option key={c.slug} value={c.slug}>{c.name}</option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label htmlFor={`${id}-city`} className="form-label">City</label>
-              <select
-                id={`${id}-city`}
-                value={data.city}
-                onChange={(e) => set("city", e.target.value)}
-                disabled={!data.county}
-                className="form-field disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <option value="">
-                  {data.county ? "Select city…" : "Select county first"}
-                </option>
-                {availableCities.map((c) => (
-                  <option key={c.slug} value={c.slug}>{c.name}</option>
-                ))}
-              </select>
-            </div>
-          </>
-        )}
+        {/* Full Service Address */}
+        <div className={isCompact ? "" : "sm:col-span-2"}>
+          <label htmlFor={`${id}-address`} className="form-label">
+            Full Service Address <span className="text-red-500" aria-hidden="true">*</span>
+          </label>
+          <input
+            id={`${id}-address`}
+            type="text"
+            autoComplete="street-address"
+            placeholder="Enter your full service address (street, city, ZIP code)"
+            value={data.address}
+            maxLength={LIMITS.address}
+            onChange={(e) => set("address", e.target.value)}
+            className={`form-field ${errors.address ? "form-field-error" : ""}`}
+            aria-describedby={`${id}-address-hint${errors.address ? ` ${id}-address-err` : ""}`}
+            aria-required="true"
+          />
+          <p id={`${id}-address-hint`} className="mt-1 text-xs text-slate-400">
+            This helps us confirm service availability and provide an accurate estimate.
+          </p>
+          {errors.address && <p id={`${id}-address-err`} className="form-error-msg" role="alert">{errors.address}</p>}
+        </div>
 
         {/* Property type */}
         <div className={isCompact ? "" : "sm:col-span-2"}>
@@ -418,10 +444,42 @@ export default function QuoteForm({
             rows={isCompact ? 3 : 4}
             placeholder="Describe what's happening with your system, when it started, your home size, or anything else that would help us prepare…"
             value={data.message}
+            maxLength={LIMITS.message}
             onChange={(e) => set("message", e.target.value)}
             className="form-field resize-y"
           />
+          <p className="mt-1 text-xs text-slate-400 text-right">
+            {data.message.length}/{LIMITS.message}
+          </p>
         </div>
+      </div>
+
+      {/* Honeypot 1 — visually hidden */}
+      <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+        <label htmlFor={`${id}-website`}>Website</label>
+        <input
+          id={`${id}-website`}
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={data.website}
+          onChange={(e) => set("website", e.target.value)}
+        />
+      </div>
+
+      {/* Honeypot 2 — fax number (bots fill it, humans never see it) */}
+      <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+        <label htmlFor={`${id}-fax`}>Fax Number</label>
+        <input
+          id={`${id}-fax`}
+          type="text"
+          name="faxNumber"
+          tabIndex={-1}
+          autoComplete="off"
+          value={data.faxNumber}
+          onChange={(e) => set("faxNumber", e.target.value)}
+        />
       </div>
 
       <div className="mt-5 flex flex-col gap-2">

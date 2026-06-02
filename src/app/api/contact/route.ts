@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-// Lazy-init so module loads cleanly at build time without the env var
 let _resend: Resend | null = null;
 function getResend(): Resend {
   if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY);
@@ -11,12 +10,34 @@ function getResend(): Resend {
 const LEAD_EMAIL = "sammazor1@gmail.com";
 const FROM_EMAIL = "leads@hvacserviceacrepair.com";
 
+// Field length limits — mirrors frontend LIMITS
+const MAX = {
+  name: 100,
+  phone: 30,
+  email: 120,
+  service: 80,
+  address: 200,
+  message: 1000,
+  pageUrl: 500,
+};
+
 function isValidPhone(v: string) {
   return /^[\d\s()\-+]{7,}$/.test(v);
 }
 
 function isValidEmail(v: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+}
+
+// Strip HTML tags and dangerous chars to prevent injection in email body
+function sanitize(v: string, max: number): string {
+  return v
+    .slice(0, max)
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/&/g, "&#38;")
+    .replace(/"/g, "&#34;")
+    .replace(/'/g, "&#39;");
 }
 
 export async function POST(req: NextRequest) {
@@ -27,22 +48,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  // Honeypot — bots fill this, humans don't
-  if (body.website) {
+  // Honeypots — bots fill these, humans don't
+  if (body.website || body.faxNumber) {
     return NextResponse.json({ ok: true });
   }
 
-  const name = typeof body.name === "string" ? body.name.trim() : "";
-  const phone = typeof body.phone === "string" ? body.phone.trim() : "";
-  const email = typeof body.email === "string" ? body.email.trim() : "";
-  const service = typeof body.service === "string" ? body.service.trim() : "";
-  const county = typeof body.county === "string" ? body.county.trim() : "";
-  const city = typeof body.city === "string" ? body.city.trim() : "";
-  const propertyType = typeof body.propertyType === "string" ? body.propertyType.trim() : "";
+  const name = sanitize(typeof body.name === "string" ? body.name.trim() : "", MAX.name);
+  const phone = sanitize(typeof body.phone === "string" ? body.phone.trim() : "", MAX.phone);
+  const email = sanitize(typeof body.email === "string" ? body.email.trim() : "", MAX.email);
+  const service = sanitize(typeof body.service === "string" ? body.service.trim() : "", MAX.service);
+  const address = sanitize(typeof body.address === "string" ? body.address.trim() : "", MAX.address);
+  const propertyType = sanitize(typeof body.propertyType === "string" ? body.propertyType.trim() : "", 20);
   const isEmergency = body.isEmergency === true;
   const interestedInFinancing = body.interestedInFinancing === true;
-  const message = typeof body.message === "string" ? body.message.trim() : "";
-  const pageUrl = typeof body.pageUrl === "string" ? body.pageUrl.trim() : "";
+  const message = sanitize(typeof body.message === "string" ? body.message.trim() : "", MAX.message);
+  const pageUrl = sanitize(typeof body.pageUrl === "string" ? body.pageUrl.trim() : "", MAX.pageUrl);
 
   // Server-side validation
   if (!name) return NextResponse.json({ error: "Name is required." }, { status: 422 });
@@ -50,6 +70,7 @@ export async function POST(req: NextRequest) {
   if (!isValidPhone(phone)) return NextResponse.json({ error: "Enter a valid phone number." }, { status: 422 });
   if (email && !isValidEmail(email)) return NextResponse.json({ error: "Enter a valid email address." }, { status: 422 });
   if (!service) return NextResponse.json({ error: "Service is required." }, { status: 422 });
+  if (!address || address.length < 8) return NextResponse.json({ error: "Full service address is required." }, { status: 422 });
 
   const timestamp = new Date().toLocaleString("en-US", {
     timeZone: "America/Los_Angeles",
@@ -108,8 +129,10 @@ export async function POST(req: NextRequest) {
       <div class="label">Service Requested</div>
       <div class="value">${service}</div>
     </div>
-    ${county ? `<div class="row"><div class="label">County</div><div class="value">${county}</div></div>` : ""}
-    ${city ? `<div class="row"><div class="label">City</div><div class="value">${city}</div></div>` : ""}
+    <div class="row">
+      <div class="label">Service Address</div>
+      <div class="value">${address}</div>
+    </div>
     ${propertyType ? `<div class="row"><div class="label">Property Type</div><div class="value" style="text-transform:capitalize">${propertyType}</div></div>` : ""}
     ${interestedInFinancing ? `<div class="row"><div class="label">Financing</div><div class="value">Interested in financing options</div></div>` : ""}
     ${message ? `<hr class="divider"><div class="row"><div class="label">Message / Details</div><div class="value" style="white-space:pre-wrap">${message}</div></div>` : ""}
@@ -140,7 +163,6 @@ export async function POST(req: NextRequest) {
     });
 
     if (error) {
-      // Log only the error code/message — never log user PII
       console.error("[contact] Resend error:", error.name, error.message);
       return NextResponse.json({ error: "Failed to send. Please call us directly." }, { status: 502 });
     }
