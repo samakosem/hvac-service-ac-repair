@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { SITE } from "@/lib/config/site";
+import { pushEvent } from "@/lib/gtm";
 import Link from "next/link";
 
 export default function StickyMobileCta() {
@@ -26,6 +27,7 @@ export default function StickyMobileCta() {
         href={`tel:${SITE.phone}`}
         className="flex-1 flex flex-col items-center justify-center gap-0.5 py-3.5 bg-hvac-blue-600 text-white active:bg-hvac-blue-700 transition-colors"
         aria-label={`Call us at ${SITE.phoneDisplay}`}
+        onClick={() => pushEvent("Call Button")}
       >
         <div className="flex items-center gap-1.5">
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">

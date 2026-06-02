@@ -1,8 +1,10 @@
 "use client";
 
 import { useState, useId } from "react";
+import { useRouter } from "next/navigation";
 import { SITE } from "@/lib/config/site";
 import { SERVICE_AREA_COUNTIES } from "@/lib/config/locations";
+import { pushEvent } from "@/lib/gtm";
 
 const SERVICES = [
   "AC Repair",
@@ -73,6 +75,7 @@ export default function QuoteForm({
   subheading = "We'll respond within 1 hour during business hours.",
 }: Props) {
   const id = useId();
+  const router = useRouter();
   const [data, setData] = useState<FormData>(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
   const [submitted, setSubmitted] = useState(false);
@@ -115,7 +118,8 @@ export default function QuoteForm({
         setSubmitting(false);
         return;
       }
-      setSubmitted(true);
+      pushEvent("form filled");
+      router.push("/thank-you");
     } catch {
       setSubmitError("Network error. Please check your connection and try again.");
     } finally {

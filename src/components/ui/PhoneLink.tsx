@@ -1,4 +1,7 @@
+"use client";
+
 import { SITE } from "@/lib/config/site";
+import { pushEvent } from "@/lib/gtm";
 
 type PhoneLinkProps = {
   className?: string;
@@ -20,6 +23,7 @@ export default function PhoneLink({
       href={`tel:${SITE.phone}`}
       className={className}
       aria-label={`Call ${SITE.name} at ${SITE.phoneDisplay}`}
+      onClick={() => pushEvent("Call Button")}
     >
       {showIcon && (
         <svg
