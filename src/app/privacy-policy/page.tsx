@@ -8,10 +8,10 @@ export const metadata: Metadata = {
   description:
     "Privacy policy for HVAC Service & AC Repair. Learn how we collect, use, and protect your personal information.",
   alternates: { canonical: "/privacy-policy" },
-  robots: { index: false, follow: false },
+  robots: { index: true, follow: true },
 };
 
-const LAST_UPDATED = "May 1, 2025";
+const LAST_UPDATED = "June 2, 2026";
 
 export default function PrivacyPolicyPage() {
   return (

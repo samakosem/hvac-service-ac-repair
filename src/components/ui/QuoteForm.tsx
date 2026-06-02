@@ -32,7 +32,7 @@ type FormData = {
   isEmergency: boolean;
   interestedInFinancing: boolean;
   message: string;
-  website: string; // honeypot — must stay empty
+  website: string;
 };
 
 type Errors = Partial<Record<keyof FormData, string>>;
@@ -51,19 +51,23 @@ const EMPTY: FormData = {
   website: "",
 };
 
-function validate(data: FormData): Errors {
+function validateStep1(data: FormData): Errors {
   const errs: Errors = {};
   if (!data.name.trim()) errs.name = "Name is required.";
   if (!data.phone.trim()) errs.phone = "Phone number is required.";
   else if (!/^[\d\s()\-+]{7,}$/.test(data.phone)) errs.phone = "Enter a valid phone number.";
-  if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
-    errs.email = "Enter a valid email address.";
   if (!data.service) errs.service = "Please select a service.";
   return errs;
 }
 
+function validateStep2(data: FormData): Errors {
+  const errs: Errors = {};
+  if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email))
+    errs.email = "Enter a valid email address.";
+  return errs;
+}
+
 type Props = {
-  /** Compact mode for sidebars; full mode for dedicated contact page */
   variant?: "full" | "compact";
   heading?: string;
   subheading?: string;
@@ -76,15 +80,14 @@ export default function QuoteForm({
 }: Props) {
   const id = useId();
   const router = useRouter();
+  const [step, setStep] = useState<1 | 2>(1);
   const [data, setData] = useState<FormData>(EMPTY);
   const [errors, setErrors] = useState<Errors>({});
-  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
 
   const isCompact = variant === "compact";
 
-  // Derive available cities from selected county
   const countyObj = SERVICE_AREA_COUNTIES.find((c) => c.slug === data.county);
   const availableCities = countyObj?.cities ?? [];
 
@@ -93,9 +96,20 @@ export default function QuoteForm({
     if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }));
   }
 
+  function handleNextStep(e: React.FormEvent) {
+    e.preventDefault();
+    const errs = validateStep1(data);
+    if (Object.keys(errs).length > 0) {
+      setErrors(errs);
+      return;
+    }
+    setErrors({});
+    setStep(2);
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const errs = validate(data);
+    const errs = validateStep2(data);
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
       return;
@@ -127,82 +141,172 @@ export default function QuoteForm({
     }
   }
 
-  if (submitted) {
-    return (
-      <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-8 text-center flex flex-col items-center gap-4">
-        <div className="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center">
-          <svg className="w-7 h-7 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
+  const stepIndicator = (
+    <div className="flex items-center gap-2 mb-5" aria-label="Form progress">
+      {[1, 2].map((s) => (
+        <div key={s} className="flex items-center gap-2">
+          <div
+            className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-colors ${
+              step === s
+                ? "bg-hvac-blue-600 text-white"
+                : step > s
+                ? "bg-emerald-500 text-white"
+                : "bg-slate-200 text-slate-500"
+            }`}
+          >
+            {step > s ? (
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+            ) : s}
+          </div>
+          <span className={`text-xs font-medium ${step === s ? "text-slate-800" : "text-slate-400"}`}>
+            {s === 1 ? "Your Info" : "Details"}
+          </span>
+          {s < 2 && <div className={`w-8 h-px ${step > 1 ? "bg-emerald-400" : "bg-slate-200"}`} />}
         </div>
-        <div>
-          <p className="font-bold text-slate-900 text-lg">Request Received</p>
-          <p className="text-slate-600 text-sm mt-1 max-w-sm">
-            We&rsquo;ll be in touch shortly. For immediate help, call us directly at{" "}
+      ))}
+    </div>
+  );
+
+  if (step === 1) {
+    return (
+      <form onSubmit={handleNextStep} noValidate aria-label="Request a free HVAC estimate — step 1">
+        {(heading || subheading) && (
+          <div className="mb-5">
+            {heading && <p className="font-bold text-slate-900 text-lg">{heading}</p>}
+            {subheading && <p className="text-slate-500 text-sm mt-1">{subheading}</p>}
+          </div>
+        )}
+
+        {stepIndicator}
+
+        <div className={`grid gap-4 ${isCompact ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"}`}>
+          {/* Name */}
+          <div>
+            <label htmlFor={`${id}-name`} className="form-label">
+              Full Name <span className="text-red-500" aria-hidden="true">*</span>
+            </label>
+            <input
+              id={`${id}-name`}
+              type="text"
+              autoComplete="name"
+              placeholder="Jane Smith"
+              value={data.name}
+              onChange={(e) => set("name", e.target.value)}
+              className={`form-field ${errors.name ? "form-field-error" : ""}`}
+              aria-describedby={errors.name ? `${id}-name-err` : undefined}
+              aria-required="true"
+            />
+            {errors.name && <p id={`${id}-name-err`} className="form-error-msg" role="alert">{errors.name}</p>}
+          </div>
+
+          {/* Phone */}
+          <div>
+            <label htmlFor={`${id}-phone`} className="form-label">
+              Phone Number <span className="text-red-500" aria-hidden="true">*</span>
+            </label>
+            <input
+              id={`${id}-phone`}
+              type="tel"
+              autoComplete="tel"
+              placeholder="(714) 555-0100"
+              value={data.phone}
+              onChange={(e) => set("phone", e.target.value)}
+              className={`form-field ${errors.phone ? "form-field-error" : ""}`}
+              aria-describedby={errors.phone ? `${id}-phone-err` : undefined}
+              aria-required="true"
+            />
+            {errors.phone && <p id={`${id}-phone-err`} className="form-error-msg" role="alert">{errors.phone}</p>}
+          </div>
+
+          {/* Service */}
+          <div className={isCompact ? "" : "sm:col-span-2"}>
+            <label htmlFor={`${id}-service`} className="form-label">
+              Service Needed <span className="text-red-500" aria-hidden="true">*</span>
+            </label>
+            <select
+              id={`${id}-service`}
+              value={data.service}
+              onChange={(e) => set("service", e.target.value)}
+              className={`form-field ${errors.service ? "form-field-error" : ""}`}
+              aria-describedby={errors.service ? `${id}-service-err` : undefined}
+              aria-required="true"
+            >
+              <option value="">Select a service…</option>
+              {SERVICES.map((s) => (
+                <option key={s} value={s}>{s}</option>
+              ))}
+            </select>
+            {errors.service && <p id={`${id}-service-err`} className="form-error-msg" role="alert">{errors.service}</p>}
+          </div>
+        </div>
+
+        {/* Honeypot */}
+        <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
+          <label htmlFor={`${id}-website`}>Website</label>
+          <input
+            id={`${id}-website`}
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={data.website}
+            onChange={(e) => set("website", e.target.value)}
+          />
+        </div>
+
+        <div className="mt-5 flex flex-col gap-2">
+          <button
+            type="submit"
+            className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-copper-gradient text-white font-bold rounded-xl shadow-glow-copper hover:opacity-90 active:scale-[0.98] transition-all text-base"
+          >
+            Continue
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
+          <p className="text-center text-xs text-slate-400">
+            Or call us directly:{" "}
             <a href={`tel:${SITE.phone}`} className="text-hvac-blue-600 font-semibold hover:underline">
               {SITE.phoneDisplay}
-            </a>.
+            </a>
           </p>
         </div>
-        <button
-          onClick={() => { setData(EMPTY); setSubmitted(false); setErrors({}); }}
-          className="text-sm text-slate-500 hover:text-slate-700 underline transition-colors"
-        >
-          Submit another request
-        </button>
-      </div>
+      </form>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate aria-label="Request a free HVAC estimate">
+    <form onSubmit={handleSubmit} noValidate aria-label="Request a free HVAC estimate — step 2">
       {(heading || subheading) && (
-        <div className="mb-6">
+        <div className="mb-5">
           {heading && <p className="font-bold text-slate-900 text-lg">{heading}</p>}
           {subheading && <p className="text-slate-500 text-sm mt-1">{subheading}</p>}
         </div>
       )}
 
+      {stepIndicator}
+
+      {/* Step 1 summary */}
+      <div className="mb-4 rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 flex items-center justify-between">
+        <div className="text-sm text-slate-700">
+          <span className="font-semibold">{data.name}</span>
+          <span className="text-slate-400 mx-1.5">·</span>
+          <span>{data.phone}</span>
+          <span className="text-slate-400 mx-1.5">·</span>
+          <span>{data.service}</span>
+        </div>
+        <button
+          type="button"
+          onClick={() => setStep(1)}
+          className="text-xs text-hvac-blue-600 hover:underline font-medium ml-2 shrink-0"
+        >
+          Edit
+        </button>
+      </div>
+
       <div className={`grid gap-4 ${isCompact ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"}`}>
-
-        {/* Name */}
-        <div>
-          <label htmlFor={`${id}-name`} className="form-label">
-            Full Name <span className="text-red-500" aria-hidden="true">*</span>
-          </label>
-          <input
-            id={`${id}-name`}
-            type="text"
-            autoComplete="name"
-            placeholder="Jane Smith"
-            value={data.name}
-            onChange={(e) => set("name", e.target.value)}
-            className={`form-field ${errors.name ? "form-field-error" : ""}`}
-            aria-describedby={errors.name ? `${id}-name-err` : undefined}
-            aria-required="true"
-          />
-          {errors.name && <p id={`${id}-name-err`} className="form-error-msg" role="alert">{errors.name}</p>}
-        </div>
-
-        {/* Phone */}
-        <div>
-          <label htmlFor={`${id}-phone`} className="form-label">
-            Phone Number <span className="text-red-500" aria-hidden="true">*</span>
-          </label>
-          <input
-            id={`${id}-phone`}
-            type="tel"
-            autoComplete="tel"
-            placeholder="(714) 555-0100"
-            value={data.phone}
-            onChange={(e) => set("phone", e.target.value)}
-            className={`form-field ${errors.phone ? "form-field-error" : ""}`}
-            aria-describedby={errors.phone ? `${id}-phone-err` : undefined}
-            aria-required="true"
-          />
-          {errors.phone && <p id={`${id}-phone-err`} className="form-error-msg" role="alert">{errors.phone}</p>}
-        </div>
-
         {/* Email */}
         <div className={isCompact ? "" : "sm:col-span-2"}>
           <label htmlFor={`${id}-email`} className="form-label">
@@ -219,27 +323,6 @@ export default function QuoteForm({
             aria-describedby={errors.email ? `${id}-email-err` : undefined}
           />
           {errors.email && <p id={`${id}-email-err`} className="form-error-msg" role="alert">{errors.email}</p>}
-        </div>
-
-        {/* Service selector */}
-        <div className={isCompact ? "" : "sm:col-span-2"}>
-          <label htmlFor={`${id}-service`} className="form-label">
-            Service Needed <span className="text-red-500" aria-hidden="true">*</span>
-          </label>
-          <select
-            id={`${id}-service`}
-            value={data.service}
-            onChange={(e) => set("service", e.target.value)}
-            className={`form-field ${errors.service ? "form-field-error" : ""}`}
-            aria-describedby={errors.service ? `${id}-service-err` : undefined}
-            aria-required="true"
-          >
-            <option value="">Select a service…</option>
-            {SERVICES.map((s) => (
-              <option key={s} value={s}>{s}</option>
-            ))}
-          </select>
-          {errors.service && <p id={`${id}-service-err`} className="form-error-msg" role="alert">{errors.service}</p>}
         </div>
 
         {/* County + City (hidden in compact) */}
@@ -339,20 +422,6 @@ export default function QuoteForm({
             className="form-field resize-y"
           />
         </div>
-      </div>
-
-      {/* Honeypot — visually hidden, must stay empty */}
-      <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1, overflow: "hidden" }}>
-        <label htmlFor={`${id}-website`}>Website</label>
-        <input
-          id={`${id}-website`}
-          type="text"
-          name="website"
-          tabIndex={-1}
-          autoComplete="off"
-          value={data.website}
-          onChange={(e) => set("website", e.target.value)}
-        />
       </div>
 
       <div className="mt-5 flex flex-col gap-2">

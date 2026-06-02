@@ -4,6 +4,7 @@ import { schemaHvacBusiness } from "@/lib/seo/schema";
 import JsonLd from "@/components/ui/JsonLd";
 
 import Hero from "@/components/home/Hero";
+import HomeLeadForm from "@/components/home/HomeLeadForm";
 import EmergencyStrip from "@/components/home/EmergencyStrip";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import RepairVsInstall from "@/components/home/RepairVsInstall";
@@ -38,6 +39,8 @@ export default function HomePage() {
       <EmergencyStrip />
       {/* Trust bar immediately below hero for PPC + organic visitors */}
       <ConversionTrustBar variant="light" />
+      {/* Lead form 1: below hero */}
+      <HomeLeadForm variant="hero" />
       <ServicesGrid />
       <RepairVsInstall />
       {/* Summer cooling season banner — seasonal relevance */}
@@ -47,6 +50,8 @@ export default function HomePage() {
       <CommercialHvac />
       <ServiceAreaSection />
       <CalculatorTeaser />
+      {/* Lead form 2: mid-page */}
+      <HomeLeadForm variant="mid" />
       <GalleryPreview />
       <ReviewsSection />
       <FinancingCta />
@@ -59,6 +64,8 @@ export default function HomePage() {
       <PromoSection />
       <HowItWorks />
       <FaqSection />
+      {/* Lead form 3: above footer */}
+      <HomeLeadForm variant="prefooter" />
       <CtaBand />
     </>
   );
