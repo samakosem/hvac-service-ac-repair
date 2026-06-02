@@ -34,38 +34,72 @@ const CONTACT_FAQS = [
   },
 ];
 
+// Google Maps embed URL — no API key needed for basic embed
+const MAPS_EMBED_URL =
+  `https://maps.google.com/maps?q=${encodeURIComponent(SITE.address.full)}&t=m&z=15&output=embed&iwloc=near`;
+
 export default function ContactPage() {
   return (
     <>
       <JsonLd data={schemaContactPage()} />
 
-      <InteriorHero
-        breadcrumbs={[{ name: "Contact", href: "/contact" }]}
-        eyebrow="Contact Us"
-        heading="Let's Talk About Your HVAC System"
-        description="Whether it's a repair, replacement, or tune-up, we'll give you straight answers and honest pricing. No upsells, no runaround."
-        image={IMG_AC_REPAIR}
-      />
+      {/* Hero with scroll-to-form cue */}
+      <div className="relative">
+        <InteriorHero
+          breadcrumbs={[{ name: "Contact", href: "/contact" }]}
+          eyebrow="Contact Us"
+          heading="Let's Talk About Your HVAC System"
+          description="Whether it's a repair, replacement, or tune-up, we'll give you straight answers and honest pricing. No upsells, no runaround."
+          image={IMG_AC_REPAIR}
+        />
+        {/* Scroll cue — anchored to bottom of hero */}
+        <a
+          href="#contact-form"
+          aria-label="Scroll to estimate form"
+          className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-white/70 hover:text-white transition-colors group"
+        >
+          <span className="text-xs font-medium tracking-wide uppercase">Get a Free Estimate</span>
+          <svg
+            className="w-5 h-5 animate-bounce"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </a>
+      </div>
 
-      {/* Main content: form + info */}
-      <section className="py-14 lg:py-20 bg-warm-white">
+      {/* Main content */}
+      <section id="contact-form" className="py-14 lg:py-20 bg-warm-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
 
-            {/* Left: contact info */}
-            <div className="lg:col-span-1 flex flex-col gap-8">
+            {/* ── Form — renders FIRST on mobile via order-first ── */}
+            <div className="lg:col-span-2 order-first lg:order-last">
+              <div className="rounded-2xl border border-slate-200 bg-white shadow-card p-6 sm:p-8">
+                <QuoteForm
+                  heading="Request a Free Estimate"
+                  subheading="Fill out the form and we'll follow up within 1 hour during business hours."
+                />
+              </div>
+            </div>
+
+            {/* ── Info sidebar — renders second on mobile ── */}
+            <div className="lg:col-span-1 flex flex-col gap-6 order-last lg:order-first">
 
               {/* Emergency callout */}
               <div className="rounded-2xl bg-red-50 border border-red-200 p-6 flex flex-col gap-3">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                  <svg className="w-5 h-5 text-red-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
                   </svg>
                   <p className="font-bold text-red-700 text-sm uppercase tracking-wide">AC / Heat Emergency?</p>
                 </div>
                 <p className="text-red-700 text-sm leading-relaxed">
-                  If your system is completely out, call us directly. We offer emergency service and will get
-                  someone to you as quickly as possible.
+                  If your system is completely out, call us directly. We offer emergency service and will get someone to you as quickly as possible.
                 </p>
                 <a
                   href={`tel:${SITE.phone}`}
@@ -162,25 +196,20 @@ export default function ContactPage() {
                 </Link>
               </div>
 
-              {/* Map placeholder */}
-              <div className="rounded-2xl border border-slate-200 bg-slate-100 aspect-video flex items-center justify-center text-slate-400 text-sm">
-                <div className="text-center flex flex-col items-center gap-2">
-                  <svg className="w-8 h-8 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-                  </svg>
-                  <span>Map — Yorba Linda, CA</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: quote form */}
-            <div className="lg:col-span-2">
-              <div className="rounded-2xl border border-slate-200 bg-white shadow-card p-8">
-                <QuoteForm
-                  heading="Request a Free Estimate"
-                  subheading="Fill out the form and we'll follow up within 1 hour during business hours."
+              {/* Google Maps embed */}
+              <div className="rounded-2xl border border-slate-200 overflow-hidden" style={{ aspectRatio: "16/10" }}>
+                <iframe
+                  title={`Map — ${SITE.address.full}`}
+                  src={MAPS_EMBED_URL}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, display: "block" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
+
             </div>
           </div>
         </div>
