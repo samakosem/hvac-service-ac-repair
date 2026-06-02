@@ -6,6 +6,7 @@ import QuoteForm from "@/components/ui/QuoteForm";
 import JsonLd from "@/components/ui/JsonLd";
 import { schemaContactPage } from "@/lib/seo/schema";
 import InteriorHero from "@/components/layout/InteriorHero";
+import { IMG_AC_REPAIR } from "@/lib/config/images";
 
 export const metadata: Metadata = {
   title: "Contact Us | Free HVAC Estimates in Orange County, CA",
@@ -43,6 +44,7 @@ export default function ContactPage() {
         eyebrow="Contact Us"
         heading="Let's Talk About Your HVAC System"
         description="Whether it's a repair, replacement, or tune-up, we'll give you straight answers and honest pricing. No upsells, no runaround."
+        image={IMG_AC_REPAIR}
       />
 
       {/* Main content: form + info */}

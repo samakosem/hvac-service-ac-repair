@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import PhoneLink from "@/components/ui/PhoneLink";
 import QuoteForm from "@/components/ui/QuoteForm";
 import { SITE } from "@/lib/config/site";
+import { IMG_HERO } from "@/lib/config/images";
 
 const URGENCY_ITEMS = [
   { icon: "⚡", text: "Same-Day Appointments Available" },
@@ -18,6 +20,19 @@ export default function Hero() {
       style={{ minHeight: "calc(100svh - 0px)" }}
       aria-label="Hero"
     >
+      {/* Background image — partial opacity, left-side fade so text stays readable */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+        <Image
+          src={IMG_HERO.src}
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-right opacity-15"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/60 to-navy-950/30" />
+      </div>
+
       {/* Background texture */}
       <div aria-hidden="true" className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
 

@@ -106,6 +106,7 @@ export default function MaintenancePlansPage() {
         eyebrow="Preventive Maintenance"
         heading="Keep Your System Running — Before It Breaks Down"
         description="Most HVAC failures are preventable. A seasonal inspection catches low refrigerant, dirty coils, and worn components before they become emergencies."
+        image={IMG_MAINTENANCE}
       />
 
       {/* Residential plan */}

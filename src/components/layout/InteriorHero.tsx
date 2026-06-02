@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
+import type { SiteImage } from "@/lib/config/images";
 
 type BreadcrumbItem = { name: string; href: string };
 
@@ -17,6 +19,7 @@ type Props = {
   description?: string;
   ctas?: Cta[];
   note?: string;
+  image?: SiteImage;
 };
 
 export default function InteriorHero({
@@ -26,9 +29,26 @@ export default function InteriorHero({
   description,
   ctas,
   note,
+  image,
 }: Props) {
   return (
     <section className="relative overflow-hidden bg-hero-gradient py-14 lg:py-20">
+      {/* Background image — partially opaque */}
+      {image && (
+        <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+          <Image
+            src={image.src}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-center opacity-20"
+            priority
+          />
+          {/* extra dark gradient so text stays crisp */}
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-950/80 via-navy-950/50 to-navy-950/20" />
+        </div>
+      )}
+
       {/* Decorative orbs */}
       <div aria-hidden="true" className="absolute -right-24 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-hvac-blue-600/8 blur-3xl pointer-events-none" />
       <div aria-hidden="true" className="absolute -left-16 bottom-0 w-72 h-72 rounded-full bg-copper-500/6 blur-3xl pointer-events-none" />

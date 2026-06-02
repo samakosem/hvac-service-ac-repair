@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE } from "@/lib/config/site";
 import InteriorHero from "@/components/layout/InteriorHero";
+import { IMG_LENNOX_INSTALL } from "@/lib/config/images";
 
 export const metadata: Metadata = {
   title: "Terms of Service | HVAC Service & AC Repair",
@@ -20,6 +21,7 @@ export default function TermsPage() {
         breadcrumbs={[{ name: "Terms of Service", href: "/terms" }]}
         heading="Terms of Service"
         note={`Last updated: ${LAST_UPDATED}`}
+        image={IMG_LENNOX_INSTALL}
       />
 
       <section className="py-14 lg:py-20 bg-white">

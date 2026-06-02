@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SITE } from "@/lib/config/site";
 import InteriorHero from "@/components/layout/InteriorHero";
+import { IMG_AC_INSTALLATION } from "@/lib/config/images";
 
 export const metadata: Metadata = {
   title: "HVAC Careers in Orange County | Join Our Team — Yorba Linda, CA",
@@ -84,6 +85,7 @@ export default function CareersPage() {
         eyebrow="Join Our Team"
         heading="Work With an HVAC Team That Respects the Trade"
         description="We're a locally operated company based in Yorba Linda. We hire experienced people, pay fairly, and treat the work seriously."
+        image={IMG_AC_INSTALLATION}
       />
 
       {/* Open roles */}

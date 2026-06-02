@@ -4,6 +4,7 @@ import { SITE } from "@/lib/config/site";
 import JsonLd from "@/components/ui/JsonLd";
 import CtaSection from "@/components/ui/CtaSection";
 import InteriorHero from "@/components/layout/InteriorHero";
+import { IMG_LENNOX_INSTALL } from "@/lib/config/images";
 
 export const metadata: Metadata = {
   title: "Customer Reviews | HVAC Service & AC Repair — Yorba Linda, CA",
@@ -63,6 +64,7 @@ export default function ReviewsPage() {
         eyebrow="Customer Feedback"
         heading="What Our Customers Experience"
         description="We don't publish fake reviews. What we can share is what our customers consistently tell us matters most to them."
+        image={IMG_LENNOX_INSTALL}
       />
 
       {/* Experience themes */}

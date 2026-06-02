@@ -5,6 +5,7 @@ import JsonLd from "@/components/ui/JsonLd";
 import { schemaFaqPage } from "@/lib/seo/schema";
 import CtaSection from "@/components/ui/CtaSection";
 import InteriorHero from "@/components/layout/InteriorHero";
+import { IMG_COMMERCIAL_PRIMARY } from "@/lib/config/images";
 
 export const metadata: Metadata = {
   title: "HVAC Financing Options | AC Repair & Installation — Orange County, CA",
@@ -89,6 +90,7 @@ export default function FinancingPage() {
           { label: "Call to Ask About Financing", tel: SITE.phone },
           { label: "Request an Estimate Online", href: "/contact", variant: "secondary" },
         ]}
+        image={IMG_COMMERCIAL_PRIMARY}
       />
 
       {/* Options */}

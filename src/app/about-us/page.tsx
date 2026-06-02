@@ -61,6 +61,7 @@ export default function AboutPage() {
         eyebrow="About Us"
         heading="A Local HVAC Team You Can Count On"
         description="HVAC Service & AC Repair is based in Yorba Linda and serves homeowners and businesses across Orange County. We're built on doing honest work at fair prices."
+        image={IMG_LENNOX_INSTALL}
       />
 
       {/* Story section */}
