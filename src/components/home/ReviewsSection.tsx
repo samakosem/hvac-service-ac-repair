@@ -5,7 +5,7 @@ const HIGHLIGHTS = [
     theme: "Fast Response",
     icon: "⚡",
     quote:
-      "Customers consistently mention same-day or next-morning arrival across Orange County — even during summer heat waves.",
+      "Customers consistently mention same-day or next-morning arrival — even during summer heat waves.",
     detail: "Speed & availability",
   },
   {
@@ -56,7 +56,7 @@ export default function ReviewsSection() {
         <div className="text-center max-w-2xl mx-auto mb-4">
           <span className="section-label section-label-white mb-4">Customer Experience Highlights</span>
           <h2 id="reviews-heading" className="text-3xl sm:text-4xl font-bold text-white mt-4 mb-3">
-            Why Orange County Homeowners Call Us Back
+            Why Local Homeowners Call Us Back
           </h2>
           {/* Google rating summary */}
           <div className="flex items-center justify-center gap-2 mt-2 mb-3">
@@ -98,7 +98,7 @@ export default function ReviewsSection() {
           </div>
           <h3 className="text-white font-bold text-lg mb-2">Had service with us?</h3>
           <p className="text-slate-400 text-sm leading-relaxed mb-5">
-            Your review helps other Orange County homeowners find honest, reliable HVAC service.
+            Your review helps other local homeowners find honest, reliable HVAC service.
             We read every piece of feedback — it matters to us.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">

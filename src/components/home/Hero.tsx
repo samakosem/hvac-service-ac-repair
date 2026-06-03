@@ -9,8 +9,9 @@ import { IMG_HERO } from "@/lib/config/images";
 
 const URGENCY_ITEMS = [
   { icon: "⚡", text: "Same-Day Appointments Available" },
-  { icon: "🔥", text: "AC Down? We Answer 7 Days a Week" },
-  { icon: "✅", text: "Licensed & Insured — Upfront Pricing" },
+  { icon: "📍", text: "Local HVAC Technicians Near You" },
+  { icon: "✅", text: "Licensed & Insured — Upfront Pricing Before Work Begins" },
+  { icon: "🔥", text: "Emergency AC & Heating Service Available" },
 ];
 
 export default function Hero() {
@@ -52,23 +53,23 @@ export default function Hero() {
             <div className="inline-flex items-center gap-2 w-fit px-3 py-1.5 rounded-lg bg-red-500/20 border border-red-400/30">
               <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse shrink-0" aria-hidden="true" />
               <span className="text-red-200 text-xs font-bold uppercase tracking-widest">
-                Accepting Same-Day Calls Now
+                Accepting Same-Day HVAC Calls Now
               </span>
             </div>
 
             {/* H1 */}
             <h1 className="text-4xl sm:text-5xl lg:text-[3.1rem] xl:text-[3.4rem] font-bold text-white leading-[1.1] tracking-tight">
-              HVAC Service &amp; AC Repair{" "}
+              Fast HVAC Service &amp; AC Repair{" "}
               <span className="block mt-1 text-gradient-blue">
-                in Yorba Linda,{" "}
-                <span className="text-white">Orange County</span>
+                Near You
               </span>
             </h1>
 
             {/* Subheadline */}
             <p className="text-lg text-slate-300 leading-relaxed max-w-lg stagger-1 animate-fade-in-up">
-              AC out? Don&rsquo;t sweat it. Same-day repair, system installation, and
-              HVAC maintenance across Orange County — we answer when you call.
+              AC not cooling? Heating system acting up? Our local HVAC technicians provide
+              same-day repair, installation, and maintenance for homes and businesses in
+              your service area.
             </p>
 
             {/* Urgency bullets */}
@@ -114,7 +115,7 @@ export default function Hero() {
                   ))}
                 </div>
                 <p className="text-slate-400 text-xs mt-0.5">
-                  Trusted by <span className="text-slate-200 font-semibold">500+ OC homeowners</span>
+                  Trusted by <span className="text-slate-200 font-semibold">500+ local homeowners</span>
                 </p>
               </div>
             </div>
@@ -131,8 +132,8 @@ export default function Hero() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-bold text-slate-900 text-sm leading-tight">Get a Free Estimate Today</p>
-                  <p className="text-xs text-slate-400 mt-0.5">We call back within 1 hour</p>
+                  <p className="font-bold text-slate-900 text-sm leading-tight">Get a Free HVAC Estimate Today</p>
+                  <p className="text-xs text-slate-400 mt-0.5">We&rsquo;ll call back quickly to confirm service availability in your area.</p>
                 </div>
                 <span className="ml-auto inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-700">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
@@ -149,7 +150,7 @@ export default function Hero() {
 
             {/* Under-form trust note */}
             <p className="text-center text-xs text-slate-400 mt-3">
-              🔒 No spam. No obligation. Cancel any time.
+              🔒 No spam. No obligation. We&rsquo;ll confirm your service area before scheduling.
             </p>
           </div>
 

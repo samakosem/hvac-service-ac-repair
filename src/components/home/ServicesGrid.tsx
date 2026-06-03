@@ -10,7 +10,7 @@ export default function ServicesGrid() {
       <div className="text-center max-w-2xl mx-auto mb-12">
         <span className="section-label section-label-blue mb-4">What We Do</span>
         <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mt-4 mb-4">
-          Complete HVAC Services for Orange County
+          Complete HVAC Services for Your Area
         </h2>
         <p className="text-slate-600 leading-relaxed">
           From emergency AC repair to full system installations, ductwork, and commercial HVAC —

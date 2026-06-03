@@ -43,7 +43,7 @@ export default function HomeLeadForm({ variant = "hero" }: Props) {
             {isDark ? (
               <>
                 <p className="text-blue-200 text-sm font-semibold uppercase tracking-widest mb-3">
-                  Orange County&rsquo;s Trusted HVAC Team
+                  Your Local Trusted HVAC Team
                 </p>
                 <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight">
                   {c.heading}
@@ -70,7 +70,7 @@ export default function HomeLeadForm({ variant = "hero" }: Props) {
               {[
                 "Licensed & insured HVAC technicians",
                 "Upfront pricing — no hidden fees",
-                "Serving all of Orange County",
+                "Serving homeowners and businesses in your local area",
                 "Emergency service available",
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2.5">

@@ -3,10 +3,10 @@ import PhoneLink from "@/components/ui/PhoneLink";
 import { SITE } from "@/lib/config/site";
 
 const POINTS = [
-  "Same-day appointments across Orange County",
+  "Same-day appointments available in your area",
   "Written estimate before any work begins",
   "All major HVAC brands serviced",
-  "Local Yorba Linda team — 7 days a week",
+  "Local HVAC technicians — 7 days a week",
 ];
 
 export default function CtaBand() {
@@ -30,7 +30,7 @@ export default function CtaBand() {
               <span className="text-gradient-blue">Let&rsquo;s Get It Fixed Today.</span>
             </h2>
             <p className="text-slate-300 leading-relaxed mb-5">
-              {SITE.name} — your local Orange County HVAC team. Call now or submit a
+              {SITE.name} — your local HVAC team, nearby and ready. Call now or submit a
               request online and we&rsquo;ll be in touch within the hour during business hours.
             </p>
             <ul className="space-y-1.5">

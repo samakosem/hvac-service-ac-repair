@@ -16,7 +16,7 @@ export default function EmergencyStrip() {
           </span>
           <p>
             <strong>AC not cooling this summer?</strong>{" "}
-            Same-day emergency HVAC service available across Orange County &amp; greater LA.
+            Same-day emergency HVAC service available for homeowners and businesses nearby.
           </p>
           <span className="hidden sm:inline text-white/40">·</span>
           <span className="text-white/80 text-xs">Real people answer — no voicemail</span>
