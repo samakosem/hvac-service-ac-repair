@@ -1,0 +1,81 @@
+================================================================================
+SESSION 1 — 2026-06-08
+PROMPT: HVAC Site Audit — Missing Pages + Page Prompts (full megaprompt)
+================================================================================
+
+DONE:
+1. Created SingleStepQuoteForm component (src/components/ui/SingleStepQuoteForm.tsx)
+   - Single-step: Name + Phone + Service dropdown + submit
+   - Honeypot bot protection preserved from QuoteForm
+   - Props: heading, subheading, ctaLabel, defaultService, variant (light/dark)
+
+2. Created city-service config (src/lib/config/city-service-pages.ts)
+   - CityServicePage type with all content fields
+   - Prompt Set A: AC Repair × 5 cities (Yorba Linda, Anaheim, Fullerton, Irvine, Orange)
+   - Prompt Set B: Emergency AC Repair × 2 cities (Yorba Linda, Anaheim)
+   - Prompt Set C: Heating Repair × 1 city (Yorba Linda)
+   - Prompt Set D: AC Tune-Up × 1 city (Yorba Linda)
+   - Prompt Set E: Local HVAC Repair × 1 city (Yorba Linda)
+   - Helpers: getCityServicePage(), getAllCityServiceParams(), getLocalHvacPage()
+
+3. Created CityServicePageTemplate (src/components/city-service/CityServicePageTemplate.tsx)
+   - Hero: H1 + subheadline + single-step form (desktop right column) + mobile phone-first layout
+   - Open Now badge, pricing anchor ($79 diagnostic) visible without scroll
+   - Services list + pricing card section
+   - How It Works (3 steps)
+   - Reviews with reviewer name + neighborhood + date
+   - Why Us (4 points)
+   - Nearby cities internal links
+   - FAQ with details/summary accordion
+   - Final CTA banner
+   - Sticky mobile CTA (phone + free estimate) fixed to bottom
+
+4. Dynamic route /air-conditioning/[service]/[city]/page.tsx
+   - generateStaticParams() from getAllCityServiceParams()
+   - dynamicParams = false (static export)
+   - Covers: ac-repair, emergency-ac-repair, heating-repair, ac-tune-up × their cities
+
+5. Dynamic route /heating/heating-repair/[city]/page.tsx
+   - Covers Prompt Set C cities
+
+6. Dynamic route /hvac-repair/[city]/page.tsx
+   - Covers Prompt Set E cities
+
+7. Standalone page: /emergency-hvac-service/ (Prompt F1)
+   - Emergency-specific hero with "Open Now" pulse badge
+   - No-surcharge callout visible in hero
+   - Emergency situations problem list with call-to-action
+   - OC cities grid with links to city-specific emergency pages
+   - Sticky full-width call button on mobile (no split — emergency intent)
+
+8. Standalone page: /ac-not-cooling/ (Prompt F2)
+   - Content-first (diagnostic guide before form) for trust building
+   - 6 causes with DIY check + when-to-call-pro cards
+   - Mid-page conversion section after content
+   - Dual purpose: Google Ads and organic SEO
+
+9. Replaced /air-conditioning/ac-installation/page.tsx (Prompt F3)
+   - Free in-home estimate CTA (consultative tone, no urgency)
+   - Repair vs. Replace decision table
+   - Brands grid (Lennox, Carrier, Trane, Rheem, Goodman)
+   - Financing section (0% financing) + SCE/SoCalGas rebates section
+   - 5-step installation process
+
+NOTABLE DECISION:
+Chose to build a shared CityServicePageTemplate instead of copy-pasting PPC city pages —
+makes it trivial to scale to Phase 2 cities (remaining 16 OC + Riverside/SB/Ventura) by
+adding entries to city-service-pages.ts with zero template changes. Trade-off: slightly
+less city-specific hero imagery than the PPC template (no hero photo), compensated by
+stronger conversion copy and faster page load.
+
+NEXT SESSION SHOULD KNOW:
+The [service]/[city] dynamic route uses getAllCityServiceParams() — to add new cities or
+services, add entries to CITY_SERVICE_MAP in city-service-pages.ts and the route
+automatically generates those static pages at build time. No route file changes needed.
+
+Phase 1 pages built. Phase 2 (remaining cities) = add data entries only.
+The /ac_repair → /air-conditioning/ac-repair redirect and mobile form single-step fixes
+(mentioned in "Fix Before You Build") are NOT done — those require existing file edits
+and were not part of this session's scope.
+
+================================================================================
