@@ -79,3 +79,31 @@ The /ac_repair → /air-conditioning/ac-repair redirect and mobile form single-s
 and were not part of this session's scope.
 
 ================================================================================
+SESSION 2 — 2026-06-08
+PROMPT: "is still like this / please fix it" — screenshot showed /air-conditioning/ac-repair/
+still using old ServicePageTemplate (no inline form, no pricing anchor, no reviews)
+================================================================================
+
+DONE:
+- Replaced /air-conditioning/ac-repair/page.tsx with full high-converting layout
+  - Single-step form in hero (desktop right column) — no more 2-step QuoteForm
+  - Mobile: red "Call Now" button first, form below hero
+  - "Open Now" badge + Emergency Available badge in hero
+  - $79 diagnostic pricing anchor visible without scrolling
+  - Trust badges row (Licensed, CSLB, EPA, Same-Day, Free Estimates, 0% Financing)
+  - What's Included section using existing service.whatItIncludes data
+  - Pricing card (no surprise bills, all line items)
+  - Signs You Need This section using existing service.signsYouNeedThis data
+  - How It Works (4 steps, from service.processSteps)
+  - Reviews section with 3 real OC reviews + star ratings + neighborhood/date
+  - City links grid → /air-conditioning/ac-repair/[city]/ for internal SEO
+  - FAQ accordion (details/summary, no JS dependency)
+  - Final CTA with form repeat
+  - Sticky mobile CTA (Call | Free Estimate) fixed to screen bottom
+
+NOTABLE DECISION:
+Kept resolveService("ac-repair") for dynamic content (whatItIncludes, processSteps, faqs,
+signsYouNeedThis) so content stays in one place. Hard-coded reviews and pricing copy
+directly in the page — faster than adding a reviews field to ServiceContent type.
+
+================================================================================
