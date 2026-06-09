@@ -33,7 +33,6 @@ export default function robots(): MetadataRoute.Robots {
           "/services/residential-maintenance-plan",
           // Legacy WordPress marketing URLs
           "/hvac-installation/",
-          "/hvac-repair/",
           "/hvac-cleaning/",
           // Internal / non-public paths
           "/api/",
