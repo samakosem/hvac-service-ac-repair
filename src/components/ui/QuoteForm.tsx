@@ -4,6 +4,7 @@ import { useState, useId } from "react";
 import { useRouter } from "next/navigation";
 import { SITE } from "@/lib/config/site";
 import { pushEvent } from "@/lib/gtm";
+import SmsConsentCheckbox, { SMS_CONSENT_TEXT, SMS_CONSENT_VERSION } from "@/components/ui/SmsConsentCheckbox";
 
 const SERVICES = [
   "AC Repair",
@@ -41,6 +42,7 @@ type FormData = {
   isEmergency: boolean;
   interestedInFinancing: boolean;
   message: string;
+  smsConsent: boolean;
   // honeypots — must stay empty
   website: string;
   faxNumber: string;
@@ -58,6 +60,7 @@ const EMPTY: FormData = {
   isEmergency: false,
   interestedInFinancing: false,
   message: "",
+  smsConsent: false,
   website: "",
   faxNumber: "",
 };
@@ -152,6 +155,10 @@ export default function QuoteForm({
         isEmergency: data.isEmergency,
         interestedInFinancing: data.interestedInFinancing,
         message: data.message,
+        smsConsent: data.smsConsent,
+        smsConsentText: data.smsConsent ? SMS_CONSENT_TEXT : "",
+        smsConsentVersion: SMS_CONSENT_VERSION,
+        submittedAt: new Date().toISOString(),
         website: data.website,
         faxNumber: data.faxNumber,
         pageUrl: typeof window !== "undefined" ? window.location.href : "",
@@ -452,6 +459,15 @@ export default function QuoteForm({
             {data.message.length}/{LIMITS.message}
           </p>
         </div>
+      </div>
+
+      {/* SMS consent — optional, unchecked by default */}
+      <div className="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-200">
+        <SmsConsentCheckbox
+          id={`${id}-sms-consent`}
+          checked={data.smsConsent}
+          onChange={(v) => set("smsConsent", v)}
+        />
       </div>
 
       {/* Honeypot 1 — visually hidden */}

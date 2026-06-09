@@ -4,6 +4,7 @@ import { useState, useId } from "react";
 import { useRouter } from "next/navigation";
 import { SITE } from "@/lib/config/site";
 import { pushEvent } from "@/lib/gtm";
+import SmsConsentCheckbox, { SMS_CONSENT_TEXT, SMS_CONSENT_VERSION } from "@/components/ui/SmsConsentCheckbox";
 
 const SERVICES = [
   "AC Repair",
@@ -27,13 +28,14 @@ type FormData = {
   phone: string;
   service: string;
   address: string;
+  smsConsent: boolean;
   website: string;
   faxNumber: string;
 };
 
 type Errors = Partial<Record<"name" | "phone" | "service" | "address", string>>;
 
-const EMPTY: FormData = { name: "", phone: "", service: "", address: "", website: "", faxNumber: "" };
+const EMPTY: FormData = { name: "", phone: "", service: "", address: "", smsConsent: false, website: "", faxNumber: "" };
 
 function sanitize(v: string, max: number) {
   return v.slice(0, max);
@@ -93,6 +95,10 @@ export default function SingleStepQuoteForm({
           phone: data.phone,
           service: data.service,
           address: data.address,
+          smsConsent: data.smsConsent,
+          smsConsentText: data.smsConsent ? SMS_CONSENT_TEXT : "",
+          smsConsentVersion: SMS_CONSENT_VERSION,
+          submittedAt: new Date().toISOString(),
           website: data.website,
           faxNumber: data.faxNumber,
           pageUrl: typeof window !== "undefined" ? window.location.href : "",
@@ -199,6 +205,18 @@ export default function SingleStepQuoteForm({
             aria-required="true"
           />
           {errors.address && <p className="text-red-500 text-xs mt-1" role="alert">{errors.address}</p>}
+        </div>
+
+        {/* SMS consent — optional, unchecked by default */}
+        <div className={`p-3 rounded-xl border ${variant === "dark" ? "bg-white/5 border-white/15" : "bg-slate-50 border-slate-200"}`}>
+          <SmsConsentCheckbox
+            id={`${id}-sms-consent`}
+            checked={data.smsConsent}
+            onChange={(v) => {
+              setData((prev) => ({ ...prev, smsConsent: v }));
+            }}
+            variant={variant}
+          />
         </div>
 
         {/* Honeypots */}

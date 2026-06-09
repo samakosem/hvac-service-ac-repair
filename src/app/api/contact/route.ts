@@ -62,6 +62,9 @@ export async function POST(req: NextRequest) {
   const isEmergency = body.isEmergency === true;
   const interestedInFinancing = body.interestedInFinancing === true;
   const message = sanitize(typeof body.message === "string" ? body.message.trim() : "", MAX.message);
+  const smsConsent = body.smsConsent === true;
+  const smsConsentVersion = sanitize(typeof body.smsConsentVersion === "string" ? body.smsConsentVersion.trim() : "", 50);
+  const submittedAt = sanitize(typeof body.submittedAt === "string" ? body.submittedAt.trim() : new Date().toISOString(), 30);
   const pageUrl = sanitize(typeof body.pageUrl === "string" ? body.pageUrl.trim() : "", MAX.pageUrl);
 
   // Server-side validation
@@ -142,6 +145,13 @@ export async function POST(req: NextRequest) {
       <div class="label">Timestamp</div>
       <div class="value">${timestamp} (PT)</div>
     </div>
+    <hr class="divider">
+    <div class="row">
+      <div class="label">SMS Consent</div>
+      <div class="value" style="font-weight:700;color:${smsConsent ? "#16a34a" : "#64748b"}">${smsConsent ? "✅ Yes — opted in" : "No — did not opt in"}</div>
+    </div>
+    ${smsConsent ? `<div class="row"><div class="label">SMS Consent Version</div><div class="value">${smsConsentVersion || "2026-06-a2p-10dlc-v1"}</div></div>` : ""}
+    ${submittedAt ? `<div class="row"><div class="label">Submitted At (ISO)</div><div class="value">${submittedAt}</div></div>` : ""}
   </div>
   <div class="footer">Sent via HVAC Service &amp; AC Repair contact form.</div>
 </div>
