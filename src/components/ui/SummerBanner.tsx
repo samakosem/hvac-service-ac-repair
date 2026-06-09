@@ -7,7 +7,7 @@ type Props = {
 };
 
 export default function SummerBanner({ city }: Props) {
-  const location = city ? `in ${city}` : "in Orange County";
+  const location = city ? `in ${city}` : "in Southern California";
 
   return (
     <section

@@ -11,7 +11,7 @@ type Props = {
 
 export default function CtaSection({
   heading = "Ready to Schedule Service?",
-  subtext = "Get a free estimate on AC repair, installation, or any HVAC service across Orange County.",
+  subtext = "Get a free estimate on AC repair, installation, or any HVAC service across Southern California.",
   primaryLabel = "Request a Free Estimate",
   primaryHref = "/contact",
   variant = "blue",

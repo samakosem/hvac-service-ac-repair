@@ -39,7 +39,7 @@ const BADGES = [
       </svg>
     ),
     label: "Local Yorba Linda Team",
-    sublabel: "Orange County Based",
+    sublabel: "Southern California",
   },
 ];
 

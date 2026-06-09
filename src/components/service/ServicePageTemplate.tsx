@@ -146,7 +146,7 @@ export default function ServicePageTemplate({ service, image }: Props) {
             </div>
 
             <p className="mt-4 text-slate-500 text-xs">
-              Same-day appointments available · Serving Orange County, CA
+              Same-day appointments available · Serving Southern California
             </p>
           </div>
         </div>
@@ -299,7 +299,7 @@ export default function ServicePageTemplate({ service, image }: Props) {
                 Common Questions
               </h2>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Answers to the questions we hear most from Orange County homeowners and business owners.
+                Answers to the questions we hear most from Southern California homeowners and business owners.
               </p>
               <div className="mt-2">
                 <PhoneLink

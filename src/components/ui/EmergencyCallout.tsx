@@ -7,7 +7,7 @@ type Props = {
 };
 
 export default function EmergencyCallout({ city, variant = "banner" }: Props) {
-  const location = city ? `in ${city}` : "across Orange County";
+  const location = city ? `in ${city}` : "across Southern California";
 
   if (variant === "card") {
     return (
