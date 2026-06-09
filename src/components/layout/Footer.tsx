@@ -188,6 +188,17 @@ export default function Footer() {
           <p>
             © {year} {SITE.name}. All rights reserved.
           </p>
+          <p>
+            Website design and marketing by{" "}
+            <a
+              href="https://www.bigbrandify.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-slate-300 transition-colors"
+            >
+              BigBrandify
+            </a>
+          </p>
           <div className="flex items-center gap-4">
             <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors">
               Privacy Policy
