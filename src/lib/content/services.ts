@@ -31,19 +31,19 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── AIR CONDITIONING (category page) ─────────────────────────────────────
   {
     slug: "air-conditioning",
-    seoTitle: "Air Conditioning Services in Orange County, CA",
+    seoTitle: "Air Conditioning Services — Southern California",
     metaDescription:
       "Complete air conditioning services in Orange County — repair, installation, maintenance, and ductless systems. Based in Yorba Linda. Call (714) 410-2784 for same-day service.",
-    h1: "Air Conditioning Services in Orange County, CA",
+    h1: "Air Conditioning Services",
     primaryKeyword: "air conditioning services Orange County",
     secondaryKeywords: [
       "AC services Orange County",
       "air conditioner repair Orange County",
       "AC installation Orange County",
     ],
-    heroHeadline: "Every AC Service Orange County Homeowners Need",
+    heroHeadline: "Every AC Service Southern California Homeowners Need",
     heroSubtext:
-      "From same-day repairs to full system replacements, ductless mini-splits, and commercial cooling — our Yorba Linda team handles all of it across Orange County.",
+      "From same-day repairs to full system replacements, ductless mini-splits, and commercial cooling — our Yorba Linda team handles all of it across Southern California.",
     whatItIncludes: [
       "Emergency and same-day AC repair",
       "New air conditioner installation and system replacements",
@@ -107,18 +107,18 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["ac-repair", "ac-installation", "ac-maintenance", "ductless-mini-split"],
-    ctaHeadline: "Need AC Service in Orange County?",
-    ctaSubtext: "Same-day appointments available across Orange County. Call us or submit a request and we'll respond within the hour.",
+    ctaHeadline: "Need AC Service in Southern California?",
+    ctaSubtext: "Same-day appointments available across Southern California. Call us or submit a request and we'll respond within the hour.",
     category: "cooling",
   },
 
   // ─── AC SERVICES ──────────────────────────────────────────────────────────
   {
     slug: "ac-services",
-    seoTitle: "AC Services Yorba Linda & Orange County | HVAC Service & AC Repair",
+    seoTitle: "AC Services Yorba Linda & Southern California | HVAC Service & AC Repair",
     metaDescription:
       "Professional AC services in Yorba Linda and throughout Orange County. Repair, installation, maintenance, and ductless systems. Local team, transparent pricing. Call (714) 410-2784.",
-    h1: "AC Services in Yorba Linda & Orange County",
+    h1: "AC Services",
     primaryKeyword: "AC services Yorba Linda",
     secondaryKeywords: [
       "HVAC services Yorba Linda",
@@ -199,10 +199,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── AC REPAIR ────────────────────────────────────────────────────────────
   {
     slug: "ac-repair",
-    seoTitle: "AC Repair in Orange County, CA | Same-Day Service",
+    seoTitle: "AC Repair — Southern California | Same-Day Service",
     metaDescription:
       "Same-day AC repair in Orange County, CA. We fix all makes and models — refrigerant leaks, compressor issues, frozen coils, electrical faults. Call (714) 410-2784.",
-    h1: "AC Repair in Orange County — Same-Day Service",
+    h1: "AC Repair — Same-Day Service",
     primaryKeyword: "AC repair Orange County",
     secondaryKeywords: [
       "air conditioner repair Orange County CA",
@@ -210,7 +210,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       "same-day AC repair Orange County",
       "emergency AC repair Orange County",
     ],
-    heroHeadline: "Fast AC Repair Across Orange County",
+    heroHeadline: "Fast AC Repair Across Southern California",
     heroSubtext:
       "Your AC stopped working. We diagnose the real problem, give you a written price, and fix it — usually the same visit. No guesswork, no upsells.",
     whatItIncludes: [
@@ -286,17 +286,17 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     relatedSlugs: ["emergency-ac-repair", "ac-maintenance", "ac-installation", "ac-tune-up"],
     ctaHeadline: "AC Not Cooling? We Can Fix It Today.",
-    ctaSubtext: "Same-day AC repair across Orange County. Written estimate before any work starts. Call (714) 410-2784.",
+    ctaSubtext: "Same-day AC repair across Southern California. Written estimate before any work starts. Call (714) 410-2784.",
     category: "cooling",
   },
 
   // ─── EMERGENCY AC REPAIR ──────────────────────────────────────────────────
   {
     slug: "emergency-ac-repair",
-    seoTitle: "Emergency AC Repair Orange County | Available 7 Days",
+    seoTitle: "Emergency AC Repair Southern California | Available 7 Days",
     metaDescription:
       "Emergency AC repair in Orange County. Available 7 days a week including weekends. Fast dispatch from Yorba Linda. Call (714) 410-2784 now.",
-    h1: "Emergency AC Repair in Orange County",
+    h1: "Emergency AC Repair",
     primaryKeyword: "emergency AC repair Orange County",
     secondaryKeywords: [
       "24 hour AC repair Orange County",
@@ -306,7 +306,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     heroHeadline: "AC Broke Down? We Respond Fast — 7 Days a Week.",
     heroSubtext:
-      "An AC failure during an Orange County heat wave isn't something you wait on. We dispatch emergency calls quickly and prioritize getting your home cooled down.",
+      "An AC failure during a Southern California heat wave isn't something you wait on. We dispatch emergency calls quickly and prioritize getting your home cooled down.",
     whatItIncludes: [
       "Priority same-day scheduling for emergency calls",
       "Full system diagnosis on arrival",
@@ -371,7 +371,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["ac-repair", "ac-services", "air-conditioning"],
-    ctaHeadline: "AC Emergency in Orange County? Call Now.",
+    ctaHeadline: "AC Emergency in Southern California? Call Now.",
     ctaSubtext: "We're based in Yorba Linda and dispatch fast. Available 7 days — call (714) 410-2784 right now.",
     category: "cooling",
   },
@@ -379,10 +379,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── AC INSTALLATION ──────────────────────────────────────────────────────
   {
     slug: "ac-installation",
-    seoTitle: "AC Installation Orange County, CA | New System Install",
+    seoTitle: "AC Installation Southern California | New System Install",
     metaDescription:
       "AC installation and replacement in Orange County, CA. We size, select, and install central air systems, heat pumps, and ductless units. Call (714) 410-2784 for a free quote.",
-    h1: "AC Installation & New System Setup in Orange County",
+    h1: "AC Installation & New System Setup",
     primaryKeyword: "AC installation Orange County",
     secondaryKeywords: [
       "air conditioner installation Orange County",
@@ -471,10 +471,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── AC REPLACEMENT ───────────────────────────────────────────────────────
   {
     slug: "ac-replacement",
-    seoTitle: "AC Replacement Orange County CA | Old System Replacement",
+    seoTitle: "AC Replacement Southern California | Old System Replacement",
     metaDescription:
       "AC replacement in Orange County, CA. We remove old systems and install properly sized, energy-efficient replacements. Local team, transparent pricing. Call (714) 410-2784.",
-    h1: "AC Replacement in Orange County — When It's Time for a New System",
+    h1: "AC Replacement — When It's Time for a New System",
     primaryKeyword: "AC replacement Orange County",
     secondaryKeywords: [
       "replace AC unit Orange County",
@@ -555,10 +555,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── AC MAINTENANCE ───────────────────────────────────────────────────────
   {
     slug: "ac-maintenance",
-    seoTitle: "AC Maintenance Orange County | Annual Tune-Up Service",
+    seoTitle: "AC Maintenance Southern California | Annual Tune-Up Service",
     metaDescription:
       "AC maintenance and tune-up service in Orange County, CA. Prevent breakdowns, extend system life, and lower energy bills. Based in Yorba Linda. Call (714) 410-2784.",
-    h1: "AC Maintenance in Orange County — Prevent Breakdowns Before Summer",
+    h1: "AC Maintenance — Prevent Breakdowns Before Summer",
     primaryKeyword: "AC maintenance Orange County",
     secondaryKeywords: [
       "AC tune-up Orange County",
@@ -568,7 +568,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     heroHeadline: "Most Summer AC Failures Are Preventable",
     heroSubtext:
-      "Orange County's heat season arrives fast and stays long. A spring tune-up catches the issues that cause mid-July breakdowns — before the hottest days when every HVAC company has a full schedule.",
+      "Southern California's heat season arrives fast and stays long. A spring tune-up catches the issues that cause mid-July breakdowns — before the hottest days when every HVAC company has a full schedule.",
     whatItIncludes: [
       "Condenser coil inspection and cleaning",
       "Evaporator coil inspection and cleaning",
@@ -643,10 +643,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── AC TUNE-UP ───────────────────────────────────────────────────────────
   {
     slug: "ac-tune-up",
-    seoTitle: "AC Tune-Up Orange County CA | Spring & Pre-Summer Service",
+    seoTitle: "AC Tune-Up Southern California | Spring & Pre-Summer Service",
     metaDescription:
       "AC tune-up service in Orange County, CA. Pre-season inspection, cleaning, and adjustment to prevent summer breakdowns. Call (714) 410-2784 to schedule.",
-    h1: "AC Tune-Up in Orange County — Pre-Season Inspection & Service",
+    h1: "AC Tune-Up — Pre-Season Inspection & Service",
     primaryKeyword: "AC tune-up Orange County",
     secondaryKeywords: [
       "air conditioner tune-up Orange County",
@@ -655,7 +655,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     heroHeadline: "One Tune-Up Can Save You a Summer Breakdown",
     heroSubtext:
-      "We check every component that commonly fails when Orange County temperatures spike in June and July — giving you a written report and the peace of mind that your system is ready.",
+      "We check every component that commonly fails when Southern California temperatures spike in June and July — giving you a written report and the peace of mind that your system is ready.",
     whatItIncludes: [
       "Condenser and evaporator coil inspection and cleaning",
       "Refrigerant pressure check",
@@ -722,10 +722,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── DUCTLESS MINI-SPLIT ──────────────────────────────────────────────────
   {
     slug: "ductless-mini-split",
-    seoTitle: "Ductless Mini-Split Installation & Repair | Orange County CA",
+    seoTitle: "Ductless Mini-Split Installation & Repair | Southern California",
     metaDescription:
       "Ductless mini-split installation, repair, and maintenance in Orange County, CA. Mitsubishi, Daikin, LG, and all major brands. Call (714) 410-2784.",
-    h1: "Ductless Mini-Split Systems in Orange County",
+    h1: "Ductless Mini-Split Systems",
     primaryKeyword: "ductless mini-split Orange County",
     secondaryKeywords: [
       "mini-split installation Orange County",
@@ -809,10 +809,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── MINI-SPLIT INSTALLATION ──────────────────────────────────────────────
   {
     slug: "mini-split-installation",
-    seoTitle: "Mini-Split Installation Orange County CA | Ductless AC Install",
+    seoTitle: "Mini-Split Installation Southern California | Ductless AC Install",
     metaDescription:
       "Professional mini-split installation in Orange County, CA. Single and multi-zone systems. Mitsubishi, Daikin, LG, Carrier. Free consultation. Call (714) 410-2784.",
-    h1: "Mini-Split Installation in Orange County",
+    h1: "Mini-Split Installation",
     primaryKeyword: "mini-split installation Orange County",
     secondaryKeywords: [
       "ductless mini-split installation Orange County",
@@ -888,17 +888,17 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── HEAT PUMP SERVICES ───────────────────────────────────────────────────
   {
     slug: "heat-pump-services",
-    seoTitle: "Heat Pump Services Orange County CA | Repair & Installation",
+    seoTitle: "Heat Pump Services Southern California | Repair & Installation",
     metaDescription:
       "Heat pump repair, installation, and maintenance in Orange County, CA. Year-round comfort from one system. Based in Yorba Linda. Call (714) 410-2784.",
-    h1: "Heat Pump Services in Orange County, CA",
+    h1: "Heat Pump Services",
     primaryKeyword: "heat pump services Orange County",
     secondaryKeywords: [
       "heat pump Orange County CA",
       "heat pump repair Orange County",
       "heat pump installation Orange County",
     ],
-    heroHeadline: "One System, Year-Round Comfort — Heat Pump Service in Orange County",
+    heroHeadline: "One System, Year-Round Comfort — Heat Pump Service in Southern California",
     heroSubtext:
       "Heat pumps both heat and cool your home using the same refrigerant cycle — at up to 3× the efficiency of electric resistance heating. In Southern California's mild winters, they're often the most efficient option available.",
     whatItIncludes: [
@@ -960,17 +960,17 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     relatedSlugs: ["heat-pump-repair", "heat-pump-installation", "ac-installation"],
     ctaHeadline: "Heat Pump Not Working? We Diagnose Both Modes.",
-    ctaSubtext: "Local Orange County heat pump service — same-day availability for most areas. Call (714) 410-2784.",
+    ctaSubtext: "Local Southern California heat pump service — same-day availability for most areas. Call (714) 410-2784.",
     category: "heating",
   },
 
   // ─── HEAT PUMP REPAIR ─────────────────────────────────────────────────────
   {
     slug: "heat-pump-repair",
-    seoTitle: "Heat Pump Repair Orange County CA | Same-Day Service",
+    seoTitle: "Heat Pump Repair Southern California | Same-Day Service",
     metaDescription:
       "Heat pump repair in Orange County, CA. We diagnose and repair reversing valve failures, refrigerant issues, defrost problems, and more. Call (714) 410-2784.",
-    h1: "Heat Pump Repair in Orange County",
+    h1: "Heat Pump Repair",
     primaryKeyword: "heat pump repair Orange County",
     secondaryKeywords: [
       "heat pump not heating Orange County",
@@ -1040,17 +1040,17 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     relatedSlugs: ["heat-pump-services", "heat-pump-installation", "ac-repair"],
     ctaHeadline: "Heat Pump Not Heating or Cooling Correctly?",
-    ctaSubtext: "We diagnose both modes and repair all makes. Call for same-day service across Orange County.",
+    ctaSubtext: "We diagnose both modes and repair all makes. Call for same-day service across Southern California.",
     category: "heating",
   },
 
   // ─── HEAT PUMP INSTALLATION ───────────────────────────────────────────────
   {
     slug: "heat-pump-installation",
-    seoTitle: "Heat Pump Installation Orange County CA | New System Install",
+    seoTitle: "Heat Pump Installation Southern California | New System Install",
     metaDescription:
       "Heat pump installation in Orange County, CA. Air-source heat pumps for year-round heating and cooling. Free quote. Call (714) 410-2784.",
-    h1: "Heat Pump Installation in Orange County",
+    h1: "Heat Pump Installation",
     primaryKeyword: "heat pump installation Orange County",
     secondaryKeywords: [
       "install heat pump Orange County",
@@ -1127,19 +1127,19 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── HEATING SERVICES ─────────────────────────────────────────────────────
   {
     slug: "heating-services",
-    seoTitle: "Heating Services Orange County CA | Furnace & Heat Pump",
+    seoTitle: "Heating Services Southern California | Furnace & Heat Pump",
     metaDescription:
       "Heating services in Orange County, CA — furnace repair, furnace installation, heat pump service, and heating maintenance. Call (714) 410-2784 for same-day service.",
-    h1: "Heating Services in Orange County, CA",
+    h1: "Heating Services",
     primaryKeyword: "heating services Orange County",
     secondaryKeywords: [
       "furnace repair Orange County",
       "heater service Orange County CA",
       "heating system Orange County",
     ],
-    heroHeadline: "Heating Stopped Working? We Cover All Systems in Orange County.",
+    heroHeadline: "Heating Stopped Working? We Cover All Systems in Southern California.",
     heroSubtext:
-      "Orange County winters are mild compared to most of the country — but when your heater fails on a cold January night, it still needs fixing. We service gas furnaces, heat pumps, and all residential heating systems.",
+      "Southern California winters are mild compared to most of the country — but when your heater fails on a cold January night, it still needs fixing. We service gas furnaces, heat pumps, and all residential heating systems.",
     whatItIncludes: [
       "Gas and electric furnace diagnosis and repair",
       "Heat pump heating mode diagnosis and repair",
@@ -1194,18 +1194,18 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["furnace-repair", "furnace-installation", "heat-pump-services"],
-    ctaHeadline: "Heater Not Working in Orange County?",
-    ctaSubtext: "Same-day heating repair available. We service gas furnaces and heat pumps across Orange County.",
+    ctaHeadline: "Heater Not Working in Southern California?",
+    ctaSubtext: "Same-day heating repair available. We service gas furnaces and heat pumps across Southern California.",
     category: "heating",
   },
 
   // ─── FURNACE REPAIR ───────────────────────────────────────────────────────
   {
     slug: "furnace-repair",
-    seoTitle: "Furnace Repair Orange County CA | Same-Day Heating Repair",
+    seoTitle: "Furnace Repair Southern California | Same-Day Heating Repair",
     metaDescription:
       "Furnace repair in Orange County, CA. Gas and electric furnace diagnosis and same-day repair. Igniter, heat exchanger, blower motor, and more. Call (714) 410-2784.",
-    h1: "Furnace Repair in Orange County — Gas & Electric Furnaces",
+    h1: "Furnace Repair — Gas & Electric Furnaces",
     primaryKeyword: "furnace repair Orange County",
     secondaryKeywords: [
       "gas furnace repair Orange County",
@@ -1277,7 +1277,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["furnace-installation", "heating-services", "furnace-maintenance"],
-    ctaHeadline: "Furnace Down in Orange County? We Fix It Today.",
+    ctaHeadline: "Furnace Down in Southern California? We Fix It Today.",
     ctaSubtext: "Same-day furnace repair available. Gas and electric systems serviced. Call (714) 410-2784.",
     category: "heating",
   },
@@ -1285,10 +1285,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── FURNACE INSTALLATION ─────────────────────────────────────────────────
   {
     slug: "furnace-installation",
-    seoTitle: "Furnace Installation Orange County CA | New Furnace Install",
+    seoTitle: "Furnace Installation Southern California | New Furnace Install",
     metaDescription:
       "Furnace installation and replacement in Orange County, CA. Gas and electric furnace installation by trained HVAC technicians. Free quote. Call (714) 410-2784.",
-    h1: "Furnace Installation in Orange County",
+    h1: "Furnace Installation",
     primaryKeyword: "furnace installation Orange County",
     secondaryKeywords: [
       "new furnace installation Orange County",
@@ -1358,7 +1358,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["furnace-repair", "furnace-maintenance", "heating-services", "heat-pump-installation"],
-    ctaHeadline: "Need a New Furnace in Orange County?",
+    ctaHeadline: "Need a New Furnace in Southern California?",
     ctaSubtext: "Free in-home assessment and written quote. We size it correctly and install it right.",
     category: "heating",
   },
@@ -1366,10 +1366,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── FURNACE MAINTENANCE ──────────────────────────────────────────────────
   {
     slug: "furnace-maintenance",
-    seoTitle: "Furnace Maintenance Orange County CA | Fall Tune-Up",
+    seoTitle: "Furnace Maintenance Southern California | Fall Tune-Up",
     metaDescription:
       "Furnace maintenance and fall tune-up in Orange County, CA. Prevent heating failures, verify safety components, and extend system life. Call (714) 410-2784.",
-    h1: "Furnace Maintenance in Orange County — Pre-Winter Tune-Up",
+    h1: "Furnace Maintenance — Pre-Winter Tune-Up",
     primaryKeyword: "furnace maintenance Orange County",
     secondaryKeywords: [
       "furnace tune-up Orange County",
@@ -1378,7 +1378,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     heroHeadline: "Maintain Your Furnace Before the First Cold Night",
     heroSubtext:
-      "Orange County winters are short, but cold nights do happen. A furnace that sat idle all summer needs inspection before you rely on it — especially for safety components like igniters and heat exchangers.",
+      "Southern California winters are short, but cold nights do happen. A furnace that sat idle all summer needs inspection before you rely on it — especially for safety components like igniters and heat exchangers.",
     whatItIncludes: [
       "Burner inspection and cleaning",
       "Igniter test and condition check",
@@ -1447,10 +1447,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── COMMERCIAL HVAC ──────────────────────────────────────────────────────
   {
     slug: "commercial-hvac",
-    seoTitle: "Commercial HVAC Orange County CA | Business HVAC Service",
+    seoTitle: "Commercial HVAC Southern California | Business HVAC Service",
     metaDescription:
       "Commercial HVAC service in Orange County, CA. Rooftop units, split systems, preventive maintenance contracts, and emergency repair for businesses. Call (714) 410-2784.",
-    h1: "Commercial HVAC Service in Orange County",
+    h1: "Commercial HVAC Service",
     primaryKeyword: "commercial HVAC Orange County",
     secondaryKeywords: [
       "commercial HVAC service Orange County CA",
@@ -1526,7 +1526,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["commercial-maintenance-plan", "ac-installation", "heating-services"],
-    ctaHeadline: "Need Commercial HVAC Service in Orange County?",
+    ctaHeadline: "Need Commercial HVAC Service in Southern California?",
     ctaSubtext: "We work around your business hours and document every service visit. Call for a commercial consultation.",
     category: "commercial",
   },
@@ -1534,10 +1534,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── COMMERCIAL MAINTENANCE PLAN ─────────────────────────────────────────
   {
     slug: "commercial-maintenance-plan",
-    seoTitle: "Commercial HVAC Maintenance Plan Orange County | Service Contract",
+    seoTitle: "Commercial HVAC Maintenance Plan Southern California | Service Contract",
     metaDescription:
       "Commercial HVAC maintenance contracts in Orange County, CA. Scheduled preventive service, priority response, and full documentation. Call (714) 410-2784.",
-    h1: "Commercial HVAC Maintenance Plans in Orange County",
+    h1: "Commercial HVAC Maintenance Plans",
     primaryKeyword: "commercial HVAC maintenance contract Orange County",
     secondaryKeywords: [
       "commercial HVAC maintenance plan Orange County",
@@ -1615,10 +1615,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── AIR DUCT SERVICES ────────────────────────────────────────────────────
   {
     slug: "air-duct-services",
-    seoTitle: "Air Duct Services Orange County CA | Duct Repair & Cleaning",
+    seoTitle: "Air Duct Services Southern California | Duct Repair & Cleaning",
     metaDescription:
       "Air duct services in Orange County, CA — duct cleaning, duct repair, duct sealing, and new duct installation. Improve airflow and air quality. Call (714) 410-2784.",
-    h1: "Air Duct Services in Orange County",
+    h1: "Air Duct Services",
     primaryKeyword: "air duct services Orange County",
     secondaryKeywords: [
       "duct cleaning Orange County",
@@ -1675,7 +1675,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["air-duct-cleaning", "ac-maintenance", "ac-repair"],
-    ctaHeadline: "Duct Problems in Orange County? We Diagnose and Fix Them.",
+    ctaHeadline: "Duct Problems in Southern California? We Diagnose and Fix Them.",
     ctaSubtext: "From cleaning to repair and sealing — all duct services available. Call for an assessment.",
     category: "ductwork",
   },
@@ -1683,10 +1683,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── AIR DUCT CLEANING ────────────────────────────────────────────────────
   {
     slug: "air-duct-cleaning",
-    seoTitle: "Air Duct Cleaning Orange County CA | Professional Duct Service",
+    seoTitle: "Air Duct Cleaning Southern California | Professional Duct Service",
     metaDescription:
       "Professional air duct cleaning in Orange County, CA. Remove dust, debris, allergens, and mold from HVAC ductwork. Improve air quality. Call (714) 410-2784.",
-    h1: "Air Duct Cleaning in Orange County",
+    h1: "Air Duct Cleaning",
     primaryKeyword: "air duct cleaning Orange County",
     secondaryKeywords: [
       "duct cleaning Orange County CA",
@@ -1761,7 +1761,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["air-duct-services", "ac-maintenance", "ac-repair"],
-    ctaHeadline: "Schedule Duct Cleaning in Orange County",
+    ctaHeadline: "Schedule Duct Cleaning in Southern California",
     ctaSubtext: "We assess first — cleaning only if it's warranted. Pre-cleaning inspection included. Call to schedule.",
     category: "ductwork",
   },
@@ -1769,10 +1769,10 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── RESIDENTIAL MAINTENANCE PLAN ────────────────────────────────────────
   {
     slug: "residential-maintenance-plan",
-    seoTitle: "Residential HVAC Maintenance Plan Orange County | Tune-Up Program",
+    seoTitle: "Residential HVAC Maintenance Plan Southern California | Tune-Up Program",
     metaDescription:
       "Residential HVAC maintenance plans in Orange County, CA. Scheduled seasonal service, priority response, and full system documentation. Call (714) 410-2784.",
-    h1: "Residential HVAC Maintenance Plan in Orange County",
+    h1: "Residential HVAC Maintenance Plan",
     primaryKeyword: "residential HVAC maintenance plan Orange County",
     secondaryKeywords: [
       "HVAC maintenance plan Orange County",
