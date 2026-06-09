@@ -8,9 +8,9 @@ import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: "AC Installation & Replacement in Orange County, CA | Free Estimate | (714) 410-2784",
+    title: "AC Installation & Replacement — Free In-Home Estimate | (714) 410-2784",
     description:
-      "New AC system installation in Orange County, CA. Free in-home estimates, 0% financing, all major brands. Licensed HVAC contractor. Call (714) 410-2784.",
+      "New AC system installation throughout Southern California. Free in-home estimates, 0% financing, all major brands. Licensed HVAC contractor. Call (714) 410-2784).",
     path: "/air-conditioning/ac-installation/",
   });
 }
@@ -94,7 +94,7 @@ export default function AcInstallationPage() {
     { name: "AC Installation & Replacement", href: "/air-conditioning/ac-installation/" },
   ]);
   const serviceSchema = schemaService({
-    name: "AC Installation & Replacement in Orange County, CA",
+    name: "AC Installation & Replacement — Free In-Home Estimate",
     description: "Free in-home estimates for new AC system installation and replacement across Orange County. 0% financing, all major brands, licensed contractor.",
     url: "/air-conditioning/ac-installation/",
     areaServed: "Orange County",
@@ -116,7 +116,7 @@ export default function AcInstallationPage() {
             <div className="flex flex-col gap-5">
               <div className="section-label section-label-white w-fit">New System Installation</div>
               <h1 className="text-4xl sm:text-5xl font-bold text-white leading-[1.1] tracking-tight">
-                New AC System Installation in Orange County — Free In-Home Estimate
+                New AC System Installation — Free In-Home Estimate
               </h1>
               <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
                 Not sure if you need repair or replacement? We&rsquo;ll give you an honest recommendation — not a sales pitch. Free estimate, no obligation.

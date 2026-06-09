@@ -9,9 +9,9 @@ import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: "Emergency HVAC Service Orange County | Available Today | (714) 410-2784",
+    title: "Emergency HVAC Service — Same-Day Available | (714) 410-2784",
     description:
-      "Emergency HVAC service in Orange County, CA. Real people answer — same-day AC and heating repair. No emergency surcharge. Call (714) 410-2784 now.",
+      "Emergency HVAC service throughout Southern California. Real people answer — same-day AC and heating repair. No emergency surcharge. Call (714) 410-2784 now.",
     path: "/emergency-hvac-service/",
   });
 }
@@ -59,7 +59,7 @@ const FAQS = [
       "No — same pricing whether you call on a Tuesday or Sunday. No emergency surcharges, no weekend premiums. Free diagnostic — no charge.",
   },
   {
-    question: "How fast can you respond in Orange County?",
+    question: "How fast can you respond to an emergency call?",
     answer:
       "We're based in Yorba Linda and dispatch to all of Orange County. Most emergency calls see a technician arrive within 1–4 hours same day.",
   },
@@ -152,7 +152,7 @@ export default function EmergencyHvacPage() {
               </div>
 
               <h1 className="text-4xl sm:text-5xl lg:text-[3.1rem] font-bold text-white leading-[1.1] tracking-tight">
-                Emergency HVAC Service in Orange County — We Answer Live
+                Emergency HVAC Service — We Answer Live, 7 Days a Week
               </h1>
 
               <p className="text-lg text-slate-300 leading-relaxed max-w-lg">

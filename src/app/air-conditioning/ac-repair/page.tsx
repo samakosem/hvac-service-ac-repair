@@ -12,9 +12,9 @@ import { IMG_AC_REPAIR } from "@/lib/config/images";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: "AC Repair in Orange County, CA | Same-Day Service | (714) 410-2784",
+    title: "AC Repair — Same-Day Service | Southern California | (714) 410-2784",
     description:
-      "Same-day AC repair in Orange County, CA. Licensed technicians, free diagnostic with repair, written quote before any work. Call (714) 410-2784.",
+      "Same-day AC repair throughout Southern California. Licensed technicians, free diagnostic with repair, written quote before any work. Call (714) 410-2784.",
     path: "/air-conditioning/ac-repair/",
   });
 }
@@ -121,7 +121,7 @@ export default function AcRepairPage() {
     { name: "AC Repair", href: "/air-conditioning/ac-repair/" },
   ]);
   const serviceSchema = schemaService({
-    name: "AC Repair in Orange County, CA",
+    name: "AC Repair — Same-Day Service",
     description: service.metaDescription,
     url: "/air-conditioning/ac-repair/",
     areaServed: "Orange County",
@@ -179,7 +179,7 @@ export default function AcRepairPage() {
 
               {/* H1 */}
               <h1 className="text-4xl sm:text-5xl lg:text-[3.1rem] font-bold text-white leading-[1.1] tracking-tight">
-                AC Repair in Orange County — Same-Day Service
+                AC Repair — Same-Day Service, Southern California
               </h1>
 
               <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
@@ -233,7 +233,7 @@ export default function AcRepairPage() {
             {/* RIGHT — Form (desktop) */}
             <div id="estimate-form" className="hidden lg:block bg-white rounded-2xl shadow-xl p-7 border border-white/10">
               <SingleStepQuoteForm
-                heading="Get Same-Day Service in Orange County"
+                heading="Get Same-Day AC Repair Service"
                 subheading="We respond within 1 hour · Real people answer your call"
                 ctaLabel="Get Same-Day Service"
                 defaultService="AC Repair"
@@ -474,7 +474,7 @@ export default function AcRepairPage() {
             <div className="flex flex-col gap-5">
               <div className="section-label section-label-white w-fit">Ready to Get Fixed?</div>
               <h2 className="text-3xl sm:text-4xl font-bold text-white">
-                AC Not Cooling? We&rsquo;re Available Today in Orange County.
+                AC Not Cooling? We&rsquo;re Available Today — Southern California.
               </h2>
               <p className="text-slate-300 text-lg leading-relaxed">
                 Free estimates. Same-day availability. Real people answer your call. Based in Yorba Linda — serving all of Orange County.
@@ -492,7 +492,7 @@ export default function AcRepairPage() {
             </div>
             <div className="bg-white rounded-2xl shadow-xl p-7">
               <SingleStepQuoteForm
-                heading="Request Service in Orange County"
+                heading="Request Same-Day AC Service"
                 subheading="We'll respond within 1 hour during business hours."
                 ctaLabel="Get Same-Day Service"
                 defaultService="AC Repair"

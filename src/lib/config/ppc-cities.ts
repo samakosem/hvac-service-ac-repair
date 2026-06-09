@@ -1,4 +1,5 @@
 import type { SiteImage } from "@/lib/config/images";
+import { generatePPCCities } from "@/lib/config/ppc-city-generator";
 
 export type PPCCity = {
   slug: string;
@@ -642,4 +643,12 @@ export const PPC_CITIES: PPCCity[] = [
       },
     ],
   },
+];
+
+const HANDWRITTEN_SLUGS = new Set(PPC_CITIES.map((c) => c.slug));
+
+/** All PPC cities: hand-written entries + programmatically generated entries for all new cities. */
+export const ALL_PPC_CITIES: PPCCity[] = [
+  ...PPC_CITIES,
+  ...generatePPCCities(HANDWRITTEN_SLUGS),
 ];
