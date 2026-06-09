@@ -38,7 +38,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/ac-repair",
     metaTitle: "AC Repair in Yorba Linda, CA | Same-Day Service | (714) 410-2784",
     metaDescription:
-      "Fast AC repair in Yorba Linda, CA. Licensed HVAC technicians, same-day appointments, $79 diagnostic waived with repair. Call (714) 410-2784.",
+      "Fast AC repair in Yorba Linda, CA. Licensed HVAC technicians, same-day appointments, free diagnostic with repair. Call (714) 410-2784).",
     h1: "AC Repair in Yorba Linda, CA — Same-Day Service",
     heroSubheadline:
       "Your AC stopped working? We diagnose, quote, and fix it — usually same day. No guesswork, no upsells.",
@@ -85,7 +85,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "Do you charge a diagnostic fee?",
         answer:
-          "$79 diagnostic fee — waived completely if you proceed with the repair. You only pay if we fix nothing.",
+          "Free diagnostic — no charge to identify the problem. You only pay if we do the repair.",
       },
       {
         question: "Do you work on older R-22 systems?",
@@ -103,7 +103,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
           "Yes. We offer service 7 days a week, including Saturday and emergency availability on Sunday.",
       },
     ],
-    pricingNote: "Diagnostic fee: $79 (waived with repair) · Most common repairs: $150–$450 · Full system replacement: free estimate · 0% financing on repairs over $500",
+    pricingNote: "Free diagnostic · Most common repairs: $150–$450 · Full system replacement: free estimate · 0% financing on repairs over $500",
     whyUsHeadline: "Why Yorba Linda Residents Choose Us",
     whyUsPoints: [
       {
@@ -130,7 +130,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       "Compressor diagnosis & replacement",
       "Thermostat & control board repair",
       "Condenser fan motor replacement",
-      "Full system diagnostic ($79 — waived with repair)",
+      "Full system diagnostic — FREE",
       "Evaporator coil cleaning & service",
       "Drain line clearing & condensate repair",
     ],
@@ -146,7 +146,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/ac-repair",
     metaTitle: "AC Repair in Anaheim, CA | Same-Day HVAC Service | (714) 410-2784",
     metaDescription:
-      "AC repair in Anaheim, CA — same-day service for homes and businesses. Licensed technicians, $79 diagnostic waived with repair. Call (714) 410-2784.",
+      "AC repair in Anaheim, CA — same-day service for homes and businesses. Licensed technicians, free diagnostic with repair. Call (714) 410-2784).",
     h1: "AC Repair in Anaheim, CA — Same-Day Service",
     heroSubheadline:
       "Anaheim's heat won't wait. We diagnose, quote, and repair your AC — usually the same day you call.",
@@ -203,7 +203,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "Do you charge a diagnostic fee in Anaheim?",
         answer:
-          "$79 diagnostic fee, waived completely when you proceed with the repair.",
+          "Free diagnostic — no charge to identify the problem.",
       },
       {
         question: "Are you available on weekends in Anaheim?",
@@ -211,7 +211,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
           "Yes — 7 days a week. No weekend surcharge.",
       },
     ],
-    pricingNote: "Diagnostic fee: $79 (waived with repair) · Most common repairs: $150–$450 · Free estimate on replacement · 0% financing available",
+    pricingNote: "Free diagnostic · Most common repairs: $150–$450 · Free estimate on replacement · 0% financing available",
     whyUsHeadline: "Why Anaheim Homeowners & Businesses Choose Us",
     whyUsPoints: [
       {
@@ -239,7 +239,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       "Thermostat & control board repair",
       "Condenser fan motor replacement",
       "Commercial package unit service",
-      "Full system diagnostic ($79 — waived with repair)",
+      "Full system diagnostic — FREE",
       "Drain line clearing & condensate repair",
     ],
     ctaBannerText: "AC Not Cooling in Anaheim? We're Available Today.",
@@ -254,7 +254,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/ac-repair",
     metaTitle: "AC Repair in Fullerton, CA | Fast Same-Day Service | (714) 410-2784",
     metaDescription:
-      "AC repair in Fullerton, CA. Same-day HVAC technicians for homes, rentals, and small businesses. $79 diagnostic, waived with repair. (714) 410-2784.",
+      "AC repair in Fullerton, CA. Same-day HVAC technicians for homes, rentals, and small businesses. Free diagnostic. (714) 410-2784).",
     h1: "AC Repair in Fullerton, CA — Same-Day Service",
     heroSubheadline:
       "AC down in Fullerton? We respond fast — same-day service for homes, rental properties, and small businesses.",
@@ -310,14 +310,14 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       },
       {
         question: "Do you charge a diagnostic fee in Fullerton?",
-        answer: "$79, waived completely when you proceed with the repair.",
+        answer: "Free — no charge to diagnose the problem.",
       },
       {
         question: "Are you available on weekends?",
         answer: "Yes — 7 days a week, no weekend surcharge.",
       },
     ],
-    pricingNote: "Diagnostic fee: $79 (waived with repair) · Most common repairs: $150–$450 · Free estimate on replacement · 0% financing available",
+    pricingNote: "Free diagnostic · Most common repairs: $150–$450 · Free estimate on replacement · 0% financing available",
     whyUsHeadline: "Why Fullerton Homeowners & Landlords Choose Us",
     whyUsPoints: [
       {
@@ -345,7 +345,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       "Thermostat & control board repair",
       "Condenser fan motor replacement",
       "Ductwork inspection & sealing",
-      "Full system diagnostic ($79 — waived with repair)",
+      "Full system diagnostic — FREE",
       "Drain line clearing & condensate repair",
     ],
     ctaBannerText: "AC Not Cooling in Fullerton? We're Available Today.",
@@ -421,10 +421,10 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       },
       {
         question: "Do you charge a diagnostic fee in Irvine?",
-        answer: "$79, waived when you proceed with the repair.",
+        answer: "Free — no charge to diagnose the problem.",
       },
     ],
-    pricingNote: "Diagnostic fee: $79 (waived with repair) · Most common repairs: $150–$500 · Free estimate on replacement · 0% financing available · Written labor warranty on all repairs",
+    pricingNote: "Free diagnostic · Most common repairs: $150–$500 · Free estimate on replacement · 0% financing available · Written labor warranty on all repairs",
     whyUsHeadline: "Why Irvine Residents & Businesses Choose Us",
     whyUsPoints: [
       {
@@ -452,7 +452,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       "Refrigerant leak detection & recharge",
       "Capacitor, contactor & relay replacement",
       "Condenser fan motor replacement",
-      "Full system diagnostic ($79 — waived with repair)",
+      "Full system diagnostic — FREE",
       "Commercial package unit service",
     ],
     ctaBannerText: "AC Not Cooling in Irvine? We're Available Today.",
@@ -523,14 +523,14 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       },
       {
         question: "Do you charge a diagnostic fee?",
-        answer: "$79, waived when you proceed with the repair.",
+        answer: "Free — no charge to diagnose the problem.",
       },
       {
         question: "Are you available on weekends?",
         answer: "Yes — 7 days a week, no weekend surcharge.",
       },
     ],
-    pricingNote: "Diagnostic fee: $79 (waived with repair) · Most common repairs: $150–$450 · Free estimate on replacement · 0% financing available",
+    pricingNote: "Free diagnostic · Most common repairs: $150–$450 · Free estimate on replacement · 0% financing available",
     whyUsHeadline: "Why Orange Homeowners Choose Us",
     whyUsPoints: [
       {
@@ -558,7 +558,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       "Thermostat & control board repair",
       "Condenser fan motor replacement",
       "Ductwork inspection & sealing (older homes)",
-      "Full system diagnostic ($79 — waived with repair)",
+      "Full system diagnostic — FREE",
       "Window AC assessment & central AC conversion consultation",
     ],
     ctaBannerText: "AC Not Cooling in Orange? We're Available Today.",
@@ -577,7 +577,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/emergency-ac-repair",
     metaTitle: "Emergency AC Repair in Yorba Linda, CA | Available Today | (714) 410-2784",
     metaDescription:
-      "AC broke down in Yorba Linda? Same-day emergency HVAC service — real people answer, no voicemail. $79 diagnostic, no emergency surcharge. Call (714) 410-2784.",
+      "AC broke down in Yorba Linda? Same-day emergency HVAC service — real people answer, no voicemail. Free diagnostic, no emergency surcharge. Call (714) 410-2784).",
     h1: "AC Broke Down in Yorba Linda? We're Available Today.",
     heroSubheadline:
       "Real people answer — no voicemail. Same-day emergency HVAC service, 7 days a week.",
@@ -637,7 +637,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
           "Yes — Lennox, Carrier, Trane, Rheem, York, Goodman, and all other major brands.",
       },
     ],
-    pricingNote: "Emergency diagnostic: $79 (waived with repair) · No emergency surcharges — same pricing as regular service · Financing available if repair cost is unexpected",
+    pricingNote: "Free diagnostic · No emergency surcharges — same pricing as regular service · Financing available if repair cost is unexpected",
     whyUsHeadline: "Why Yorba Linda Homeowners Call Us First",
     whyUsPoints: [
       {
@@ -740,7 +740,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
           "We offer extended availability on weekends and can handle after-hours calls for genuine emergencies. Call us — a real person answers.",
       },
     ],
-    pricingNote: "Emergency diagnostic: $79 (waived with repair) · No emergency surcharges · Same pricing 7 days a week · Financing available",
+    pricingNote: "Free diagnostic · No emergency surcharges · Same pricing 7 days a week · Financing available",
     whyUsHeadline: "Why Anaheim Calls Us for HVAC Emergencies",
     whyUsPoints: [
       {
@@ -786,7 +786,7 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/heating/heating-repair",
     metaTitle: "Heating Repair in Yorba Linda, CA | AC & Heating | (714) 410-2784",
     metaDescription:
-      "AC and heating repair in Yorba Linda, CA. Same-day furnace and HVAC service — $79 diagnostic waived with repair. Call (714) 410-2784.",
+      "AC and heating repair in Yorba Linda, CA. Same-day furnace and HVAC service — free diagnostic with repair. Call (714) 410-2784).",
     h1: "AC & Heating Repair in Yorba Linda — Same-Day Service",
     heroSubheadline:
       "One local team handles your AC and heating — from summer emergencies to winter tune-ups.",
@@ -843,10 +843,10 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "Should I service my heating system before winter?",
         answer:
-          "Yes — a fall tune-up typically costs $79–$149 and can catch igniter, heat exchanger, and filter issues before they cause a mid-winter breakdown.",
+          "Yes — a fall tune-up is a smart investment that can catch igniter, heat exchanger, and filter issues before they cause a mid-winter breakdown.",
       },
     ],
-    pricingNote: "Heating diagnostic: $79 (waived with repair) · Most furnace repairs: $150–$400 · Annual tune-up: from $99 · New system installation: free estimate",
+    pricingNote: "Free diagnostic · Most furnace repairs: $150–$400 · Annual tune-up: from $99 · New system installation: free estimate",
     whyUsHeadline: "Why Yorba Linda Homeowners Trust Us with Heating & AC",
     whyUsPoints: [
       {
@@ -863,7 +863,7 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
       },
       {
         heading: "Transparent Pricing",
-        body: "Written quote before any work. $79 diagnostic waived with repair.",
+        body: "Written quote before any work. Free diagnostic — no charge to identify the problem.",
       },
     ],
     servicesListHeadline: "Heating Services We Offer in Yorba Linda",
@@ -871,7 +871,7 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
       "Furnace repair and tune-up",
       "Heat pump service and repair",
       "Thermostat replacement",
-      "Heating system diagnostic ($79)",
+      "Heating system diagnostic — FREE",
       "Duct inspection and sealing",
       "Igniter & heat exchanger service",
       "New heating system installation (free estimate)",
@@ -1060,7 +1060,7 @@ export const LOCAL_HVAC_CITIES: CityServicePage[] = [
           "We do our best to assign the same technician to returning customers. You're not dealing with a rotating cast from a dispatch pool.",
       },
     ],
-    pricingNote: "Diagnostic fee: $79 (waived with repair) · Full HVAC services: AC repair, heating, installation, ductwork, maintenance · 0% financing available",
+    pricingNote: "Free diagnostic · Full HVAC services: AC repair, heating, installation, ductwork, maintenance · 0% financing available",
     whyUsHeadline: "Why Local Beats National Chains for HVAC",
     whyUsPoints: [
       {
@@ -1097,13 +1097,29 @@ export const LOCAL_HVAC_CITIES: CityServicePage[] = [
 
 // ─── Combined lookup helpers ─────────────────────────────────────────────────
 
-export type ServiceSetKey = "ac-repair" | "emergency-ac-repair" | "heating-repair" | "ac-tune-up";
+import { generateCityServicePages } from "@/lib/config/city-service-generator";
+
+export type ServiceSetKey =
+  | "ac-repair"
+  | "emergency-ac-repair"
+  | "heating-repair"
+  | "ac-tune-up"
+  | "hvac-repair";
+
+function mergeWithGenerated(
+  serviceSlug: string,
+  handwritten: CityServicePage[],
+): CityServicePage[] {
+  const existingSlugs = new Set(handwritten.map((p) => p.citySlug));
+  return [...handwritten, ...generateCityServicePages(serviceSlug, existingSlugs)];
+}
 
 export const CITY_SERVICE_MAP: Record<ServiceSetKey, CityServicePage[]> = {
-  "ac-repair": AC_REPAIR_CITIES,
-  "emergency-ac-repair": EMERGENCY_AC_CITIES,
-  "heating-repair": HEATING_REPAIR_CITIES,
-  "ac-tune-up": AC_TUNEUP_CITIES,
+  "ac-repair": mergeWithGenerated("ac-repair", AC_REPAIR_CITIES),
+  "emergency-ac-repair": mergeWithGenerated("emergency-ac-repair", EMERGENCY_AC_CITIES),
+  "heating-repair": mergeWithGenerated("heating-repair", HEATING_REPAIR_CITIES),
+  "ac-tune-up": mergeWithGenerated("ac-tune-up", AC_TUNEUP_CITIES),
+  "hvac-repair": mergeWithGenerated("hvac-repair", LOCAL_HVAC_CITIES),
 };
 
 export function getCityServicePage(serviceSlug: string, citySlug: string): CityServicePage | undefined {
@@ -1112,16 +1128,19 @@ export function getCityServicePage(serviceSlug: string, citySlug: string): CityS
   return set.find((p) => p.citySlug === citySlug);
 }
 
+/** Params for the /air-conditioning/[service]/[city] dynamic route only.
+ *  heating-repair has /heating/heating-repair/[city]; hvac-repair has /hvac-repair/[city]. */
 export function getAllCityServiceParams(): { service: string; city: string }[] {
-  return Object.entries(CITY_SERVICE_MAP).flatMap(([service, pages]) =>
-    pages.map((p) => ({ service, city: p.citySlug }))
+  const routedKeys: ServiceSetKey[] = ["ac-repair", "emergency-ac-repair", "ac-tune-up"];
+  return routedKeys.flatMap((service) =>
+    CITY_SERVICE_MAP[service].map((p) => ({ service, city: p.citySlug }))
   );
 }
 
 export function getLocalHvacPage(citySlug: string): CityServicePage | undefined {
-  return LOCAL_HVAC_CITIES.find((p) => p.citySlug === citySlug);
+  return CITY_SERVICE_MAP["hvac-repair"].find((p) => p.citySlug === citySlug);
 }
 
 export function getAllLocalHvacParams(): { city: string }[] {
-  return LOCAL_HVAC_CITIES.map((p) => ({ city: p.citySlug }));
+  return CITY_SERVICE_MAP["hvac-repair"].map((p) => ({ city: p.citySlug }));
 }

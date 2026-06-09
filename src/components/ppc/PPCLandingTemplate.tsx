@@ -216,6 +216,10 @@ export default function PPCLandingTemplate({ city }: Props) {
                   </svg>
                   Summer Cooling Season
                 </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/25 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse" />
+                  Tech Available in Your Area
+                </span>
               </div>
 
               {/* H1 */}

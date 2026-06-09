@@ -187,7 +187,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         question: "Do you charge a diagnostic fee?",
         answer:
-          "We provide estimates after diagnosing the issue. Call us directly to ask about our current diagnostic and service call policy — it can vary by season and job type.",
+          "Free — we do not charge a diagnostic fee. Our technician identifies the problem at no cost. You only pay for the repair if you decide to proceed.",
       },
     ],
     relatedSlugs: ["ac-repair", "ac-installation", "ac-maintenance", "air-conditioning"],

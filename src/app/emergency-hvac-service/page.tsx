@@ -56,7 +56,7 @@ const FAQS = [
   {
     question: "Do you charge extra for emergency or weekend HVAC service?",
     answer:
-      "No — same pricing whether you call on a Tuesday or Sunday. No emergency surcharges, no weekend premiums. $79 diagnostic fee, waived when you proceed with the repair.",
+      "No — same pricing whether you call on a Tuesday or Sunday. No emergency surcharges, no weekend premiums. Free diagnostic — no charge.",
   },
   {
     question: "How fast can you respond in Orange County?",
@@ -140,10 +140,14 @@ export default function EmergencyHvacPage() {
 
             {/* LEFT */}
             <div className="flex flex-col gap-5">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap gap-2">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/25 text-emerald-300 text-xs font-bold uppercase tracking-wider">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse" />
                   Open Now — Accepting Emergency Calls
+                </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/25 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse" />
+                  Tech Available in Your Area
                 </span>
               </div>
 
@@ -181,7 +185,7 @@ export default function EmergencyHvacPage() {
               <div className="flex items-start gap-3 bg-white/6 border border-white/10 rounded-xl px-4 py-3">
                 <BoltIcon className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
                 <p className="text-slate-200 text-sm">
-                  <span className="font-bold text-white">No emergency surcharges.</span> Same pricing 7 days a week. $79 diagnostic waived with repair.
+                  <span className="font-bold text-white">No emergency surcharges.</span> Same pricing 7 days a week. Free diagnostic — no charge.
                 </p>
               </div>
 
@@ -248,7 +252,7 @@ export default function EmergencyHvacPage() {
             ))}
           </div>
           <div className="mt-8 text-center">
-            <p className="text-slate-600 mb-4">Recognizing one of these? A $79 diagnostic tells you exactly what&rsquo;s wrong — waived if we do the repair.</p>
+            <p className="text-slate-600 mb-4">Recognizing one of these? A free diagnostic tells you exactly what&rsquo;s wrong — no charge.</p>
             <PhoneLink
               className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-red-500 text-white font-bold rounded-xl shadow-lg hover:bg-red-600 active:scale-[0.98] transition-all text-base"
               showIcon

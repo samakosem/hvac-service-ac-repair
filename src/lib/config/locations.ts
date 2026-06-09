@@ -945,7 +945,7 @@ export const COUNTIES: County[] = [
           {
             question: "Is there a trip charge for coming to Moorpark?",
             answer:
-              "Our diagnostic fee applies to all calls, including those in our extended service territory. We'll discuss this honestly before scheduling so there are no surprises.",
+              "Free diagnostic — no charge to identify the problem. You only pay for the repair if you proceed with us. We'll discuss any travel fees honestly before scheduling so there are no surprises.",
           },
         ],
       },
@@ -1017,7 +1017,7 @@ export const COUNTIES: County[] = [
           {
             question: "Is there a trip fee for Goleta service?",
             answer:
-              "Yes. Service at this distance from our Yorba Linda base involves a trip consideration that we'll discuss openly before scheduling. We won't surprise you with fees.",
+              "Yes. Service at this distance from our Yorba Linda base involves a trip consideration that we'll discuss openly before scheduling. There is no diagnostic fee — we identify the problem at no charge. Additional travel fees will be disclosed upfront.",
           },
         ],
       },

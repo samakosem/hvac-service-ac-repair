@@ -282,8 +282,8 @@ export const PROMOTIONS: Promotion[] = [
     category: "emergency",
     categoryLabel: "Emergency",
     description:
-      "When your AC goes out in an Orange County summer, we'll waive the diagnostic fee when a repair is completed at the time of service. No double-charging — just fast, fairly priced emergency work.",
-    disclaimer: "Diagnostic fee waived only when repair is completed at time of service by our technician. Does not apply to equipment-only visits, deferred repairs, or second visits. Cannot be combined with other promotional offers. Restrictions may apply.",
+      "When your AC goes out in an Orange County summer, get fast emergency response. Free diagnostic to identify the problem — you only pay for the repair if you proceed with us.",
+    disclaimer: "Free diagnostic included with emergency service when repair is completed at time of service by our technician. Does not apply to equipment-only visits, deferred repairs, or second visits. Cannot be combined with other promotional offers. Restrictions may apply.",
     ctaText: "Call for Emergency Service",
     ctaHref: "/air-conditioning/emergency-ac-repair",
     secondaryCta: { text: `Call Now — ${SITE.phoneDisplay}`, tel: SITE.phone },
@@ -303,8 +303,8 @@ export const PROMOTIONS: Promotion[] = [
     category: "installation",
     categoryLabel: "Installation",
     description:
-      "When you replace an aging HVAC system with us, we credit your diagnostic fee toward the new installation. We also haul away the old equipment at no extra charge.",
-    disclaimer: "Diagnostic fee credit applies only when full system replacement is performed by our team at time of service. Valid for complete system replacements only. Cannot be combined with other promotional offers or financing promotions. Restrictions may apply.",
+      "When you replace an aging HVAC system with us, you get a free diagnostic to identify what needs to be replaced. We also haul away the old equipment at no extra charge.",
+    disclaimer: "Free diagnostic included with full system replacement performed by our team at time of service. Valid for complete system replacements only. Cannot be combined with other promotional offers or financing promotions. Restrictions may apply.",
     ctaText: "Get Replacement Quote",
     ctaHref: "/air-conditioning/ac-replacement",
     secondaryCta: { text: `Call ${SITE.phoneDisplay}`, tel: SITE.phone },

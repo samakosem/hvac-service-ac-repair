@@ -22,7 +22,7 @@ const CONTACT_FAQS = [
   },
   {
     q: "Do you charge a diagnostic fee?",
-    a: "We charge a standard diagnostic fee to evaluate your system and identify the issue. That fee is applied toward the repair cost if you choose to proceed with us.",
+    a: "Free diagnostic — no charge to identify the problem. Our technician inspects your system at no cost. You only pay for the repair if you decide to proceed with us.",
   },
   {
     q: "What areas do you serve?",

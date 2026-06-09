@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "AC Repair in Orange County, CA | Same-Day Service | (714) 410-2784",
     description:
-      "Same-day AC repair in Orange County, CA. Licensed technicians, $79 diagnostic waived with repair, written quote before any work. Call (714) 410-2784.",
+      "Same-day AC repair in Orange County, CA. Licensed technicians, free diagnostic with repair, written quote before any work. Call (714) 410-2784.",
     path: "/air-conditioning/ac-repair/",
   });
 }
@@ -171,6 +171,10 @@ export default function AcRepairPage() {
                   <BoltIcon className="w-3 h-3" />
                   Emergency Service Available
                 </span>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/25 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse" />
+                  Tech Available in Your Area
+                </span>
               </div>
 
               {/* H1 */}
@@ -211,7 +215,7 @@ export default function AcRepairPage() {
               <div className="flex items-center gap-3 bg-white/6 border border-white/10 rounded-xl px-4 py-3 w-fit">
                 <ShieldIcon className="w-5 h-5 text-copper-400 shrink-0" />
                 <p className="text-slate-200 text-sm">
-                  <span className="font-bold text-white">Diagnostic: $79</span> — waived with repair · Written quote before any work
+                  <span className="font-bold text-white">Diagnostic: Free</span> — no charge to identify the problem · Written quote before any work
                 </p>
               </div>
 
@@ -317,7 +321,7 @@ export default function AcRepairPage() {
                 <h3 className="text-xl font-bold text-slate-900">No Surprise Bills</h3>
                 <div className="flex flex-col gap-3">
                   {[
-                    "Diagnostic fee: $79 (waived with repair)",
+                    "Diagnostic: Free",
                     "Most common repairs: $150–$450",
                     "Full system replacement: free estimate",
                     "0% financing on repairs over $500",
@@ -331,7 +335,7 @@ export default function AcRepairPage() {
                 </div>
                 <div className="bg-hvac-blue-50 rounded-xl px-4 py-3 border border-hvac-blue-100">
                   <p className="text-hvac-blue-800 font-semibold text-sm">
-                    Diagnostic fee: $79 — waived when you proceed with the repair.
+                    Diagnostic: Free — no charge to identify the problem.
                   </p>
                 </div>
               </div>

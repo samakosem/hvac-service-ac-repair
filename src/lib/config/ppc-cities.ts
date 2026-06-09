@@ -77,7 +77,7 @@ export const PPC_CITIES: PPCCity[] = [
       },
       {
         heading: "Transparent, Flat-Rate Pricing",
-        body: "You get a written quote before any work begins. No surprise charges, no upselling. Our diagnostic fee is waived when you proceed with the repair.",
+        body: "You get a written quote before any work begins. No surprise charges, no upselling. Free diagnostic — no charge to identify the problem.",
       },
       {
         heading: "All Brands, All Ages",
@@ -283,7 +283,7 @@ export const PPC_CITIES: PPCCity[] = [
       },
       {
         heading: "No Trip Fees in OC",
-        body: "No travel surcharges across Orange County. Our diagnostic fee is waived with completed repair.",
+        body: "No travel surcharges across Orange County. Free diagnostic — no charge to identify the problem.",
       },
       {
         heading: "5-Star Google Rated",
@@ -588,7 +588,7 @@ export const PPC_CITIES: PPCCity[] = [
       },
       {
         heading: "Written Quotes Before Work Starts",
-        body: "No surprises on your invoice. You approve a written estimate before any work begins. Our diagnostic fee is credited toward the repair.",
+        body: "No surprises on your invoice. You approve a written estimate before any work begins. Free diagnostic — no charge to identify the problem.",
       },
       {
         heading: "High-Efficiency System Experts",

@@ -47,7 +47,7 @@ export const COUNTY_FAQS: Record<string, { question: string; answer: string }[]>
     {
       question: "Is there a trip charge for Riverside County service calls?",
       answer:
-        "Our standard diagnostic fee applies to all service calls, including Riverside County. This fee is disclosed before we schedule and is credited toward repair cost if you proceed with the work.",
+        "Free diagnostic — no charge to identify the problem. You only pay if you proceed with the repair. This applies to all service calls, including Riverside County.",
     },
     {
       question: "Do you work on commercial HVAC in the Riverside County cities you serve?",
@@ -103,7 +103,7 @@ export const COUNTY_FAQS: Record<string, { question: string; answer: string }[]>
     {
       question: "Is there an additional charge for Ventura County service?",
       answer:
-        "Our standard diagnostic fee applies. There may be a trip consideration for the extended distance — we discuss this openly before scheduling so there are no surprises.",
+        "Free diagnostic — no charge to identify the problem. You only pay if you proceed with repairs. There may be a trip consideration for the extended distance — we discuss everything openly before scheduling so there are no surprises.",
     },
     {
       question: "How hot does it get in eastern Ventura County in summer?",

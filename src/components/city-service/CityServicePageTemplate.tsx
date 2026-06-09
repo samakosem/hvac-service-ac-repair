@@ -129,6 +129,11 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
                   <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
                   Open Now — Accepting {isEmergency ? "Emergency" : "Same-Day"} Calls
                 </span>
+                {/* Tech available badge */}
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/25 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse" />
+                  Tech Available in Your Area
+                </span>
                 {isEmergency && (
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-500/15 border border-red-400/25 text-red-300 text-xs font-bold uppercase tracking-wider">
                     <BoltIcon className="w-3 h-3" />
@@ -176,7 +181,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
               <div className="flex items-center gap-3 bg-white/6 border border-white/10 rounded-xl px-4 py-3 w-fit">
                 <ShieldIcon className="w-5 h-5 text-copper-400 shrink-0" />
                 <p className="text-slate-200 text-sm">
-                  <span className="font-bold text-white">Diagnostic: $79</span> — waived with repair · Written quote before any work
+                  <span className="font-bold text-white">Diagnostic: Free</span> — no charge to identify the problem · Written quote before any work
                 </p>
               </div>
 
@@ -281,7 +286,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
               <div className="section-label section-label-blue w-fit">Transparent Pricing</div>
               <h3 className="text-xl font-bold text-slate-900">No Surprise Bills</h3>
               <p className="text-slate-600 text-sm leading-relaxed">
-                We give you a written quote before any work begins. If we diagnose the problem and you decide not to proceed, you only pay the $79 diagnostic fee.
+                We give you a written quote before any work begins. If we diagnose the problem and you decide not to proceed, there is no charge — the diagnostic is free.
               </p>
               <div className="flex flex-col gap-3 border-t border-slate-100 pt-4">
                 {page.pricingNote.split(" · ").map((line) => (
@@ -293,7 +298,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
               </div>
               <div className="bg-hvac-blue-50 rounded-xl px-4 py-3 border border-hvac-blue-100">
                 <p className="text-hvac-blue-800 font-semibold text-sm">
-                  Diagnostic fee: $79 — waived when you proceed with the repair.
+                  Diagnostic: Free — no charge to identify the problem.
                 </p>
               </div>
             </div>

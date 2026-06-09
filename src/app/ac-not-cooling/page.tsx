@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "AC Running But Not Cooling? Causes & Fix | Orange County HVAC",
     description:
-      "Find out why your AC is running but not cooling — and get it fixed today. $79 diagnostic waived with repair. Serving Orange County, CA. (714) 410-2784.",
+      "Find out why your AC is running but not cooling — and get it fixed today. Free diagnostic with repair. Serving Orange County, CA. (714) 410-2784).",
     path: "/ac-not-cooling/",
   });
 }
@@ -64,7 +64,7 @@ const FAQS = [
   {
     question: "How much does it cost to diagnose why my AC isn't cooling?",
     answer:
-      "$79 diagnostic fee — waived completely when you proceed with the repair. A technician will identify the exact cause and provide a written quote before any work begins.",
+      "Free diagnostic — no charge to identify the problem. A technician will identify the exact cause and provide a written quote before any work begins.",
   },
   {
     question: "Can I diagnose a non-cooling AC myself?",
@@ -74,7 +74,7 @@ const FAQS = [
   {
     question: "Why is my AC running constantly but the house won't cool down?",
     answer:
-      "Constant running without adequate cooling usually means the system is undersized, has a refrigerant shortage, has a dirty/blocked coil, or is fighting duct leaks. A $79 diagnostic pinpoints the exact cause.",
+      "Constant running without adequate cooling usually means the system is undersized, has a refrigerant shortage, has a dirty/blocked coil, or is fighting duct leaks. A free diagnostic pinpoints the exact cause.",
   },
   {
     question: "How quickly can you get to my home in Orange County?",
@@ -128,7 +128,7 @@ export default function AcNotCoolingPage() {
               label={`Call ${SITE.phoneDisplay} — Same-Day Diagnosis`}
             />
             <a href="#schedule-diagnostic" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-800 font-semibold rounded-xl border border-slate-200 hover:bg-slate-50 active:scale-[0.98] transition-all text-base">
-              Schedule $79 Diagnostic
+              Schedule Free Diagnostic
               <ArrowIcon className="w-4 h-4" />
             </a>
           </div>
@@ -172,13 +172,13 @@ export default function AcNotCoolingPage() {
             <div className="flex flex-col gap-5">
               <div className="section-label section-label-white w-fit">Not Sure What&rsquo;s Wrong?</div>
               <h2 className="text-3xl font-bold text-white">
-                A $79 Diagnostic Tells You Exactly What&rsquo;s Wrong
+                A Free Diagnostic Tells You Exactly What&rsquo;s Wrong
               </h2>
               <p className="text-slate-300 text-lg leading-relaxed">
-                Our licensed technician will diagnose the exact cause — and give you a written quote before any work starts. The $79 fee is waived if you proceed with the repair.
+                Our licensed technician will diagnose the exact cause — and give you a written quote before any work starts. No charge for the diagnostic.
               </p>
               <div className="flex flex-col gap-3">
-                {["Same-day appointments available", "Written quote — no surprises", "$79 diagnostic waived with repair", "All brands serviced", "Orange County-wide coverage"].map((item) => (
+                {["Same-day appointments available", "Written quote — no surprises", "Free diagnostic — no charge", "All brands serviced", "Orange County-wide coverage"].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <CheckIcon className="w-4 h-4 text-emerald-400 shrink-0" />
                     <span className="text-slate-200 text-sm">{item}</span>
@@ -193,7 +193,7 @@ export default function AcNotCoolingPage() {
             </div>
             <div className="bg-white rounded-2xl shadow-xl p-7">
               <SingleStepQuoteForm
-                heading="Schedule My $79 Diagnostic"
+                heading="Schedule My Free Diagnostic"
                 subheading="We respond within 1 hour · Same-day availability"
                 ctaLabel="Schedule My Diagnostic"
                 defaultService="Not Sure — Need Diagnosis"
@@ -237,7 +237,7 @@ export default function AcNotCoolingPage() {
             label={`Call ${SITE.phoneDisplay}`}
           />
           <a href="#schedule-diagnostic" className="flex-1 inline-flex items-center justify-center gap-2 py-4 bg-navy-800 text-white font-semibold text-base border-l border-white/10">
-            Schedule Diagnostic
+            Free Diagnostic
             <ArrowIcon className="w-4 h-4" />
           </a>
         </div>
