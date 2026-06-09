@@ -20,19 +20,20 @@ const SERVICES = [
   "Not Sure — Need Diagnosis",
 ];
 
-const LIMITS = { name: 100, phone: 30, service: 80, website: 1, faxNumber: 1 };
+const LIMITS = { name: 100, phone: 30, service: 80, address: 200, website: 1, faxNumber: 1 };
 
 type FormData = {
   name: string;
   phone: string;
   service: string;
+  address: string;
   website: string;
   faxNumber: string;
 };
 
-type Errors = Partial<Record<"name" | "phone" | "service", string>>;
+type Errors = Partial<Record<"name" | "phone" | "service" | "address", string>>;
 
-const EMPTY: FormData = { name: "", phone: "", service: "", website: "", faxNumber: "" };
+const EMPTY: FormData = { name: "", phone: "", service: "", address: "", website: "", faxNumber: "" };
 
 function sanitize(v: string, max: number) {
   return v.slice(0, max);
@@ -72,6 +73,7 @@ export default function SingleStepQuoteForm({
     if (!data.phone.trim()) errs.phone = "Phone number is required.";
     else if (!/^[\d\s()\-+]{7,}$/.test(data.phone)) errs.phone = "Enter a valid phone number.";
     if (!data.service) errs.service = "Please select a service.";
+    if (!data.address.trim() || data.address.trim().length < 8) errs.address = "Enter your full service address (street, city, ZIP).";
     return errs;
   }
 
@@ -90,6 +92,7 @@ export default function SingleStepQuoteForm({
           name: data.name,
           phone: data.phone,
           service: data.service,
+          address: data.address,
           website: data.website,
           faxNumber: data.faxNumber,
           pageUrl: typeof window !== "undefined" ? window.location.href : "",
@@ -177,6 +180,25 @@ export default function SingleStepQuoteForm({
             ))}
           </select>
           {errors.service && <p className="text-red-500 text-xs mt-1" role="alert">{errors.service}</p>}
+        </div>
+
+        {/* Address */}
+        <div>
+          <label htmlFor={`${id}-address`} className={labelCls}>
+            Service Address <span className="text-red-400" aria-hidden="true">*</span>
+          </label>
+          <input
+            id={`${id}-address`}
+            type="text"
+            autoComplete="street-address"
+            placeholder="123 Main St, Anaheim, CA 92801"
+            value={data.address}
+            maxLength={LIMITS.address}
+            onChange={(e) => set("address", e.target.value)}
+            className={`${fieldCls} ${errors.address ? "border-red-400 focus:ring-red-400" : ""}`}
+            aria-required="true"
+          />
+          {errors.address && <p className="text-red-500 text-xs mt-1" role="alert">{errors.address}</p>}
         </div>
 
         {/* Honeypots */}
