@@ -21,7 +21,7 @@ const SERVICES = [
   "Not Sure — Need Diagnosis",
 ];
 
-const LIMITS = { name: 100, phone: 30, service: 80, address: 200, website: 1, faxNumber: 1 };
+const LIMITS: Partial<Record<keyof FormData, number>> = { name: 100, phone: 30, service: 80, address: 200, website: 1, faxNumber: 1 };
 
 type FormData = {
   name: string;
