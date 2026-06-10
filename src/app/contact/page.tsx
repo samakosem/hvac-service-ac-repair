@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE } from "@/lib/config/site";
 import { SERVICE_AREA_COUNTIES } from "@/lib/config/locations";
-import QuoteForm from "@/components/ui/QuoteForm";
+import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import JsonLd from "@/components/ui/JsonLd";
 import { schemaContactPage } from "@/lib/seo/schema";
 import InteriorHero from "@/components/layout/InteriorHero";
@@ -80,7 +80,7 @@ export default function ContactPage() {
             {/* ── Form — renders FIRST on mobile via order-first ── */}
             <div className="lg:col-span-2 order-first lg:order-last">
               <div className="rounded-2xl border border-slate-200 bg-white shadow-card p-6 sm:p-8">
-                <QuoteForm
+                <SingleStepQuoteForm
                   heading="Request a Free Estimate"
                   subheading="Fill out the form and we'll follow up within 1 hour during business hours."
                 />

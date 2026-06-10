@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/ui/JsonLd";
-import QuoteForm from "@/components/ui/QuoteForm";
+import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import PhoneLink from "@/components/ui/PhoneLink";
 import ConversionTrustBar from "@/components/ui/ConversionTrustBar";
 import FinancingTeaser from "@/components/ui/FinancingTeaser";
@@ -298,8 +298,7 @@ export default function PPCLandingTemplate({ city }: Props) {
 
               {/* Desktop inline form */}
               <div id="estimate-form" className="hidden lg:block bg-white rounded-2xl shadow-xl p-6 border border-slate-100">
-                <QuoteForm
-                  variant="compact"
+                <SingleStepQuoteForm
                   heading={`Get Your Free Estimate in ${city.name}`}
                   subheading="We respond within 1 hour during business hours."
                 />
@@ -320,8 +319,7 @@ export default function PPCLandingTemplate({ city }: Props) {
       {/* Mobile form (below hero) */}
       <div id="estimate-form-mobile" className="lg:hidden bg-white px-4 py-8 border-b border-slate-100">
         <div className="max-w-xl mx-auto">
-          <QuoteForm
-            variant="compact"
+          <SingleStepQuoteForm
             heading={`Free Estimate in ${city.name}`}
             subheading="We respond within 1 hour during business hours."
           />
@@ -667,8 +665,7 @@ export default function PPCLandingTemplate({ city }: Props) {
 
             {/* Bottom form */}
             <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-8 border border-white/10">
-              <QuoteForm
-                variant="compact"
+              <SingleStepQuoteForm
                 heading={`Request Service in ${city.name}`}
                 subheading="We'll respond within 1 hour during business hours."
               />

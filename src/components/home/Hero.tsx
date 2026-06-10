@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import PhoneLink from "@/components/ui/PhoneLink";
-import QuoteForm from "@/components/ui/QuoteForm";
+import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import { SITE } from "@/lib/config/site";
 import { IMG_HERO } from "@/lib/config/images";
 
@@ -141,8 +141,7 @@ export default function Hero() {
                 </span>
               </div>
 
-              <QuoteForm
-                variant="compact"
+              <SingleStepQuoteForm
                 heading=""
                 subheading=""
               />

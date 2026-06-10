@@ -1,4 +1,4 @@
-import QuoteForm from "@/components/ui/QuoteForm";
+import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import { SITE } from "@/lib/config/site";
 
 type Props = {
@@ -101,8 +101,7 @@ export default function HomeLeadForm({ variant = "hero" }: Props) {
 
           {/* Right: form card */}
           <div className={`rounded-2xl border p-7 shadow-card ${isDark ? "bg-white border-transparent" : "bg-white border-slate-200"}`}>
-            <QuoteForm
-              variant="compact"
+            <SingleStepQuoteForm
               heading=""
               subheading=""
             />
