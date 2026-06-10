@@ -33,7 +33,7 @@ type FormData = {
   faxNumber: string;
 };
 
-type Errors = Partial<Record<"name" | "phone" | "service" | "address", string>>;
+type Errors = Partial<Record<"name" | "phone" | "service" | "address" | "smsConsent", string>>;
 
 const EMPTY: FormData = { name: "", phone: "", service: "", address: "", smsConsent: false, website: "", faxNumber: "" };
 
@@ -76,6 +76,7 @@ export default function SingleStepQuoteForm({
     else if (!/^[\d\s()\-+]{7,}$/.test(data.phone)) errs.phone = "Enter a valid phone number.";
     if (!data.service) errs.service = "Please select a service.";
     if (!data.address.trim() || data.address.trim().length < 8) errs.address = "Enter your full service address (street, city, ZIP).";
+    if (!data.smsConsent) errs.smsConsent = "Please agree to receive SMS messages to continue.";
     return errs;
   }
 
@@ -207,8 +208,8 @@ export default function SingleStepQuoteForm({
           {errors.address && <p className="text-red-500 text-xs mt-1" role="alert">{errors.address}</p>}
         </div>
 
-        {/* SMS consent — optional, unchecked by default */}
-        <div className={`p-3 rounded-xl border ${variant === "dark" ? "bg-white/5 border-white/15" : "bg-slate-50 border-slate-200"}`}>
+        {/* SMS consent — required for A2P 10DLC compliance */}
+        <div className={`p-3 rounded-xl border ${errors.smsConsent ? "border-red-400" : variant === "dark" ? "border-white/15" : "border-slate-200"} ${variant === "dark" ? "bg-white/5" : "bg-slate-50"}`}>
           <SmsConsentCheckbox
             id={`${id}-sms-consent`}
             checked={data.smsConsent}
@@ -216,6 +217,7 @@ export default function SingleStepQuoteForm({
               setData((prev) => ({ ...prev, smsConsent: v }));
             }}
             variant={variant}
+            error={errors.smsConsent}
           />
         </div>
 

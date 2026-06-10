@@ -84,6 +84,7 @@ function validateStep2(data: FormData): Errors {
     errs.email = "Enter a valid email address.";
   if (!data.address.trim()) errs.address = "Service address is required.";
   else if (data.address.trim().length < 8) errs.address = "Enter your full address (street, city, ZIP).";
+  if (!data.smsConsent) errs.smsConsent = "Please agree to receive SMS messages to continue.";
   return errs;
 }
 
@@ -461,12 +462,13 @@ export default function QuoteForm({
         </div>
       </div>
 
-      {/* SMS consent — optional, unchecked by default */}
-      <div className="mt-4 p-3 rounded-xl bg-slate-50 border border-slate-200">
+      {/* SMS consent — required for A2P 10DLC compliance */}
+      <div className={`mt-4 p-3 rounded-xl bg-slate-50 border ${errors.smsConsent ? "border-red-400" : "border-slate-200"}`}>
         <SmsConsentCheckbox
           id={`${id}-sms-consent`}
           checked={data.smsConsent}
           onChange={(v) => set("smsConsent", v)}
+          error={errors.smsConsent}
         />
       </div>
 
