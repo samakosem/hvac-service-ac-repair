@@ -1,9 +1,9 @@
 "use client";
 
 export const SMS_CONSENT_TEXT =
-  "By checking this box, I agree to receive SMS text messages from HVAC Service & AC Repair at the phone number provided, including appointment confirmations, reminders, and service updates. Message frequency varies. Message & data rates may apply. Reply STOP to opt out at any time. Reply HELP for assistance. View our Privacy Policy and Terms of Service.";
+  "By checking this box, I agree to receive SMS text messages from HVAC Service & AC Repair at the phone number provided, including appointment confirmations, appointment reminders, technician arrival updates, and service-related updates. Message frequency varies. Message & data rates may apply. Reply STOP to opt out at any time. Reply HELP for assistance. Consent is not required to receive services.";
 
-export const SMS_CONSENT_VERSION = "2026-06-a2p-10dlc-v2";
+export const SMS_CONSENT_VERSION = "2026-06-a2p-10dlc-v3";
 
 type Props = {
   checked: boolean;
@@ -30,19 +30,17 @@ export default function SmsConsentCheckbox({ checked, onChange, id, variant = "l
         <input
           id={id}
           type="checkbox"
-          required
           checked={checked}
           onChange={(e) => onChange(e.target.checked)}
           className="mt-0.5 h-4 w-4 shrink-0 rounded border-slate-300 text-copper-600 focus:ring-copper-500 cursor-pointer"
           aria-describedby={`${id}-desc`}
-          aria-required="true"
-          aria-invalid={error ? "true" : undefined}
         />
         <label htmlFor={id} className={`text-xs ${textCls} cursor-pointer`} id={`${id}-desc`}>
           By checking this box, I agree to receive SMS text messages from HVAC Service &amp; AC
-          Repair at the phone number provided, including appointment confirmations, reminders, and
-          service updates. Message frequency varies. Message &amp; data rates may apply. Reply STOP
-          to opt out at any time. Reply HELP for assistance. View our{" "}
+          Repair at the phone number provided, including appointment confirmations, appointment
+          reminders, technician arrival updates, and service-related updates. Message frequency
+          varies. Message &amp; data rates may apply. Reply STOP to opt out at any time. Reply HELP
+          for assistance. Consent is not required to receive services. View our{" "}
           <a
             href="https://www.hvacserviceacrepair.com/privacy-policy"
             target="_blank"
