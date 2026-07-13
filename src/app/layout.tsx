@@ -31,6 +31,14 @@ export const metadata: Metadata = {
   description:
     "Professional AC repair, installation, and HVAC maintenance across Orange County, CA. Same-day service. Call (714) 410-2784.",
   metadataBase: new URL(SITE.domain),
+  // favicon.ico, icon.png and apple-icon.png in src/app/ are auto-detected by
+  // Next.js App Router. Only the extra PWA sizes below need declaring.
+  icons: {
+    other: [
+      { rel: "icon", url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { rel: "icon", url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+  },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
