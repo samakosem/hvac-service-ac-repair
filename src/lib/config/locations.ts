@@ -1189,7 +1189,7 @@ export function getCountyBySlug(slug: string): County | undefined {
   return COUNTIES.find((c) => c.slug === slug);
 }
 
-/** Counties that have dedicated service-area pages (excludes LA County which is legacy data only) */
-export const SERVICE_AREA_COUNTIES = COUNTIES.filter(
-  (c) => c.slug !== "los-angeles-county"
-);
+/** Counties that have dedicated service-area pages. LA County (eastern cities
+ *  bordering Orange County) is included — its pages are in the sitemap and must
+ *  render 200. */
+export const SERVICE_AREA_COUNTIES = COUNTIES;

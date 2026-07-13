@@ -26,9 +26,11 @@ import SummerBanner from "@/components/ui/SummerBanner";
 import FinancingTeaser from "@/components/ui/FinancingTeaser";
 
 export const metadata: Metadata = buildMetadata({
-  title: "AC Repair & HVAC Service in Yorba Linda & Orange County, CA",
+  // buildMetadata appends " | HVAC Service & AC Repair" (SITE.name), producing:
+  // "AC Repair Yorba Linda, CA | HVAC Service & AC Repair"
+  title: "AC Repair Yorba Linda, CA",
   description:
-    "Local HVAC company based in Yorba Linda. Same-day AC repair, AC installation, heating, ductless systems, commercial HVAC, and air duct services across Orange County. Call (714) 410-2784.",
+    "Local HVAC company in Yorba Linda, CA. Same-day AC repair, HVAC installation, heating, ductless systems, and commercial HVAC service. Call (714) 410-2784.",
   path: "",
 });
 

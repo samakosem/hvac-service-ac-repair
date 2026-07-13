@@ -1,5 +1,27 @@
 /** Unique FAQ content per county — supplements city-level FAQs on county pages */
 export const COUNTY_FAQS: Record<string, { question: string; answer: string }[]> = {
+  "los-angeles-county": [
+    {
+      question: "Which Los Angeles County cities do you service?",
+      answer:
+        "We serve the eastern LA County cities closest to our Yorba Linda base: Diamond Bar, Rowland Heights, Walnut, Hacienda Heights, and La Habra Heights. These border Orange County, so we can often reach them quickly for repair, maintenance, and installation.",
+    },
+    {
+      question: "Do you offer same-day service in Los Angeles County?",
+      answer:
+        "For the eastern LA County cities near our Orange County base, same-day service is often available. Because these are at the edge of our core service area, we recommend calling to confirm availability for your address.",
+    },
+    {
+      question: "What HVAC services do you provide in Los Angeles County?",
+      answer:
+        "AC repair, AC installation and replacement, heating and furnace service, ductless mini-split systems, and routine maintenance for homes in eastern LA County. Call (714) 410-2784 to schedule.",
+    },
+    {
+      question: "Is there a trip charge for Los Angeles County service?",
+      answer:
+        "Free diagnostic — no charge to identify the problem, and you only pay if you proceed with the repair. For addresses at the edge of our range we discuss any distance considerations openly before scheduling, so there are no surprises.",
+    },
+  ],
   "orange-county": [
     {
       question: "Do you offer same-day HVAC service across all of Orange County?",
@@ -143,6 +165,12 @@ export const COUNTY_FAQS: Record<string, { question: string; answer: string }[]>
 
 /** Unique meta description per county for SEO */
 export const COUNTY_META: Record<string, { title: string; description: string; h1: string }> = {
+  "los-angeles-county": {
+    title: "HVAC Service in Los Angeles County, CA | Diamond Bar, Walnut & Hacienda Heights",
+    description:
+      "HVAC service for eastern Los Angeles County — Diamond Bar, Rowland Heights, Walnut, Hacienda Heights, and La Habra Heights. AC repair, installation, and maintenance from our Yorba Linda base. Call (714) 410-2784.",
+    h1: "HVAC Service in Los Angeles County, CA",
+  },
   "orange-county": {
     title: "HVAC Service in Orange County, CA | AC Repair, Installation & More",
     description:
