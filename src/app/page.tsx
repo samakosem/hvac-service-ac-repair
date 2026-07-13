@@ -7,6 +7,7 @@ import Hero from "@/components/home/Hero";
 import HomeLeadForm from "@/components/home/HomeLeadForm";
 import EmergencyStrip from "@/components/home/EmergencyStrip";
 import ServicesGrid from "@/components/home/ServicesGrid";
+import GoogleReviewsCarousel from "@/components/home/GoogleReviewsCarousel";
 import RepairVsInstall from "@/components/home/RepairVsInstall";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import MaintenancePlan from "@/components/home/MaintenancePlan";
@@ -36,9 +37,13 @@ export default function HomePage() {
     <>
       <JsonLd data={schemaHvacBusiness()} />
       <Hero />
+      {/* Lead form 1: dedicated estimate section directly below hero (hero CTAs scroll here) */}
+      <HomeLeadForm variant="estimate" />
       <EmergencyStrip />
       {/* Trust bar immediately below hero for PPC + organic visitors */}
       <ConversionTrustBar variant="light" />
+      {/* Google-style reviews carousel — below hero/quote, before services */}
+      <GoogleReviewsCarousel />
       <ServicesGrid />
       <RepairVsInstall />
       {/* Summer cooling season banner — seasonal relevance */}

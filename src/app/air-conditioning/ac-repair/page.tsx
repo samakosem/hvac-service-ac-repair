@@ -8,7 +8,7 @@ import { SITE } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import { resolveService } from "@/lib/seo/buildServicePage";
-import { IMG_AC_REPAIR } from "@/lib/config/images";
+import { IMG_HERO } from "@/lib/config/images";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
@@ -140,19 +140,20 @@ export default function AcRepairPage() {
         style={{ minHeight: "calc(100svh - 0px)" }}
         aria-label="Hero"
       >
-        {/* Background photo */}
+        {/* Background photo — shared bright HVAC hero */}
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
           <Image
-            src={IMG_AC_REPAIR.src}
+            src={IMG_HERO.src}
             alt=""
             fill
             sizes="100vw"
-            className="object-cover object-center opacity-15"
+            className="object-cover object-[85%_center]"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-950/85 via-navy-950/60 to-navy-950/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-950/92 via-navy-900/60 to-navy-900/20" />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/70 to-transparent" />
         </div>
-        <div aria-hidden="true" className="absolute inset-0 bg-dot-grid opacity-20 pointer-events-none" />
+        <div aria-hidden="true" className="absolute inset-0 bg-dot-grid opacity-15 pointer-events-none" />
         <div aria-hidden="true" className="absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-hvac-blue-600/8 blur-3xl pointer-events-none" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 lg:pt-28 lg:pb-16">

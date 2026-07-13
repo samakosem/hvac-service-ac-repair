@@ -12,12 +12,13 @@ export type SiteImage = {
 };
 
 // ─── Hero ──────────────────────────────────────────────────────────────────────
-// Clean Lennox condenser install at Orange County residence, good daylight
+// Bright daytime HVAC technician servicing a condenser under blue sky — natural
+// blue-fade left side leaves room for hero text; technician sits right of center
 export const IMG_HERO: SiteImage = {
-  src: "/uploads/ac-unit-installation (4).jpeg",
-  alt: "Newly installed Lennox air conditioning condenser unit at an Orange County home — HVAC Service & AC Repair",
-  width: 1200,
-  height: 1600,
+  src: "/images/hvac-hero-technician-bright.webp",
+  alt: "HVAC technician servicing an air conditioning condenser unit at an Orange County home on a bright day — HVAC Service & AC Repair",
+  width: 1672,
+  height: 941,
 };
 
 // ─── OG / social share image ───────────────────────────────────────────────────

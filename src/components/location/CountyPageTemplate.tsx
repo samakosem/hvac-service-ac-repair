@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
-import { IMG_AC_REPAIR } from "@/lib/config/images";
+import { IMG_HERO } from "@/lib/config/images";
 import PhoneLink from "@/components/ui/PhoneLink";
 import JsonLd from "@/components/ui/JsonLd";
 import { schemaService, schemaFaqPage, schemaBreadcrumb } from "@/lib/seo/schema";
@@ -83,17 +83,18 @@ export default function CountyPageTemplate({ county, faqs }: Props) {
       <section className="relative overflow-hidden bg-hero-gradient py-14 lg:py-20">
         <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
           <Image
-            src={IMG_AC_REPAIR.src}
+            src={IMG_HERO.src}
             alt=""
             fill
             sizes="100vw"
-            className="object-cover object-center opacity-20"
+            className="object-cover object-[78%_center]"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-950/80 via-navy-950/50 to-navy-950/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-900/55 to-navy-900/15" />
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-navy-950/70 to-transparent" />
         </div>
-        <div aria-hidden="true" className="absolute -right-24 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-hvac-blue-600/8 blur-3xl pointer-events-none" />
-        <div aria-hidden="true" className="absolute inset-0 bg-dot-grid opacity-20 pointer-events-none" />
+        <div aria-hidden="true" className="absolute -right-24 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-hvac-blue-500/15 blur-3xl pointer-events-none" />
+        <div aria-hidden="true" className="absolute inset-0 bg-dot-grid opacity-15 pointer-events-none" />
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Breadcrumbs

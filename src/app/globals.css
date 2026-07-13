@@ -97,7 +97,7 @@ body {
 }
 
 .glass-dark {
-  background: rgba(10, 15, 30, 0.72);
+  background: rgba(10, 15, 30, 0.86);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -105,11 +105,14 @@ body {
 
 /* Gradient backgrounds */
 .bg-hero-gradient {
+  /* Brighter blue HVAC hero — matches the homepage hero / estimate section.
+     Shared by every interior hero (service, location, static pages) so the
+     whole site reads bright and premium, not dark. */
   background: linear-gradient(
     135deg,
-    var(--color-navy-950) 0%,
-    var(--color-navy-800) 45%,
-    var(--color-charcoal-800) 100%
+    var(--color-navy-900) 0%,
+    var(--color-hvac-blue-900) 50%,
+    var(--color-navy-700) 100%
   );
 }
 
@@ -127,6 +130,51 @@ body {
     var(--color-copper-600) 0%,
     var(--color-copper-400) 100%
   );
+}
+
+/* ─── Header contractor gradients ──────────────────────────────────────── */
+/* Top utility bar — red/orange contractor energy */
+.bg-header-topbar {
+  background: linear-gradient(
+    90deg,
+    #b91c1c 0%,
+    var(--color-copper-600) 42%,
+    var(--color-copper-500) 58%,
+    #b91c1c 100%
+  );
+}
+
+/* Main nav — deep navy → electric blue → purple */
+.bg-header-nav {
+  background: linear-gradient(
+    100deg,
+    var(--color-navy-950) 0%,
+    #101a3a 34%,
+    #16123a 60%,
+    var(--color-navy-950) 100%
+  );
+}
+
+/* Red CTA — Tornado-style energy, brand copper/red */
+.bg-cta-red {
+  background: linear-gradient(
+    135deg,
+    #dc2626 0%,
+    var(--color-copper-500) 55%,
+    var(--color-copper-400) 100%
+  );
+}
+
+/* Angled/slanted clip for the header CTA button */
+.clip-cta-slant {
+  clip-path: polygon(9% 0, 100% 0, 91% 100%, 0 100%);
+}
+
+/* Subtle angled polygon texture for the nav background */
+.header-polygons {
+  background-image:
+    linear-gradient(135deg, rgba(14,165,233,0.05) 0%, transparent 38%),
+    linear-gradient(215deg, rgba(139,92,246,0.06) 0%, transparent 42%);
 }
 
 /* Text gradient utility */

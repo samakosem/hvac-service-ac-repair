@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import JsonLd from "@/components/ui/JsonLd";
 import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import PhoneLink from "@/components/ui/PhoneLink";
 import { SITE } from "@/lib/config/site";
+import { IMG_HERO } from "@/lib/config/images";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import type { CityServicePage } from "@/lib/config/city-service-pages";
 
@@ -111,10 +113,23 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
         style={{ minHeight: "calc(100svh - 0px)" }}
         aria-label="Hero"
       >
-        <div aria-hidden="true" className="absolute inset-0 bg-dot-grid opacity-30 pointer-events-none" />
+        {/* Shared bright HVAC hero image behind the copy/form */}
+        <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+          <Image
+            src={IMG_HERO.src}
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-[85%_center] opacity-100"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-navy-950/92 via-navy-900/60 to-navy-900/20" />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-navy-950/70 to-transparent" />
+        </div>
+        <div aria-hidden="true" className="absolute inset-0 bg-dot-grid opacity-15 pointer-events-none" />
         <div aria-hidden="true" className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-32 -right-32 w-[560px] h-[560px] rounded-full bg-hvac-blue-600/8 blur-3xl" />
-          <div className="absolute bottom-0 -left-24 w-[380px] h-[380px] rounded-full bg-copper-500/7 blur-3xl" />
+          <div className="absolute -top-32 -right-32 w-[560px] h-[560px] rounded-full bg-hvac-blue-500/12 blur-3xl" />
+          <div className="absolute bottom-0 -left-24 w-[380px] h-[380px] rounded-full bg-hvac-blue-600/10 blur-3xl" />
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 lg:pt-28 lg:pb-16">
