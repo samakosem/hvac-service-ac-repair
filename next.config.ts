@@ -9,6 +9,17 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      // ── Canonical host: force https://www.hvacserviceacrepair.com ─────────
+      // Any request on the bare (non-www) apex host is 308-redirected to the
+      // www host over https, preserving the path. Platform-level TLS already
+      // upgrades http→https, so the destination is always https + www.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "hvacserviceacrepair.com" }],
+        destination: "https://www.hvacserviceacrepair.com/:path*",
+        permanent: true,
+      },
+
       // ── Short-path aliases ────────────────────────────────────────────────
       // /about is used in some nav links — redirect to canonical /about-us
       { source: "/about",   destination: "/about-us", permanent: true },

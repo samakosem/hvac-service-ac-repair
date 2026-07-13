@@ -1,7 +1,7 @@
 export const SITE = {
   name: "HVAC Service & AC Repair",
   shortName: "HVAC Service",
-  domain: "https://hvacserviceacrepair.com",
+  domain: "https://www.hvacserviceacrepair.com",
   phone: "+17144102784",
   phoneDisplay: "(714) 410-2784",
   email: "info@hvacserviceacrepair.com",

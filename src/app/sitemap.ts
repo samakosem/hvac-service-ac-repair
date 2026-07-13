@@ -5,7 +5,7 @@ import { blogPosts } from "@/lib/content/blog";
 import { CITY_SERVICE_MAP } from "@/lib/config/city-service-pages";
 import { ALL_PPC_CITIES, PPC_CITIES } from "@/lib/config/ppc-cities";
 
-const base = SITE.domain; // https://hvacserviceacrepair.com
+const base = SITE.domain; // https://www.hvacserviceacrepair.com
 
 type SitemapEntry = MetadataRoute.Sitemap[number];
 
