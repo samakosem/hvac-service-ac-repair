@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE } from "@/lib/config/site";
-import JsonLd from "@/components/ui/JsonLd";
 import CtaSection from "@/components/ui/CtaSection";
 import InteriorHero from "@/components/layout/InteriorHero";
 import { IMG_LENNOX_INSTALL } from "@/lib/config/images";
 
 export const metadata: Metadata = {
-  title: "Customer Reviews | HVAC Service & AC Repair — Yorba Linda, CA",
+  title: "Customer Reviews | Yorba Linda, CA",
   description:
     "See what customers are saying about HVAC Service & AC Repair in Orange County. Honest service, reliable repairs, and transparent pricing.",
   alternates: { canonical: "/reviews" },

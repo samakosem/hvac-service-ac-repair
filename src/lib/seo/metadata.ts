@@ -6,6 +6,14 @@ import { SITE } from "@/lib/config/site";
 const OG_DEFAULT = "/uploads/ac-unit-installation (4).jpeg";
 const HAS_OG_IMAGE = true;
 
+/**
+ * Strips a trailing slash so canonicals match the URLs Next.js actually serves
+ * (trailingSlash is off: "/foo/" 308-redirects to "/foo"). Root stays "".
+ */
+export function canonicalPath(path: string): string {
+  return path.length > 1 ? path.replace(/\/+$/, "") : "";
+}
+
 type BuildMetadataOptions = {
   title: string;
   description: string;
@@ -23,21 +31,22 @@ export function buildMetadata({
   openGraphType = "website",
   openGraphImage,
 }: BuildMetadataOptions): Metadata {
-  const url = `${SITE.domain}${path}`;
+  const url = `${SITE.domain}${canonicalPath(path)}`;
   const fullTitle = `${title} | ${SITE.name}`;
 
   // Use explicitly passed image, or fall back to default only if the file exists
   const resolvedImage = openGraphImage ?? (HAS_OG_IMAGE ? OG_DEFAULT : undefined);
 
   return {
-    title: fullTitle,
+    // absolute: the root layout's title.template would otherwise append SITE.name a second time
+    title: { absolute: fullTitle },
     description,
     metadataBase: new URL(SITE.domain),
     alternates: {
       canonical: url,
     },
     robots: noIndex
-      ? { index: false, follow: false }
+      ? { index: false, follow: true }
       : { index: true, follow: true, googleBot: { index: true, follow: true } },
     openGraph: {
       type: openGraphType,
@@ -46,7 +55,7 @@ export function buildMetadata({
       description,
       siteName: SITE.name,
       ...(resolvedImage && {
-        images: [{ url: resolvedImage, width: 1200, height: 630, alt: title }],
+        images: [{ url: resolvedImage, alt: title }],
       }),
     },
     twitter: {

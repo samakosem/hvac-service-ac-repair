@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { SITE } from "@/lib/config/site";
 import { IMG_MAINTENANCE } from "@/lib/config/images";
 import JsonLd from "@/components/ui/JsonLd";
 import { schemaFaqPage, schemaService } from "@/lib/seo/schema";

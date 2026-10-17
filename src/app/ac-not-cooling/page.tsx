@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo/metadata";
-import Link from "next/link";
 import JsonLd from "@/components/ui/JsonLd";
 import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import PhoneLink from "@/components/ui/PhoneLink";
@@ -12,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "AC Running But Not Cooling? Causes & Fix | Orange County HVAC",
     description:
       "Find out why your AC is running but not cooling — and get it fixed today. Free diagnostic with repair. Serving Orange County, CA. (714) 410-2784).",
-    path: "/ac-not-cooling/",
+    path: "/ac-not-cooling",
   });
 }
 
@@ -102,7 +101,7 @@ function ArrowIcon({ className }: { className?: string }) {
 export default function AcNotCoolingPage() {
   const breadcrumbSchema = schemaBreadcrumb([
     { name: "Home", href: "/" },
-    { name: "AC Not Cooling", href: "/ac-not-cooling/" },
+    { name: "AC Not Cooling", href: "/ac-not-cooling" },
   ]);
   const faqSchema = schemaFaqPage(FAQS);
 

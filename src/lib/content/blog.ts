@@ -220,6 +220,7 @@ export const blogPosts: BlogPost[] = [
       { label: "AC Repair", href: "/air-conditioning/ac-repair" },
       { label: "Emergency AC Repair", href: "/air-conditioning/emergency-ac-repair" },
       { label: "AC Tune-Up", href: "/air-conditioning/ac-tune-up" },
+      { label: "AC Not Cooling? Troubleshooting Guide", href: "/ac-not-cooling" },
     ],
     faqs: [
       {

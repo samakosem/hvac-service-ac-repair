@@ -72,18 +72,25 @@ function ArrowIcon({ className }: { className?: string }) {
 
 // ── Component ────────────────────────────────────────────────────────────────
 
+// URL bases with no hub page of their own (they redirect elsewhere) — point the
+// breadcrumb at the real parent page instead of a redirecting URL.
+const BREADCRUMB_HUBS: Record<string, { name: string; href: string }> = {
+  "/heating/heating-repair": { name: "Heating", href: "/heating" },
+  "/hvac-repair": { name: "HVAC Services", href: "/services" },
+};
+
 type Props = {
   page: CityServicePage;
   isEmergency?: boolean;
 };
 
 export default function CityServicePageTemplate({ page, isEmergency = false }: Props) {
-  const pageUrl = `${page.urlBase}/${page.citySlug}/`;
-  const canonicalUrl = `${SITE.domain}${pageUrl}`;
+  const pageUrl = `${page.urlBase}/${page.citySlug}`;
+  const hub = BREADCRUMB_HUBS[page.urlBase] ?? { name: page.serviceName, href: page.urlBase };
 
   const breadcrumbItems = [
     { name: "Home", href: "/" },
-    { name: page.serviceName, href: page.urlBase + "/" },
+    hub,
     { name: `${page.cityName}, CA`, href: pageUrl },
   ];
 
@@ -425,7 +432,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
             {page.nearbyCities.map((city) => (
               <Link
                 key={city.slug}
-                href={`${city.urlBase}/${city.slug}/`}
+                href={`${city.urlBase}/${city.slug}`}
                 className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 font-medium text-sm hover:border-hvac-blue-300 hover:text-hvac-blue-700 transition-colors"
               >
                 {city.name}

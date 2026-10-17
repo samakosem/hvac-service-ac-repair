@@ -267,7 +267,6 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       { name: "Placentia", slug: "placentia", urlBase: "/air-conditioning/ac-repair" },
       { name: "Anaheim", slug: "anaheim", urlBase: "/air-conditioning/ac-repair" },
       { name: "Brea", slug: "brea", urlBase: "/air-conditioning/ac-repair" },
-      { name: "La Habra", slug: "la-habra", urlBase: "/air-conditioning/ac-repair" },
     ],
     reviews: [
       {

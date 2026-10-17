@@ -24,6 +24,8 @@ const nextConfig: NextConfig = {
       // /about is used in some nav links — redirect to canonical /about-us
       { source: "/about",   destination: "/about-us", permanent: true },
       { source: "/about/",  destination: "/about-us", permanent: true },
+      // /ductless has no hub page — send the silo root to its main service page
+      { source: "/ductless", destination: "/ductless/ductless-mini-split", permanent: true },
       // /faq has no page — send to homepage FAQ section
       { source: "/faq",     destination: "/#faq",     permanent: false },
       { source: "/faq/",    destination: "/#faq",     permanent: false },

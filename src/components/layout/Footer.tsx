@@ -6,6 +6,7 @@ import { SERVICE_AREA_COUNTIES } from "@/lib/config/locations";
 const FOOTER_SERVICE_LINKS = [
   { label: "Air Conditioning",     href: "/air-conditioning" },
   { label: "AC Repair",            href: "/air-conditioning/ac-repair" },
+  { label: "Emergency HVAC Service", href: "/emergency-hvac-service" },
   { label: "AC Installation",      href: "/air-conditioning/ac-installation" },
   { label: "Ductless Mini-Split",  href: "/ductless/ductless-mini-split" },
   { label: "Heating Services",     href: "/heating" },
@@ -148,6 +149,7 @@ export default function Footer() {
                 { label: "Financing Options", href: "/financing" },
                 { label: "Blog", href: "/blog" },
                 { label: "Calculators", href: "/calculators" },
+                { label: "Careers", href: "/careers" },
                 { label: "Contact Us", href: "/contact" },
               ].map((link) => (
                 <li key={link.label}>

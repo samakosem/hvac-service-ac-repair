@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "AC Installation & Replacement — Free In-Home Estimate | (714) 410-2784",
     description:
       "New AC system installation throughout Southern California. Free in-home estimates, 0% financing, all major brands. Licensed HVAC contractor. Call (714) 410-2784).",
-    path: "/air-conditioning/ac-installation/",
+    path: "/air-conditioning/ac-installation",
   });
 }
 
@@ -90,13 +90,13 @@ function ShieldIcon({ className }: { className?: string }) {
 export default function AcInstallationPage() {
   const breadcrumbSchema = schemaBreadcrumb([
     { name: "Home", href: "/" },
-    { name: "Air Conditioning", href: "/air-conditioning/" },
-    { name: "AC Installation & Replacement", href: "/air-conditioning/ac-installation/" },
+    { name: "Air Conditioning", href: "/air-conditioning" },
+    { name: "AC Installation & Replacement", href: "/air-conditioning/ac-installation" },
   ]);
   const serviceSchema = schemaService({
     name: "AC Installation & Replacement — Free In-Home Estimate",
     description: "Free in-home estimates for new AC system installation and replacement across Orange County. 0% financing, all major brands, licensed contractor.",
-    url: "/air-conditioning/ac-installation/",
+    url: "/air-conditioning/ac-installation",
     areaServed: "Orange County",
   });
   const faqSchema = schemaFaqPage(FAQS);

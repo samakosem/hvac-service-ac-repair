@@ -5,7 +5,7 @@ import { SITE } from "@/lib/config/site";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { IMG_LENNOX_INSTALL } from "@/lib/config/images";
 import JsonLd from "@/components/ui/JsonLd";
-import { schemaOrganization } from "@/lib/seo/schema";
+import { schemaHvacBusiness } from "@/lib/seo/schema";
 import PhoneLink from "@/components/ui/PhoneLink";
 import CtaSection from "@/components/ui/CtaSection";
 import InteriorHero from "@/components/layout/InteriorHero";
@@ -54,7 +54,7 @@ const WHAT_WE_DO = [
 export default function AboutPage() {
   return (
     <>
-      <JsonLd data={schemaOrganization()} />
+      <JsonLd data={schemaHvacBusiness()} />
 
       <InteriorHero
         breadcrumbs={[{ name: "About Us", href: "/about-us" }]}

@@ -7,7 +7,7 @@ import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import { IMG_HERO } from "@/lib/config/images";
 import PhoneLink from "@/components/ui/PhoneLink";
 import JsonLd from "@/components/ui/JsonLd";
-import { schemaService, schemaFaqPage, schemaBreadcrumb } from "@/lib/seo/schema";
+import { schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import { serviceHref } from "@/lib/config/routes";
 import { SITE } from "@/lib/config/site";
 import type { County } from "@/lib/config/locations";
@@ -67,17 +67,11 @@ export default function CountyPageTemplate({ county, faqs }: Props) {
     areaServed: county.name,
   });
   const faqSchema = schemaFaqPage(faqs);
-  const breadcrumbSchema = schemaBreadcrumb([
-    { name: "Home", href: "/" },
-    { name: "Service Areas", href: "/service-areas" },
-    { name: county.name, href: canonicalPath },
-  ]);
 
   return (
     <>
       <JsonLd data={serviceSchema} />
       <JsonLd data={faqSchema} />
-      <JsonLd data={breadcrumbSchema} />
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-hero-gradient py-14 lg:py-20">

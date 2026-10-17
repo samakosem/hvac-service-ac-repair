@@ -115,7 +115,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── AC SERVICES ──────────────────────────────────────────────────────────
   {
     slug: "ac-services",
-    seoTitle: "AC Services Yorba Linda & Southern California | HVAC Service & AC Repair",
+    seoTitle: "AC Services Yorba Linda & Southern California",
     metaDescription:
       "Professional AC services in Yorba Linda and throughout Orange County. Repair, installation, maintenance, and ductless systems. Local team, transparent pricing. Call (714) 410-2784.",
     h1: "AC Services",
