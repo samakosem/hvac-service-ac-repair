@@ -1,0 +1,2717 @@
+{
+ "families": {
+  "ppc_city (/ac-repair/[city])": {
+   "pages": 175,
+   "words_median": 1625,
+   "family_mean_similarity_median": 0.951,
+   "nearest_similarity_median": 1.0,
+   "unique_text_share_median": 0.0,
+   "duplicated_paragraph_share_median": 1.0,
+   "faq_reused_share_median": 1.0,
+   "contextual_inlinks_median": 0,
+   "classification": {
+    "NOINDEX CANDIDATE": 175
+   }
+  },
+  "service_area_city (/service-areas/[county]/[city])": {
+   "pages": 37,
+   "words_median": 311,
+   "family_mean_similarity_median": 0.336,
+   "nearest_similarity_median": 0.4,
+   "unique_text_share_median": 0.392,
+   "duplicated_paragraph_share_median": 0.667,
+   "faq_reused_share_median": 0.0,
+   "contextual_inlinks_median": 5,
+   "classification": {
+    "IMPROVE": 37
+   }
+  },
+  "city_service (/air-conditioning/ac-repair/[city])": {
+   "pages": 37,
+   "words_median": 996,
+   "family_mean_similarity_median": 0.845,
+   "nearest_similarity_median": 0.977,
+   "unique_text_share_median": 0.011,
+   "duplicated_paragraph_share_median": 1.0,
+   "faq_reused_share_median": 1.0,
+   "contextual_inlinks_median": 4,
+   "classification": {
+    "IMPROVE": 21,
+    "MERGE CANDIDATE": 16
+   }
+  },
+  "city_service (/air-conditioning/emergency-ac-repair/[city])": {
+   "pages": 37,
+   "words_median": 1031,
+   "family_mean_similarity_median": 0.901,
+   "nearest_similarity_median": 0.98,
+   "unique_text_share_median": 0.011,
+   "duplicated_paragraph_share_median": 1.0,
+   "faq_reused_share_median": 1.0,
+   "contextual_inlinks_median": 4,
+   "classification": {
+    "IMPROVE": 21,
+    "MERGE CANDIDATE": 16
+   }
+  },
+  "city_service (/air-conditioning/ac-tune-up/[city])": {
+   "pages": 37,
+   "words_median": 1002,
+   "family_mean_similarity_median": 0.935,
+   "nearest_similarity_median": 0.979,
+   "unique_text_share_median": 0.01,
+   "duplicated_paragraph_share_median": 1.0,
+   "faq_reused_share_median": 1.0,
+   "contextual_inlinks_median": 4,
+   "classification": {
+    "IMPROVE": 1,
+    "MERGE CANDIDATE": 36
+   }
+  },
+  "city_service (/heating/heating-repair/[city])": {
+   "pages": 37,
+   "words_median": 979,
+   "family_mean_similarity_median": 0.925,
+   "nearest_similarity_median": 0.978,
+   "unique_text_share_median": 0.01,
+   "duplicated_paragraph_share_median": 1.0,
+   "faq_reused_share_median": 1.0,
+   "contextual_inlinks_median": 4,
+   "classification": {
+    "IMPROVE": 1,
+    "MERGE CANDIDATE": 36
+   }
+  },
+  "city_service (/hvac-repair/[city])": {
+   "pages": 37,
+   "words_median": 992,
+   "family_mean_similarity_median": 0.926,
+   "nearest_similarity_median": 0.979,
+   "unique_text_share_median": 0.01,
+   "duplicated_paragraph_share_median": 1.0,
+   "faq_reused_share_median": 1.0,
+   "contextual_inlinks_median": 4,
+   "classification": {
+    "IMPROVE": 1,
+    "MERGE CANDIDATE": 36
+   }
+  },
+  "service": {
+   "pages": 22,
+   "words_median": 499,
+   "family_mean_similarity_median": 0.159,
+   "nearest_similarity_median": 0.191,
+   "unique_text_share_median": 0.684,
+   "duplicated_paragraph_share_median": 0.278,
+   "faq_reused_share_median": 0.0,
+   "contextual_inlinks_median": 8,
+   "classification": {
+    "KEEP": 22
+   }
+  },
+  "core": {
+   "pages": 10,
+   "words_median": 528,
+   "family_mean_similarity_median": 0.005,
+   "nearest_similarity_median": 0.028,
+   "unique_text_share_median": 0.987,
+   "duplicated_paragraph_share_median": 0.0,
+   "faq_reused_share_median": 0.0,
+   "contextual_inlinks_median": 2,
+   "classification": {
+    "KEEP": 8,
+    "IMPROVE": 2
+   }
+  },
+  "blog": {
+   "pages": 9,
+   "words_median": 1095,
+   "family_mean_similarity_median": 0.06,
+   "nearest_similarity_median": 0.067,
+   "unique_text_share_median": 0.829,
+   "duplicated_paragraph_share_median": 0.074,
+   "faq_reused_share_median": 0.0,
+   "contextual_inlinks_median": 4,
+   "classification": {
+    "KEEP": 9
+   }
+  },
+  "service_area_county": {
+   "pages": 6,
+   "words_median": 315,
+   "family_mean_similarity_median": 0.206,
+   "nearest_similarity_median": 0.254,
+   "unique_text_share_median": 0.597,
+   "duplicated_paragraph_share_median": 0.375,
+   "faq_reused_share_median": 0.0,
+   "contextual_inlinks_median": 6,
+   "classification": {
+    "IMPROVE": 6
+   }
+  },
+  "ppc_legacy (/[city]-ac-repair)": {
+   "pages": 6,
+   "words_median": 1522,
+   "family_mean_similarity_median": 0.33,
+   "nearest_similarity_median": 0.34,
+   "unique_text_share_median": 0.497,
+   "duplicated_paragraph_share_median": 0.52,
+   "faq_reused_share_median": 0.0,
+   "contextual_inlinks_median": 0,
+   "classification": {
+    "KEEP": 6
+   }
+  },
+  "calculators": {
+   "pages": 5,
+   "words_median": 567,
+   "family_mean_similarity_median": 0.001,
+   "nearest_similarity_median": 0.02,
+   "unique_text_share_median": 0.99,
+   "duplicated_paragraph_share_median": 0.0,
+   "faq_reused_share_median": 0.0,
+   "contextual_inlinks_median": 3,
+   "classification": {
+    "IMPROVE": 1,
+    "KEEP": 4
+   }
+  },
+  "home": {
+   "pages": 1,
+   "words_median": 3041,
+   "family_mean_similarity_median": null,
+   "nearest_similarity_median": 0.045,
+   "unique_text_share_median": 1.0,
+   "duplicated_paragraph_share_median": 0.012,
+   "faq_reused_share_median": null,
+   "contextual_inlinks_median": 85,
+   "classification": {
+    "KEEP": 1
+   }
+  }
+ },
+ "top_paragraphs": [
+  [
+   202,
+   "ask about available financing options \u2014 including 0% interest for qualified buyers."
+  ],
+  [
+   186,
+   "diagnostic: free \u2014 no charge to identify the problem."
+  ],
+  [
+   186,
+   "diagnostic: free \u2014 no charge to identify the problem \u00b7 written quote before any work"
+  ],
+  [
+   185,
+   "we give you a written quote before any work begins. if we diagnose the problem and you decide not to proceed, there is no charge \u2014 the diagnostic is free."
+  ],
+  [
+   185,
+   "repair completed, system tested, invoice in hand. no hidden charges. warranty on parts and labor."
+  ],
+  [
+   185,
+   "call or fill the form above. a real person confirms availability \u2014 usually within 1 hour."
+  ],
+  [
+   185,
+   "call now or request a free estimate online. we respond within 1 hour."
+  ],
+  [
+   182,
+   "we'll respond within 1 hour during business hours."
+  ],
+  [
+   182,
+   "mon\u2013fri 7:00 am \u2013 7:00 pm \u00b7 sat 8:00 am \u2013 5:00 pm"
+  ],
+  [
+   182,
+   "from your first call to a running system \u2014 no confusion, no runaround."
+  ],
+  [
+   181,
+   "your technician diagnoses the issue and provides a written quote before any work begins. no surprises."
+  ],
+  [
+   181,
+   "work is completed to manufacturer specs. we test thoroughly before leaving and walk you through what was done."
+  ],
+  [
+   181,
+   "we respond within 1 hour during business hours."
+  ],
+  [
+   181,
+   "we confirm a technician and arrival window. most customers get same-day service when they call before noon."
+  ],
+  [
+   181,
+   "reach us by phone or submit the form. a real person responds \u2014 not a chatbot or voicemail."
+  ],
+  [
+   181,
+   "no obligations, no pressure. a licensed technician comes to your city home, evaluates your system, and gives you a written quote \u2014 completely free."
+  ],
+  [
+   181,
+   "free estimates. same-day availability. real people answer your call. serving city and all surrounding communities."
+  ],
+  [
+   181,
+   "ask about available financing options including 0% interest promotions for qualified buyers. new system installations, major repairs, and replacements can qualify \u2014 call us to find out what applies to your situation."
+  ],
+  [
+   180,
+   "18340 yorba linda blvd #107, yorba linda, ca 92886 \u00b7 cslb licensed & insured \u00b7 7:00 am \u2013 7:00 pm mon\u2013fri \u00b7 8:00 am \u2013 5:00 pm sat"
+  ],
+  [
+   175,
+   "\u201c very professional and honest. the tech explained what was wrong, gave me options, and didn't pressure me toward the most expensive fix. the repair held and i've since referred two neighbors. \u201d"
+  ],
+  [
+   175,
+   "\u201c had three other companies give me quotes \u2014 this one was the most transparent about pricing and didn't try to upsell me on a new system when a repair was clearly the right call. will use again. \u201d"
+  ],
+  [
+   175,
+   "\u201c called on a saturday morning when our ac stopped working. technician arrived within 3 hours, diagnosed a failed capacitor, and had us cooling again before noon. exactly what you want in a heat emergency. \u201d"
+  ],
+  [
+   175,
+   "you receive a written quote before any work begins. no surprise charges, no upselling to a replacement when a repair is the right call. free diagnostic on every service call."
+  ],
+  [
+   175,
+   "we keep our schedule flexible to accommodate emergency calls throughout city and surrounding areas. most customers calling before noon get a same-day appointment."
+  ],
+  [
+   175,
+   "same-day ac repair, system replacement & hvac maintenance for city homes. licensed technicians \u2014 real people answer your call 7 days a week."
+  ]
+ ],
+ "top_faqs": [
+  [
+   176,
+   "how quickly can you respond to an ac emergency in city ?"
+  ],
+  [
+   175,
+   "my ac is running but not cooling my city home \u2014 what's wrong?"
+  ],
+  [
+   175,
+   "is it worth repairing or replacing my ac system in city ?"
+  ],
+  [
+   175,
+   "do you offer financing for ac installation in city ?"
+  ],
+  [
+   139,
+   "how quickly can you get to city for service?"
+  ],
+  [
+   107,
+   "do you charge a diagnostic fee in city ?"
+  ],
+  [
+   37,
+   "how often should i get an ac tune-up in city ?"
+  ],
+  [
+   37,
+   "do you offer maintenance plans for city homeowners?"
+  ],
+  [
+   37,
+   "can a tune-up extend the life of my ac system?"
+  ],
+  [
+   37,
+   "are you a local company or a national franchise?"
+  ],
+  [
+   36,
+   "what's included in the ac tune-up?"
+  ],
+  [
+   36,
+   "what should i do while waiting for emergency ac repair?"
+  ],
+  [
+   36,
+   "should i service my heating system before winter in city ?"
+  ],
+  [
+   36,
+   "do you repair both ac and heating in city ?"
+  ],
+  [
+   36,
+   "do you offer a maintenance plan for city homeowners?"
+  ],
+  [
+   36,
+   "do you charge extra for emergency calls in city ?"
+  ],
+  [
+   36,
+   "can you fix my ac on the first emergency visit?"
+  ],
+  [
+   33,
+   "are you available on weekends in city ?"
+  ],
+  [
+   32,
+   "do you work on all ac brands?"
+  ],
+  [
+   32,
+   "do you offer financing on ac repairs?"
+  ]
+ ],
+ "city_groups": {
+  "acton": {
+   "urls": [
+    "/ac-repair/acton"
+   ],
+   "max_pair_similarity": null
+  },
+  "agoura-hills": {
+   "urls": [
+    "/ac-repair/agoura-hills"
+   ],
+   "max_pair_similarity": null
+  },
+  "alhambra": {
+   "urls": [
+    "/ac-repair/alhambra"
+   ],
+   "max_pair_similarity": null
+  },
+  "aliso-viejo": {
+   "urls": [
+    "/service-areas/orange-county/aliso-viejo",
+    "/air-conditioning/ac-repair/aliso-viejo",
+    "/air-conditioning/emergency-ac-repair/aliso-viejo",
+    "/air-conditioning/ac-tune-up/aliso-viejo",
+    "/heating/heating-repair/aliso-viejo",
+    "/hvac-repair/aliso-viejo",
+    "/ac-repair/aliso-viejo"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "anaheim": {
+   "urls": [
+    "/service-areas/orange-county/anaheim",
+    "/air-conditioning/ac-repair/anaheim",
+    "/air-conditioning/emergency-ac-repair/anaheim",
+    "/air-conditioning/ac-tune-up/anaheim",
+    "/heating/heating-repair/anaheim",
+    "/hvac-repair/anaheim",
+    "/ac-repair/anaheim"
+   ],
+   "max_pair_similarity": 0.411
+  },
+  "anaheim-hills": {
+   "urls": [
+    "/service-areas/orange-county/anaheim-hills",
+    "/air-conditioning/ac-repair/anaheim-hills",
+    "/air-conditioning/emergency-ac-repair/anaheim-hills",
+    "/air-conditioning/ac-tune-up/anaheim-hills",
+    "/heating/heating-repair/anaheim-hills",
+    "/hvac-repair/anaheim-hills",
+    "/ac-repair/anaheim-hills"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "apple-valley": {
+   "urls": [
+    "/ac-repair/apple-valley"
+   ],
+   "max_pair_similarity": null
+  },
+  "banning": {
+   "urls": [
+    "/ac-repair/banning"
+   ],
+   "max_pair_similarity": null
+  },
+  "barstow": {
+   "urls": [
+    "/ac-repair/barstow"
+   ],
+   "max_pair_similarity": null
+  },
+  "beaumont": {
+   "urls": [
+    "/ac-repair/beaumont"
+   ],
+   "max_pair_similarity": null
+  },
+  "bellflower": {
+   "urls": [
+    "/ac-repair/bellflower"
+   ],
+   "max_pair_similarity": null
+  },
+  "beverly-hills": {
+   "urls": [
+    "/ac-repair/beverly-hills"
+   ],
+   "max_pair_similarity": null
+  },
+  "brea": {
+   "urls": [
+    "/service-areas/orange-county/brea",
+    "/air-conditioning/ac-repair/brea",
+    "/air-conditioning/emergency-ac-repair/brea",
+    "/air-conditioning/ac-tune-up/brea",
+    "/heating/heating-repair/brea",
+    "/hvac-repair/brea",
+    "/ac-repair/brea"
+   ],
+   "max_pair_similarity": 0.414
+  },
+  "buellton": {
+   "urls": [
+    "/ac-repair/buellton"
+   ],
+   "max_pair_similarity": null
+  },
+  "buena-park": {
+   "urls": [
+    "/ac-repair/buena-park"
+   ],
+   "max_pair_similarity": null
+  },
+  "burbank": {
+   "urls": [
+    "/ac-repair/burbank"
+   ],
+   "max_pair_similarity": null
+  },
+  "calabasas": {
+   "urls": [
+    "/ac-repair/calabasas"
+   ],
+   "max_pair_similarity": null
+  },
+  "calimesa": {
+   "urls": [
+    "/ac-repair/calimesa"
+   ],
+   "max_pair_similarity": null
+  },
+  "camarillo": {
+   "urls": [
+    "/ac-repair/camarillo"
+   ],
+   "max_pair_similarity": null
+  },
+  "canoga-park": {
+   "urls": [
+    "/ac-repair/canoga-park"
+   ],
+   "max_pair_similarity": null
+  },
+  "canyon-lake": {
+   "urls": [
+    "/ac-repair/canyon-lake"
+   ],
+   "max_pair_similarity": null
+  },
+  "carpinteria": {
+   "urls": [
+    "/ac-repair/carpinteria"
+   ],
+   "max_pair_similarity": null
+  },
+  "carson": {
+   "urls": [
+    "/ac-repair/carson"
+   ],
+   "max_pair_similarity": null
+  },
+  "castaic": {
+   "urls": [
+    "/ac-repair/castaic"
+   ],
+   "max_pair_similarity": null
+  },
+  "cathedral-city": {
+   "urls": [
+    "/ac-repair/cathedral-city"
+   ],
+   "max_pair_similarity": null
+  },
+  "chatsworth": {
+   "urls": [
+    "/ac-repair/chatsworth"
+   ],
+   "max_pair_similarity": null
+  },
+  "chino": {
+   "urls": [
+    "/service-areas/san-bernardino-county/chino",
+    "/air-conditioning/ac-repair/chino",
+    "/air-conditioning/emergency-ac-repair/chino",
+    "/air-conditioning/ac-tune-up/chino",
+    "/heating/heating-repair/chino",
+    "/hvac-repair/chino",
+    "/ac-repair/chino"
+   ],
+   "max_pair_similarity": 0.417
+  },
+  "chino-hills": {
+   "urls": [
+    "/service-areas/san-bernardino-county/chino-hills",
+    "/air-conditioning/ac-repair/chino-hills",
+    "/air-conditioning/emergency-ac-repair/chino-hills",
+    "/air-conditioning/ac-tune-up/chino-hills",
+    "/heating/heating-repair/chino-hills",
+    "/hvac-repair/chino-hills",
+    "/ac-repair/chino-hills"
+   ],
+   "max_pair_similarity": 0.417
+  },
+  "coachella": {
+   "urls": [
+    "/ac-repair/coachella"
+   ],
+   "max_pair_similarity": null
+  },
+  "colton": {
+   "urls": [
+    "/ac-repair/colton"
+   ],
+   "max_pair_similarity": null
+  },
+  "compton": {
+   "urls": [
+    "/ac-repair/compton"
+   ],
+   "max_pair_similarity": null
+  },
+  "corona": {
+   "urls": [
+    "/service-areas/riverside-county/corona",
+    "/air-conditioning/ac-repair/corona",
+    "/air-conditioning/emergency-ac-repair/corona",
+    "/air-conditioning/ac-tune-up/corona",
+    "/heating/heating-repair/corona",
+    "/hvac-repair/corona",
+    "/ac-repair/corona"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "costa-mesa": {
+   "urls": [
+    "/service-areas/orange-county/costa-mesa",
+    "/air-conditioning/ac-repair/costa-mesa",
+    "/air-conditioning/emergency-ac-repair/costa-mesa",
+    "/air-conditioning/ac-tune-up/costa-mesa",
+    "/heating/heating-repair/costa-mesa",
+    "/hvac-repair/costa-mesa",
+    "/ac-repair/costa-mesa"
+   ],
+   "max_pair_similarity": 0.416
+  },
+  "coto-de-caza": {
+   "urls": [
+    "/ac-repair/coto-de-caza"
+   ],
+   "max_pair_similarity": null
+  },
+  "culver-city": {
+   "urls": [
+    "/ac-repair/culver-city"
+   ],
+   "max_pair_similarity": null
+  },
+  "cypress": {
+   "urls": [
+    "/ac-repair/cypress"
+   ],
+   "max_pair_similarity": null
+  },
+  "dana-point": {
+   "urls": [
+    "/ac-repair/dana-point"
+   ],
+   "max_pair_similarity": null
+  },
+  "desert-hot-springs": {
+   "urls": [
+    "/ac-repair/desert-hot-springs"
+   ],
+   "max_pair_similarity": null
+  },
+  "diamond-bar": {
+   "urls": [
+    "/service-areas/los-angeles-county/diamond-bar",
+    "/air-conditioning/ac-repair/diamond-bar",
+    "/air-conditioning/emergency-ac-repair/diamond-bar",
+    "/air-conditioning/ac-tune-up/diamond-bar",
+    "/heating/heating-repair/diamond-bar",
+    "/hvac-repair/diamond-bar"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "downey": {
+   "urls": [
+    "/ac-repair/downey"
+   ],
+   "max_pair_similarity": null
+  },
+  "eastvale": {
+   "urls": [
+    "/service-areas/riverside-county/eastvale",
+    "/air-conditioning/ac-repair/eastvale",
+    "/air-conditioning/emergency-ac-repair/eastvale",
+    "/air-conditioning/ac-tune-up/eastvale",
+    "/heating/heating-repair/eastvale",
+    "/hvac-repair/eastvale",
+    "/ac-repair/eastvale"
+   ],
+   "max_pair_similarity": 0.414
+  },
+  "el-segundo": {
+   "urls": [
+    "/ac-repair/el-segundo"
+   ],
+   "max_pair_similarity": null
+  },
+  "encino": {
+   "urls": [
+    "/ac-repair/encino"
+   ],
+   "max_pair_similarity": null
+  },
+  "fillmore": {
+   "urls": [
+    "/ac-repair/fillmore"
+   ],
+   "max_pair_similarity": null
+  },
+  "fontana": {
+   "urls": [
+    "/ac-repair/fontana"
+   ],
+   "max_pair_similarity": null
+  },
+  "foothill-ranch": {
+   "urls": [
+    "/ac-repair/foothill-ranch"
+   ],
+   "max_pair_similarity": null
+  },
+  "fountain-valley": {
+   "urls": [
+    "/ac-repair/fountain-valley"
+   ],
+   "max_pair_similarity": null
+  },
+  "fullerton": {
+   "urls": [
+    "/service-areas/orange-county/fullerton",
+    "/air-conditioning/ac-repair/fullerton",
+    "/air-conditioning/emergency-ac-repair/fullerton",
+    "/air-conditioning/ac-tune-up/fullerton",
+    "/heating/heating-repair/fullerton",
+    "/hvac-repair/fullerton",
+    "/ac-repair/fullerton"
+   ],
+   "max_pair_similarity": 0.409
+  },
+  "garden-grove": {
+   "urls": [
+    "/service-areas/orange-county/garden-grove",
+    "/air-conditioning/ac-repair/garden-grove",
+    "/air-conditioning/emergency-ac-repair/garden-grove",
+    "/air-conditioning/ac-tune-up/garden-grove",
+    "/heating/heating-repair/garden-grove",
+    "/hvac-repair/garden-grove",
+    "/ac-repair/garden-grove"
+   ],
+   "max_pair_similarity": 0.414
+  },
+  "gardena": {
+   "urls": [
+    "/ac-repair/gardena"
+   ],
+   "max_pair_similarity": null
+  },
+  "glendale": {
+   "urls": [
+    "/ac-repair/glendale"
+   ],
+   "max_pair_similarity": null
+  },
+  "glendora": {
+   "urls": [
+    "/ac-repair/glendora"
+   ],
+   "max_pair_similarity": null
+  },
+  "goleta": {
+   "urls": [
+    "/service-areas/santa-barbara-county/goleta",
+    "/air-conditioning/ac-repair/goleta",
+    "/air-conditioning/emergency-ac-repair/goleta",
+    "/air-conditioning/ac-tune-up/goleta",
+    "/heating/heating-repair/goleta",
+    "/hvac-repair/goleta",
+    "/ac-repair/goleta"
+   ],
+   "max_pair_similarity": 0.421
+  },
+  "granada-hills": {
+   "urls": [
+    "/ac-repair/granada-hills"
+   ],
+   "max_pair_similarity": null
+  },
+  "grand-terrace": {
+   "urls": [
+    "/ac-repair/grand-terrace"
+   ],
+   "max_pair_similarity": null
+  },
+  "hacienda-heights": {
+   "urls": [
+    "/service-areas/los-angeles-county/hacienda-heights",
+    "/air-conditioning/ac-repair/hacienda-heights",
+    "/air-conditioning/emergency-ac-repair/hacienda-heights",
+    "/air-conditioning/ac-tune-up/hacienda-heights",
+    "/heating/heating-repair/hacienda-heights",
+    "/hvac-repair/hacienda-heights"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "hawthorne": {
+   "urls": [
+    "/ac-repair/hawthorne"
+   ],
+   "max_pair_similarity": null
+  },
+  "hemet": {
+   "urls": [
+    "/ac-repair/hemet"
+   ],
+   "max_pair_similarity": null
+  },
+  "hermosa-beach": {
+   "urls": [
+    "/ac-repair/hermosa-beach"
+   ],
+   "max_pair_similarity": null
+  },
+  "hesperia": {
+   "urls": [
+    "/ac-repair/hesperia"
+   ],
+   "max_pair_similarity": null
+  },
+  "hidden-hills": {
+   "urls": [
+    "/ac-repair/hidden-hills"
+   ],
+   "max_pair_similarity": null
+  },
+  "highland": {
+   "urls": [
+    "/ac-repair/highland"
+   ],
+   "max_pair_similarity": null
+  },
+  "huntington-beach": {
+   "urls": [
+    "/service-areas/orange-county/huntington-beach",
+    "/air-conditioning/ac-repair/huntington-beach",
+    "/air-conditioning/emergency-ac-repair/huntington-beach",
+    "/air-conditioning/ac-tune-up/huntington-beach",
+    "/heating/heating-repair/huntington-beach",
+    "/hvac-repair/huntington-beach",
+    "/ac-repair/huntington-beach"
+   ],
+   "max_pair_similarity": 0.414
+  },
+  "huntington-park": {
+   "urls": [
+    "/ac-repair/huntington-park"
+   ],
+   "max_pair_similarity": null
+  },
+  "indio": {
+   "urls": [
+    "/ac-repair/indio"
+   ],
+   "max_pair_similarity": null
+  },
+  "inglewood": {
+   "urls": [
+    "/ac-repair/inglewood"
+   ],
+   "max_pair_similarity": null
+  },
+  "irvine": {
+   "urls": [
+    "/service-areas/orange-county/irvine",
+    "/air-conditioning/ac-repair/irvine",
+    "/air-conditioning/emergency-ac-repair/irvine",
+    "/air-conditioning/ac-tune-up/irvine",
+    "/heating/heating-repair/irvine",
+    "/hvac-repair/irvine",
+    "/ac-repair/irvine"
+   ],
+   "max_pair_similarity": 0.412
+  },
+  "jurupa-valley": {
+   "urls": [
+    "/ac-repair/jurupa-valley"
+   ],
+   "max_pair_similarity": null
+  },
+  "la-habra": {
+   "urls": [
+    "/ac-repair/la-habra"
+   ],
+   "max_pair_similarity": null
+  },
+  "la-habra-heights": {
+   "urls": [
+    "/service-areas/los-angeles-county/la-habra-heights",
+    "/air-conditioning/ac-repair/la-habra-heights",
+    "/air-conditioning/emergency-ac-repair/la-habra-heights",
+    "/air-conditioning/ac-tune-up/la-habra-heights",
+    "/heating/heating-repair/la-habra-heights",
+    "/hvac-repair/la-habra-heights"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "la-mirada": {
+   "urls": [
+    "/ac-repair/la-mirada"
+   ],
+   "max_pair_similarity": null
+  },
+  "la-palma": {
+   "urls": [
+    "/ac-repair/la-palma"
+   ],
+   "max_pair_similarity": null
+  },
+  "la-quinta": {
+   "urls": [
+    "/ac-repair/la-quinta"
+   ],
+   "max_pair_similarity": null
+  },
+  "la-verne": {
+   "urls": [
+    "/ac-repair/la-verne"
+   ],
+   "max_pair_similarity": null
+  },
+  "ladera-ranch": {
+   "urls": [
+    "/ac-repair/ladera-ranch"
+   ],
+   "max_pair_similarity": null
+  },
+  "laguna-niguel": {
+   "urls": [
+    "/service-areas/orange-county/laguna-niguel",
+    "/air-conditioning/ac-repair/laguna-niguel",
+    "/air-conditioning/emergency-ac-repair/laguna-niguel",
+    "/air-conditioning/ac-tune-up/laguna-niguel",
+    "/heating/heating-repair/laguna-niguel",
+    "/hvac-repair/laguna-niguel",
+    "/laguna-niguel-ac-repair"
+   ],
+   "max_pair_similarity": 0.414
+  },
+  "lake-elsinore": {
+   "urls": [
+    "/ac-repair/lake-elsinore"
+   ],
+   "max_pair_similarity": null
+  },
+  "lake-forest": {
+   "urls": [
+    "/service-areas/orange-county/lake-forest",
+    "/air-conditioning/ac-repair/lake-forest",
+    "/air-conditioning/emergency-ac-repair/lake-forest",
+    "/air-conditioning/ac-tune-up/lake-forest",
+    "/heating/heating-repair/lake-forest",
+    "/hvac-repair/lake-forest",
+    "/ac-repair/lake-forest"
+   ],
+   "max_pair_similarity": 0.414
+  },
+  "lake-los-angeles": {
+   "urls": [
+    "/ac-repair/lake-los-angeles"
+   ],
+   "max_pair_similarity": null
+  },
+  "lakewood": {
+   "urls": [
+    "/ac-repair/lakewood"
+   ],
+   "max_pair_similarity": null
+  },
+  "lancaster": {
+   "urls": [
+    "/ac-repair/lancaster"
+   ],
+   "max_pair_similarity": null
+  },
+  "loma-linda": {
+   "urls": [
+    "/ac-repair/loma-linda"
+   ],
+   "max_pair_similarity": null
+  },
+  "lompoc": {
+   "urls": [
+    "/ac-repair/lompoc"
+   ],
+   "max_pair_similarity": null
+  },
+  "long-beach": {
+   "urls": [
+    "/ac-repair/long-beach"
+   ],
+   "max_pair_similarity": null
+  },
+  "los-alamitos": {
+   "urls": [
+    "/ac-repair/los-alamitos"
+   ],
+   "max_pair_similarity": null
+  },
+  "los-angeles": {
+   "urls": [
+    "/los-angeles-ac-repair"
+   ],
+   "max_pair_similarity": null
+  },
+  "lynwood": {
+   "urls": [
+    "/ac-repair/lynwood"
+   ],
+   "max_pair_similarity": null
+  },
+  "malibu": {
+   "urls": [
+    "/malibu-ac-repair"
+   ],
+   "max_pair_similarity": null
+  },
+  "manhattan-beach": {
+   "urls": [
+    "/ac-repair/manhattan-beach"
+   ],
+   "max_pair_similarity": null
+  },
+  "menifee": {
+   "urls": [
+    "/ac-repair/menifee"
+   ],
+   "max_pair_similarity": null
+  },
+  "mission-viejo": {
+   "urls": [
+    "/service-areas/orange-county/mission-viejo",
+    "/air-conditioning/ac-repair/mission-viejo",
+    "/air-conditioning/emergency-ac-repair/mission-viejo",
+    "/air-conditioning/ac-tune-up/mission-viejo",
+    "/heating/heating-repair/mission-viejo",
+    "/hvac-repair/mission-viejo",
+    "/ac-repair/mission-viejo"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "montclair": {
+   "urls": [
+    "/ac-repair/montclair"
+   ],
+   "max_pair_similarity": null
+  },
+  "montebello": {
+   "urls": [
+    "/ac-repair/montebello"
+   ],
+   "max_pair_similarity": null
+  },
+  "montecito": {
+   "urls": [
+    "/ac-repair/montecito"
+   ],
+   "max_pair_similarity": null
+  },
+  "monterey-park": {
+   "urls": [
+    "/ac-repair/monterey-park"
+   ],
+   "max_pair_similarity": null
+  },
+  "moorpark": {
+   "urls": [
+    "/service-areas/ventura-county/moorpark",
+    "/air-conditioning/ac-repair/moorpark",
+    "/air-conditioning/emergency-ac-repair/moorpark",
+    "/air-conditioning/ac-tune-up/moorpark",
+    "/heating/heating-repair/moorpark",
+    "/hvac-repair/moorpark",
+    "/ac-repair/moorpark"
+   ],
+   "max_pair_similarity": 0.419
+  },
+  "moreno-valley": {
+   "urls": [
+    "/ac-repair/moreno-valley"
+   ],
+   "max_pair_similarity": null
+  },
+  "murrieta": {
+   "urls": [
+    "/ac-repair/murrieta"
+   ],
+   "max_pair_similarity": null
+  },
+  "newport-beach": {
+   "urls": [
+    "/service-areas/orange-county/newport-beach",
+    "/air-conditioning/ac-repair/newport-beach",
+    "/air-conditioning/emergency-ac-repair/newport-beach",
+    "/air-conditioning/ac-tune-up/newport-beach",
+    "/heating/heating-repair/newport-beach",
+    "/hvac-repair/newport-beach",
+    "/ac-repair/newport-beach"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "norco": {
+   "urls": [
+    "/service-areas/riverside-county/norco",
+    "/air-conditioning/ac-repair/norco",
+    "/air-conditioning/emergency-ac-repair/norco",
+    "/air-conditioning/ac-tune-up/norco",
+    "/heating/heating-repair/norco",
+    "/hvac-repair/norco",
+    "/ac-repair/norco"
+   ],
+   "max_pair_similarity": 0.414
+  },
+  "north-hollywood": {
+   "urls": [
+    "/ac-repair/north-hollywood"
+   ],
+   "max_pair_similarity": null
+  },
+  "northridge": {
+   "urls": [
+    "/ac-repair/northridge"
+   ],
+   "max_pair_similarity": null
+  },
+  "norwalk": {
+   "urls": [
+    "/ac-repair/norwalk"
+   ],
+   "max_pair_similarity": null
+  },
+  "oak-park": {
+   "urls": [
+    "/ac-repair/oak-park"
+   ],
+   "max_pair_similarity": null
+  },
+  "ojai": {
+   "urls": [
+    "/ac-repair/ojai"
+   ],
+   "max_pair_similarity": null
+  },
+  "ontario": {
+   "urls": [
+    "/service-areas/san-bernardino-county/ontario",
+    "/air-conditioning/ac-repair/ontario",
+    "/air-conditioning/emergency-ac-repair/ontario",
+    "/air-conditioning/ac-tune-up/ontario",
+    "/heating/heating-repair/ontario",
+    "/hvac-repair/ontario",
+    "/ac-repair/ontario"
+   ],
+   "max_pair_similarity": 0.416
+  },
+  "orange": {
+   "urls": [
+    "/service-areas/orange-county/orange",
+    "/air-conditioning/ac-repair/orange",
+    "/air-conditioning/emergency-ac-repair/orange",
+    "/air-conditioning/ac-tune-up/orange",
+    "/heating/heating-repair/orange",
+    "/hvac-repair/orange",
+    "/ac-repair/orange"
+   ],
+   "max_pair_similarity": 0.412
+  },
+  "orange-county": {
+   "urls": [
+    "/orange-county-ac-repair"
+   ],
+   "max_pair_similarity": null
+  },
+  "orcutt": {
+   "urls": [
+    "/ac-repair/orcutt"
+   ],
+   "max_pair_similarity": null
+  },
+  "oxnard": {
+   "urls": [
+    "/ac-repair/oxnard"
+   ],
+   "max_pair_similarity": null
+  },
+  "pacoima": {
+   "urls": [
+    "/ac-repair/pacoima"
+   ],
+   "max_pair_similarity": null
+  },
+  "palm-desert": {
+   "urls": [
+    "/ac-repair/palm-desert"
+   ],
+   "max_pair_similarity": null
+  },
+  "palm-springs": {
+   "urls": [
+    "/ac-repair/palm-springs"
+   ],
+   "max_pair_similarity": null
+  },
+  "palmdale": {
+   "urls": [
+    "/ac-repair/palmdale"
+   ],
+   "max_pair_similarity": null
+  },
+  "palos-verdes-estates": {
+   "urls": [
+    "/ac-repair/palos-verdes-estates"
+   ],
+   "max_pair_similarity": null
+  },
+  "panorama-city": {
+   "urls": [
+    "/ac-repair/panorama-city"
+   ],
+   "max_pair_similarity": null
+  },
+  "pasadena": {
+   "urls": [
+    "/pasadena-ac-repair"
+   ],
+   "max_pair_similarity": null
+  },
+  "perris": {
+   "urls": [
+    "/ac-repair/perris"
+   ],
+   "max_pair_similarity": null
+  },
+  "placentia": {
+   "urls": [
+    "/service-areas/orange-county/placentia",
+    "/air-conditioning/ac-repair/placentia",
+    "/air-conditioning/emergency-ac-repair/placentia",
+    "/air-conditioning/ac-tune-up/placentia",
+    "/heating/heating-repair/placentia",
+    "/hvac-repair/placentia",
+    "/ac-repair/placentia"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "pomona": {
+   "urls": [
+    "/ac-repair/pomona"
+   ],
+   "max_pair_similarity": null
+  },
+  "port-hueneme": {
+   "urls": [
+    "/ac-repair/port-hueneme"
+   ],
+   "max_pair_similarity": null
+  },
+  "porter-ranch": {
+   "urls": [
+    "/ac-repair/porter-ranch"
+   ],
+   "max_pair_similarity": null
+  },
+  "quartz-hill": {
+   "urls": [
+    "/ac-repair/quartz-hill"
+   ],
+   "max_pair_similarity": null
+  },
+  "rancho-cucamonga": {
+   "urls": [
+    "/ac-repair/rancho-cucamonga"
+   ],
+   "max_pair_similarity": null
+  },
+  "rancho-mirage": {
+   "urls": [
+    "/ac-repair/rancho-mirage"
+   ],
+   "max_pair_similarity": null
+  },
+  "rancho-palos-verdes": {
+   "urls": [
+    "/ac-repair/rancho-palos-verdes"
+   ],
+   "max_pair_similarity": null
+  },
+  "rancho-santa-margarita": {
+   "urls": [
+    "/ac-repair/rancho-santa-margarita"
+   ],
+   "max_pair_similarity": null
+  },
+  "redlands": {
+   "urls": [
+    "/ac-repair/redlands"
+   ],
+   "max_pair_similarity": null
+  },
+  "redondo-beach": {
+   "urls": [
+    "/ac-repair/redondo-beach"
+   ],
+   "max_pair_similarity": null
+  },
+  "reseda": {
+   "urls": [
+    "/ac-repair/reseda"
+   ],
+   "max_pair_similarity": null
+  },
+  "rialto": {
+   "urls": [
+    "/ac-repair/rialto"
+   ],
+   "max_pair_similarity": null
+  },
+  "riverside": {
+   "urls": [
+    "/ac-repair/riverside"
+   ],
+   "max_pair_similarity": null
+  },
+  "rowland-heights": {
+   "urls": [
+    "/service-areas/los-angeles-county/rowland-heights",
+    "/air-conditioning/ac-repair/rowland-heights",
+    "/air-conditioning/emergency-ac-repair/rowland-heights",
+    "/air-conditioning/ac-tune-up/rowland-heights",
+    "/heating/heating-repair/rowland-heights",
+    "/hvac-repair/rowland-heights"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "san-bernardino": {
+   "urls": [
+    "/ac-repair/san-bernardino"
+   ],
+   "max_pair_similarity": null
+  },
+  "san-clemente": {
+   "urls": [
+    "/service-areas/orange-county/san-clemente",
+    "/air-conditioning/ac-repair/san-clemente",
+    "/air-conditioning/emergency-ac-repair/san-clemente",
+    "/air-conditioning/ac-tune-up/san-clemente",
+    "/heating/heating-repair/san-clemente",
+    "/hvac-repair/san-clemente",
+    "/ac-repair/san-clemente"
+   ],
+   "max_pair_similarity": 0.414
+  },
+  "san-dimas": {
+   "urls": [
+    "/ac-repair/san-dimas"
+   ],
+   "max_pair_similarity": null
+  },
+  "san-fernando": {
+   "urls": [
+    "/ac-repair/san-fernando"
+   ],
+   "max_pair_similarity": null
+  },
+  "san-gabriel": {
+   "urls": [
+    "/ac-repair/san-gabriel"
+   ],
+   "max_pair_similarity": null
+  },
+  "san-jacinto": {
+   "urls": [
+    "/ac-repair/san-jacinto"
+   ],
+   "max_pair_similarity": null
+  },
+  "san-juan-capistrano": {
+   "urls": [
+    "/ac-repair/san-juan-capistrano"
+   ],
+   "max_pair_similarity": null
+  },
+  "san-marino": {
+   "urls": [
+    "/ac-repair/san-marino"
+   ],
+   "max_pair_similarity": null
+  },
+  "santa-ana": {
+   "urls": [
+    "/service-areas/orange-county/santa-ana",
+    "/air-conditioning/ac-repair/santa-ana",
+    "/air-conditioning/emergency-ac-repair/santa-ana",
+    "/air-conditioning/ac-tune-up/santa-ana",
+    "/heating/heating-repair/santa-ana",
+    "/hvac-repair/santa-ana",
+    "/ac-repair/santa-ana"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "santa-barbara": {
+   "urls": [
+    "/service-areas/santa-barbara-county/santa-barbara",
+    "/air-conditioning/ac-repair/santa-barbara",
+    "/air-conditioning/emergency-ac-repair/santa-barbara",
+    "/air-conditioning/ac-tune-up/santa-barbara",
+    "/heating/heating-repair/santa-barbara",
+    "/hvac-repair/santa-barbara",
+    "/ac-repair/santa-barbara"
+   ],
+   "max_pair_similarity": 0.42
+  },
+  "santa-clarita": {
+   "urls": [
+    "/santa-clarita-ac-repair"
+   ],
+   "max_pair_similarity": null
+  },
+  "santa-fe-springs": {
+   "urls": [
+    "/ac-repair/santa-fe-springs"
+   ],
+   "max_pair_similarity": null
+  },
+  "santa-maria": {
+   "urls": [
+    "/ac-repair/santa-maria"
+   ],
+   "max_pair_similarity": null
+  },
+  "santa-monica": {
+   "urls": [
+    "/ac-repair/santa-monica"
+   ],
+   "max_pair_similarity": null
+  },
+  "santa-paula": {
+   "urls": [
+    "/ac-repair/santa-paula"
+   ],
+   "max_pair_similarity": null
+  },
+  "santa-ynez": {
+   "urls": [
+    "/ac-repair/santa-ynez"
+   ],
+   "max_pair_similarity": null
+  },
+  "seal-beach": {
+   "urls": [
+    "/ac-repair/seal-beach"
+   ],
+   "max_pair_similarity": null
+  },
+  "sherman-oaks": {
+   "urls": [
+    "/ac-repair/sherman-oaks"
+   ],
+   "max_pair_similarity": null
+  },
+  "simi-valley": {
+   "urls": [
+    "/service-areas/ventura-county/simi-valley",
+    "/air-conditioning/ac-repair/simi-valley",
+    "/air-conditioning/emergency-ac-repair/simi-valley",
+    "/air-conditioning/ac-tune-up/simi-valley",
+    "/heating/heating-repair/simi-valley",
+    "/hvac-repair/simi-valley",
+    "/ac-repair/simi-valley"
+   ],
+   "max_pair_similarity": 0.418
+  },
+  "solvang": {
+   "urls": [
+    "/ac-repair/solvang"
+   ],
+   "max_pair_similarity": null
+  },
+  "south-gate": {
+   "urls": [
+    "/ac-repair/south-gate"
+   ],
+   "max_pair_similarity": null
+  },
+  "stanton": {
+   "urls": [
+    "/ac-repair/stanton"
+   ],
+   "max_pair_similarity": null
+  },
+  "stevenson-ranch": {
+   "urls": [
+    "/ac-repair/stevenson-ranch"
+   ],
+   "max_pair_similarity": null
+  },
+  "studio-city": {
+   "urls": [
+    "/ac-repair/studio-city"
+   ],
+   "max_pair_similarity": null
+  },
+  "sun-valley": {
+   "urls": [
+    "/ac-repair/sun-valley"
+   ],
+   "max_pair_similarity": null
+  },
+  "sylmar": {
+   "urls": [
+    "/ac-repair/sylmar"
+   ],
+   "max_pair_similarity": null
+  },
+  "tarzana": {
+   "urls": [
+    "/ac-repair/tarzana"
+   ],
+   "max_pair_similarity": null
+  },
+  "temecula": {
+   "urls": [
+    "/ac-repair/temecula"
+   ],
+   "max_pair_similarity": null
+  },
+  "temple-city": {
+   "urls": [
+    "/ac-repair/temple-city"
+   ],
+   "max_pair_similarity": null
+  },
+  "thousand-oaks": {
+   "urls": [
+    "/service-areas/ventura-county/thousand-oaks",
+    "/air-conditioning/ac-repair/thousand-oaks",
+    "/air-conditioning/emergency-ac-repair/thousand-oaks",
+    "/air-conditioning/ac-tune-up/thousand-oaks",
+    "/heating/heating-repair/thousand-oaks",
+    "/hvac-repair/thousand-oaks",
+    "/ac-repair/thousand-oaks"
+   ],
+   "max_pair_similarity": 0.418
+  },
+  "toluca-lake": {
+   "urls": [
+    "/ac-repair/toluca-lake"
+   ],
+   "max_pair_similarity": null
+  },
+  "torrance": {
+   "urls": [
+    "/ac-repair/torrance"
+   ],
+   "max_pair_similarity": null
+  },
+  "tustin": {
+   "urls": [
+    "/service-areas/orange-county/tustin",
+    "/air-conditioning/ac-repair/tustin",
+    "/air-conditioning/emergency-ac-repair/tustin",
+    "/air-conditioning/ac-tune-up/tustin",
+    "/heating/heating-repair/tustin",
+    "/hvac-repair/tustin",
+    "/ac-repair/tustin"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "twentynine-palms": {
+   "urls": [
+    "/ac-repair/twentynine-palms"
+   ],
+   "max_pair_similarity": null
+  },
+  "upland": {
+   "urls": [
+    "/ac-repair/upland"
+   ],
+   "max_pair_similarity": null
+  },
+  "valley-village": {
+   "urls": [
+    "/ac-repair/valley-village"
+   ],
+   "max_pair_similarity": null
+  },
+  "van-nuys": {
+   "urls": [
+    "/ac-repair/van-nuys"
+   ],
+   "max_pair_similarity": null
+  },
+  "ventura": {
+   "urls": [
+    "/ac-repair/ventura"
+   ],
+   "max_pair_similarity": null
+  },
+  "victorville": {
+   "urls": [
+    "/ac-repair/victorville"
+   ],
+   "max_pair_similarity": null
+  },
+  "villa-park": {
+   "urls": [
+    "/service-areas/orange-county/villa-park",
+    "/air-conditioning/ac-repair/villa-park",
+    "/air-conditioning/emergency-ac-repair/villa-park",
+    "/air-conditioning/ac-tune-up/villa-park",
+    "/heating/heating-repair/villa-park",
+    "/hvac-repair/villa-park",
+    "/ac-repair/villa-park"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "walnut": {
+   "urls": [
+    "/service-areas/los-angeles-county/walnut",
+    "/air-conditioning/ac-repair/walnut",
+    "/air-conditioning/emergency-ac-repair/walnut",
+    "/air-conditioning/ac-tune-up/walnut",
+    "/heating/heating-repair/walnut",
+    "/hvac-repair/walnut",
+    "/ac-repair/walnut"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "west-covina": {
+   "urls": [
+    "/ac-repair/west-covina"
+   ],
+   "max_pair_similarity": null
+  },
+  "west-hollywood": {
+   "urls": [
+    "/ac-repair/west-hollywood"
+   ],
+   "max_pair_similarity": null
+  },
+  "westlake-village": {
+   "urls": [
+    "/ac-repair/westlake-village"
+   ],
+   "max_pair_similarity": null
+  },
+  "westminster": {
+   "urls": [
+    "/service-areas/orange-county/westminster",
+    "/air-conditioning/ac-repair/westminster",
+    "/air-conditioning/emergency-ac-repair/westminster",
+    "/air-conditioning/ac-tune-up/westminster",
+    "/heating/heating-repair/westminster",
+    "/hvac-repair/westminster",
+    "/ac-repair/westminster"
+   ],
+   "max_pair_similarity": 0.415
+  },
+  "whittier": {
+   "urls": [
+    "/ac-repair/whittier"
+   ],
+   "max_pair_similarity": null
+  },
+  "wildomar": {
+   "urls": [
+    "/ac-repair/wildomar"
+   ],
+   "max_pair_similarity": null
+  },
+  "winnetka": {
+   "urls": [
+    "/ac-repair/winnetka"
+   ],
+   "max_pair_similarity": null
+  },
+  "woodland-hills": {
+   "urls": [
+    "/ac-repair/woodland-hills"
+   ],
+   "max_pair_similarity": null
+  },
+  "yorba-linda": {
+   "urls": [
+    "/service-areas/orange-county/yorba-linda",
+    "/air-conditioning/ac-repair/yorba-linda",
+    "/air-conditioning/emergency-ac-repair/yorba-linda",
+    "/air-conditioning/ac-tune-up/yorba-linda",
+    "/heating/heating-repair/yorba-linda",
+    "/hvac-repair/yorba-linda",
+    "/ac-repair/yorba-linda"
+   ],
+   "max_pair_similarity": 0.311
+  },
+  "yucaipa": {
+   "urls": [
+    "/ac-repair/yucaipa"
+   ],
+   "max_pair_similarity": null
+  },
+  "yucca-valley": {
+   "urls": [
+    "/ac-repair/yucca-valley"
+   ],
+   "max_pair_similarity": null
+  }
+ },
+ "keyword_map": {
+  "AC Repair Yorba Linda": [
+   {
+    "path": "/",
+    "title": "AC Repair Yorba Linda, CA | HVAC Service & AC Repair",
+    "h1": "Fast HVAC Service & AC Repair Near You",
+    "inlinks_contextual": 85,
+    "in_title": true,
+    "in_h1": false
+   },
+   {
+    "path": "/service-areas/orange-county/yorba-linda",
+    "title": "HVAC Service in Yorba Linda, Orange County, CA | AC Repair & Installation | HVAC Service & AC Repair",
+    "h1": "HVAC Service in Yorba Linda , CA",
+    "inlinks_contextual": 14,
+    "in_title": true,
+    "in_h1": false
+   },
+   {
+    "path": "/air-conditioning/ac-repair/yorba-linda",
+    "title": "AC Repair in Yorba Linda, CA | Same-Day Service | (714) 410-2784 | HVAC Service & AC Repair",
+    "h1": "AC Repair in Yorba Linda, CA \u2014 Same-Day Service",
+    "inlinks_contextual": 13,
+    "in_title": true,
+    "in_h1": true
+   },
+   {
+    "path": "/air-conditioning/emergency-ac-repair/yorba-linda",
+    "title": "Emergency AC Repair in Yorba Linda, CA | Available Today | (714) 410-2784 | HVAC Service & AC Repair",
+    "h1": "AC Broke Down in Yorba Linda? We're Available Today.",
+    "inlinks_contextual": 11,
+    "in_title": true,
+    "in_h1": false
+   },
+   {
+    "path": "/ac-repair/yorba-linda",
+    "title": "AC Repair & HVAC Service in Yorba Linda, CA \u2014 Same-Day Service | HVAC Service & AC Repair",
+    "h1": "AC Repair & HVAC Service in Yorba Linda, CA",
+    "inlinks_contextual": 0,
+    "in_title": true,
+    "in_h1": true
+   }
+  ],
+  "HVAC Company Yorba Linda": [
+   {
+    "path": "/about-us",
+    "title": "About Us | Local HVAC Company in Yorba Linda, CA | HVAC Service & AC Repair",
+    "h1": "A Local HVAC Team You Can Count On",
+    "inlinks_contextual": 0,
+    "in_title": true,
+    "in_h1": false
+   },
+   {
+    "path": "/service-areas/orange-county/yorba-linda",
+    "title": "HVAC Service in Yorba Linda, Orange County, CA | AC Repair & Installation | HVAC Service & AC Repair",
+    "h1": "HVAC Service in Yorba Linda , CA",
+    "inlinks_contextual": 14,
+    "in_title": true,
+    "in_h1": true
+   },
+   {
+    "path": "/ac-repair/yorba-linda",
+    "title": "AC Repair & HVAC Service in Yorba Linda, CA \u2014 Same-Day Service | HVAC Service & AC Repair",
+    "h1": "AC Repair & HVAC Service in Yorba Linda, CA",
+    "inlinks_contextual": 0,
+    "in_title": true,
+    "in_h1": true
+   }
+  ],
+  "HVAC Repair Yorba Linda": [
+   {
+    "path": "/hvac-repair/yorba-linda",
+    "title": "Local HVAC Repair in Yorba Linda, CA | Your Neighborhood HVAC Team | (714) 410-2784 | HVAC Service & AC Repair",
+    "h1": "Local HVAC Repair in Yorba Linda \u2014 Your Neighbors",
+    "inlinks_contextual": 10,
+    "in_title": true,
+    "in_h1": true
+   }
+  ],
+  "AC Installation Yorba Linda": [],
+  "Emergency AC Repair Yorba Linda": [
+   {
+    "path": "/air-conditioning/emergency-ac-repair/yorba-linda",
+    "title": "Emergency AC Repair in Yorba Linda, CA | Available Today | (714) 410-2784 | HVAC Service & AC Repair",
+    "h1": "AC Broke Down in Yorba Linda? We're Available Today.",
+    "inlinks_contextual": 11,
+    "in_title": true,
+    "in_h1": false
+   }
+  ]
+ },
+ "links": {
+  "important": {
+   "/": {
+    "any": 455,
+    "contextual": 85,
+    "top_anchors": [
+     [
+      "Home",
+      148
+     ]
+    ]
+   },
+   "/air-conditioning/ac-repair/yorba-linda": {
+    "any": 13,
+    "contextual": 13,
+    "top_anchors": [
+     [
+      "Yorba Linda",
+      12
+     ],
+     [
+      "AC Repair in Yorba Linda",
+      1
+     ]
+    ]
+   },
+   "/air-conditioning/emergency-ac-repair/yorba-linda": {
+    "any": 11,
+    "contextual": 11,
+    "top_anchors": [
+     [
+      "Yorba Linda",
+      11
+     ]
+    ]
+   },
+   "/air-conditioning/ac-installation": {
+    "any": 455,
+    "contextual": 59,
+    "top_anchors": [
+     [
+      "Ac Installation",
+      34
+     ],
+     [
+      "Ac Installation Learn more",
+      26
+     ],
+     [
+      "AC Installation",
+      23
+     ],
+     [
+      "AC Installation Energy-efficient AC systems sized and installed correctly Learn ",
+      1
+     ],
+     [
+      "Get an Installation Quote",
+      1
+     ],
+     [
+      "\u2192 AC Installation in Orange County",
+      1
+     ]
+    ]
+   },
+   "/air-conditioning/ac-repair": {
+    "any": 455,
+    "contextual": 57,
+    "top_anchors": [
+     [
+      "Ac Repair",
+      41
+     ],
+     [
+      "Ac Repair Learn more",
+      31
+     ],
+     [
+      "AC Repair",
+      15
+     ],
+     [
+      "AC Repair Fast, reliable air conditioner repair across Orange County Learn more",
+      1
+     ],
+     [
+      "Schedule AC Repair",
+      1
+     ]
+    ]
+   },
+   "/hvac-repair/yorba-linda": {
+    "any": 10,
+    "contextual": 10,
+    "top_anchors": [
+     [
+      "Yorba Linda",
+      10
+     ]
+    ]
+   },
+   "/service-areas/orange-county/yorba-linda": {
+    "any": 455,
+    "contextual": 14,
+    "top_anchors": [
+     [
+      "Yorba Linda",
+      13
+     ],
+     [
+      "Yorba Linda As our home base, Yorba Linda gets priority scheduling and faster re",
+      1
+     ]
+    ]
+   },
+   "/service-areas/orange-county": {
+    "any": 24,
+    "contextual": 24,
+    "top_anchors": [
+     [
+      "Orange County",
+      43
+     ],
+     [
+      "All Orange County cities \u2192",
+      21
+     ],
+     [
+      "+ 8 more Orange County cities \u2192",
+      1
+     ],
+     [
+      "Orange County Same-day service \u00b7 Core territory Our home territory. We provide f",
+      1
+     ],
+     [
+      "View full Orange County page \u2192",
+      1
+     ]
+    ]
+   },
+   "/emergency-hvac-service": {
+    "any": 455,
+    "contextual": 1,
+    "top_anchors": [
+     [
+      "emergency HVAC service",
+      1
+     ]
+    ]
+   },
+   "/contact": {
+    "any": 455,
+    "contextual": 83,
+    "top_anchors": [
+     [
+      "Request a Free Estimate",
+      194
+     ],
+     [
+      "Contact",
+      63
+     ],
+     [
+      "Get a Free Estimate",
+      23
+     ],
+     [
+      "Schedule Service",
+      2
+     ],
+     [
+      "Describe your issue",
+      1
+     ],
+     [
+      "Schedule Free Estimate",
+      1
+     ]
+    ]
+   },
+   "/reviews": {
+    "any": 455,
+    "contextual": 0,
+    "top_anchors": []
+   },
+   "/maintenance-plans": {
+    "any": 6,
+    "contextual": 6,
+    "top_anchors": [
+     [
+      "Maintenance Plans",
+      4
+     ],
+     [
+      "View Maintenance Plans",
+      1
+     ],
+     [
+      "Ask About Bundle Pricing",
+      1
+     ],
+     [
+      "\u2192 Maintenance Plan Options",
+      1
+     ],
+     [
+      "View Maintenance Plan Details",
+      1
+     ],
+     [
+      "View Plan Details",
+      1
+     ]
+    ]
+   },
+   "/air-conditioning/ac-tune-up/yorba-linda": {
+    "any": 10,
+    "contextual": 10,
+    "top_anchors": [
+     [
+      "Yorba Linda",
+      10
+     ]
+    ]
+   },
+   "/heating/heating-repair/yorba-linda": {
+    "any": 10,
+    "contextual": 10,
+    "top_anchors": [
+     [
+      "Yorba Linda",
+      10
+     ]
+    ]
+   },
+   "/ac-repair/yorba-linda": {
+    "any": 0,
+    "contextual": 0,
+    "top_anchors": []
+   }
+  },
+  "orphans_any": [
+   "/ac-repair/acton",
+   "/ac-repair/agoura-hills",
+   "/ac-repair/alhambra",
+   "/ac-repair/aliso-viejo",
+   "/ac-repair/anaheim",
+   "/ac-repair/anaheim-hills",
+   "/ac-repair/apple-valley",
+   "/ac-repair/banning",
+   "/ac-repair/barstow",
+   "/ac-repair/beaumont",
+   "/ac-repair/bellflower",
+   "/ac-repair/beverly-hills",
+   "/ac-repair/brea",
+   "/ac-repair/buellton",
+   "/ac-repair/buena-park",
+   "/ac-repair/burbank",
+   "/ac-repair/calabasas",
+   "/ac-repair/calimesa",
+   "/ac-repair/camarillo",
+   "/ac-repair/canoga-park",
+   "/ac-repair/canyon-lake",
+   "/ac-repair/carpinteria",
+   "/ac-repair/carson",
+   "/ac-repair/castaic",
+   "/ac-repair/cathedral-city",
+   "/ac-repair/chatsworth",
+   "/ac-repair/chino",
+   "/ac-repair/chino-hills",
+   "/ac-repair/coachella",
+   "/ac-repair/colton",
+   "/ac-repair/compton",
+   "/ac-repair/corona",
+   "/ac-repair/costa-mesa",
+   "/ac-repair/coto-de-caza",
+   "/ac-repair/culver-city",
+   "/ac-repair/cypress",
+   "/ac-repair/dana-point",
+   "/ac-repair/desert-hot-springs",
+   "/ac-repair/downey",
+   "/ac-repair/eastvale",
+   "/ac-repair/el-segundo",
+   "/ac-repair/encino",
+   "/ac-repair/fillmore",
+   "/ac-repair/fontana",
+   "/ac-repair/foothill-ranch",
+   "/ac-repair/fountain-valley",
+   "/ac-repair/fullerton",
+   "/ac-repair/garden-grove",
+   "/ac-repair/gardena",
+   "/ac-repair/glendale",
+   "/ac-repair/glendora",
+   "/ac-repair/goleta",
+   "/ac-repair/granada-hills",
+   "/ac-repair/grand-terrace",
+   "/ac-repair/hawthorne",
+   "/ac-repair/hemet",
+   "/ac-repair/hermosa-beach",
+   "/ac-repair/hesperia",
+   "/ac-repair/hidden-hills",
+   "/ac-repair/highland",
+   "/ac-repair/huntington-beach",
+   "/ac-repair/huntington-park",
+   "/ac-repair/indio",
+   "/ac-repair/inglewood",
+   "/ac-repair/irvine",
+   "/ac-repair/jurupa-valley",
+   "/ac-repair/la-habra",
+   "/ac-repair/la-mirada",
+   "/ac-repair/la-palma",
+   "/ac-repair/la-quinta",
+   "/ac-repair/la-verne",
+   "/ac-repair/ladera-ranch",
+   "/ac-repair/lake-elsinore",
+   "/ac-repair/lake-forest",
+   "/ac-repair/lake-los-angeles",
+   "/ac-repair/lakewood",
+   "/ac-repair/lancaster",
+   "/ac-repair/loma-linda",
+   "/ac-repair/lompoc",
+   "/ac-repair/long-beach",
+   "/ac-repair/los-alamitos",
+   "/ac-repair/lynwood",
+   "/ac-repair/manhattan-beach",
+   "/ac-repair/menifee",
+   "/ac-repair/mission-viejo",
+   "/ac-repair/montclair",
+   "/ac-repair/montebello",
+   "/ac-repair/montecito",
+   "/ac-repair/monterey-park",
+   "/ac-repair/moorpark",
+   "/ac-repair/moreno-valley",
+   "/ac-repair/murrieta",
+   "/ac-repair/newport-beach",
+   "/ac-repair/norco",
+   "/ac-repair/north-hollywood",
+   "/ac-repair/northridge",
+   "/ac-repair/norwalk",
+   "/ac-repair/oak-park",
+   "/ac-repair/ojai",
+   "/ac-repair/ontario",
+   "/ac-repair/orange",
+   "/ac-repair/orcutt",
+   "/ac-repair/oxnard",
+   "/ac-repair/pacoima",
+   "/ac-repair/palm-desert",
+   "/ac-repair/palm-springs",
+   "/ac-repair/palmdale",
+   "/ac-repair/palos-verdes-estates",
+   "/ac-repair/panorama-city",
+   "/ac-repair/perris",
+   "/ac-repair/placentia",
+   "/ac-repair/pomona",
+   "/ac-repair/port-hueneme",
+   "/ac-repair/porter-ranch",
+   "/ac-repair/quartz-hill",
+   "/ac-repair/rancho-cucamonga",
+   "/ac-repair/rancho-mirage",
+   "/ac-repair/rancho-palos-verdes",
+   "/ac-repair/rancho-santa-margarita",
+   "/ac-repair/redlands",
+   "/ac-repair/redondo-beach",
+   "/ac-repair/reseda",
+   "/ac-repair/rialto",
+   "/ac-repair/riverside",
+   "/ac-repair/san-bernardino",
+   "/ac-repair/san-clemente",
+   "/ac-repair/san-dimas",
+   "/ac-repair/san-fernando",
+   "/ac-repair/san-gabriel",
+   "/ac-repair/san-jacinto",
+   "/ac-repair/san-juan-capistrano",
+   "/ac-repair/san-marino",
+   "/ac-repair/santa-ana",
+   "/ac-repair/santa-barbara",
+   "/ac-repair/santa-fe-springs",
+   "/ac-repair/santa-maria",
+   "/ac-repair/santa-monica",
+   "/ac-repair/santa-paula",
+   "/ac-repair/santa-ynez",
+   "/ac-repair/seal-beach",
+   "/ac-repair/sherman-oaks",
+   "/ac-repair/simi-valley",
+   "/ac-repair/solvang",
+   "/ac-repair/south-gate",
+   "/ac-repair/stanton",
+   "/ac-repair/stevenson-ranch",
+   "/ac-repair/studio-city",
+   "/ac-repair/sun-valley",
+   "/ac-repair/sylmar",
+   "/ac-repair/tarzana",
+   "/ac-repair/temecula",
+   "/ac-repair/temple-city",
+   "/ac-repair/thousand-oaks",
+   "/ac-repair/toluca-lake",
+   "/ac-repair/torrance",
+   "/ac-repair/tustin",
+   "/ac-repair/twentynine-palms",
+   "/ac-repair/upland",
+   "/ac-repair/valley-village",
+   "/ac-repair/van-nuys",
+   "/ac-repair/ventura",
+   "/ac-repair/victorville",
+   "/ac-repair/villa-park",
+   "/ac-repair/walnut",
+   "/ac-repair/west-covina",
+   "/ac-repair/west-hollywood",
+   "/ac-repair/westlake-village",
+   "/ac-repair/westminster",
+   "/ac-repair/whittier",
+   "/ac-repair/wildomar",
+   "/ac-repair/winnetka",
+   "/ac-repair/woodland-hills",
+   "/ac-repair/yorba-linda",
+   "/ac-repair/yucaipa",
+   "/ac-repair/yucca-valley",
+   "/air-conditioning/ac-repair/san-clemente",
+   "/air-conditioning/ac-tune-up/san-clemente",
+   "/heating/heating-repair/san-clemente",
+   "/hvac-repair/san-clemente",
+   "/laguna-niguel-ac-repair",
+   "/los-angeles-ac-repair",
+   "/malibu-ac-repair",
+   "/orange-county-ac-repair",
+   "/pasadena-ac-repair",
+   "/santa-clarita-ac-repair"
+  ],
+  "orphans_contextual": [
+   "/about-us",
+   "/ac-repair/acton",
+   "/ac-repair/agoura-hills",
+   "/ac-repair/alhambra",
+   "/ac-repair/aliso-viejo",
+   "/ac-repair/anaheim",
+   "/ac-repair/anaheim-hills",
+   "/ac-repair/apple-valley",
+   "/ac-repair/banning",
+   "/ac-repair/barstow",
+   "/ac-repair/beaumont",
+   "/ac-repair/bellflower",
+   "/ac-repair/beverly-hills",
+   "/ac-repair/brea",
+   "/ac-repair/buellton",
+   "/ac-repair/buena-park",
+   "/ac-repair/burbank",
+   "/ac-repair/calabasas",
+   "/ac-repair/calimesa",
+   "/ac-repair/camarillo",
+   "/ac-repair/canoga-park",
+   "/ac-repair/canyon-lake",
+   "/ac-repair/carpinteria",
+   "/ac-repair/carson",
+   "/ac-repair/castaic",
+   "/ac-repair/cathedral-city",
+   "/ac-repair/chatsworth",
+   "/ac-repair/chino",
+   "/ac-repair/chino-hills",
+   "/ac-repair/coachella",
+   "/ac-repair/colton",
+   "/ac-repair/compton",
+   "/ac-repair/corona",
+   "/ac-repair/costa-mesa",
+   "/ac-repair/coto-de-caza",
+   "/ac-repair/culver-city",
+   "/ac-repair/cypress",
+   "/ac-repair/dana-point",
+   "/ac-repair/desert-hot-springs",
+   "/ac-repair/downey",
+   "/ac-repair/eastvale",
+   "/ac-repair/el-segundo",
+   "/ac-repair/encino",
+   "/ac-repair/fillmore",
+   "/ac-repair/fontana",
+   "/ac-repair/foothill-ranch",
+   "/ac-repair/fountain-valley",
+   "/ac-repair/fullerton",
+   "/ac-repair/garden-grove",
+   "/ac-repair/gardena",
+   "/ac-repair/glendale",
+   "/ac-repair/glendora",
+   "/ac-repair/goleta",
+   "/ac-repair/granada-hills",
+   "/ac-repair/grand-terrace",
+   "/ac-repair/hawthorne",
+   "/ac-repair/hemet",
+   "/ac-repair/hermosa-beach",
+   "/ac-repair/hesperia",
+   "/ac-repair/hidden-hills",
+   "/ac-repair/highland",
+   "/ac-repair/huntington-beach",
+   "/ac-repair/huntington-park",
+   "/ac-repair/indio",
+   "/ac-repair/inglewood",
+   "/ac-repair/irvine",
+   "/ac-repair/jurupa-valley",
+   "/ac-repair/la-habra",
+   "/ac-repair/la-mirada",
+   "/ac-repair/la-palma",
+   "/ac-repair/la-quinta",
+   "/ac-repair/la-verne",
+   "/ac-repair/ladera-ranch",
+   "/ac-repair/lake-elsinore",
+   "/ac-repair/lake-forest",
+   "/ac-repair/lake-los-angeles",
+   "/ac-repair/lakewood",
+   "/ac-repair/lancaster",
+   "/ac-repair/loma-linda",
+   "/ac-repair/lompoc",
+   "/ac-repair/long-beach",
+   "/ac-repair/los-alamitos",
+   "/ac-repair/lynwood",
+   "/ac-repair/manhattan-beach",
+   "/ac-repair/menifee",
+   "/ac-repair/mission-viejo",
+   "/ac-repair/montclair",
+   "/ac-repair/montebello",
+   "/ac-repair/montecito",
+   "/ac-repair/monterey-park",
+   "/ac-repair/moorpark",
+   "/ac-repair/moreno-valley",
+   "/ac-repair/murrieta",
+   "/ac-repair/newport-beach",
+   "/ac-repair/norco",
+   "/ac-repair/north-hollywood",
+   "/ac-repair/northridge",
+   "/ac-repair/norwalk",
+   "/ac-repair/oak-park",
+   "/ac-repair/ojai",
+   "/ac-repair/ontario",
+   "/ac-repair/orange",
+   "/ac-repair/orcutt",
+   "/ac-repair/oxnard",
+   "/ac-repair/pacoima",
+   "/ac-repair/palm-desert",
+   "/ac-repair/palm-springs",
+   "/ac-repair/palmdale",
+   "/ac-repair/palos-verdes-estates",
+   "/ac-repair/panorama-city",
+   "/ac-repair/perris",
+   "/ac-repair/placentia",
+   "/ac-repair/pomona",
+   "/ac-repair/port-hueneme",
+   "/ac-repair/porter-ranch",
+   "/ac-repair/quartz-hill",
+   "/ac-repair/rancho-cucamonga",
+   "/ac-repair/rancho-mirage",
+   "/ac-repair/rancho-palos-verdes",
+   "/ac-repair/rancho-santa-margarita",
+   "/ac-repair/redlands",
+   "/ac-repair/redondo-beach",
+   "/ac-repair/reseda",
+   "/ac-repair/rialto",
+   "/ac-repair/riverside",
+   "/ac-repair/san-bernardino",
+   "/ac-repair/san-clemente",
+   "/ac-repair/san-dimas",
+   "/ac-repair/san-fernando",
+   "/ac-repair/san-gabriel",
+   "/ac-repair/san-jacinto",
+   "/ac-repair/san-juan-capistrano",
+   "/ac-repair/san-marino",
+   "/ac-repair/santa-ana",
+   "/ac-repair/santa-barbara",
+   "/ac-repair/santa-fe-springs",
+   "/ac-repair/santa-maria",
+   "/ac-repair/santa-monica",
+   "/ac-repair/santa-paula",
+   "/ac-repair/santa-ynez",
+   "/ac-repair/seal-beach",
+   "/ac-repair/sherman-oaks",
+   "/ac-repair/simi-valley",
+   "/ac-repair/solvang",
+   "/ac-repair/south-gate",
+   "/ac-repair/stanton",
+   "/ac-repair/stevenson-ranch",
+   "/ac-repair/studio-city",
+   "/ac-repair/sun-valley",
+   "/ac-repair/sylmar",
+   "/ac-repair/tarzana",
+   "/ac-repair/temecula",
+   "/ac-repair/temple-city",
+   "/ac-repair/thousand-oaks",
+   "/ac-repair/toluca-lake",
+   "/ac-repair/torrance",
+   "/ac-repair/tustin",
+   "/ac-repair/twentynine-palms",
+   "/ac-repair/upland",
+   "/ac-repair/valley-village",
+   "/ac-repair/van-nuys",
+   "/ac-repair/ventura",
+   "/ac-repair/victorville",
+   "/ac-repair/villa-park",
+   "/ac-repair/walnut",
+   "/ac-repair/west-covina",
+   "/ac-repair/west-hollywood",
+   "/ac-repair/westlake-village",
+   "/ac-repair/westminster",
+   "/ac-repair/whittier",
+   "/ac-repair/wildomar",
+   "/ac-repair/winnetka",
+   "/ac-repair/woodland-hills",
+   "/ac-repair/yorba-linda",
+   "/ac-repair/yucaipa",
+   "/ac-repair/yucca-valley",
+   "/air-conditioning/ac-repair/san-clemente",
+   "/air-conditioning/ac-tune-up/san-clemente",
+   "/careers",
+   "/heating/heating-repair/san-clemente",
+   "/hvac-repair/san-clemente",
+   "/laguna-niguel-ac-repair",
+   "/los-angeles-ac-repair",
+   "/malibu-ac-repair",
+   "/orange-county-ac-repair",
+   "/pasadena-ac-repair",
+   "/reviews",
+   "/santa-clarita-ac-repair"
+  ],
+  "contextual_inlinks_by_family": {
+   "home": 85,
+   "core": 2,
+   "service": 8,
+   "calculators": 3,
+   "service_area_county": 6,
+   "service_area_city (/service-areas/[county]/[city])": 5,
+   "city_service (/air-conditioning/ac-repair/[city])": 4,
+   "city_service (/air-conditioning/emergency-ac-repair/[city])": 4,
+   "city_service (/air-conditioning/ac-tune-up/[city])": 4,
+   "city_service (/heating/heating-repair/[city])": 4,
+   "city_service (/hvac-repair/[city])": 4,
+   "ppc_legacy (/[city]-ac-repair)": 0,
+   "ppc_city (/ac-repair/[city])": 0,
+   "blog": 4
+  },
+  "city_links_in_body_by_family": {
+   "home": 12,
+   "core": 0,
+   "service": 0,
+   "calculators": 0,
+   "service_area_county": 3,
+   "service_area_city (/service-areas/[county]/[city])": 4,
+   "city_service (/air-conditioning/ac-repair/[city])": 4,
+   "city_service (/air-conditioning/emergency-ac-repair/[city])": 4,
+   "city_service (/air-conditioning/ac-tune-up/[city])": 4,
+   "city_service (/heating/heating-repair/[city])": 4,
+   "city_service (/hvac-repair/[city])": 4,
+   "ppc_legacy (/[city]-ac-repair)": 0,
+   "ppc_city (/ac-repair/[city])": 0,
+   "blog": 0
+  },
+  "header_footer_link_targets": [
+   [
+    "/contact",
+    4
+   ],
+   [
+    "/",
+    2
+   ],
+   [
+    "/about-us",
+    2
+   ],
+   [
+    "/financing",
+    2
+   ],
+   [
+    "/blog",
+    2
+   ],
+   [
+    "/air-conditioning",
+    1
+   ],
+   [
+    "/air-conditioning/ac-repair",
+    1
+   ],
+   [
+    "/emergency-hvac-service",
+    1
+   ],
+   [
+    "/air-conditioning/ac-installation",
+    1
+   ],
+   [
+    "/ductless/ductless-mini-split",
+    1
+   ],
+   [
+    "/heating",
+    1
+   ],
+   [
+    "/heating/furnace-repair",
+    1
+   ],
+   [
+    "/commercial-hvac",
+    1
+   ],
+   [
+    "/air-duct-services",
+    1
+   ],
+   [
+    "/air-duct-services/air-duct-cleaning",
+    1
+   ],
+   [
+    "/heat-pumps",
+    1
+   ],
+   [
+    "/services",
+    1
+   ],
+   [
+    "/service-areas/orange-county/yorba-linda",
+    1
+   ],
+   [
+    "/service-areas/orange-county/anaheim",
+    1
+   ],
+   [
+    "/service-areas/orange-county/anaheim-hills",
+    1
+   ],
+   [
+    "/service-areas/orange-county/brea",
+    1
+   ],
+   [
+    "/service-areas/orange-county/fullerton",
+    1
+   ],
+   [
+    "/service-areas/orange-county/placentia",
+    1
+   ],
+   [
+    "/service-areas/orange-county/villa-park",
+    1
+   ],
+   [
+    "/service-areas/orange-county/orange",
+    1
+   ],
+   [
+    "/service-areas/orange-county/tustin",
+    1
+   ],
+   [
+    "/service-areas/orange-county/santa-ana",
+    1
+   ],
+   [
+    "/service-areas",
+    1
+   ],
+   [
+    "/reviews",
+    1
+   ],
+   [
+    "/calculators",
+    1
+   ],
+   [
+    "/careers",
+    1
+   ],
+   [
+    "/privacy-policy",
+    1
+   ],
+   [
+    "/terms",
+    1
+   ],
+   [
+    "/sitemap.xml",
+    1
+   ]
+  ],
+  "service_location": [
+   {
+    "city": "aliso-viejo",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "anaheim",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "anaheim-hills",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "brea",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "costa-mesa",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "fullerton",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "garden-grove",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "huntington-beach",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "irvine",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "laguna-niguel",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "lake-forest",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "mission-viejo",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "newport-beach",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "orange",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "placentia",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "san-clemente",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "santa-ana",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "tustin",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "villa-park",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "westminster",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   },
+   {
+    "city": "yorba-linda",
+    "hub_links_to_service_pages": 0,
+    "service_pages": 5,
+    "service_pages_linking_to_hub": 0
+   }
+  ]
+ }
+}
