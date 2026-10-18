@@ -120,7 +120,6 @@ jobs:
           }
           print("EVIDENCE " + json.dumps(out))
           EOF
-          sed -i 's/^          //' urls.txt summarise.py
           i=0
           while read -r u; do
             i=$((i+1))
@@ -131,49 +130,52 @@ jobs:
             [ "$code" = 200 ] && python3 summarise.py "$u" "page$i.html" "$final" || true
           done < urls.txt
 
-  pagespeed:
+  lighthouse:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - name: PageSpeed Insights (mobile lab + CrUX field data)
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Lighthouse mobile lab runs (3 per URL, median reported)
         run: |
+          export CHROME_PATH=$(command -v google-chrome || command -v chromium)
+          echo "Chrome: $CHROME_PATH ($($CHROME_PATH --version))"
           for u in \
             https://www.hvacserviceacrepair.com/ \
             https://www.hvacserviceacrepair.com/air-conditioning/ac-repair/yorba-linda \
             https://www.hvacserviceacrepair.com/ac-repair/yorba-linda \
+            https://www.hvacserviceacrepair.com/service-areas/orange-county/yorba-linda \
             https://www.hvacserviceacrepair.com/contact \
             https://servicechampions.com/ \
-            https://www.dialonesonshine.com/ ; do
-            for attempt in 1 2 3; do
-              curl -sS -m 120 -o psi.json "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=performance&url=$(python3 -c 'import sys,urllib.parse;print(urllib.parse.quote(sys.argv[1],safe=""))' "$u")"
-              python3 - "$u" <<'EOF' && break
-          import json, sys
-          d = json.load(open("psi.json"))
-          if "error" in d:
-              print("PSI_ERROR", sys.argv[1], d["error"].get("message", "")[:200]); sys.exit(1)
-          lh = d.get("lighthouseResult", {}); a = lh.get("audits", {})
-          def nv(k): return a.get(k, {}).get("numericValue")
-          def field(x):
-              if not x or not x.get("metrics"): return None
-              return {"overall": x.get("overall_category"), **{k: {"p75": v.get("percentile"), "cat": v.get("category")} for k, v in x["metrics"].items()}}
-          tp = a.get("third-party-summary", {}).get("details", {}).get("items", [])
-          rb = a.get("resource-summary", {}).get("details", {}).get("items", [])
-          out = {
-            "url": sys.argv[1],
-            "lab": {"score": lh.get("categories", {}).get("performance", {}).get("score"),
-                    "LCP_ms": nv("largest-contentful-paint"), "CLS": nv("cumulative-layout-shift"),
-                    "TBT_ms": nv("total-blocking-time"), "FCP_ms": nv("first-contentful-paint"),
-                    "SI_ms": nv("speed-index"), "TTI_ms": nv("interactive"),
-                    "lcp_element": (a.get("largest-contentful-paint-element", {}).get("details", {}).get("items") or [{}])[0].get("items", [{}])[0].get("node", {}).get("snippet") if a.get("largest-contentful-paint-element", {}).get("details") else None,
-                    "unused_js_bytes": a.get("unused-javascript", {}).get("details", {}).get("overallSavingsBytes"),
-                    "resources": {r.get("resourceType"): [r.get("requestCount"), r.get("transferSize")] for r in rb},
-                    "third_party": [[t.get("entity", {}).get("text") if isinstance(t.get("entity"), dict) else t.get("entity"), round(t.get("blockingTime", 0)), t.get("transferSize")] for t in tp][:8]},
-            "field_url": field(d.get("loadingExperience")),
-            "field_url_is_origin_fallback": d.get("loadingExperience", {}).get("origin_fallback", False),
-            "field_origin": field(d.get("originLoadingExperience")),
-          }
-          print("PSI " + json.dumps(out))
-          EOF
-              echo "retry $attempt for $u"; sleep 15
+            https://dialonesonshine.com/ ; do
+            for n in 1 2 3; do
+              npx -y lighthouse@12.6.0 "$u" --quiet --only-categories=performance --form-factor=mobile \
+                --chrome-flags="--headless=new --no-sandbox" --output=json --output-path="lh-$n.json" >/dev/null 2>&1 || echo "LH_FAIL $u run $n"
             done
+            node - "$u" <<'EOF'
+          const fs = require("fs");
+          const runs = [1, 2, 3].map((n) => { try { return JSON.parse(fs.readFileSync(`lh-${n}.json`, "utf8")); } catch { return null; } }).filter((r) => r && r.categories);
+          if (!runs.length) { console.log("LH " + JSON.stringify({ url: process.argv[2], error: "no successful runs" })); process.exit(0); }
+          const med = (f) => { const v = runs.map(f).filter((x) => x != null).sort((a, b) => a - b); return v.length ? v[Math.floor(v.length / 2)] : null; };
+          const a = (r, k) => r.audits[k]?.numericValue;
+          const r0 = runs[0];
+          const res = r0.audits["resource-summary"]?.details?.items ?? [];
+          const tp = r0.audits["third-party-summary"]?.details?.items ?? [];
+          const lcpEl = r0.audits["largest-contentful-paint-element"]?.details?.items?.[0]?.items?.[0]?.node?.snippet;
+          const boot = r0.audits["bootup-time"]?.details?.items ?? [];
+          console.log("LH " + JSON.stringify({
+            url: process.argv[2], runs: runs.length,
+            score: med((r) => r.categories.performance.score),
+            LCP_ms: med((r) => a(r, "largest-contentful-paint")), FCP_ms: med((r) => a(r, "first-contentful-paint")),
+            TBT_ms: med((r) => a(r, "total-blocking-time")), CLS: med((r) => a(r, "cumulative-layout-shift")),
+            SI_ms: med((r) => a(r, "speed-index")), TTFB_ms: med((r) => a(r, "server-response-time")),
+            lcp_element: lcpEl ? lcpEl.slice(0, 160) : null,
+            unused_js_kb: Math.round((r0.audits["unused-javascript"]?.details?.overallSavingsBytes ?? 0) / 1024),
+            resources: Object.fromEntries(res.map((x) => [x.resourceType, [x.requestCount, Math.round(x.transferSize / 1024)]])),
+            third_party: tp.slice(0, 6).map((t) => [typeof t.entity === "object" ? t.entity.text : t.entity, Math.round(t.blockingTime ?? 0), Math.round((t.transferSize ?? 0) / 1024)]),
+            main_thread_top: boot.slice(0, 4).map((b) => [b.url.slice(0, 80), Math.round(b.scripting ?? 0)]),
+          }));
+          EOF
+            rm -f lh-*.json
           done
