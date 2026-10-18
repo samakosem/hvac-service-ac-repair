@@ -1,0 +1,196 @@
+# Phase 2.2 (PR #3) live regression. Read-only.
+# 1. Crawls the live site BEFORE the merge as the baseline (production 02d78a7).
+# 2. Waits for PR #3 to be merged and for Vercel's production deployment to be READY.
+# 3. Re-crawls the live site and compares it with the baseline: metadata, canonicals,
+#    robots, H1, Open Graph, JSON-LD, GTM, tel: links, forms, Ads pages, and every
+#    link added. Then runs the standard SEO checks, the Phase 2.1 content checks,
+#    host redirects/headers and the mobile header check.
+# No leads are submitted; analytics requests are blocked in browser checks.
+name: SEO phase 2.2 production verification
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase22-production.yml]
+
+permissions:
+  contents: read
+  deployments: read
+  pull-requests: read
+
+concurrency:
+  group: seo-phase22-production
+  cancel-in-progress: true
+
+env:
+  PR_NUMBER: "3"
+  APPROVED_HEAD: 628360d6f316d57185dbfd3ab992895aeb0f2f47
+  BASELINE_SHA: 02d78a722d6fb82c8f5036ebc7d11ae64c580ca9
+  PRODUCTION_URL: https://www.hvacserviceacrepair.com
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ci
+          persist-credentials: false
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.APPROVED_HEAD }}
+          path: site
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install parser
+        run: pip install --quiet beautifulsoup4 lxml
+
+      - name: "Baseline: live site must still be the pre-merge build"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          main=$(gh api "repos/${GITHUB_REPOSITORY}/commits/main" --jq .sha)
+          merged=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" --jq .merged)
+          echo "main: $main, PR #${PR_NUMBER} merged: $merged"
+          [ "$main" = "$BASELINE_SHA" ] && [ "$merged" = false ] || { echo "::error::Baseline no longer live (main moved or PR already merged)"; exit 1; }
+          if curl -sS "$PRODUCTION_URL/air-conditioning/ac-repair/yorba-linda" | grep -q "Related Pages for Yorba Linda"; then
+            echo "::error::Live site already serves Phase 2.2"; exit 1
+          fi
+          echo "Live site serves the pre-merge build"
+
+      - name: "Baseline: crawl live production"
+        run: |
+          python3 ci/.github/seo-checks/crawl.py "$PRODUCTION_URL" before
+          python3 -I site/scripts/seo-audit/extract.py before
+          echo "BASELINE CAPTURED"
+
+      - name: Wait for PR #3 to be merged
+        id: merge
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          deadline=$(( $(date +%s) + 3600 ))
+          while :; do
+            pr=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")
+            if [ "$(jq -r .merged <<<"$pr")" = true ]; then
+              sha=$(jq -r .merge_commit_sha <<<"$pr")
+              echo "Merged: $sha (method: squash expected), head was $(jq -r .head.sha <<<"$pr")"
+              [ "$(jq -r .head.sha <<<"$pr")" = "$APPROVED_HEAD" ] || { echo "::error::Merged head is not the approved head"; exit 1; }
+              echo "sha=$sha" >> "$GITHUB_OUTPUT"; break
+            fi
+            [ "$(jq -r .state <<<"$pr")" = closed ] && { echo "::error::PR closed without merge"; exit 1; }
+            [ "$(date +%s)" -ge "$deadline" ] && { echo "::error::Timed out waiting for merge"; exit 1; }
+            sleep 15
+          done
+
+      - name: Merged tree equals the approved head
+        env:
+          MERGE_SHA: ${{ steps.merge.outputs.sha }}
+        run: |
+          cd site && git fetch -q origin "$MERGE_SHA"
+          if git diff --quiet "$APPROVED_HEAD" "$MERGE_SHA"; then echo "Tree of $MERGE_SHA is identical to $APPROVED_HEAD"; else git diff --stat "$APPROVED_HEAD" "$MERGE_SHA"; echo "::error::Merged tree differs from the approved head"; exit 1; fi
+          echo "Parents: $(git log -1 --format=%P "$MERGE_SHA") (single parent = squash)"
+
+      - name: Wait for the Vercel production deployment to be READY
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: ${{ steps.merge.outputs.sha }}
+        run: |
+          deadline=$(( $(date +%s) + 1800 ))
+          while :; do
+            dep=$(gh api "repos/${GITHUB_REPOSITORY}/deployments?sha=${TARGET_SHA}&environment=Production&per_page=20" --jq '[.[] | select(.creator.login == "vercel[bot]")] | first')
+            if [ -n "$dep" ] && [ "$dep" != "null" ]; then
+              id=$(jq -r .id <<<"$dep")
+              status=$(gh api "repos/${GITHUB_REPOSITORY}/deployments/${id}/statuses?per_page=1" --jq 'first // {}')
+              state=$(jq -r '.state // "pending"' <<<"$status")
+              echo "Production deployment $id (sha $(jq -r .sha <<<"$dep")): $state"
+              case "$state" in
+                success) echo "READY: $(jq -r .environment_url <<<"$status")"; break ;;
+                failure|error|inactive) echo "::error::Vercel production deployment $id ended in state '$state'"; exit 1 ;;
+              esac
+            else
+              echo "No Vercel production deployment for $TARGET_SHA yet"
+            fi
+            [ "$(date +%s)" -ge "$deadline" ] && { echo "::error::Timed out waiting for the production deployment"; exit 1; }
+            sleep 20
+          done
+
+      - name: Confirm the production domain serves the merged build
+        run: |
+          for i in $(seq 1 12); do
+            if curl -sS "$PRODUCTION_URL/air-conditioning/ac-repair/yorba-linda" | grep -q "Related Pages for Yorba Linda"; then echo "Production domain serves Phase 2.2"; exit 0; fi
+            echo "Domain not updated yet, retrying"; sleep 15
+          done
+          echo "::error::Production domain does not serve the Phase 2.2 build"; exit 1
+
+      - name: "Live crawl after merge + comparison with the live baseline"
+        run: |
+          python3 ci/.github/seo-checks/crawl.py "$PRODUCTION_URL" after
+          python3 -I site/scripts/seo-audit/extract.py after
+          python3 -I site/scripts/seo-audit/compare_internal_links.py before after | tee compare.json
+          python3 - <<'PY'
+          import json, sys
+          r = json.load(open("compare.json"))
+          checks = {
+            "456 pages, none missing or added": r["pages"] == 456 and not r["missing"] and not r["added_pages"],
+            "metadata/canonical/robots/H1/OG/JSON-LD/GTM/tel/forms unchanged": not r["field_differences"],
+            "all 181 Google Ads pages unchanged": r["ads_pages_checked"] == 181 and not r["ads_pages_changed"],
+            "no links removed": not r["pages_with_removed_links"],
+            "exactly 1,131 new links": r["new_links_total"] == 1131,
+            "no new link duplicates an existing one": not r["new_links_duplicating_existing"],
+            "223 destinations, all in sitemap": r["new_destinations"] == 223 and not r["new_destinations_not_in_sitemap"],
+          }
+          for k, v in checks.items(): print(("PASS " if v else "FAIL ") + k)
+          sys.exit(0 if all(checks.values()) else 1)
+          PY
+
+      - name: New link destinations resolve directly (no redirects)
+        run: |
+          python3 - <<'PY' > dests.txt
+          import json, collections
+          B = {p["path"]: p for p in json.load(open("before/pages.json"))}
+          A = {p["path"]: p for p in json.load(open("after/pages.json"))}
+          d = set()
+          for p in A:
+              new = collections.Counter((l["to"], l["anchor"]) for l in A[p]["links"] if l["region"] == "main") - collections.Counter((l["to"], l["anchor"]) for l in B[p]["links"] if l["region"] == "main")
+              d |= {t for t, _ in new}
+          print("\n".join(sorted(d)))
+          PY
+          echo "destinations: $(grep -c . dests.txt)"
+          bad=$(xargs -P 6 -I{} curl -sS -o /dev/null -w "%{http_code} {}\n" "$PRODUCTION_URL{}" < dests.txt | grep -v '^200 ' || true)
+          [ -z "$bad" ] && echo "all return 200 directly" || { echo "::error::$bad"; exit 1; }
+
+      - name: "SEO checks 1-9 (sitemap, canonicals, robots, structured data, Ads pages, GTM/phone/forms, noindex, redirects)"
+        shell: bash
+        run: |
+          set -o pipefail
+          node site/scripts/verify-preview.mjs --preview "$PRODUCTION_URL" --concurrency 6 | tee seo.txt
+
+      - name: Phase 2.1 content checks still pass
+        run: python3 ci/.github/seo-checks/claims.py "$PRODUCTION_URL" site
+
+      - name: Host redirects and indexing headers
+        run: |
+          fail=0
+          final=$(curl -sSL -o /dev/null -w '%{url_effective} %{http_code}' http://hvacserviceacrepair.com/contact)
+          echo "http apex -> $final"
+          [ "$final" = "https://www.hvacserviceacrepair.com/contact 200" ] || { echo "::error::apex redirect ended at $final"; fail=1; }
+          for p in / /service-areas/orange-county/yorba-linda /air-conditioning/ac-repair/yorba-linda /heating /ac-repair/yorba-linda; do
+            xr=$(curl -sSI "$PRODUCTION_URL$p" | grep -i '^x-robots-tag' || true)
+            echo "X-Robots-Tag $p: ${xr:-none}"
+            if grep -qi noindex <<<"$xr"; then echo "::error::noindex header on $p"; fail=1; fi
+          done
+          exit $fail
+
+      - name: Mobile header and layout
+        run: |
+          mkdir pw && cd pw && npm init -y >/dev/null && npm i playwright-core@1.56.1 --no-audit --no-fund >/dev/null
+          cp ../ci/.github/seo-checks/mobile.cjs .
+          CHROME_PATH=$(command -v google-chrome) node mobile.cjs "$PRODUCTION_URL"
