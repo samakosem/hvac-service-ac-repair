@@ -4,7 +4,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import PhoneLink from "@/components/ui/PhoneLink";
 import JsonLd from "@/components/ui/JsonLd";
-import { schemaLocalBusiness } from "@/lib/seo/schema";
+import { schemaHvacBusiness } from "@/lib/seo/schema";
 import { SERVICE_AREA_COUNTIES } from "@/lib/config/locations";
 import { SITE } from "@/lib/config/site";
 
@@ -39,7 +39,7 @@ const COVERAGE_NOTE: Record<string, string> = {
 export default function ServiceAreasPage() {
   return (
     <>
-      <JsonLd data={schemaLocalBusiness()} />
+      <JsonLd data={schemaHvacBusiness()} />
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-hero-gradient py-14 lg:py-20">

@@ -32,7 +32,7 @@ export async function generateMetadata({
   return buildMetadata({
     title: data.metaTitle,
     description: data.metaDescription,
-    path: `/ac-repair/${city}/`,
+    path: `/ac-repair/${city}`,
     openGraphImage: data.heroImage.src,
   });
 }
@@ -45,5 +45,5 @@ export default async function Page({
   const { city } = await params;
   const data = ALL_PPC_CITIES.find((c) => c.slug === city);
   if (!data) notFound();
-  return <PPCLandingTemplate city={data} />;
+  return <PPCLandingTemplate city={data} path={`/ac-repair/${city}`} />;
 }

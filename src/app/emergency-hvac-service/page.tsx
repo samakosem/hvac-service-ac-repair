@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "Emergency HVAC Service — Same-Day Available | (714) 410-2784",
     description:
       "Emergency HVAC service throughout Southern California. Real people answer — same-day AC and heating repair. No emergency surcharge. Call (714) 410-2784 now.",
-    path: "/emergency-hvac-service/",
+    path: "/emergency-hvac-service",
   });
 }
 
@@ -107,12 +107,12 @@ function ArrowIcon({ className }: { className?: string }) {
 export default function EmergencyHvacPage() {
   const breadcrumbSchema = schemaBreadcrumb([
     { name: "Home", href: "/" },
-    { name: "Emergency HVAC Service", href: "/emergency-hvac-service/" },
+    { name: "Emergency HVAC Service", href: "/emergency-hvac-service" },
   ]);
   const serviceSchema = schemaService({
     name: "Emergency HVAC Service Orange County",
     description: "Same-day emergency AC and heating repair across Orange County. Real people answer — no voicemail. No emergency surcharge.",
-    url: "/emergency-hvac-service/",
+    url: "/emergency-hvac-service",
     areaServed: "Orange County",
   });
   const faqSchema = schemaFaqPage(FAQS);

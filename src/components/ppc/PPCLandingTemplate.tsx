@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import JsonLd from "@/components/ui/JsonLd";
 import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import PhoneLink from "@/components/ui/PhoneLink";
@@ -156,11 +155,14 @@ function TrustIcon({ icon }: { icon: string }) {
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-type Props = { city: PPCCity };
+type Props = {
+  city: PPCCity;
+  /** Path this page is served at. Defaults to the hand-written /{city}-ac-repair routes. */
+  path?: string;
+};
 
-export default function PPCLandingTemplate({ city }: Props) {
-  const pageUrl = `/${city.slug}-ac-repair`;
-  const canonicalUrl = `${SITE.domain}${pageUrl}`;
+export default function PPCLandingTemplate({ city, path }: Props) {
+  const pageUrl = path ?? `/${city.slug}-ac-repair`;
 
   const breadcrumbSchema = schemaBreadcrumb([
     { name: "Home", href: "/" },

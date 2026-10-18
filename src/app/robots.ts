@@ -7,37 +7,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          // Old flat /services/[slug] paths — canonical silo pages exist
-          "/services/air-conditioning",
-          "/services/ac-services",
-          "/services/ac-repair",
-          "/services/emergency-ac-repair",
-          "/services/ac-installation",
-          "/services/ac-replacement",
-          "/services/ac-maintenance",
-          "/services/ac-tune-up",
-          "/services/ductless-mini-split",
-          "/services/mini-split-installation",
-          "/services/heat-pump-services",
-          "/services/heat-pump-repair",
-          "/services/heat-pump-installation",
-          "/services/heating-services",
-          "/services/furnace-repair",
-          "/services/furnace-installation",
-          "/services/furnace-maintenance",
-          "/services/commercial-hvac",
-          "/services/commercial-maintenance-plan",
-          "/services/air-duct-services",
-          "/services/air-duct-cleaning",
-          "/services/residential-maintenance-plan",
-          // Legacy WordPress marketing URLs
-          "/hvac-installation/",
-          "/hvac-cleaning/",
-          // Internal / non-public paths
-          "/api/",
-          "/_next/",
-        ],
+        // Legacy URLs that 308-redirect are deliberately NOT disallowed: Googlebot
+        // must be able to fetch them to see the redirect and consolidate signals.
+        // /_next/ is not disallowed either: it holds the JS/CSS Google needs to render.
+        disallow: ["/api/"],
       },
     ],
     sitemap: `${SITE.domain}/sitemap.xml`,

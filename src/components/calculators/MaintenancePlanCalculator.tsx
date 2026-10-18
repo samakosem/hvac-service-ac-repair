@@ -36,7 +36,7 @@ export default function MaintenancePlanCalculator() {
     const withoutPlanCost = tuneUpCost + emergencyCallPremium;
 
     // With plan — annual cost
-    let planCost = numUnits * PLAN_ANNUAL_COST;
+    const planCost = numUnits * PLAN_ANNUAL_COST;
 
     // Value adds
     let valueAdds = 0;

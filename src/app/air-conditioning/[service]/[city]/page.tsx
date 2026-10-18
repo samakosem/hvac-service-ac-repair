@@ -21,7 +21,7 @@ export async function generateMetadata({
   return buildMetadata({
     title: page.metaTitle,
     description: page.metaDescription,
-    path: `${page.urlBase}/${page.citySlug}/`,
+    path: `${page.urlBase}/${page.citySlug}`,
   });
 }
 

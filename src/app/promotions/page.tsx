@@ -323,7 +323,7 @@ export default function PromotionsPage() {
               { name: "Brea", href: "/service-areas/orange-county/brea" },
               { name: "Irvine", href: "/service-areas/orange-county/irvine" },
               { name: "Corona", href: "/service-areas/riverside-county/corona" },
-              { name: "Riverside", href: "/service-areas/riverside-county/riverside" },
+              { name: "Riverside County", href: "/service-areas/riverside-county" },
             ].map(({ name, href }) => (
               <Link
                 key={name}

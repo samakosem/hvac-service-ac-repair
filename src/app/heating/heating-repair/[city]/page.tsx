@@ -21,7 +21,7 @@ export async function generateMetadata({
   return buildMetadata({
     title: page.metaTitle,
     description: page.metaDescription,
-    path: `/heating/heating-repair/${page.citySlug}/`,
+    path: `/heating/heating-repair/${page.citySlug}`,
   });
 }
 

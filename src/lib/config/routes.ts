@@ -62,7 +62,6 @@ export function serviceHref(slug: string): string {
  */
 export const SILO_PARENTS: Record<string, { name: string; href: string }> = {
   "/air-conditioning":   { name: "Air Conditioning", href: "/air-conditioning" },
-  "/ductless":           { name: "Ductless Mini-Split", href: "/ductless" },
   "/heat-pumps":         { name: "Heat Pumps", href: "/heat-pumps" },
   "/heating":            { name: "Heating", href: "/heating" },
   "/commercial-hvac":    { name: "Commercial HVAC", href: "/commercial-hvac" },

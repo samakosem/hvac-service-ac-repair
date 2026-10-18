@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { buildMetadata } from "@/lib/seo/metadata";
-import JsonLd from "@/components/ui/JsonLd";
 import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import CtaSection from "@/components/ui/CtaSection";
 

@@ -37,10 +37,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // ── 2. Service silo root pages ────────────────────────────────────────────────
+  // Excluded: /services (noindex hub), /ductless (no page; redirects to ductless-mini-split)
   const serviceRootPages: SitemapEntry[] = [
-    url("/services",           0.9, "monthly"),
     url("/air-conditioning",   0.9, "monthly"),
-    url("/ductless",           0.8, "monthly"),
     url("/heat-pumps",         0.8, "monthly"),
     url("/heating",            0.8, "monthly"),
     url("/commercial-hvac",    0.8, "monthly"),

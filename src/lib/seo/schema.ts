@@ -7,6 +7,11 @@ type BreadcrumbItem = {
 
 const BUSINESS_ID = `${SITE.domain}/#hvacbusiness`;
 
+/** Absolute URL for a site path, without the trailing slash Next.js redirects away. */
+function absoluteUrl(path: string): string {
+  return path.length > 1 ? `${SITE.domain}${path.replace(/\/+$/, "")}` : `${SITE.domain}/`;
+}
+
 export function schemaWebSite() {
   return {
     "@context": "https://schema.org",
@@ -96,10 +101,10 @@ export function schemaService({
     "@type": "Service",
     name,
     description,
-    url: `${SITE.domain}${url}`,
+    url: absoluteUrl(url),
     provider: { "@type": "HVACBusiness", "@id": BUSINESS_ID },
     areaServed: {
-      "@type": "County",
+      "@type": /County$/.test(areaServed) ? "County" : "City",
       name: areaServed,
       containedInPlace: { "@type": "State", name: "California" },
     },
@@ -115,7 +120,7 @@ export function schemaBreadcrumb(items: BreadcrumbItem[]) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: `${SITE.domain}${item.href}`,
+      item: absoluteUrl(item.href),
     })),
   };
 }
@@ -135,24 +140,6 @@ export function schemaFaqPage(faqs: { question: string; answer: string }[]) {
   };
 }
 
-export function schemaLocalBusiness() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": BUSINESS_ID,
-    name: SITE.name,
-    url: SITE.domain,
-    telephone: SITE.phone,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: SITE.address.street,
-      addressLocality: SITE.address.city,
-      addressRegion: SITE.address.state,
-      postalCode: SITE.address.zip,
-      addressCountry: "US",
-    },
-  };
-}
 
 export function schemaContactPage() {
   return {
@@ -231,34 +218,5 @@ export function schemaCalculatorPage({
       url: SITE.domain,
       telephone: SITE.phone,
     },
-  };
-}
-
-export function schemaOrganization() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": BUSINESS_ID,
-    name: SITE.name,
-    url: SITE.domain,
-    telephone: SITE.phone,
-    email: SITE.email,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: SITE.address.street,
-      addressLocality: SITE.address.city,
-      addressRegion: SITE.address.state,
-      postalCode: SITE.address.zip,
-      addressCountry: "US",
-    },
-    areaServed: "Orange County, CA",
-    knowsAbout: [
-      "Air Conditioning Repair",
-      "HVAC Installation",
-      "Heating Services",
-      "Ductless Mini-Split Systems",
-      "Commercial HVAC",
-      "Air Duct Cleaning",
-    ],
   };
 }

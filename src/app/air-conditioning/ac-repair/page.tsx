@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: "AC Repair — Same-Day Service | Southern California | (714) 410-2784",
     description:
       "Same-day AC repair throughout Southern California. Licensed technicians, free diagnostic with repair, written quote before any work. Call (714) 410-2784.",
-    path: "/air-conditioning/ac-repair/",
+    path: "/air-conditioning/ac-repair",
   });
 }
 
@@ -117,13 +117,13 @@ export default function AcRepairPage() {
 
   const breadcrumbSchema = schemaBreadcrumb([
     { name: "Home", href: "/" },
-    { name: "Air Conditioning", href: "/air-conditioning/" },
-    { name: "AC Repair", href: "/air-conditioning/ac-repair/" },
+    { name: "Air Conditioning", href: "/air-conditioning" },
+    { name: "AC Repair", href: "/air-conditioning/ac-repair" },
   ]);
   const serviceSchema = schemaService({
     name: "AC Repair — Same-Day Service",
     description: service.metaDescription,
-    url: "/air-conditioning/ac-repair/",
+    url: "/air-conditioning/ac-repair",
     areaServed: "Orange County",
   });
   const faqSchema = schemaFaqPage(service.faqs);
@@ -354,6 +354,17 @@ export default function AcRepairPage() {
                     </li>
                   ))}
                 </ul>
+                <p className="mt-4 text-sm text-slate-600 leading-relaxed">
+                  Want to rule out the simple causes first? See our{" "}
+                  <Link href="/ac-not-cooling" className="text-hvac-blue-600 font-semibold hover:text-hvac-blue-500">
+                    AC not cooling troubleshooting guide
+                  </Link>
+                  . If the system has stopped completely, we offer{" "}
+                  <Link href="/emergency-hvac-service" className="text-hvac-blue-600 font-semibold hover:text-hvac-blue-500">
+                    emergency HVAC service
+                  </Link>
+                  .
+                </p>
               </div>
             </div>
           </div>

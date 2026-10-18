@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SITE } from "@/lib/config/site";
 import JsonLd from "@/components/ui/JsonLd";
 import { schemaFaqPage } from "@/lib/seo/schema";
