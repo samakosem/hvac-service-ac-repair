@@ -1,6 +1,6 @@
 # Phase 2.3: Prioritized Implementation Plan
 
-Companion to `PHASE_2_3_CANNIBALIZATION_AUDIT.md`. **Nothing here has been executed, and no implementation PR is open.** Each wave needs your explicit approval and ships as its own pull request, verified on a Vercel preview and again on production with the existing checks (`scripts/verify-preview.mjs`, the live crawl comparison and the Ads-page checks).
+Companion to `PHASE_2_3_CANNIBALIZATION_AUDIT.md`. **Current priorities after the partial GSC evidence are in `PHASE_2_3_GSC_REVIEW.md` section 4; that order (P0 apex 308, P1 high-impression pages) supersedes the wave order below where they differ.** **Nothing here has been executed, and no implementation PR is open.** Each wave needs your explicit approval and ships as its own pull request, verified on a Vercel preview and again on production with the existing checks (`scripts/verify-preview.mjs`, the live crawl comparison and the Ads-page checks).
 
 Owner decisions (2026-10-18) that govern this plan:
 
@@ -58,7 +58,7 @@ Pages with paid clicks stay protected; pages with organic visibility are withdra
 | `/air-conditioning/ac-maintenance` | MERGE+301 | `/air-conditioning/ac-tune-up` | PAUSED (direction swaps if GSC favours "ac maintenance" here) |
 | `/air-conditioning/ac-replacement` | MERGE+301 | `/air-conditioning/ac-installation` | PAUSED |
 | `/air-conditioning/ac-services` | MERGE+301 | `/air-conditioning` | PAUSED |
-| `/maintenance/residential-maintenance-plan` | MERGE+301 | `/maintenance-plans` | PAUSED |
+| `/maintenance/residential-maintenance-plan` | ~~MERGE+301~~ | | **WITHDRAWN** (745 impressions, partial GSC evidence): IMPROVE instead |
 | `/ductless/ductless-mini-split` | IMPROVE (title only) | | Awaiting approval; not a merge |
 
 If a merge is later approved: move unique sections into the destination first, remove the source from `sitemap.ts`, update nav, footer and "Related Services" links, add a one-hop redirect, and verify no internal link points at a redirect.
@@ -88,7 +88,7 @@ Do not "uniquify" templates by rewording; only real, verifiable local informatio
 
 | Cluster | Decision rule |
 |---|---|
-| K1 / K2: homepage vs `/air-conditioning/ac-repair/yorba-linda` | If Google ranks the homepage for "ac repair yorba linda", keep the homepage title. If it ranks the city page, move the homepage title to the company intent ("HVAC Company in Yorba Linda, CA: AC Repair, Heating and Installation"). |
+| K1 / K2: homepage vs `/air-conditioning/ac-repair/yorba-linda` | **Resolved for `ac repair yorba linda ca`:** the apex homepage ranks 1.2 for it (partial GSC evidence). Keep the homepage title. Re-check once the full query + page export arrives. |
 | K11: "AC repair Orange County" | Choose between `/air-conditioning/ac-repair` and `/orange-county-ac-repair` (Ads page, unchanged) by which already earns impressions. |
 | Laguna Niguel | Same test for `/laguna-niguel-ac-repair` (Ads, hand-written) vs `/air-conditioning/ac-repair/laguna-niguel`. |
 

@@ -5,6 +5,7 @@ Audited commit: `a28afa8` (main, after Phase 2.2). Production was verified to se
 Audit date: 2026-10-18
 Status: **audit only.** No website code, redirect, canonical, robots rule, sitemap entry or indexing directive was changed. Nothing was merged or deployed. Every recommendation below waits for your approval.
 Revised: 2026-10-18, after the owner review below.
+Updated: 2026-10-18 with partial Search Console evidence. **See `PHASE_2_3_GSC_REVIEW.md` for the current priorities**: 5 candidates withdrawn, 18 visible pages flagged, host duplication separated from cannibalization, and the confirmed 307 apex redirect.
 
 > **Owner decisions (2026-10-18), applied throughout this report and the CSVs**
 >
@@ -238,6 +239,7 @@ There is no out-of-area tier: the owner confirmed service throughout Ventura and
 | # | Keyword cluster | Pages competing today | Strongest page (proposed canonical owner) | Why | Gate |
 |---|---|---|---|---|---|
 | K1 | AC repair Yorba Linda | `/` (title), `/air-conditioning/ac-repair/yorba-linda`, `/ac-repair/yorba-linda` (Ads), `/air-conditioning/emergency-ac-repair/yorba-linda`, `/service-areas/orange-county/yorba-linda` (title) | `/air-conditioning/ac-repair/yorba-linda` for the service query; `/` for the brand + city query | City page is hand-written and the most specific; the homepage has the authority. Which one Google already prefers decides the title change. | GSC |
+| | *GSC update* | `ac repair yorba linda ca`: apex homepage 243 impressions at position 1.2; www `/about-us` 59 at 29.2 | **Homepage owns this query: keep its title** | Partial GSC evidence (`PHASE_2_3_GSC_REVIEW.md` 2.2) | resolved for this query |
 | K2 | HVAC company / HVAC service Yorba Linda | `/`, `/service-areas/orange-county/yorba-linda`, `/hvac-repair/yorba-linda`, `/about-us` (title) | `/` | Homepage: brand, most links, company intent | GSC |
 | K3 | HVAC repair Yorba Linda | `/hvac-repair/yorba-linda`, hub | `/hvac-repair/yorba-linda` (for now) | Only page with "HVAC Repair" in the title; some unique copy | GSC |
 | K4 | Emergency AC repair Yorba Linda | `/air-conditioning/emergency-ac-repair/yorba-linda`, `/emergency-hvac-service` | `/air-conditioning/emergency-ac-repair/yorba-linda` | Hand-written; H1 lacks "emergency" (IMPROVE) | none |

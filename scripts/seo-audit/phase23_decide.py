@@ -23,6 +23,13 @@ conversions); otherwise it is WITHDRAWN and the page is improved instead. Nothin
 here changes the site: an ELIGIBLE candidate still needs explicit approval.
 
 Input files and their exact formats: docs/seo-phase-2/gsc-input/README.md.
+
+PARTIAL EVIDENCE (--evidence FILE): a short list of GSC page rows (header
+"Top pages,Period start,Period end,Clicks,Impressions,Position"), e.g. the top
+pages someone pulled by hand. It is used only to protect pages: a listed page
+with 1+ click or 100+ impressions has its candidate withdrawn and is flagged
+IMPROVE. A page that is not listed is NOT treated as zero; it keeps its
+"awaiting data" status. The full-export columns stay N/A.
 """
 import argparse, collections, csv, glob, json, os, re, urllib.parse
 
@@ -30,6 +37,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("metrics")
 ap.add_argument("out")
 ap.add_argument("--inputs", default=None)
+ap.add_argument("--evidence", default=None, help="partial GSC page rows (protective only; see PARTIAL EVIDENCE below)")
 A = ap.parse_args()
 
 M = json.load(open(A.metrics))
@@ -196,6 +204,37 @@ if cv is not None:
         p, _ = norm_path(r["page"])
         if p:
             CONV[p] += num(r.get("conversions"))
+
+EVID = None
+if A.evidence:
+    EVID = collections.defaultdict(lambda: {"cur": [], "prev": []})
+    erows = list(csv.DictReader(open(A.evidence, encoding="utf-8-sig")))
+    starts = sorted({r["Period start"] for r in erows})
+    for r in erows:
+        p, host = norm_path(r["Top pages"])
+        if p is None:
+            continue
+        per = "cur" if r["Period start"] == starts[-1] else "prev"
+        EVID[p][per].append((host, num(r["Clicks"]), num(r["Impressions"]), num(r["Position"])))
+    FOUND[f"evidence: {os.path.basename(A.evidence)}"] = {"rows": len(erows), "columns": list(erows[0].keys()) if erows else [],
+                                                          "periods": " / ".join(f"{s} to {next(r['Period end'] for r in erows if r['Period start'] == s)}" for s in starts)}
+
+def evid_text(p):
+    if EVID is None or p not in EVID:
+        return ""
+    out = []
+    for per, label in (("cur", "current"), ("prev", "previous")):
+        for host, c, i, pos in EVID[p][per]:
+            out.append(f"{label} {'apex' if host == 'hvacserviceacrepair.com' else 'www'}: {int(c)} clicks, {int(i)} impr, pos {pos:g}")
+    return "; ".join(out)
+
+def evid_visible(p):
+    if EVID is None or p not in EVID:
+        return None
+    rows = EVID[p]["cur"] + EVID[p]["prev"]
+    c = sum(x[1] for x in rows)
+    i = max([sum(x[2] for x in EVID[p][k]) for k in ("cur", "prev")])
+    return (c, i) if (c >= 1 or i >= 100) else None
 
 HAVE_GSC = P_NOW is not None and P_PREV is not None
 HAVE_ADS = ADS is not None
@@ -379,6 +418,13 @@ def status(m, cand):
     if not cand:
         return "No consolidation proposed", None, ""
     ads_page = m["family"] == "ads_generated"
+    vis = evid_visible(p)
+    if vis and not HAVE_GSC:
+        why = f"{int(vis[0])} clicks, up to {int(vis[1])} impressions per period in partial GSC evidence"
+        if ads_page:
+            return (f"WITHDRAWN (partial GSC evidence: {why}); stays indexable, unchanged and PROTECTED as an Ads page", None,
+                    f" Candidate withdrawn: the page has organic visibility ({why}).")
+        return f"WITHDRAWN (partial GSC evidence: {why})", "IMPROVE", f" Candidate withdrawn by gate G1 on partial GSC evidence ({why})."
     missing = []
     if not HAVE_GSC:
         missing.append("GSC page performance (both 90-day periods)")
@@ -416,6 +462,13 @@ for m in sorted(M, key=lambda m: m["path"]):
     st, override, note = status(m, cand)
     if override:
         action = override
+    vis = evid_visible(m["path"])
+    if vis and action == "KEEP" and m["family"] not in ("ads_generated", "ads_handwritten", "home") and m["path"] not in ("/thank-you",):
+        action = "IMPROVE"
+        note += (f" Flagged IMPROVE on partial GSC evidence: visible in search ({int(vis[1])} impressions) but"
+                 f" {int(vis[0])} clicks; work on title, description and content depth.")
+    if vis:
+        pri = max(pri, 3 if vis[1] >= 500 else 2)
     now = P_NOW.get(m["path"], {}) if P_NOW is not None else None
     prev = P_PREV.get(m["path"], {}) if P_PREV is not None else None
     q = page_q.get(m["path"]) if OV_NOW is not None else None
@@ -443,6 +496,7 @@ for m in sorted(M, key=lambda m: m["path"]):
         "external_links": NA if LINKS is None else int(LINKS.get(m["path"], 0)),
         "ads_clicks_90d": NA if ADS is None else int(ADS.get(m["path"], 0)),
         "conversions_90d": NA if CONV is None else fmt(CONV.get(m["path"], 0.0)),
+        "partial_gsc_evidence": evid_text(m["path"]) or ("not in partial evidence (no data, not zero)" if EVID is not None else NA),
         "similarity_group": m["cluster"] or "unique", "nearest_page": m["norm_nearest"], "nearest_similarity_city_normalized": m["norm_sim"],
         "nearest_similarity_raw": m["raw_sim"], "unique_sentence_share": m["unique_share"], "template_sentence_share": m["template_share"],
         "contextual_inlinks": m["inlinks_contextual"], "paid_ads_use": ads,
@@ -520,6 +574,10 @@ with open(os.path.join(A.out, "PHASE_2_3_DATA_STATUS.md"), "w") as f:
                 f.write(f"| `{k}` | loaded | {FOUND[k]['rows']} | {', '.join(FOUND[k].get('columns', [])) or '-'} |\n")
         else:
             f.write(f"| `{e}` | **missing** | | |\n")
+    for k, d in FOUND.items():
+        if k.startswith("evidence: "):
+            f.write(f"\n**Partial evidence loaded:** `{k[10:]}`, {d['rows']} page rows, periods {d['periods']}. Used only to protect listed pages; "
+                    "pages not listed keep their awaiting-data status and are not treated as zero.\n")
     f.write("\n## Results\n\n| Measure | Count |\n|---|---|\n")
     for k, v in sorted(act.items()):
         f.write(f"| Current action {k} | {v} |\n")
