@@ -290,3 +290,20 @@ Anchor text: "AC repair in {City}", "Emergency AC repair in {City}", "AC tune-up
 | Villa Park<br>`/service-areas/orange-county/villa-park` | `/air-conditioning/ac-repair/villa-park` | `/air-conditioning/emergency-ac-repair/villa-park` | `/air-conditioning/ac-tune-up/villa-park` | `/heating/heating-repair/villa-park` | `/hvac-repair/villa-park` |
 | Westminster<br>`/service-areas/orange-county/westminster` | `/air-conditioning/ac-repair/westminster` | `/air-conditioning/emergency-ac-repair/westminster` | `/air-conditioning/ac-tune-up/westminster` | `/heating/heating-repair/westminster` | `/hvac-repair/westminster` |
 | Yorba Linda<br>`/service-areas/orange-county/yorba-linda` | `/air-conditioning/ac-repair/yorba-linda` | `/air-conditioning/emergency-ac-repair/yorba-linda` | `/air-conditioning/ac-tune-up/yorba-linda` | `/heating/heating-repair/yorba-linda` | `/hvac-repair/yorba-linda` |
+
+---
+
+## Implementation record (branch `seo/phase-2-2-internal-linking`)
+
+Approved scope: H1 and H2 for all 37 cities, M1. Optional items O1 to O5 not implemented.
+
+| Item | Where | Pages | Links added |
+|---|---|---|---|
+| H1 | `CityPageTemplate.tsx`: sidebar card "{City} Service Pages" above "Nearby Cities We Serve" | 37 hubs | 185 |
+| H2 | `CityServicePageTemplate.tsx`: "More HVAC Services in {City}" row at the top of the existing nearby-cities section (hub link highlighted, then the 4 sibling services) | 185 city service pages | 925 |
+| M1 | `ServicePageTemplate.tsx` optional `cityLinks` prop, passed only by `/air-conditioning/emergency-ac-repair`, `/air-conditioning/ac-tune-up` and `/heating`: "… by City" row with the six priority cities plus "All Orange County service areas" | 3 | 21 |
+| **Total** | | **225** | **1,131** |
+
+Links are built from existing page data in `src/lib/config/city-service-links.ts` (server-side), so a link only renders when its destination page exists. Every new link is a 44 px tall tap target; the existing nearby-city pills on city service pages were given the same 44 px height so both rows match.
+
+Verification: see the Phase 2.2 report; reproducible with `scripts/seo-audit/compare_internal_links.py <baseline-crawl> <new-crawl>`. Screenshots in `docs/seo-phase-2/screenshots/phase-2-2/`.

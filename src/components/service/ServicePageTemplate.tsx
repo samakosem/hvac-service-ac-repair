@@ -14,6 +14,7 @@ import { SITE } from "@/lib/config/site";
 import { serviceHref, SILO_PARENTS } from "@/lib/config/routes";
 import type { ServiceContent } from "@/lib/content/services";
 import { IMG_HERO, type SiteImage } from "@/lib/config/images";
+import type { CityServiceLink } from "@/lib/config/city-service-links";
 
 // ─── FAQ Accordion (client interaction only) ─────────────────────────────────
 
@@ -63,9 +64,14 @@ function CheckIcon({ className = "w-4 h-4" }: { className?: string }) {
 
 // ─── Main Template ────────────────────────────────────────────────────────────
 
-type Props = { service: ServiceContent; image?: SiteImage };
+type Props = {
+  service: ServiceContent;
+  image?: SiteImage;
+  /** Optional links to this service's city pages, e.g. for the priority cities. */
+  cityLinks?: { heading: string; links: CityServiceLink[] };
+};
 
-export default function ServicePageTemplate({ service, image }: Props) {
+export default function ServicePageTemplate({ service, image, cityLinks }: Props) {
   const canonicalPath = serviceHref(service.slug);
 
   // Build breadcrumb trail: Home > [Silo Parent?] > Current Page
@@ -287,6 +293,34 @@ export default function ServicePageTemplate({ service, image }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ── City pages ─────────────────────────────────────────────────────── */}
+      {cityLinks && cityLinks.links.length > 0 && (
+        <section className="py-12 bg-warm-gray" aria-labelledby="city-links-heading">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 id="city-links-heading" className="text-lg font-bold text-slate-800 mb-4">
+              {cityLinks.heading}
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {cityLinks.links.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex items-center gap-1.5 min-h-11 px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 font-medium text-sm hover:border-hvac-blue-300 hover:text-hvac-blue-700 transition-colors"
+                >
+                  {link.label}
+                  <svg className="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </Link>
+              ))}
+            </div>
+            <Link href="/service-areas/orange-county" className="inline-flex items-center min-h-11 mt-2 text-sm text-copper-600 font-semibold hover:underline">
+              All Orange County service areas →
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* ── FAQ ──────────────────────────────────────────────────────────── */}
       <section className="py-14 lg:py-20 bg-warm-white">

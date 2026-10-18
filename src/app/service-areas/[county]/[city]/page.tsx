@@ -4,6 +4,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { SERVICE_AREA_COUNTIES, getCountyBySlug, getCityBySlug } from "@/lib/config/locations";
 import { getCityMeta } from "@/lib/content/locations";
 import CityPageTemplate from "@/components/location/CityPageTemplate";
+import { cityServiceLinks } from "@/lib/config/city-service-links";
 
 export const dynamicParams = false;
 
@@ -43,5 +44,5 @@ export default async function CityPage({
   const city = getCityBySlug(citySlug, countySlug);
   if (!county || !city) notFound();
 
-  return <CityPageTemplate city={city} county={county} />;
+  return <CityPageTemplate city={city} county={county} serviceLinks={cityServiceLinks(city.slug)} />;
 }

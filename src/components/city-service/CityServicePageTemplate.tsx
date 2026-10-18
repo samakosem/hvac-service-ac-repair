@@ -8,6 +8,7 @@ import { IMG_HERO } from "@/lib/config/images";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import type { CityServicePage } from "@/lib/config/city-service-pages";
 import { QuickChecksGrid, QuickChecksHeader, quickChecksKind } from "@/components/ui/QuickChecks";
+import { cityHubHref, cityServiceLinks } from "@/lib/config/city-service-links";
 
 // ── Icon helpers ──────────────────────────────────────────────────────────────
 
@@ -70,6 +71,8 @@ type Props = {
 export default function CityServicePageTemplate({ page, isEmergency = false }: Props) {
   const pageUrl = `${page.urlBase}/${page.citySlug}`;
   const hub = BREADCRUMB_HUBS[page.urlBase] ?? { name: page.serviceName, href: page.urlBase };
+  const cityHub = cityHubHref(page.citySlug);
+  const siblingServices = cityServiceLinks(page.citySlug).filter((link) => link.href !== pageUrl);
 
   const breadcrumbItems = [
     { name: "Home", href: "/" },
@@ -389,6 +392,34 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
       {/* ── NEARBY CITIES ────────────────────────────────────────────────────── */}
       <section className="py-12 bg-warm-gray" aria-labelledby="nearby-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {(cityHub || siblingServices.length > 0) && (
+            <nav aria-labelledby="city-services-heading" className="mb-10">
+              <h2 id="city-services-heading" className="text-lg font-bold text-slate-800 mb-4">
+                More HVAC Services in {page.cityName}
+              </h2>
+              <div className="flex flex-wrap gap-3">
+                {cityHub && (
+                  <Link
+                    href={cityHub}
+                    className="inline-flex items-center gap-1.5 min-h-11 px-4 py-2 rounded-xl bg-hvac-blue-50 border border-hvac-blue-200 text-hvac-blue-700 font-semibold text-sm hover:border-hvac-blue-400 transition-colors"
+                  >
+                    All HVAC services in {page.cityName}
+                    <ArrowIcon className="w-3.5 h-3.5" />
+                  </Link>
+                )}
+                {siblingServices.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="inline-flex items-center gap-1.5 min-h-11 px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 font-medium text-sm hover:border-hvac-blue-300 hover:text-hvac-blue-700 transition-colors"
+                  >
+                    {link.label}
+                    <ArrowIcon className="w-3.5 h-3.5" />
+                  </Link>
+                ))}
+              </div>
+            </nav>
+          )}
           <h2 id="nearby-heading" className="text-lg font-bold text-slate-800 mb-4">
             We Also Serve Nearby Cities
           </h2>
@@ -397,7 +428,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
               <Link
                 key={city.slug}
                 href={`${city.urlBase}/${city.slug}`}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 font-medium text-sm hover:border-hvac-blue-300 hover:text-hvac-blue-700 transition-colors"
+                className="inline-flex items-center gap-1.5 min-h-11 px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 font-medium text-sm hover:border-hvac-blue-300 hover:text-hvac-blue-700 transition-colors"
               >
                 {city.name}
                 <ArrowIcon className="w-3.5 h-3.5" />
