@@ -1,0 +1,5 @@
+# Exports are business data: keep them out of Git by default.
+*.csv
+gsc_indexing/
+!templates/
+!templates/*.csv

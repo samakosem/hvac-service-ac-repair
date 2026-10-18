@@ -4,16 +4,28 @@ Site: https://www.hvacserviceacrepair.com/
 Audited commit: `a28afa8` (main, after Phase 2.2). Production was verified to serve this exact build (456/456 sitemap URLs, 2026-10-18).
 Audit date: 2026-10-18
 Status: **audit only.** No website code, redirect, canonical, robots rule, sitemap entry or indexing directive was changed. Nothing was merged or deployed. Every recommendation below waits for your approval.
+Revised: 2026-10-18, after the owner review below.
+
+> **Owner decisions (2026-10-18), applied throughout this report and the CSVs**
+>
+> 1. **Ventura County and Santa Barbara County are confirmed service area.** The earlier "Tier 3 / out of area" assumption is removed. No page is noindexed, merged or removed because of geography. The 10 AC repair and emergency AC repair pages in those counties are IMPROVE, like every other Tier 2 city.
+> 2. **Every MERGE+301 and NOINDEX is paused** until real Google Search Console performance data is loaded. They appear only as *candidates* (`candidate_action`) with status **PAUSED**; the page's current action is KEEP.
+> 3. **The 175 generated Google Ads pages are protected** until their active campaign use (Google Ads landing-page report) and their organic performance (GSC) are verified. Status **PROTECTED**.
+> 4. **No production changes and no implementation PR.** The audit files are prepared to take the real exports: format in `docs/seo-phase-2/gsc-input/README.md`.
 
 Deliverables:
 
 | File | Contents |
 |---|---|
 | `PHASE_2_3_CANNIBALIZATION_AUDIT.md` | This report |
-| `docs/seo-phase-2/PHASE_2_3_PAGE_DECISIONS.csv` | All 461 indexable or prerendered URLs: target keyword, intent, similarity group, metrics, action, destination, reasoning, risk, priority. GSC columns read `N/A` (section 8). |
-| `docs/seo-phase-2/PHASE_2_3_REDIRECT_CANDIDATES.csv` | 100 consolidation redirects, 9 host and chain hygiene redirects, 7 legacy URLs to leave as 404 |
+| `docs/seo-phase-2/PHASE_2_3_PAGE_DECISIONS.csv` | All 461 indexable or prerendered URLs: target keyword, intent, similarity group, content metrics, current action, paused candidate action and its status, reasoning, risk, priority. GSC, Ads and conversion columns read `N/A (no export)` until data is loaded. |
+| `docs/seo-phase-2/PHASE_2_3_REDIRECT_CANDIDATES.csv` | 100 paused consolidation candidates, 9 host and chain hygiene redirects (awaiting approval), 7 legacy URLs to leave as 404 |
+| `docs/seo-phase-2/PHASE_2_3_DATA_STATUS.md` | Which data inputs are loaded, row counts, warnings and status counts. Regenerated on every run. |
+| `docs/seo-phase-2/PHASE_2_3_QUERY_OVERLAP.csv` | Generated once the query + page export is loaded: every query that shows 2+ site URLs |
+| `docs/seo-phase-2/gsc-input/` | `README.md` with the exact export formats, header-only templates, and a `.gitignore` that keeps the business data out of Git |
+| `docs/seo-phase-2/phase23-metrics.json` | Content metrics for the 461 URLs (from the crawl of `a28afa8`), so the decisions can be re-run without a new crawl |
 | `PHASE_2_3_IMPLEMENTATION_PLAN.md` | Prioritized, gated rollout plan |
-| `scripts/seo-audit/phase23_analyze.py`, `phase23_decide.py` | Reproduce every number here. `phase23_decide.py` accepts a GSC export and re-runs the decisions with the traffic gate applied. |
+| `scripts/seo-audit/phase23_analyze.py`, `phase23_decide.py` | Reproduce every number here. `phase23_decide.py --inputs docs/seo-phase-2/gsc-input` loads the exports and applies gate G1. |
 
 ---
 
@@ -26,7 +38,8 @@ Deliverables:
 | Live probes from a GitHub Actions runner (read-only GET requests): every sitemap URL on the apex host, over http and with a trailing slash; all 135 configured redirect sources; query-string, case and `index.html` variants; the 5 routes outside the sitemap; vercel.app hostnames | Done (run 39143305028) |
 | Historical URLs from the Wayback Machine CDX index for both hosts, each probed live | Done (11 URLs found, all on the apex host) |
 | **Google Search Console (clicks, impressions, position, queries, indexing)** | **NOT AVAILABLE.** No GSC connector or credentials exist in this environment. No metric in this report or the CSVs comes from GSC; none was estimated. Section 8 lists the exports needed. |
-| Google Ads final URLs | **NOT AVAILABLE.** "Ads page" below means the page is built from the repository's PPC templates (`ppc-cities.ts`, `ppc-city-generator.ts`). Which of them receive paid clicks today needs a Google Ads export. |
+| Google Ads final URLs | **NOT AVAILABLE.** "Ads page" below means the page is built from the repository's PPC templates (`ppc-cities.ts`, `ppc-city-generator.ts`). Which of them receive paid clicks today needs a Google Ads export. Until then all 181 Ads pages are protected. |
+| Service area | **Owner-confirmed:** Orange County, the listed Los Angeles, Riverside and San Bernardino County cities, Ventura County and Santa Barbara County. |
 | Backlink data | **NOT AVAILABLE.** No backlink tool was used. GSC "Links" export (section 8) is the free substitute. |
 | Third-party index check (web search for the domain) | Returned nothing for this domain; no conclusion drawn from it. |
 
@@ -54,7 +67,7 @@ Deliverables:
    - "AC repair {city}": 4 pages per city carry it in the title for 28 of 37 cities (the Ads page, the city AC repair page, the emergency page and the hub's "AC Repair & Installation"). Yorba Linda has 5, including the homepage title.
    - "HVAC repair/service {city}": `/hvac-repair/{city}` ("Local HVAC Repair in X") and the city hub ("HVAC Service in X") answer the same search; the hub is the page with real local content.
    - Four service-page pairs split one intent: `ac-maintenance` vs `ac-tune-up`, `ac-replacement` vs `ac-installation`, `ac-services` vs `/air-conditioning`, `residential-maintenance-plan` vs `/maintenance-plans`.
-8. **Recommended (all gated, none executed):** KEEP 64, IMPROVE 112, MERGE+301 100, NOINDEX 185. The NOINDEX group is almost entirely the 175 Ads template pages, which stay live and unchanged for Ads. **Every MERGE and NOINDEX waits on GSC data** (rule G1: any page with 1+ click or 100+ impressions in either 90-day period is downgraded to IMPROVE).
+8. **Current actions:** KEEP 339, IMPROVE 122. **Paused candidates (not executed):** 100 MERGE+301 (status PAUSED) and 175 NOINDEX, all on the generated Ads pages (status PROTECTED). No other NOINDEX candidate remains. Candidates are re-evaluated only with real data: gate G1 withdraws any candidate whose page has 1+ click or 100+ impressions in either 90-day period, any external link or any conversion, and an Ads page with paid clicks stays protected.
 
 ---
 
@@ -134,17 +147,17 @@ The hub is the only city page type with real per-city content (median 45% unique
 
 ### 3.3 Generic service pages vs location pages
 
-Generic service pages (`/air-conditioning/ac-repair`, `/air-conditioning/ac-tune-up`, `/heating`, ...) target the service at Orange County / Southern California level; city pages target "{service} {city}". Text overlap between a generic page and its city pages is under 10%. This is a healthy parent-child structure, and Phase 2.2 linked them. **No conflict**, with one exception: the city pages for secondary services (tune-up, heating repair) outside Tier 1 add nothing the generic page lacks, because their copy is the generic copy with a city name inserted (100% template sentences). Section 6 proposes merging those 60 pages into the generic page.
+Generic service pages (`/air-conditioning/ac-repair`, `/air-conditioning/ac-tune-up`, `/heating`, ...) target the service at Orange County / Southern California level; city pages target "{service} {city}". Text overlap between a generic page and its city pages is under 10%. This is a healthy parent-child structure, and Phase 2.2 linked them. **No conflict**, with one exception: the city pages for secondary services (tune-up, heating repair) outside Tier 1 add nothing the generic page lacks, because their copy is the generic copy with a city name inserted (100% template sentences). Section 6 lists those 60 pages as **paused** merge candidates; the reason is content, not geography, and they are only reconsidered with GSC data.
 
 ### 3.4 Google Ads landing pages vs organic SEO pages
 
 | Ads page set | Count | Organic page for the same city | Content overlap with it | Issue |
 |---|---|---|---|---|
 | `/ac-repair/{city}` (generated) with an organic twin | 32 | `/air-conditioning/ac-repair/{city}` | 15% | Two indexable pages for "AC repair {city}"; the Ads page has 0 internal links |
-| `/ac-repair/{city}` (generated), no organic page | 143 | none | n/a | 97% identical city swaps for 143 cities in LA, Riverside, San Bernardino, Ventura and Santa Barbara counties (72 in LA County alone); the pattern search engines treat as doorway pages |
+| `/ac-repair/{city}` (generated), no organic page | 143 | none | n/a | 97% identical city swaps for 143 cities in LA, Riverside, San Bernardino, Ventura and Santa Barbara counties (72 in LA County alone); a pattern search engines can treat as doorway pages |
 | `/{city}-ac-repair` (hand-written) | 6 | Only Laguna Niguel has an organic twin | 47% unique sentences | Low; real content |
 
-**Recommendation:** keep every Ads page live, unchanged and reachable, and **remove the 175 generated pages from the sitemap and noindex them** (after the GSC check). A `noindex` does not affect Google Ads serving or Quality Score inputs that come from the landing page itself; a 301 would break the ad's final URL and is never proposed for an Ads page. Never block Ads pages in `robots.txt` (AdsBot must crawl them). The 6 hand-written pages stay indexable.
+**Status: PROTECTED.** All 181 Ads pages stay live, unchanged, indexable and in the sitemap. For the 175 generated pages, "noindex + remove from sitemap" remains a *candidate* only, to be reconsidered once both inputs exist: the Google Ads landing-page report (which pages carry paid traffic) and GSC performance (which pages earn organic impressions). Even then, a page with paid clicks stays protected unless the Ads manager signs off, and a page with organic visibility is withdrawn by G1. If a noindex is ever approved, the page stays live for Ads (a `noindex` does not affect ad serving); Ads pages are never redirected and never blocked in `robots.txt` (AdsBot must crawl them). The 6 hand-written pages are KEEP.
 
 Two places where the Ads page may be the stronger organic page: `/laguna-niguel-ac-repair` (hand-written) vs `/air-conditioning/ac-repair/laguna-niguel` (template), and `/orange-county-ac-repair` (hand-written, 0 internal links) vs `/air-conditioning/ac-repair` and `/service-areas/orange-county`. Leave both as they are until GSC shows which URL Google already prefers.
 
@@ -212,8 +225,9 @@ The business is in Yorba Linda. City pages exist for 37 cities in 6 counties; Ad
 | Tier | Cities | Rule |
 |---|---|---|
 | 1 | Yorba Linda, Anaheim, Brea, Placentia, Fullerton, Irvine, Orange (the Phase 2.2 priority cities plus every city with hand-written pages) | Keep every service page; improve generated ones with owner-verified local substance |
-| 2 | The other 14 Orange County cities, 5 LA County cities next to Orange County (Diamond Bar, Hacienda Heights, La Habra Heights, Rowland Heights, Walnut), Corona, Eastvale, Norco, Chino, Chino Hills, Ontario | Keep AC repair and emergency pages (core intent) and improve them; merge secondary-service pages (tune-up, heating) into the generic page |
-| 3 | Moorpark, Simi Valley, Thousand Oaks (Ventura County), Goleta, Santa Barbara (Santa Barbara County): 80 to 130 miles away | Owner must confirm regular service. If not served: noindex city pages and county hubs (or remove them). If served: treat as Tier 2. |
+| 2 | Every other city with pages: the other 14 Orange County cities; Diamond Bar, Hacienda Heights, La Habra Heights, Rowland Heights, Walnut; Corona, Eastvale, Norco; Chino, Chino Hills, Ontario; Moorpark, Simi Valley, Thousand Oaks (Ventura County); Goleta, Santa Barbara (Santa Barbara County) | Keep AC repair and emergency pages (core intent) and improve them. Secondary-service pages (tune-up, heating) are paused merge candidates for content reasons, pending GSC. |
+
+There is no out-of-area tier: the owner confirmed service throughout Ventura and Santa Barbara counties. Tiers only set content priority; geography is never a reason to merge, noindex or remove a page.
 
 ---
 
@@ -227,7 +241,7 @@ The business is in Yorba Linda. City pages exist for 37 cities in 6 counties; Ad
 | K2 | HVAC company / HVAC service Yorba Linda | `/`, `/service-areas/orange-county/yorba-linda`, `/hvac-repair/yorba-linda`, `/about-us` (title) | `/` | Homepage: brand, most links, company intent | GSC |
 | K3 | HVAC repair Yorba Linda | `/hvac-repair/yorba-linda`, hub | `/hvac-repair/yorba-linda` (for now) | Only page with "HVAC Repair" in the title; some unique copy | GSC |
 | K4 | Emergency AC repair Yorba Linda | `/air-conditioning/emergency-ac-repair/yorba-linda`, `/emergency-hvac-service` | `/air-conditioning/emergency-ac-repair/yorba-linda` | Hand-written; H1 lacks "emergency" (IMPROVE) | none |
-| K5 | AC repair {city}, 31 other Tier 1 and 2 cities | city AC page, Ads page (32 cities), emergency page, hub title | `/air-conditioning/ac-repair/{city}` | Has internal links; Ads twin to be noindexed | GSC |
+| K5 | AC repair {city}, 31 other Tier 1 and 2 cities | city AC page, Ads page (32 cities), emergency page, hub title | `/air-conditioning/ac-repair/{city}` | Has internal links; the Ads twin is protected until Ads and GSC data are in | GSC + Ads |
 | K6 | HVAC service / repair {city} | hub, `/hvac-repair/{city}` | `/service-areas/{county}/{city}` | Only page type with local content | GSC |
 | K7 | AC tune-up / AC maintenance (Orange County) | `/air-conditioning/ac-tune-up`, `/air-conditioning/ac-maintenance`, 37 city tune-up pages, `/maintenance-plans` (partly) | `/air-conditioning/ac-tune-up` | Parent of city pages; Phase 2.2 city links | GSC (swap if "ac maintenance" earns more here) |
 | K8 | AC installation / AC replacement | `/air-conditioning/ac-installation`, `/air-conditioning/ac-replacement` | `/air-conditioning/ac-installation` | 977 vs 542 words; already covers replacement | GSC |
@@ -238,57 +252,59 @@ The business is in Yorba Linda. City pages exist for 37 cities in 6 counties; Ad
 | K13 | Heating repair {city} / heating repair | 37 city pages (heading says "AC & Heating"), `/heating`, `/heating/furnace-repair` (title mentions heating repair) | `/heating` (generic); city pages for Tier 1 | `/heating/heating-repair` already redirects to `/heating` | GSC |
 | K14 | Emergency HVAC service | `/emergency-hvac-service`, `/air-conditioning/emergency-ac-repair` | both (different scope) | Heating + cooling vs AC | none |
 | K15 | Mini split installation | `/ductless/mini-split-installation`, `/ductless/ductless-mini-split` (title) | `/ductless/mini-split-installation` | Retitle the hub | none |
-| K16 | AC repair {Ads-only city} (143 cities) | `/ac-repair/{city}` only | none indexable after noindex | Template copy; no organic page. If GSC shows real organic demand for a city, build a real page for it instead. | GSC |
+| K16 | AC repair {Ads-only city} (143 cities) | `/ac-repair/{city}` only | `/ac-repair/{city}` (protected) | Template copy; the site's only page for these cities. If GSC shows real organic demand for a city, a real page for it is the better long-term owner. | GSC + Ads |
 
 ---
 
 ## 6. Decisions
 
-Full table: `docs/seo-phase-2/PHASE_2_3_PAGE_DECISIONS.csv` (one row per URL, with the reasoning written out).
+Full table: `docs/seo-phase-2/PHASE_2_3_PAGE_DECISIONS.csv` (one row per URL, with the reasoning written out). Each row has a **current action** (KEEP or IMPROVE: what the page should get now) and, where one exists, a **candidate action** (MERGE+301 or NOINDEX) with its **candidate status**. Candidates are proposals for review after data arrives; none is approved.
 
 ### 6.1 Rules
 
-| Rule | Applies to | Action |
-|---|---|---|
-| R1 | Homepage, core, legal, blog, calculators, distinct service pages | KEEP |
-| R2 | Ads pages (generated) | NOINDEX + remove from sitemap; stay live and unchanged; never 301 |
-| R3 | Ads pages (hand-written) | KEEP (protected) |
-| R4 | City hubs, county hubs | IMPROVE (thin); the one page per city |
-| R5 | `/hvac-repair/{city}` except Yorba Linda | MERGE+301 into the city hub; hub title gains "HVAC Repair" |
-| R6 | City AC repair / emergency, Tier 1 hand-written | KEEP |
-| R7 | City AC repair / emergency, Tier 1 generated and Tier 2 | IMPROVE (owner-verified local substance); NOINDEX later if that cannot be done |
-| R8 | City tune-up / heating repair, Tier 1 | KEEP (Yorba Linda) or IMPROVE |
-| R9 | City tune-up / heating repair, Tier 2 and 3 | MERGE+301 into `/air-conditioning/ac-tune-up` or `/heating` |
-| R10 | City AC repair / emergency, Tier 3 | NOINDEX unless the owner confirms service |
-| R11 | Service pages with a stronger same-intent sibling | MERGE+301 (4) or IMPROVE the title (1) |
-| **G1** | **Every MERGE+301 and NOINDEX** | **Downgrade to IMPROVE if GSC shows 1+ click or 100+ impressions in either 90-day period, or the URL has external backlinks** |
+| Rule | Applies to | Current action | Candidate (status) |
+|---|---|---|---|
+| R1 | Homepage, core, legal, blog, calculators, distinct service pages | KEEP | none |
+| R2 | Ads pages (generated, 175) | KEEP, unchanged | NOINDEX + sitemap removal (**PROTECTED** until Ads and GSC data are verified; never 301) |
+| R3 | Ads pages (hand-written, 6) | KEEP (protected) | none |
+| R4 | City hubs (37), county hubs (5 of 6) | IMPROVE (thin); the one page per city | none |
+| R5 | `/hvac-repair/{city}` except Yorba Linda (36) | KEEP | MERGE+301 into the city hub (**PAUSED**) |
+| R6 | City AC repair / emergency with hand-written content (7) | KEEP | none |
+| R7 | City AC repair / emergency, generated (67), every city including Ventura and Santa Barbara counties | IMPROVE (owner-verified local substance) | none |
+| R8 | City tune-up / heating repair, Tier 1 (14) | KEEP (Yorba Linda) or IMPROVE | none |
+| R9 | City tune-up / heating repair, Tier 2 (60) | KEEP | MERGE+301 into `/air-conditioning/ac-tune-up` or `/heating` (**PAUSED**; content reason, not geography) |
+| R10 | Service pages with a stronger same-intent sibling (4), mini-split hub title (1) | KEEP (4), IMPROVE (1) | MERGE+301 (**PAUSED**) for the 4 |
+| **G1** | **Every candidate, once data is loaded** | | **WITHDRAWN** (page is improved instead) if GSC shows 1+ click or 100+ impressions in either 90-day period, any external link, or any conversion. Generated Ads page with paid clicks: stays **PROTECTED**. Otherwise **ELIGIBLE FOR REVIEW**, which still needs explicit approval. |
 
 ### 6.2 Summary
 
-| Page type | KEEP | IMPROVE | MERGE+301 | NOINDEX |
+| Page type | KEEP | IMPROVE | Candidate MERGE+301 (PAUSED) | Candidate NOINDEX (PROTECTED) |
 |---|---|---|---|---|
 | Homepage, core, legal | 11 | | | |
-| Service pages | 21 | 1 | 4 | |
+| Service pages | 25 | 1 | 4 | |
 | Blog, calculators, indexes | 15 | | | |
 | County hubs | 1 | 5 | | |
 | City hubs | | 37 | | |
-| City AC repair | 5 | 27 | | 5 |
-| City emergency AC repair | 2 | 30 | | 5 |
-| City AC tune-up | 1 | 6 | 30 | |
-| City heating repair | 1 | 6 | 30 | |
-| City HVAC repair | 1 | | 36 | |
+| City AC repair | 5 | 32 | | |
+| City emergency AC repair | 2 | 35 | | |
+| City AC tune-up | 31 | 6 | 30 | |
+| City heating repair | 31 | 6 | 30 | |
+| City HVAC repair | 37 | | 36 | |
 | Ads, hand-written | 6 | | | |
-| Ads, generated | | | | 175 |
-| **Total (461)** | **64** | **112** | **100** | **185** |
+| Ads, generated | 175 | | | 175 |
+| **Total (461)** | **339** | **122** | **100** | **175** |
 
-By risk: High 12 (all KEEP: protected pages), Medium 361, Low 88.
+Candidates are counted within KEEP: a paused candidate's page keeps its current state. Ventura and Santa Barbara counties: 5 AC repair and 5 emergency pages are IMPROVE, 5 hubs and 2 county hubs are IMPROVE; their tune-up, heating repair and HVAC repair pages carry the same paused content candidates as every other Tier 2 city.
 
-### 6.3 Protected pages (no MERGE or NOINDEX proposed)
+By risk: High 12 (all KEEP: protected pages), Medium 364, Low 85.
+
+### 6.3 Protected pages
 
 - The homepage, `/contact`, `/thank-you` (conversion tracking) and every page with a lead form keep their forms, GTM and phone links in every option.
-- The 6 hand-written Ads pages: KEEP.
-- The 175 generated Ads pages: NOINDEX only. Content, layout, tracking, forms, URL and metadata stay unchanged.
-- Every MERGE or NOINDEX is subject to G1, so any page with organic traffic or backlinks is protected automatically once GSC data is supplied.
+- The 6 hand-written Ads pages: KEEP, no candidate.
+- The 175 generated Ads pages: PROTECTED. Content, layout, tracking, forms, URL, metadata, indexing and sitemap entry stay unchanged until Ads and GSC data are verified and you approve a change.
+- Every page in Ventura and Santa Barbara counties: no geographic candidate of any kind.
+- Every candidate is subject to G1, so any page with organic traffic, backlinks or conversions is protected automatically once the data is loaded.
 
 ---
 
@@ -318,27 +334,28 @@ By risk: High 12 (all KEEP: protected pages), Medium 361, Low 88.
 
 ## 8. Google Search Console: unavailable; required exports
 
-GSC was **not accessible** from this environment. No clicks, impressions, positions, queries or index states appear anywhere in this audit. Please export the following (CSV) and I will re-run `phase23_decide.py` with the traffic gate:
+GSC was **not accessible** from this environment. No clicks, impressions, positions, queries or index states appear anywhere in this audit. **The exact file names, header rows, date ranges and export steps are in `docs/seo-phase-2/gsc-input/README.md`**, with header-only templates in `docs/seo-phase-2/gsc-input/templates/`. Put the exports in `docs/seo-phase-2/gsc-input/` (a `.gitignore` there keeps them out of Git) and run:
 
-| # | Export | Where in GSC | Period | Used for |
+```
+python3 scripts/seo-audit/phase23_decide.py docs/seo-phase-2/phase23-metrics.json docs/seo-phase-2 --inputs docs/seo-phase-2/gsc-input
+```
+
+| # | File | Source | Period | Needed for |
 |---|---|---|---|---|
-| 1 | Pages: clicks, impressions, CTR, position | Performance > Search results > Pages | Last 90 days | G1 gate, decision table columns |
-| 2 | Same as 1 | same | The 90 days before that (use Compare) | Trend; G1 gate on the previous period |
-| 3 | Queries: clicks, impressions, CTR, position | Performance > Queries | Last 90 days and previous 90 days | Keyword clusters K1 to K16 |
-| 4 | **Query + page pairs** | Performance > add filter by page, or the Search Analytics API (`dimensions: query, page`), or Looker Studio with the GSC connector | Last 90 days | The definitive cannibalization test: which queries show 2+ URLs |
-| 5 | Page indexing: indexed and not-indexed reasons, with example URLs | Indexing > Pages (export each reason) | Current | Indexed vs excluded pages; "Duplicate, Google chose different canonical" |
-| 6 | Sitemaps report | Indexing > Sitemaps | Current | Submitted vs indexed counts |
-| 7 | Property list and type (Domain vs URL-prefix), and exports 1 and 3 from the **non-www** property if it exists | Property selector | Last 16 months if available | Section 7 history |
-| 8 | Links: top linked pages (external) | Links > External links > Top linked pages | Current | G1 backlink protection |
-| 9 | URL Inspection for 10 URLs: `/`, `/air-conditioning/ac-repair/yorba-linda`, `/ac-repair/yorba-linda`, `/hvac-repair/yorba-linda`, `/service-areas/orange-county/yorba-linda`, `/air-conditioning/ac-maintenance`, `/air-conditioning/ac-tune-up`, `/orange-county-ac-repair`, `/ac-repair/burbank`, `https://hvacserviceacrepair.com/` | URL Inspection | Current | Google-selected canonical, last crawl |
+| 1 | `gsc_pages_last_90d.csv` | GSC > Performance > Pages tab > Export (`Pages.csv`) | Last 90 days (custom range) | **Required.** Clicks, impressions, position per URL; G1 |
+| 2 | `gsc_pages_prev_90d.csv` | same | The 90 days before | **Required.** G1 on the previous period; trend |
+| 3 | `gsc_query_page_last_90d.csv` (`query,page,clicks,impressions,ctr,position`) | Search Console API, Looker Studio or Search Analytics for Sheets (the GSC interface cannot export query + page together) | Last 90 days | **Required for the cannibalization test**: which queries show 2+ site URLs |
+| 4 | `gsc_links_top_pages.csv` | GSC > Links > Top linked pages > Export | Current | **Required to clear any candidate** (G1 backlink protection) |
+| 5 | `ads_landing_pages_last_90d.csv` | Google Ads > Landing pages report > Download | Last 90 days | **Required to clear any Ads page**; plus the list of final URLs of enabled ads |
+| 6 | `gsc_queries_last_90d.csv`, `gsc_queries_prev_90d.csv` | GSC > Performance > Queries tab > Export | Both periods | Keyword clusters K1 to K16 |
+| 7 | `gsc_query_page_prev_90d.csv` | as file 3 | The 90 days before | Trend of overlap |
+| 8 | `gsc_indexing.csv` or folder `gsc_indexing/` | GSC > Indexing > Pages, one export per reason plus the indexed list | Current | Indexed vs excluded pages; "Duplicate, Google chose different canonical" |
+| 9 | `gsc_pages_nonwww_last_90d.csv` | As file 1, from the `https://hvacserviceacrepair.com/` URL-prefix property, only if one exists | Last 90 days | Section 7 www vs non-www history |
+| 10 | `conversions_by_landing_page_last_90d.csv` | GA4 > Engagement > Landing page > Download, or call tracking | Last 90 days | G1 conversion protection |
 
-From outside GSC:
+Not file-based, but useful: the GSC property type (Domain vs URL-prefix), the Sitemaps report counts, and URL Inspection results (Google-selected canonical, last crawl) for `/`, `/air-conditioning/ac-repair/yorba-linda`, `/ac-repair/yorba-linda`, `/hvac-repair/yorba-linda`, `/service-areas/orange-county/yorba-linda`, `/air-conditioning/ac-maintenance`, `/air-conditioning/ac-tune-up`, `/orange-county-ac-repair`, `/ac-repair/burbank` and `https://hvacserviceacrepair.com/`.
 
-| # | Export | Used for |
-|---|---|---|
-| 10 | Google Ads: final URLs with clicks for the last 90 days (Landing pages report) | Confirms which Ads pages are in use; protects them |
-| 11 | GA4 or call tracking: conversions by landing page, last 90 days | Protects converting pages |
-| 12 | Owner: confirm regular service in Ventura and Santa Barbara counties (Tier 3) | R10 and the Tier 3 hubs |
+What a run produces: the `N/A (no export)` columns filled in, each candidate moved from PAUSED or PROTECTED to WITHDRAWN, PROTECTED (active Ads) or ELIGIBLE FOR REVIEW, `PHASE_2_3_QUERY_OVERLAP.csv`, and `PHASE_2_3_DATA_STATUS.md` (inputs loaded, warnings such as a 1,000-row export cap, non-www totals, GSC URLs that are no longer site pages). The script was tested against synthetic files in each export layout (GSC interface exports, Google Ads title rows and totals, GA4 comment lines, mixed hosts and trailing slashes); no synthetic data is in the repository.
 
 ---
 
@@ -346,20 +363,20 @@ From outside GSC:
 
 See `PHASE_2_3_IMPLEMENTATION_PLAN.md`. Summary:
 
-| Wave | What | Pages | Gate | Risk |
+| Wave | What | Pages | Status | Risk |
 |---|---|---|---|---|
-| 0 | Collect the GSC, Ads and owner inputs (section 8); re-run the decision script with them | | | none |
-| 1 | Hygiene: apex redirect 307 to 308 (Vercel setting); redirect the vercel.app alias to www; collapse 7 two-hop chains | | Approval | Low |
-| 2 | Ads template pages: noindex + remove from sitemap (keep live and unchanged) | up to 175 | G1 + Ads export + approval | Medium |
-| 3 | Service-page consolidation: 4 merges, 1 retitle | 5 | G1 + approval | Medium |
-| 4 | City consolidation: 36 HVAC repair pages into hubs; 60 tune-up and heating pages into generic pages; Tier 3 decision | up to 106 | G1 + owner + approval | Medium |
-| 5 | Content improvement: hubs, Tier 1 and 2 AC repair and emergency pages (owner-verified substance) | 112 | Owner input | Low |
-| 6 | Title alignment for K1, K2, K11 | 3 to 5 | GSC query + page data | Medium |
+| 0 | Collect the exports (section 8); re-run the decision script with them | | **Next step** (owner) | none |
+| 1 | Hygiene: apex redirect 307 to 308 (Vercel setting); redirect the vercel.app alias to www; collapse 7 two-hop chains | | Awaiting approval; not GSC-dependent | Low |
+| 2 | Generated Ads pages: noindex + sitemap removal candidates | up to 175 | **PROTECTED** until Ads and GSC data are verified | Medium |
+| 3 | Service-page consolidation: 4 merge candidates, 1 retitle | 5 | Merges **PAUSED** for GSC; retitle awaiting approval | Medium |
+| 4 | City consolidation candidates: 36 HVAC repair pages into hubs; 60 tune-up and heating pages into generic pages | up to 96 | **PAUSED** for GSC | Medium |
+| 5 | Content improvement: hubs, AC repair and emergency pages (owner-verified substance) | 122 | Awaiting owner material and approval | Low |
+| 6 | Title alignment for K1, K2, K11 | 3 to 5 | Needs GSC query + page data | Medium |
 
-Each wave is a separate pull request, verified on a Vercel preview and again on production, with a rollback (revert the PR; redirects and noindex are reversible, though recovery takes weeks after a merge).
+Each wave is a separate pull request, verified on a Vercel preview and again on production, with a rollback. No implementation PR is open.
 
 ---
 
 ## 10. What this audit did not change
 
-No page, title, H1, URL, canonical, redirect, robots rule, sitemap entry, noindex, form, tracking tag or Ads page was changed. Nothing was merged or deployed. The audit branch adds only this report, the two CSVs, the plan and two analysis scripts. Phase 2.3 implementation starts only after your approval.
+No page, title, H1, URL, canonical, redirect, robots rule, sitemap entry, noindex, form, tracking tag or Ads page was changed. Nothing was merged or deployed, and no implementation PR is open. The audit branch adds only documents, the CSVs, the data-input folder (README, templates, `.gitignore`), the metrics file and two analysis scripts. Phase 2.3 implementation starts only after the data review and your approval.
