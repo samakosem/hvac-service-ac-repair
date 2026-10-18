@@ -1,0 +1,30 @@
+# Phase 2.3 audit: read-only probes of the live site (host/slash variants, redirects,
+# non-sitemap routes, query/case variants, Wayback history, vercel.app hosts).
+# GET/HEAD requests only; nothing is submitted or changed.
+name: SEO phase 2.3 audit probe
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase23-audit-probe.yml, .github/seo-checks/probe23.py]
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: ci, persist-credentials: false }
+      - uses: actions/checkout@v4
+        with: { ref: main, path: site, persist-credentials: false }
+      - name: Probe
+        run: |
+          echo "main at $(git -C site rev-parse HEAD)"
+          grep -ho 'source: *"[^"]*"' site/src/lib/config/redirects.ts site/next.config.ts | sed 's/.*source: *"//; s/"$//' | grep -v ':path' | sort -u > sources.txt
+          python3 ci/.github/seo-checks/probe23.py sources.txt | tee probe.tsv
+          echo "lines: $(wc -l < probe.tsv)"
+      - uses: actions/upload-artifact@v4
+        with: { name: probe23, path: probe.tsv }
