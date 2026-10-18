@@ -24,7 +24,22 @@ jobs:
         run: |
           echo "main at $(git -C site rev-parse HEAD)"
           grep -ho 'source: *"[^"]*"' site/src/lib/config/redirects.ts site/next.config.ts | sed 's/.*source: *"//; s/"$//' | grep -v ':path' | sort -u > sources.txt
-          python3 ci/.github/seo-checks/probe23.py sources.txt | tee probe.tsv
+          python3 ci/.github/seo-checks/probe23.py sources.txt > probe.tsv
           echo "lines: $(wc -l < probe.tsv)"
+      - name: Summary (compact; full TSV in the artifact)
+        run: |
+          echo "== INFO"; grep -P '^INFO' probe.tsv
+          echo "== HOST patterns (variant, hop chain, final status, final==canonical www URL)"
+          awk -F'\t' '$1=="HOST"{exp="https://www.hvacserviceacrepair.com" ($3=="/"?"/":$3); ok=($5==exp||$5==exp"/"&&$3=="/")?"final=canonical":"final!=canonical"; print $2, $4, $6, ok}' probe.tsv | sort | uniq -c
+          echo "== HOST anomalies"; awk -F'\t' '$1=="HOST"{exp="https://www.hvacserviceacrepair.com" $3; if(!($5==exp||($3=="/"&&$5==exp)) || $6!=200) print}' probe.tsv | head -40
+          echo "== EXTRA"; grep -P '^EXTRA' probe.tsv
+          echo "== PARAM"; grep -P '^PARAM' probe.tsv
+          echo "== VERCL"; grep -P '^VERCL' probe.tsv
+          echo "== REDIR summary (hops, final status)"; awk -F'\t' '$1=="REDIR"{print $3, $6}' probe.tsv | sort | uniq -c
+          echo "== REDIR non-200 or multi-hop"; awk -F'\t' '$1=="REDIR" && ($6!=200 || $3>1)' probe.tsv
+          echo "== WAYBK by live outcome"; awk -F'\t' '$1=="WAYBK"{split($6,a,"="); print a[2], $8}' probe.tsv | sort | uniq -c | sort -rn | head -30
+          echo "== WAYBK hosts seen"; awk -F'\t' '$1=="WAYBK"{print $3}' probe.tsv | sort | uniq -c
+          echo "== WAYBK not 200 today (all)"; awk -F'\t' '$1=="WAYBK" && $8!=200' probe.tsv
+          echo "== WAYBK redirected today (all)"; awk -F'\t' '$1=="WAYBK" && $8==200 && $6 ~ /30[178]/' probe.tsv
       - uses: actions/upload-artifact@v4
         with: { name: probe23, path: probe.tsv }
