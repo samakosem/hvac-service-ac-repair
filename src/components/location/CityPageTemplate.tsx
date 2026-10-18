@@ -12,6 +12,7 @@ import { serviceHref } from "@/lib/config/routes";
 import { SITE } from "@/lib/config/site";
 import { getAllCities } from "@/lib/config/locations";
 import type { City, County } from "@/lib/config/locations";
+import type { CityServiceLink } from "@/lib/config/city-service-links";
 
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -54,9 +55,11 @@ function CheckIcon() {
 type Props = {
   city: City;
   county: County;
+  /** This city's service pages (resolved on the server). */
+  serviceLinks: CityServiceLink[];
 };
 
-export default function CityPageTemplate({ city, county }: Props) {
+export default function CityPageTemplate({ city, county, serviceLinks }: Props) {
   const canonicalPath = `/service-areas/${county.slug}/${city.slug}`;
 
   const serviceSchema = schemaService({
@@ -240,6 +243,30 @@ export default function CityPageTemplate({ city, county }: Props) {
                   <p>{SITE.hours.sunday}</p>
                 </address>
               </div>
+
+              {/* This city's service pages */}
+              {serviceLinks.length > 0 && (
+                <nav aria-labelledby="city-services-heading" className="bg-white rounded-2xl border border-slate-200 p-5">
+                  <h3 id="city-services-heading" className="font-bold text-slate-900 text-sm mb-1">
+                    {city.name} Service Pages
+                  </h3>
+                  <ul className="divide-y divide-slate-100">
+                    {serviceLinks.map((link) => (
+                      <li key={link.href}>
+                        <Link
+                          href={link.href}
+                          className="flex items-center justify-between gap-3 min-h-11 text-sm text-slate-600 hover:text-hvac-blue-600 transition-colors"
+                        >
+                          {link.label}
+                          <svg className="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                          </svg>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+              )}
 
               {/* Nearby cities */}
               {nearbyCities.length > 0 && (
