@@ -218,14 +218,14 @@ export default function Header() {
             {/* Mobile: phone + hamburger */}
             <div className="flex items-center gap-1.5 sm:gap-2 xl:hidden">
               <PhoneLink
-                className="flex items-center gap-1 sm:gap-1.5 px-2.5 max-[359px]:px-2 max-[359px]:py-2 sm:px-3 py-1.5 rounded-lg bg-cta-red shadow-[0_0_16px_-4px_rgba(220,38,38,0.7)] text-xs font-bold text-white whitespace-nowrap [&>svg]:text-white"
+                className="flex items-center gap-1 sm:gap-1.5 px-2.5 max-[374px]:px-2 max-[374px]:py-2 sm:px-3 py-1.5 rounded-lg bg-cta-red shadow-[0_0_16px_-4px_rgba(220,38,38,0.7)] text-xs font-bold text-white whitespace-nowrap [&>svg]:text-white"
                 iconSize="sm"
                 showIcon
-                labelClassName="max-[359px]:sr-only"
+                labelClassName="max-[374px]:sr-only"
               />
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="p-1.5 sm:p-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/8 transition-colors"
+                className="flex items-center justify-center w-11 h-11 -mx-1 sm:-mx-0.5 rounded-lg text-slate-200 hover:text-white hover:bg-white/8 transition-colors"
                 aria-expanded={mobileOpen}
                 aria-label="Toggle navigation menu"
               >

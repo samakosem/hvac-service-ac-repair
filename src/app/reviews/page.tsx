@@ -7,9 +7,9 @@ import { IMG_LENNOX_INSTALL } from "@/lib/config/images";
 import { GOOGLE_PROFILE_URL } from "@/lib/content/reviews";
 
 export const metadata: Metadata = {
-  title: "Customer Reviews | Yorba Linda, CA",
+  title: "Our Service Standards",
   description:
-    "See what customers are saying about HVAC Service & AC Repair in Orange County. Honest service, reliable repairs, and transparent pricing.",
+    "How we handle every HVAC call in Yorba Linda and Orange County: pricing explained up front, honest repair advice and respectful work. Read our Google reviews.",
   alternates: { canonical: "/reviews" },
 };
 
@@ -62,7 +62,7 @@ export default function ReviewsPage() {
       <InteriorHero
         breadcrumbs={[{ name: "Reviews", href: "/reviews" }]}
         eyebrow="Customer Feedback"
-        heading="What Our Customers Experience"
+        heading="Our Commitment to Quality HVAC Service"
         description="We don't publish fake reviews. Read genuine customer reviews on our Google Business Profile, and see below how we approach every job."
         image={IMG_LENNOX_INSTALL}
       />

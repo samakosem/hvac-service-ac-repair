@@ -169,3 +169,16 @@ Pre-existing issue found, not changed: on a 390 px phone every page scrolls abou
 3. **Mobile header overflow:** caused by the header row (logo 190 px + call pill and menu button 181 px + gaps) being wider than small screens. Fixed below the `sm` breakpoint only: slightly smaller logo mark and wordmark, tighter gaps, compact call pill and menu button (36 px), and below 359 px the call pill shows the phone icon only (the number stays in the link's accessible name and in the sticky bottom call bar). No `overflow-x: hidden` anywhere. `PhoneLink` gained an optional `labelClassName` prop used only by the header; other call links render unchanged.
 
 Verification: horizontal overflow 0 px at 320, 375, 390 and 430 px on 8 page types (was 79 / 24 / 9 / 0); menu opens (17 links, no overflow) and closes; header screenshots at 640, 768, 1024, 1280 and 1536 px are pixel-identical to before. Screenshots: `screenshots/header-mobile-*`.
+
+---
+
+## Phase 2.1d: final polish
+
+1. **`/reviews` metadata and H1** now match the page content (service standards plus a link to the Google Business Profile; no testimonials shown):
+   - Title: "Our Service Standards | HVAC Service & AC Repair" (48 characters; Open Graph and Twitter titles follow automatically)
+   - Meta description (158 characters): "How we handle every HVAC call in Yorba Linda and Orange County: pricing explained up front, honest repair advice and respectful work. Read our Google reviews."
+   - H1: "Our Commitment to Quality HVAC Service"
+   - URL, canonical (`/reviews`) and robots (`index, follow`) unchanged.
+2. **Mobile menu button** is now a 44×44 px tap target at every width. The visible icon is unchanged: the button uses negative horizontal margins so its layout footprint stays 36 px (40 px from 640 px up), and its background is transparent unless hovered. To keep a full right gutter, the header call pill is icon-only below 375 px (was below 359 px); the number remains in the link's accessible name and the bottom call bar.
+
+Verification: 1,284 page × width combinations from 320 to 640 px with 0 horizontal overflow and a ≥ 44×44 button; taps on the outer edge of the hit area open and close the menu; a menu link navigates; closed mobile headers at 320/375/390/430 are pixel-identical to the previous commit; tablet and desktop headers (640 to 1536 px) are pixel-identical to the original.
