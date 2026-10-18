@@ -68,7 +68,7 @@ jobs:
       - name: "Baseline: crawl live production"
         run: |
           python3 ci/.github/seo-checks/crawl.py "$PRODUCTION_URL" before
-          python3 -I site/scripts/seo-audit/extract.py before
+          python3 site/scripts/seo-audit/extract.py before
           echo "BASELINE CAPTURED"
 
       - name: Wait for PR #3 to be merged
@@ -133,8 +133,8 @@ jobs:
       - name: "Live crawl after merge + comparison with the live baseline"
         run: |
           python3 ci/.github/seo-checks/crawl.py "$PRODUCTION_URL" after
-          python3 -I site/scripts/seo-audit/extract.py after
-          python3 -I site/scripts/seo-audit/compare_internal_links.py before after | tee compare.json
+          python3 site/scripts/seo-audit/extract.py after
+          python3 site/scripts/seo-audit/compare_internal_links.py before after | tee compare.json
           python3 - <<'PY'
           import json, sys
           r = json.load(open("compare.json"))
