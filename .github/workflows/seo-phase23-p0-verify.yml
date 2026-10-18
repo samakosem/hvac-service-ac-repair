@@ -1,0 +1,38 @@
+# Phase 2.3 P0: apex-to-www redirect status (307 -> 308), verified on every sitemap URL. Read-only.
+# EXPECT_APEX_STATUS is 307 for the "before" baseline and 308 after the Vercel domain setting is changed.
+name: SEO phase 2.3 P0 apex redirect verify
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase23-p0-verify.yml, .github/seo-checks/p0_apex.py]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  EXPECT_APEX_STATUS: "307"
+  PRODUCTION_URL: https://www.hvacserviceacrepair.com
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: ci, persist-credentials: false }
+      - uses: actions/checkout@v4
+        with: { ref: main, path: site, persist-credentials: false }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Raw headers (apex, http apex, www)
+        run: |
+          for u in https://hvacserviceacrepair.com/ http://hvacserviceacrepair.com/ https://www.hvacserviceacrepair.com/; do
+            echo "#### $u"; curl -sS -o /dev/null -D - --max-redirs 0 "$u" | grep -iE '^(HTTP/|location:|server:)' || true
+          done
+      - name: Apex redirect on every sitemap URL, www 200 + canonical, Ads pages GTM/tel/form
+        run: python3 ci/.github/seo-checks/p0_apex.py "$EXPECT_APEX_STATUS"
+      - name: Standard SEO checks 1-10 against production
+        if: always()
+        run: node site/scripts/verify-preview.mjs --preview "$PRODUCTION_URL" --production "$PRODUCTION_URL" --concurrency 6
