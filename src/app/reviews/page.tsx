@@ -61,7 +61,7 @@ export default function ReviewsPage() {
     <>
       <InteriorHero
         breadcrumbs={[{ name: "Reviews", href: "/reviews" }]}
-        eyebrow="Customer Feedback"
+        eyebrow="Service Standards"
         heading="Our Commitment to Quality HVAC Service"
         description="We don't publish fake reviews. Read genuine customer reviews on our Google Business Profile, and see below how we approach every job."
         image={IMG_LENNOX_INSTALL}
