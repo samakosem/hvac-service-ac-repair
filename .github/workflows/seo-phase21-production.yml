@@ -1,0 +1,118 @@
+# After PR #2 (Phase 2.1) is merged: waits for Vercel's production deployment
+# of the merge commit, confirms the domain serves it, then runs every Phase 2.1
+# production check against the live domain. Read-only: no leads are submitted
+# (the only POST is an empty body to /api/contact, rejected with 422) and
+# analytics requests are blocked in the browser checks.
+name: SEO phase 2.1 production verification
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase21-production.yml]
+
+permissions:
+  contents: read
+  deployments: read
+  pull-requests: read
+
+concurrency:
+  group: seo-phase21-production
+  cancel-in-progress: true
+
+env:
+  PR_NUMBER: "2"
+  PRODUCTION_URL: https://www.hvacserviceacrepair.com
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    steps:
+      - name: Resolve the merge commit of PR #2
+        id: target
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          pr=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")
+          merged=$(jq -r .merged <<<"$pr"); sha=$(jq -r .merge_commit_sha <<<"$pr")
+          echo "PR #${PR_NUMBER} merged: $merged, merge commit: $sha, main: $(gh api repos/${GITHUB_REPOSITORY}/commits/main --jq .sha)"
+          [ "$merged" = true ] || { echo "::error::PR #${PR_NUMBER} is not merged"; exit 1; }
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for the Vercel production deployment to be READY
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: ${{ steps.target.outputs.sha }}
+        run: |
+          deadline=$(( $(date +%s) + 1800 ))
+          while :; do
+            dep=$(gh api "repos/${GITHUB_REPOSITORY}/deployments?sha=${TARGET_SHA}&environment=Production&per_page=20" \
+              --jq '[.[] | select(.creator.login == "vercel[bot]")] | first')
+            if [ -n "$dep" ] && [ "$dep" != "null" ]; then
+              id=$(jq -r .id <<<"$dep")
+              status=$(gh api "repos/${GITHUB_REPOSITORY}/deployments/${id}/statuses?per_page=1" --jq 'first // {}')
+              state=$(jq -r '.state // "pending"' <<<"$status")
+              echo "Production deployment $id (sha $(jq -r .sha <<<"$dep")): $state"
+              case "$state" in
+                success) echo "READY: $(jq -r .environment_url <<<"$status")"; break ;;
+                failure|error|inactive) echo "::error::Vercel production deployment $id ended in state '$state'"; exit 1 ;;
+              esac
+            else
+              echo "No Vercel production deployment for $TARGET_SHA yet"
+            fi
+            [ "$(date +%s)" -ge "$deadline" ] && { echo "::error::Timed out waiting for the production deployment"; exit 1; }
+            sleep 20
+          done
+
+      - name: Confirm the production domain serves the merged build
+        run: |
+          # Content only the merged code produces.
+          for i in 1 2 3 4 5 6; do
+            body=$(curl -sS "$PRODUCTION_URL/reviews")
+            if grep -q "Our Commitment to Quality HVAC Service" <<<"$body"; then echo "Production domain serves Phase 2.1 (/reviews H1 present)"; exit 0; fi
+            echo "Domain not updated yet, retrying"; sleep 20
+          done
+          echo "::error::Production domain does not serve the Phase 2.1 build"; exit 1
+
+      - uses: actions/checkout@v4
+        with:
+          path: ci
+          persist-credentials: false
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.target.outputs.sha }}
+          path: site
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: "SEO checks 1-9: sitemap, canonicals, robots, structured data, Ads pages, GTM/phone/forms, noindex, redirects"
+        shell: bash
+        run: |
+          set -o pipefail
+          node site/scripts/verify-preview.mjs --preview "$PRODUCTION_URL" --concurrency 6 | tee seo.txt
+
+      - name: Testimonial, rating and /reviews checks (all sitemap URLs)
+        run: python3 ci/.github/seo-checks/claims.py "$PRODUCTION_URL" site
+
+      - name: Hosting-level headers and redirects
+        run: |
+          fail=0
+          final=$(curl -sSL -o /dev/null -w '%{url_effective} %{http_code}' http://hvacserviceacrepair.com/contact)
+          echo "http apex -> $final"
+          [ "$final" = "https://www.hvacserviceacrepair.com/contact 200" ] || { echo "::error::apex redirect ended at $final"; fail=1; }
+          for p in / /reviews /ac-repair/yorba-linda; do
+            xr=$(curl -sSI "$PRODUCTION_URL$p" | grep -i '^x-robots-tag' || true)
+            echo "X-Robots-Tag $p: ${xr:-none}"
+            if grep -qi noindex <<<"$xr"; then echo "::error::noindex header on $p"; fail=1; fi
+          done
+          exit $fail
+
+      - name: Mobile header (320/375/390/430 px, menu open/close, no overflow)
+        run: |
+          mkdir pw && cd pw && npm init -y >/dev/null && npm i playwright-core@1.56.1 --no-audit --no-fund >/dev/null
+          cp ../ci/.github/seo-checks/mobile.cjs .
+          CHROME_PATH=$(command -v google-chrome) node mobile.cjs "$PRODUCTION_URL"
