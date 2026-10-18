@@ -30,8 +30,8 @@ jobs:
         run: |
           echo "== INFO"; grep -P '^INFO' probe.tsv
           echo "== HOST patterns (variant, hop chain, final status, final==canonical www URL)"
-          awk -F'\t' '$1=="HOST"{exp="https://www.hvacserviceacrepair.com" ($3=="/"?"/":$3); ok=($5==exp||$5==exp"/"&&$3=="/")?"final=canonical":"final!=canonical"; print $2, $4, $6, ok}' probe.tsv | sort | uniq -c
-          echo "== HOST anomalies"; awk -F'\t' '$1=="HOST"{exp="https://www.hvacserviceacrepair.com" $3; if(!($5==exp||($3=="/"&&$5==exp)) || $6!=200) print}' probe.tsv | head -40
+          awk -F'\t' '$1=="HOST"{want="https://www.hvacserviceacrepair.com" ($3=="/"?"/":$3); ok=($5==want||$5==want"/"&&$3=="/")?"final=canonical":"final!=canonical"; print $2, $4, $6, ok}' probe.tsv | sort | uniq -c
+          echo "== HOST anomalies"; awk -F'\t' '$1=="HOST"{want="https://www.hvacserviceacrepair.com" $3; if(!($5==want||($3=="/"&&$5==want)) || $6!=200) print}' probe.tsv | head -40
           echo "== EXTRA"; grep -P '^EXTRA' probe.tsv
           echo "== PARAM"; grep -P '^PARAM' probe.tsv
           echo "== VERCL"; grep -P '^VERCL' probe.tsv
