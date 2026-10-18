@@ -159,3 +159,13 @@ Pre-existing issue found, not changed: on a 390 px phone every page scrolls abou
 | Testimonial texts and reviewer names in raw HTML | 0 of 120 snippets and 100 names |
 | Pages with changed visible text vs original | 368 (367 checklist pages + homepage); the other 88 unchanged |
 | Horizontal overflow introduced | None (the 9 px mobile overflow is pre-existing header behaviour) |
+
+---
+
+## Phase 2.1c: final pre-merge cleanup
+
+1. **"500+ Local Homeowners"** (homepage hero, the only occurrence) now reads "Serving Local Homeowners". Same icon, position and styling. Recorded in `REMOVED_UNVERIFIED_CLAIMS`.
+2. **`/reviews` page:** removed every statement about what customers "consistently mention", "tell us" or "keep coming back" for. The hero description now points to the Google Business Profile; "Common Themes in Customer Feedback" became "How We Approach Every Job", with two cards reworded from customer attributions to the business's own practices (pricing explained before work starts; honest repair-or-replace advice), matching claims already made elsewhere on the site. The closing CTA subtext no longer claims repeat customers. The Google Business Profile link is now a direct link on this page. Title, meta description, canonical and H1 are unchanged.
+3. **Mobile header overflow:** caused by the header row (logo 190 px + call pill and menu button 181 px + gaps) being wider than small screens. Fixed below the `sm` breakpoint only: slightly smaller logo mark and wordmark, tighter gaps, compact call pill and menu button (36 px), and below 359 px the call pill shows the phone icon only (the number stays in the link's accessible name and in the sticky bottom call bar). No `overflow-x: hidden` anywhere. `PhoneLink` gained an optional `labelClassName` prop used only by the header; other call links render unchanged.
+
+Verification: horizontal overflow 0 px at 320, 375, 390 and 430 px on 8 page types (was 79 / 24 / 9 / 0); menu opens (17 links, no overflow) and closes; header screenshots at 640, 768, 1024, 1280 and 1536 px are pixel-identical to before. Screenshots: `screenshots/header-mobile-*`.

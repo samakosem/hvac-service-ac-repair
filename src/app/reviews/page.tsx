@@ -4,6 +4,7 @@ import { SITE } from "@/lib/config/site";
 import CtaSection from "@/components/ui/CtaSection";
 import InteriorHero from "@/components/layout/InteriorHero";
 import { IMG_LENNOX_INSTALL } from "@/lib/config/images";
+import { GOOGLE_PROFILE_URL } from "@/lib/content/reviews";
 
 export const metadata: Metadata = {
   title: "Customer Reviews | Yorba Linda, CA",
@@ -21,7 +22,7 @@ const EXPERIENCE_THEMES = [
       </svg>
     ),
     description:
-      "Customers consistently mention that our pricing was explained before work started — no surprise charges at the end.",
+      "We explain pricing before work starts, so there are no surprise charges at the end.",
   },
   {
     theme: "Same-Day Response",
@@ -41,7 +42,7 @@ const EXPERIENCE_THEMES = [
       </svg>
     ),
     description:
-      "When a repair isn't worth it, we say so. Customers tell us they appreciate being given an honest assessment rather than a push toward an expensive fix.",
+      "When a repair isn't worth it, we say so. You get an honest assessment, not a push toward an expensive fix.",
   },
   {
     theme: "Clean, Respectful Service",
@@ -62,7 +63,7 @@ export default function ReviewsPage() {
         breadcrumbs={[{ name: "Reviews", href: "/reviews" }]}
         eyebrow="Customer Feedback"
         heading="What Our Customers Experience"
-        description="We don't publish fake reviews. What we can share is what our customers consistently tell us matters most to them."
+        description="We don't publish fake reviews. Read genuine customer reviews on our Google Business Profile, and see below how we approach every job."
         image={IMG_LENNOX_INSTALL}
       />
 
@@ -71,10 +72,10 @@ export default function ReviewsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">
-              Common Themes in Customer Feedback
+              How We Approach Every Job
             </h2>
             <p className="text-slate-600 leading-relaxed">
-              These are the aspects of our service that come up again and again from customers.
+              These are the standards we hold ourselves to on every service call.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -104,8 +105,11 @@ export default function ReviewsPage() {
           <div>
             <h2 className="text-xl font-bold text-slate-900 mb-2">See Our Reviews on Google</h2>
             <p className="text-slate-500 text-sm leading-relaxed max-w-lg">
-              Search &ldquo;HVAC Service &amp; AC Repair Yorba Linda&rdquo; on Google to see verified
-              customer reviews directly from the source.
+              Read customer reviews directly from the source on our{" "}
+              <a href={GOOGLE_PROFILE_URL} target="_blank" rel="noopener noreferrer" className="text-hvac-blue-600 font-semibold hover:underline">
+                Google Business Profile
+              </a>
+              , or search &ldquo;HVAC Service &amp; AC Repair Yorba Linda&rdquo; on Google.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3">
@@ -141,7 +145,7 @@ export default function ReviewsPage() {
 
       <CtaSection
         heading="Ready to Experience the Difference?"
-        subtext="Request a free estimate and see why customers keep coming back."
+        subtext="Request a free estimate from our local team."
         primaryLabel="Get a Free Estimate"
         primaryHref="/contact"
         variant="blue"

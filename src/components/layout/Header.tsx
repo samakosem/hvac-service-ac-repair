@@ -110,17 +110,17 @@ export default function Header() {
         <div aria-hidden="true" className="absolute -bottom-1.5 inset-x-0 h-2 bg-gradient-to-r from-red-500/40 via-copper-400/20 to-hvac-blue-500/40 blur-md" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-3 xl:gap-5 h-16 xl:h-[4.75rem]">
+          <div className="flex items-center justify-between gap-2 sm:gap-3 xl:gap-5 h-16 xl:h-[4.75rem]">
 
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-3 shrink-0 group"
+              className="flex items-center gap-2.5 sm:gap-3 shrink-0 group"
               aria-label={`${SITE.name} — Home`}
             >
-              <div className="relative flex items-center justify-center w-12 h-12 rounded-xl bg-cta-red shadow-[0_0_24px_-4px_rgba(234,88,12,0.7)] ring-1 ring-white/30 group-hover:ring-white/50 group-hover:scale-105 transition-all duration-200">
+              <div className="relative flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-cta-red shadow-[0_0_24px_-4px_rgba(234,88,12,0.7)] ring-1 ring-white/30 group-hover:ring-white/50 group-hover:scale-105 transition-all duration-200">
                 <svg
-                  className="w-7 h-7 text-white drop-shadow"
+                  className="w-6 h-6 sm:w-7 sm:h-7 text-white drop-shadow"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.9}
@@ -131,7 +131,7 @@ export default function Header() {
                 </svg>
               </div>
               <div className="flex flex-col leading-none gap-1">
-                <span className="text-white font-extrabold text-lg lg:text-xl tracking-wide">
+                <span className="text-white font-extrabold text-base sm:text-lg lg:text-xl tracking-wide">
                   HVAC Service
                 </span>
                 <span className="text-copper-300 text-[11px] font-bold tracking-[0.18em] uppercase">
@@ -216,15 +216,16 @@ export default function Header() {
             </div>
 
             {/* Mobile: phone + hamburger */}
-            <div className="flex items-center gap-2 xl:hidden">
+            <div className="flex items-center gap-1.5 sm:gap-2 xl:hidden">
               <PhoneLink
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cta-red shadow-[0_0_16px_-4px_rgba(220,38,38,0.7)] text-xs font-bold text-white whitespace-nowrap [&>svg]:text-white"
+                className="flex items-center gap-1 sm:gap-1.5 px-2.5 max-[359px]:px-2 max-[359px]:py-2 sm:px-3 py-1.5 rounded-lg bg-cta-red shadow-[0_0_16px_-4px_rgba(220,38,38,0.7)] text-xs font-bold text-white whitespace-nowrap [&>svg]:text-white"
                 iconSize="sm"
                 showIcon
+                labelClassName="max-[359px]:sr-only"
               />
               <button
                 onClick={() => setMobileOpen(!mobileOpen)}
-                className="p-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/8 transition-colors"
+                className="p-1.5 sm:p-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/8 transition-colors"
                 aria-expanded={mobileOpen}
                 aria-label="Toggle navigation menu"
               >

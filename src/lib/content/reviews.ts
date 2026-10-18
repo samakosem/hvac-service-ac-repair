@@ -71,7 +71,8 @@ export const REMOVED_UNVERIFIED_CLAIMS = [
   { text: "5.0 · 100+ Google reviews", where: "city service pages, Google Ads pages, /air-conditioning/ac-repair (367 pages)" },
   { text: "5-Star Rated", where: "Google Ads page trust badges (181 pages)" },
   { text: "5.0 on Google", where: "homepage reviews section" },
-  { text: "5 star rating (star icons)", where: "homepage hero, next to \"500+ Local Homeowners\"" },
+  { text: "5 star rating (star icons)", where: "homepage hero" },
+  { text: "500+ Local Homeowners", where: "homepage hero trust strip (now \"Serving Local Homeowners\")" },
   { text: "5-Star Google Rated", where: "/orange-county-ac-repair \"why choose us\" card heading" },
 ] as const;
 
