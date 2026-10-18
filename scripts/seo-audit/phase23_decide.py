@@ -221,7 +221,7 @@ with open(os.path.join(OUT, "PHASE_2_3_REDIRECT_CANDIDATES.csv"), "w", newline="
     w.writerow(["source_path", "destination_path", "status_code", "wave", "reason", "risk", "condition_before_implementing",
                 "source_contextual_inlinks", "source_in_sitemap", "paid_ads_use", "follow_up"])
     for r in red:
-        wave = "Wave 2 (service pages)" if r["page_type"] in ("service",) else "Wave 3 (city pages)"
+        wave = "Wave 3 (service pages)" if r["page_type"] in ("service",) else "Wave 4 (city pages)"
         follow = ("Remove from CITY_SERVICE_MAP so the sitemap and the Phase 2.2 links drop it automatically; add the redirect in next.config.ts; "
                   "move any unique copy into the destination first" if r["page_type"].startswith("city_service") else
                   "Remove from sitemap.ts and from nav/footer/related-service links; carry any unique sections into the destination first")
@@ -230,6 +230,9 @@ with open(os.path.join(OUT, "PHASE_2_3_REDIRECT_CANDIDATES.csv"), "w", newline="
                     r["contextual_inlinks"], r["in_sitemap"], r["paid_ads_use"], follow])
     # Hygiene rows from the live probes (section 2): not page consolidation, listed so every redirect decision is in one file.
     for src, dst, wave, reason, risk, cond in [
+        ("https://hvacserviceacrepair.com/* (apex host)", "https://www.hvacserviceacrepair.com/*", "Wave 1 (host hygiene)",
+         "The apex host answers with 307 Temporary Redirect (Vercel domain setting, which runs before the 308 rule in next.config.ts); http://apex takes two hops (308 then 307). Switch the Vercel domain redirect to 308 Permanent so Google consolidates the 2025 non-www history on www.",
+         "Low", "Owner approval; change made in Vercel project settings (Domains), not in code"),
         ("https://hvac-service-ac-repair.vercel.app/*", "https://www.hvacserviceacrepair.com/*", "Wave 1 (host hygiene)",
          "The production vercel.app alias serves the full site with 200 and 'index, follow' (canonical tags point to www, which limits the damage). Redirect it to the www domain in Vercel's domain settings.",
          "Low", "Owner approval; change made in Vercel project settings, not in code"),
