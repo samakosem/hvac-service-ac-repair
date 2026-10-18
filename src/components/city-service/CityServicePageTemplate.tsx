@@ -7,28 +7,11 @@ import { SITE } from "@/lib/config/site";
 import { IMG_HERO } from "@/lib/config/images";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import type { CityServicePage } from "@/lib/config/city-service-pages";
+import { QuickChecksGrid, QuickChecksHeader, quickChecksKind } from "@/components/ui/QuickChecks";
 
 // ── Icon helpers ──────────────────────────────────────────────────────────────
 
-function StarIcon({ filled }: { filled?: boolean }) {
-  return filled ? (
-    <svg className="w-4 h-4 text-amber-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-    </svg>
-  ) : (
-    <svg className="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5} aria-hidden="true">
-      <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-3.885a.563.563 0 00-.652 0L4.73 19.64a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557L.734 9.345a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-    </svg>
-  );
-}
 
-function Stars({ rating }: { rating: number }) {
-  return (
-    <div className="flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
-      {[1, 2, 3, 4, 5].map((i) => <StarIcon key={i} filled={i <= rating} />)}
-    </div>
-  );
-}
 
 function CheckIcon({ className }: { className?: string }) {
   return (
@@ -369,33 +352,14 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
         </div>
       </section>
 
-      {/* ── REVIEWS ──────────────────────────────────────────────────────────── */}
-      <section className="py-16 lg:py-20 bg-warm-white" aria-labelledby="reviews-heading">
+      {/* ── QUICK CHECKS (replaces unverified testimonials) ───────────────────── */}
+      <section className="py-16 lg:py-20 bg-warm-white" aria-labelledby="quick-checks-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="section-label section-label-blue w-fit mx-auto mb-3">Customer Reviews</div>
-            <h2 id="reviews-heading" className="text-3xl sm:text-4xl font-bold text-slate-900">
-              What {page.cityName} Homeowners Say
-            </h2>
-            <div className="flex items-center justify-center gap-2 mt-4">
-              <Stars rating={5} />
-              <span className="font-bold text-slate-800">5.0</span>
-              <span className="text-slate-500 text-sm">· 100+ Google reviews</span>
-            </div>
+            <QuickChecksHeader kind={quickChecksKind(page.serviceSlug)} />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {page.reviews.map((review, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col gap-4">
-                <Stars rating={review.rating} />
-                <p className="text-slate-700 text-sm leading-relaxed flex-1">&ldquo;{review.body}&rdquo;</p>
-                <div className="border-t border-slate-100 pt-3">
-                  <p className="text-slate-900 font-semibold text-sm">{review.name}</p>
-                  <p className="text-slate-400 text-xs">{review.neighborhood}, {page.cityName} · {review.date}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <QuickChecksGrid kind={quickChecksKind(page.serviceSlug)} />
         </div>
       </section>
 

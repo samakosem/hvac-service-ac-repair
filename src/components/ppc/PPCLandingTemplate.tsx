@@ -7,6 +7,7 @@ import FinancingTeaser from "@/components/ui/FinancingTeaser";
 import { SITE } from "@/lib/config/site";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import type { PPCCity } from "@/lib/config/ppc-cities";
+import { QuickChecksGrid, QuickChecksHeader } from "@/components/ui/QuickChecks";
 
 // ── Static trust data ────────────────────────────────────────────────────────
 
@@ -15,7 +16,6 @@ const TRUST_BADGES = [
   { label: "EPA Certified", icon: "leaf" },
   { label: "Same-Day Service", icon: "bolt" },
   { label: "Free Estimates", icon: "tag" },
-  { label: "5-Star Rated", icon: "star" },
 ];
 
 const PROCESS_STEPS = [
@@ -111,18 +111,6 @@ function BoltIcon({ className }: { className?: string }) {
   );
 }
 
-
-// ── Rating stars ─────────────────────────────────────────────────────────────
-
-function Stars({ rating }: { rating: number }) {
-  return (
-    <div className="flex gap-0.5">
-      {[1, 2, 3, 4, 5].map((i) => (
-        <StarIcon key={i} filled={i <= rating} className="w-4 h-4 text-amber-400" />
-      ))}
-    </div>
-  );
-}
 
 // ── Trust badge icon resolver ─────────────────────────────────────────────────
 
@@ -560,33 +548,14 @@ export default function PPCLandingTemplate({ city, path }: Props) {
         </div>
       </section>
 
-      {/* ── 9. REVIEWS ───────────────────────────────────────────────────────── */}
-      <section className="py-16 lg:py-20 bg-section-dark" aria-labelledby="reviews-heading">
+      {/* ── 9. QUICK CHECKS (replaces unverified testimonials) ─────────────────── */}
+      <section className="py-16 lg:py-20 bg-section-dark" aria-labelledby="quick-checks-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="section-label section-label-white w-fit mx-auto mb-3">Customer Reviews</div>
-            <h2 id="reviews-heading" className="text-3xl sm:text-4xl font-bold text-white">
-              What {city.name} Homeowners Say
-            </h2>
-            <div className="flex items-center justify-center gap-2 mt-4">
-              <Stars rating={5} />
-              <span className="text-white font-bold">5.0</span>
-              <span className="text-slate-400 text-sm">· 100+ Google reviews</span>
-            </div>
+            <QuickChecksHeader kind="ac-repair" tone="dark" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {city.reviews.map((review, i) => (
-              <div key={i} className="bg-white/6 rounded-2xl p-6 border border-white/8 flex flex-col gap-4">
-                <Stars rating={review.rating} />
-                <p className="text-slate-200 text-sm leading-relaxed flex-1">&ldquo;{review.body}&rdquo;</p>
-                <div>
-                  <p className="text-white font-semibold text-sm">{review.name}</p>
-                  <p className="text-slate-400 text-xs">{review.location}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <QuickChecksGrid kind="ac-repair" tone="dark" />
         </div>
       </section>
 

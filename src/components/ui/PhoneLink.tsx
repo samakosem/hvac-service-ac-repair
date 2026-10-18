@@ -8,6 +8,8 @@ type PhoneLinkProps = {
   showIcon?: boolean;
   iconSize?: "sm" | "md";
   label?: string;
+  /** Optional classes for the visible number, e.g. to hide it on very narrow screens. */
+  labelClassName?: string;
 };
 
 export default function PhoneLink({
@@ -15,6 +17,7 @@ export default function PhoneLink({
   showIcon = false,
   iconSize = "md",
   label,
+  labelClassName,
 }: PhoneLinkProps) {
   const iconClass = iconSize === "sm" ? "w-3.5 h-3.5" : "w-4 h-4";
 
@@ -41,7 +44,7 @@ export default function PhoneLink({
           />
         </svg>
       )}
-      {label ?? SITE.phoneDisplay}
+      {labelClassName ? <span className={labelClassName}>{label ?? SITE.phoneDisplay}</span> : (label ?? SITE.phoneDisplay)}
     </a>
   );
 }

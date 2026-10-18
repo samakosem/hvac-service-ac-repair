@@ -362,34 +362,6 @@ function faqs(city: CityEntry): PPCCity["faqs"] {
   ];
 }
 
-function reviews(city: CityEntry): PPCCity["reviews"] {
-  const [first, last] = [
-    ["Maria", "David", "Jennifer", "Robert", "Lisa", "Michael", "Karen", "James"],
-    ["T.", "K.", "L.", "M.", "R.", "S.", "W.", "H."],
-  ];
-  const idx = city.slug.length % first.length;
-  return [
-    {
-      name: `${first[idx]} ${last[idx]}`,
-      location: `${city.name}, CA`,
-      body: `Called on a Saturday morning when our AC stopped working. Technician arrived within 3 hours, diagnosed a failed capacitor, and had us cooling again before noon. Exactly what you want in a heat emergency.`,
-      rating: 5,
-    },
-    {
-      name: `${first[(idx + 2) % first.length]} ${last[(idx + 3) % last.length]}`,
-      location: `${city.name}, CA`,
-      body: `Very professional and honest. The tech explained what was wrong, gave me options, and didn't pressure me toward the most expensive fix. The repair held and I've since referred two neighbors.`,
-      rating: 5,
-    },
-    {
-      name: `${first[(idx + 5) % first.length]} ${last[(idx + 1) % last.length]}`,
-      location: `${city.name}, CA`,
-      body: `Had three other companies give me quotes — this one was the most transparent about pricing and didn't try to upsell me on a new system when a repair was clearly the right call. Will use again.`,
-      rating: 5,
-    },
-  ];
-}
-
 // ─── Main generator ───────────────────────────────────────────────────────────
 export function generatePPCCities(existingSlugs: Set<string>): PPCCity[] {
   return GENERATED_CITIES.filter((c) => !existingSlugs.has(c.slug)).map(
@@ -424,7 +396,6 @@ export function generatePPCCities(existingSlugs: Set<string>): PPCCity[] {
       emergencyBody: emergencyBody(city),
       whyUsPoints: whyUsPoints(city),
       faqs: faqs(city),
-      reviews: reviews(city),
     }),
   );
 }
