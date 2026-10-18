@@ -30,6 +30,9 @@ NOINDEX_NOW = {"/services": "noindex, follow", "/thank-you": "noindex, nofollow"
 TIER1 = {"yorba-linda", "anaheim", "brea", "placentia", "fullerton", "irvine", "orange"}
 TIER3_COUNTIES = {"ventura-county", "santa-barbara-county"}
 
+COUNTY_NAME = {"orange-county": "Orange County", "los-angeles-county": "Los Angeles County", "riverside-county": "Riverside County",
+               "san-bernardino-county": "San Bernardino County", "ventura-county": "Ventura County", "santa-barbara-county": "Santa Barbara County"}
+
 def tier(m):
     if m["city"] in TIER1: return 1
     if m["county"] in TIER3_COUNTIES: return 3
@@ -195,7 +198,7 @@ for m in sorted(M, key=lambda m: m["path"]):
         "url": "https://www.hvacserviceacrepair.com" + (m["path"] if m["path"] != "/" else "/"),
         "path": m["path"], "in_sitemap": "No" if m["path"] in SITEMAP_EXCLUDED else "Yes",
         "robots_now": NOINDEX_NOW.get(m["path"], "index, follow"), "page_type": m["family"] + (f"/{m['service']}" if m["family"] == "city_service" else ""),
-        "city": m["city"] if m["family"] not in ("county_hub",) else "", "county": m["county"] or (m["city"] if m["family"] == "county_hub" else ""),
+        "city": m["city"] if m["family"] not in ("county_hub",) else "", "county": COUNTY_NAME.get(m["county"], m["county"]) or (COUNTY_NAME.get(m["city"], "") if m["family"] == "county_hub" else ""),
         "geo_tier": tier(m) if m["family"] in ("city_service", "city_hub", "ads_generated") and m["city"] else "",
         "target_keyword": kw, "search_intent": intent, "title": m["title"], "h1": m["h1"], "words": m["words"],
         "clicks_90d": clicks, "impressions_90d": impr, "avg_position_90d": g["position"] if g else "N/A",
@@ -225,6 +228,22 @@ with open(os.path.join(OUT, "PHASE_2_3_REDIRECT_CANDIDATES.csv"), "w", newline="
         w.writerow([r["path"], r["proposed_destination"], 301, wave, r["reasoning"].split(". ")[0] + ".", r["risk"],
                     "GSC: 0 clicks and under 100 impressions in each of the last two 90-day periods; no external backlinks to the source; owner approval",
                     r["contextual_inlinks"], r["in_sitemap"], r["paid_ads_use"], follow])
+    # Hygiene rows from the live probes (section 2): not page consolidation, listed so every redirect decision is in one file.
+    for src, dst, wave, reason, risk, cond in [
+        ("https://hvac-service-ac-repair.vercel.app/*", "https://www.hvacserviceacrepair.com/*", "Wave 1 (host hygiene)",
+         "The production vercel.app alias serves the full site with 200 and 'index, follow' (canonical tags point to www, which limits the damage). Redirect it to the www domain in Vercel's domain settings.",
+         "Low", "Owner approval; change made in Vercel project settings, not in code"),
+        ("/about/", "/about-us", "Wave 1 (chain fix)", "Two hops today (/about/ 308 /about 308 /about-us). Point straight at the destination.", "Low", "Owner approval"),
+        ("/hvac-repair/", "/air-conditioning/ac-repair", "Wave 1 (chain fix)", "Two hops today (trailing-slash 308 first). Collapse to one.", "Low", "Owner approval"),
+        ("/hvac-installation/", "/air-conditioning/ac-installation", "Wave 1 (chain fix)", "Two hops today. Collapse to one.", "Low", "Owner approval"),
+        ("/hvac-cleaning/", "/air-duct-services/air-duct-cleaning", "Wave 1 (chain fix)", "Two hops today. Collapse to one.", "Low", "Owner approval"),
+        ("/heating/heating-repair/", "/heating", "Wave 1 (chain fix)", "Two hops today. Collapse to one.", "Low", "Owner approval"),
+        ("/air-conditioning/ac-repair/la-habra/", "/air-conditioning/ac-repair", "Wave 1 (chain fix)", "Two hops today. Collapse to one.", "Low", "Owner approval"),
+        ("/faq/", "/#faq", "Wave 1 (chain fix)", "Two hops today (308 then 307). Collapse to one.", "Low", "Owner approval"),
+    ]:
+        w.writerow([src, dst, 301, wave, reason, risk, cond, "", "No", "No", "Verify with a live trace after deploy"])
+    for src in ("/author/parves/", "/author/sammazor1gmail-com/", "/category/blog/", "/category/uncategorized/", "/hello-world/", "/hello-world-2/", "/garage-door-repair-los-angeles/"):
+        w.writerow([src, "(none: leave 404)", "404", "No action", "Old WordPress URL seen by the Wayback Machine on the apex host (2025); 404 today. Default WordPress author, category or sample pages, plus one unrelated garage-door page. Nothing to consolidate; redirecting them would create soft 404s.", "None", "Revisit only if GSC or a backlink tool shows external links to it", "", "No", "No", ""])
 print(len(rows), "decisions;", len(red), "redirect candidates")
 import collections
 print(collections.Counter(r["recommended_action"] for r in rows))
