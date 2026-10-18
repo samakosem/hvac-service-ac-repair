@@ -89,9 +89,14 @@ jobs:
         run: |
           hdr=()
           [ -n "$VERCEL_AUTOMATION_BYPASS_SECRET" ] && hdr=(-H "x-vercel-protection-bypass: $VERCEL_AUTOMATION_BYPASS_SECRET")
-          code=$(curl -sS -o /tmp/preview.html -w '%{http_code}' "${hdr[@]}" "$PREVIEW_URL/")
-          echo "Preview HTTP $code"
-          if [ "$code" = 401 ] || [ "$code" = 403 ]; then
+          read -r code location < <(curl -sS -o /tmp/preview.html -w '%{http_code} %{redirect_url}\n' "${hdr[@]}" "$PREVIEW_URL/")
+          # Print only the host and path: the query string can carry SSO state.
+          echo "Preview HTTP $code ${location%%\?*}"
+          protected=false
+          [ "$code" = 401 ] || [ "$code" = 403 ] && protected=true
+          # Vercel Authentication answers with a redirect to its own login/SSO pages.
+          [[ "$code" =~ ^30[1278]$ && "$location" =~ ^https://(vercel\.com|[^/]*\.vercel\.app/\.well-known/vercel)/ ]] && protected=true
+          if [ "$protected" = true ]; then
             echo "::error::The preview is protected by Vercel Deployment Protection. In Vercel: Project Settings → Deployment Protection → Protection Bypass for Automation, generate a secret, then add it in GitHub as the repository secret VERCEL_AUTOMATION_BYPASS_SECRET."
             exit 1
           fi
