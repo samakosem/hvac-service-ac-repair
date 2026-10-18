@@ -6,12 +6,14 @@
 
 export type QuickChecksKind = "ac-repair" | "emergency-ac-repair" | "ac-tune-up" | "heating-repair" | "hvac-repair";
 
-type Check = { heading: string; body: string };
+/** `alert` marks a safety step (gas, burning smell) and swaps in a warning icon. */
+type Check = { heading: string; body: string; alert?: boolean };
 
-const CONTENT: Record<QuickChecksKind, { label: string; heading: string; checks: Check[] }> = {
+const CONTENT: Record<QuickChecksKind, { label: string; heading: string; intro: string; checks: Check[] }> = {
   "ac-repair": {
     label: "Before You Call",
     heading: "Quick Checks Before an AC Repair Visit",
+    intro: "A few safe checks can sometimes get your AC running again. If they don't, they help your technician find the problem faster.",
     checks: [
       {
         heading: "Check the thermostat",
@@ -30,9 +32,11 @@ const CONTENT: Record<QuickChecksKind, { label: string; heading: string; checks:
   "emergency-ac-repair": {
     label: "While You Wait",
     heading: "What to Do Until Your Technician Arrives",
+    intro: "Keep your home and family safe while help is on the way.",
     checks: [
       {
         heading: "Turn it off if something is wrong",
+        alert: true,
         body: "If you smell burning, hear grinding or banging, or see water leaking from the indoor unit, set the thermostat to Off and leave it off until the system is checked.",
       },
       {
@@ -48,6 +52,7 @@ const CONTENT: Record<QuickChecksKind, { label: string; heading: string; checks:
   "ac-tune-up": {
     label: "Between Tune-Ups",
     heading: "Simple Steps That Keep Your AC Running Well",
+    intro: "Routine care between professional visits helps your system run efficiently and catch problems early.",
     checks: [
       {
         heading: "Change the filter on schedule",
@@ -66,6 +71,7 @@ const CONTENT: Record<QuickChecksKind, { label: string; heading: string; checks:
   "heating-repair": {
     label: "Before You Call",
     heading: "Quick Checks Before a Heating Repair Visit",
+    intro: "A few safe checks can sometimes get the heat back on. If they don't, they help your technician find the problem faster.",
     checks: [
       {
         heading: "Check the thermostat and filter",
@@ -77,6 +83,7 @@ const CONTENT: Record<QuickChecksKind, { label: string; heading: string; checks:
       },
       {
         heading: "If you smell gas, leave first",
+        alert: true,
         body: "Do not use light switches, phones or anything that could spark inside. Leave the home and call your gas utility or 911 from outside.",
       },
     ],
@@ -84,6 +91,7 @@ const CONTENT: Record<QuickChecksKind, { label: string; heading: string; checks:
   "hvac-repair": {
     label: "Before You Call",
     heading: "Quick Checks Before an HVAC Repair Visit",
+    intro: "Whether the problem is heating or cooling, these safe checks can rule out simple causes before a technician arrives.",
     checks: [
       {
         heading: "Check the thermostat mode",
@@ -113,6 +121,7 @@ export function QuickChecksHeader({ kind, tone = "light" }: { kind: QuickChecksK
       <h2 id="quick-checks-heading" className={`text-3xl sm:text-4xl font-bold ${tone === "dark" ? "text-white" : "text-slate-900"}`}>
         {c.heading}
       </h2>
+      <p className={`mt-4 max-w-2xl mx-auto leading-relaxed ${tone === "dark" ? "text-slate-400" : "text-slate-600"}`}>{c.intro}</p>
     </>
   );
 }
@@ -130,6 +139,21 @@ export function QuickChecksGrid({ kind, tone = "light" }: { kind: QuickChecksKin
               : "bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col gap-3"
           }
         >
+          <div
+            className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+              check.alert ? (dark ? "bg-amber-400/15" : "bg-amber-50") : dark ? "bg-copper-500/20" : "bg-hvac-blue-50"
+            }`}
+          >
+            {check.alert ? (
+              <svg className={`w-5 h-5 ${dark ? "text-amber-300" : "text-amber-600"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+              </svg>
+            ) : (
+              <svg className={`w-5 h-5 ${dark ? "text-copper-400" : "text-hvac-blue-600"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            )}
+          </div>
           <h3 className={`font-bold ${dark ? "text-white" : "text-slate-900"}`}>{check.heading}</h3>
           <p className={`text-sm leading-relaxed ${dark ? "text-slate-300" : "text-slate-700"}`}>{check.body}</p>
         </div>

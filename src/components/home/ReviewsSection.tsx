@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { GOOGLE_PROFILE_URL } from "@/lib/content/reviews";
+import { GOOGLE_PROFILE_URL, verifiedReviewSummary } from "@/lib/content/reviews";
 
 function StarIcon() {
   return (
@@ -9,15 +9,17 @@ function StarIcon() {
   );
 }
 
+/** Decorative only: the rating itself, when verified, is shown as text. */
 function Stars({ count = 5 }: { count?: number }) {
   return (
-    <div className="flex gap-0.5" aria-label={`${count} out of 5 stars`}>
+    <div className="flex gap-0.5" aria-hidden="true">
       {Array.from({ length: count }).map((_, i) => <StarIcon key={i} />)}
     </div>
   );
 }
 
 export default function ReviewsSection() {
+  const rating = verifiedReviewSummary();
   return (
     <section className="py-16 lg:py-24 bg-section-dark" aria-labelledby="reviews-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,12 +30,14 @@ export default function ReviewsSection() {
           <h2 id="reviews-heading" className="text-3xl sm:text-4xl font-bold text-white mt-4 mb-3">
             Reviews From Local Homeowners
           </h2>
-          {/* Google rating summary */}
-          <div className="flex items-center justify-center gap-2 mt-2 mb-3">
-            <Stars />
-            <span className="text-white font-bold text-sm">5.0</span>
-            <span className="text-slate-400 text-sm">on Google</span>
-          </div>
+          {/* Google rating summary: only shown once read off the live profile */}
+          {rating && (
+            <div className="flex items-center justify-center gap-2 mt-2 mb-3">
+              <Stars />
+              <span className="text-white font-bold text-sm">{rating.ratingValue.toFixed(1)}</span>
+              <span className="text-slate-400 text-sm">from {rating.reviewCount} Google reviews</span>
+            </div>
+          )}
           <p className="text-slate-400 leading-relaxed text-sm">
             Read what customers say in their own words on our{" "}
             <a href={GOOGLE_PROFILE_URL} target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:underline">

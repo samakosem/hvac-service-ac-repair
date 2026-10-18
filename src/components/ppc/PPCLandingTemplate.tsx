@@ -16,7 +16,6 @@ const TRUST_BADGES = [
   { label: "EPA Certified", icon: "leaf" },
   { label: "Same-Day Service", icon: "bolt" },
   { label: "Free Estimates", icon: "tag" },
-  { label: "5-Star Rated", icon: "star" },
 ];
 
 const PROCESS_STEPS = [
@@ -112,18 +111,6 @@ function BoltIcon({ className }: { className?: string }) {
   );
 }
 
-
-// ── Rating stars ─────────────────────────────────────────────────────────────
-
-function Stars({ rating }: { rating: number }) {
-  return (
-    <div className="flex gap-0.5">
-      {[1, 2, 3, 4, 5].map((i) => (
-        <StarIcon key={i} filled={i <= rating} className="w-4 h-4 text-amber-400" />
-      ))}
-    </div>
-  );
-}
 
 // ── Trust badge icon resolver ─────────────────────────────────────────────────
 
@@ -566,11 +553,6 @@ export default function PPCLandingTemplate({ city, path }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <QuickChecksHeader kind="ac-repair" tone="dark" />
-            <div className="flex items-center justify-center gap-2 mt-4">
-              <Stars rating={5} />
-              <span className="text-white font-bold">5.0</span>
-              <span className="text-slate-400 text-sm">· 100+ Google reviews</span>
-            </div>
           </div>
 
           <QuickChecksGrid kind="ac-repair" tone="dark" />

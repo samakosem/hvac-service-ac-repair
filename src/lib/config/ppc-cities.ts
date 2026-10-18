@@ -246,7 +246,7 @@ export const PPC_CITIES: PPCCity[] = [
         body: "No travel surcharges across Orange County. Free diagnostic — no charge to identify the problem.",
       },
       {
-        heading: "5-Star Google Rated",
+        heading: "No Unnecessary Upsells",
         body: "Our reputation is built on honest work. We don't upsell unnecessary repairs and we back every job with a satisfaction guarantee.",
       },
     ],

@@ -48,8 +48,9 @@ export const GOOGLE_PROFILE_URL = "https://maps.app.goo.gl/q3tdaVN6JDbXpVPKA";
 
 /**
  * Aggregate figures for any "X reviews" or star-rating claim on the site.
- * null means unknown: owner must read them off the live profile. Until then,
- * no page should state a review count or average rating.
+ * null means unknown: owner must read them off the live profile. Until all
+ * three are set, verifiedReviewSummary() returns null and no page shows a
+ * review count or average rating.
  */
 export const REVIEW_PROFILE: {
   googleRatingValue: number | null;
@@ -60,6 +61,26 @@ export const REVIEW_PROFILE: {
   googleReviewCount: null,
   checkedOn: null,
 };
+
+/**
+ * Rating claims the site displayed before 2026-10-18, removed because no
+ * source supported them. Kept so the owner can check them against the live
+ * profile; do not render these.
+ */
+export const REMOVED_UNVERIFIED_CLAIMS = [
+  { text: "5.0 · 100+ Google reviews", where: "city service pages, Google Ads pages, /air-conditioning/ac-repair (367 pages)" },
+  { text: "5-Star Rated", where: "Google Ads page trust badges (181 pages)" },
+  { text: "5.0 on Google", where: "homepage reviews section" },
+  { text: "5 star rating (star icons)", where: "homepage hero, next to \"500+ Local Homeowners\"" },
+  { text: "5-Star Google Rated", where: "/orange-county-ac-repair \"why choose us\" card heading" },
+] as const;
+
+/** Rating and review count for display, or null until verified. */
+export function verifiedReviewSummary(): { ratingValue: number; reviewCount: number; checkedOn: string } | null {
+  const { googleRatingValue, googleReviewCount, checkedOn } = REVIEW_PROFILE;
+  if (googleRatingValue === null || googleReviewCount === null || !checkedOn) return null;
+  return { ratingValue: googleRatingValue, reviewCount: googleReviewCount, checkedOn };
+}
 
 export const REVIEWS: Review[] = [
   {

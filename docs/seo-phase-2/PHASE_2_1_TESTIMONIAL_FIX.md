@@ -72,7 +72,7 @@ The generated and hand-written testimonial **data** was deleted from the code, n
 ## Remaining unverified items (not changed, by instruction)
 
 1. **18 Google reviews** in `src/lib/content/reviews.ts`: 14 `unconfirmed`, 4 `flagged` (business voice). None display. To show one, the owner matches it to its original Google review, sets `status: "verified"`, `verifiedOn: "YYYY-MM-DD"` and ideally `googleReviewUrl`.
-2. **Review count and rating claims** were left as instructed: "5.0 · 100+ Google reviews" still appears in the header of the replaced section on 367 pages (unchanged count), and "5.0 on Google" on the homepage. With the testimonials gone, the badge now sits above a checklist, which reads oddly. It is still unsupported (audit section 4.2) and should be fixed in the trust-claims task.
+2. **Review count and rating claims:** removed in the follow-up below (Phase 2.1b).
 3. **`/reviews` page** (hero and "Common Themes in Customer Feedback") describes what "customers consistently mention" without names or quotes. It is not a testimonial block and was left unchanged; it is still an unverified summary for the owner to confirm or reword.
 4. The Google Business Profile link (`https://maps.app.goo.gl/q3tdaVN6JDbXpVPKA`) was already on the site and is reused; the owner should confirm it opens the right profile.
 
@@ -94,3 +94,68 @@ The generated and hand-written testimonial **data** was deleted from the code, n
 | Main content changed | 368 pages (the 367 testimonial pages and the homepage) |
 
 Note: the Google Ads landing pages now show a checklist instead of testimonials. Their URLs, headings, forms, phone links and tracking are unchanged, but Google Ads may re-review the landing page content after deployment.
+
+---
+
+## Phase 2.1b: rating claims and checklist review (follow-up)
+
+### Rating and review-count claims removed
+
+Scan of all 456 rendered pages (visible text, ARIA labels and JSON-LD) for review counts, star ratings and "rated" claims about the business:
+
+| Claim | Where | Pages | Action |
+|---|---|---|---|
+| "5.0 · 100+ Google reviews" + 5 stars | City service template, Ads template, `/air-conditioning/ac-repair` | 367 | Removed; unused star helpers deleted |
+| Stars labelled "5 out of 5 stars" | Same badges, homepage | 187 | Removed / made decorative |
+| "5-Star Rated" trust badge | Ads template hero (`TRUST_BADGES`) | 181 | Removed; the other 4 badges are unchanged |
+| "5.0 on Google" | Homepage reviews section | 1 | Now rendered only from `verifiedReviewSummary()`, which returns nothing until the owner fills `REVIEW_PROFILE` |
+| 5 stars labelled "5 star rating" | Homepage hero, next to "500+ Local Homeowners" | 1 | Stars replaced by a neutral home icon; the text is unchanged (it is a customer statistic, not a rating; still unverified) |
+| "5-Star Google Rated" card heading | `/orange-county-ac-repair` "why choose us" | 1 | Heading changed to "No Unnecessary Upsells", taken from the card's existing body text; body unchanged |
+
+Not changed: "top-rated" on 3 pages describes equipment brands (Carrier, Trane), not this business. The decorative stars above the homepage "Had service with us?" prompt remain as an icon (hidden from screen readers) because they invite a review rather than state a rating.
+
+Data kept for future verification (`src/lib/content/reviews.ts`):
+- `REVIEW_PROFILE` (rating, count, checked date, all `null`) and `verifiedReviewSummary()`. When the owner fills all three from the live Google profile, the homepage shows "X.X from N Google reviews" automatically.
+- `REMOVED_UNVERIFIED_CLAIMS` lists each removed claim and where it was shown, so it can be checked against the profile. It is never rendered.
+
+### QuickChecks review
+
+| Page family | Pages | Checklist |
+|---|---|---|
+| `/air-conditioning/ac-repair/[city]`, `/air-conditioning/ac-repair` | 38 | AC repair: thermostat, breaker and outdoor disconnect, filter and frozen coil |
+| `/ac-repair/[city]` and 6 `/[city]-ac-repair` (Google Ads) | 181 | AC repair (these pages are AC repair landing pages) |
+| `/air-conditioning/emergency-ac-repair/[city]` | 37 | While you wait: turn it off if something is wrong (warning icon), do not keep resetting the breaker, stay cool safely |
+| `/air-conditioning/ac-tune-up/[city]` | 37 | Between tune-ups: filter schedule, clear outdoor unit, early warning signs |
+| `/heating/heating-repair/[city]` | 37 | Heating: thermostat and filter, furnace switch and breaker, gas smell (warning icon). No AC terms. |
+| `/hvac-repair/[city]` | 37 | Heating and cooling: thermostat mode, breakers and switches, filter |
+| Homepage, installation, replacement, maintenance, heating hubs, furnace pages, service-area location pages, blog | 89 | None. QuickChecks only appears where testimonials used to be. |
+
+Automated check: no AC terms (cool, outdoor unit, refrigerant, condenser, AC) in any heating checklist, and no heating terms in any AC checklist.
+
+Design: each card now has an icon tile in the site's existing style (blue on light sections, copper on dark Ads sections, amber for the two safety warnings) and each section has a one-line intro. Same section, background, spacing and 1-to-3 column grid as before. Screenshots at 390 px and 1280 px are in `docs/seo-phase-2/screenshots/`.
+
+Pre-existing issue found, not changed: on a 390 px phone every page scrolls about 9 px sideways because the header's mobile menu buttons extend to 399 px (also on untouched pages such as `/contact`).
+
+### Before and after
+
+| Page | Original (before Phase 2.1) | Now |
+|---|---|---|
+| Homepage hero | "Licensed & Insured · ★★★★★ 500+ Local Homeowners · 24/7 Emergency Service" | "Licensed & Insured · [home icon] 500+ Local Homeowners · 24/7 Emergency Service" |
+| Homepage reviews | Carousel of 18 Google reviews; "Why Local Homeowners Call Us Back · 5.0 on Google · Based on direct customer feedback" + 4 quote cards | Carousel: "Verified Google reviews are being added. Read them on our Google Business Profile." Section: "Reviews From Local Homeowners · Read what customers say in their own words on our Google Business Profile" + unchanged "Had service with us?" CTA |
+| `/air-conditioning/ac-repair/yorba-linda` | "What Yorba Linda Homeowners Say · 5.0 · 100+ Google reviews · “Called at 9am on a Monday...” Sarah K., Weir Canyon" | "Before You Call · Quick Checks Before an AC Repair Visit · A few safe checks can sometimes get your AC running again... · Check the thermostat / Check the breaker and outdoor switch / Check the air filter" |
+| `/heating/heating-repair/brea` | "What Brea Homeowners Say · 5.0 · 100+ Google reviews · “Furnace stopped working in December...” Christine B." | "Quick Checks Before a Heating Repair Visit · Check the thermostat and filter / Check power to the furnace / If you smell gas, leave first" |
+| `/ac-repair/yorba-linda` (Google Ads) | Hero badges "Licensed & Insured, EPA Certified, Same-Day Service, Free Estimates, 5-Star Rated"; "What Yorba Linda Homeowners Say · 5.0 · 100+ Google reviews · “Called on a Saturday morning...” Robert M." | Hero badges "Licensed & Insured, EPA Certified, Same-Day Service, Free Estimates"; AC repair checklist in the same dark section |
+
+### Validation (final build)
+
+| Check | Result |
+|---|---|
+| `tsc --noEmit`, `eslint .` | Pass, 0 warnings |
+| `next build` | Pass (469 static routes generated, as before) |
+| 456 sitemap URLs | 456 × 200; URL set identical to the original crawl |
+| Title, meta description, canonical, meta robots, H1, JSON-LD, GTM, `tel:` links, form fields | Identical to the original crawl on all 456 pages |
+| `verify-preview.mjs` (canonicals, trailing slashes, robots.txt, sitemap, structured-data URLs, Ads pages, forms and tracking incl. `/api/contact` 422, noindex, 124 redirects) | 9/9 pass |
+| Rating or review-count claims (text, ARIA, JSON-LD) | 0 (was 367 + 187 + 181 + 3) |
+| Testimonial texts and reviewer names in raw HTML | 0 of 120 snippets and 100 names |
+| Pages with changed visible text vs original | 368 (367 checklist pages + homepage); the other 88 unchanged |
+| Horizontal overflow introduced | None (the 9 px mobile overflow is pre-existing header behaviour) |
