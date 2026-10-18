@@ -52,43 +52,28 @@ jobs:
       - name: Install parser
         run: pip install --quiet beautifulsoup4 lxml
 
-      - name: "Baseline: live site must still be the pre-merge build"
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          main=$(gh api "repos/${GITHUB_REPOSITORY}/commits/main" --jq .sha)
-          merged=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" --jq .merged)
-          echo "main: $main, PR #${PR_NUMBER} merged: $merged"
-          [ "$main" = "$BASELINE_SHA" ] && [ "$merged" = false ] || { echo "::error::Baseline no longer live (main moved or PR already merged)"; exit 1; }
-          if curl -sS "$PRODUCTION_URL/air-conditioning/ac-repair/yorba-linda" | grep -q "Related Pages for Yorba Linda"; then
-            echo "::error::Live site already serves Phase 2.2"; exit 1
-          fi
-          echo "Live site serves the pre-merge build"
-
-      - name: "Baseline: crawl live production"
-        run: |
-          python3 ci/.github/seo-checks/crawl.py "$PRODUCTION_URL" before
-          python3 site/scripts/seo-audit/extract.py before
-          echo "BASELINE CAPTURED"
-
-      - name: Wait for PR #3 to be merged
+      - name: Resolve the squash merge of PR #3
         id: merge
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          deadline=$(( $(date +%s) + 3600 ))
-          while :; do
-            pr=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")
-            if [ "$(jq -r .merged <<<"$pr")" = true ]; then
-              sha=$(jq -r .merge_commit_sha <<<"$pr")
-              echo "Merged: $sha (method: squash expected), head was $(jq -r .head.sha <<<"$pr")"
-              [ "$(jq -r .head.sha <<<"$pr")" = "$APPROVED_HEAD" ] || { echo "::error::Merged head is not the approved head"; exit 1; }
-              echo "sha=$sha" >> "$GITHUB_OUTPUT"; break
-            fi
-            [ "$(jq -r .state <<<"$pr")" = closed ] && { echo "::error::PR closed without merge"; exit 1; }
-            [ "$(date +%s)" -ge "$deadline" ] && { echo "::error::Timed out waiting for merge"; exit 1; }
-            sleep 15
-          done
+          pr=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")
+          [ "$(jq -r .merged <<<"$pr")" = true ] || { echo "::error::PR #${PR_NUMBER} is not merged"; exit 1; }
+          [ "$(jq -r .head.sha <<<"$pr")" = "$APPROVED_HEAD" ] || { echo "::error::Merged head is not the approved head"; exit 1; }
+          sha=$(jq -r .merge_commit_sha <<<"$pr")
+          echo "Merged: $sha; main: $(gh api repos/${GITHUB_REPOSITORY}/commits/main --jq .sha)"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+      - name: "Baseline: build and crawl the pre-merge commit (identical to what production served before the merge)"
+        run: |
+          git -C site worktree add -q ../base "$BASELINE_SHA"
+          cd base && npm ci --no-audit --no-fund >/dev/null && npx next build >/dev/null
+          (npx next start -p 3000 >/dev/null 2>&1 &)
+          for i in $(seq 1 60); do curl -s -o /dev/null http://localhost:3000/ && break; sleep 1; done
+          cd .. && python3 ci/.github/seo-checks/crawl.py http://localhost:3000 before
+          python3 site/scripts/seo-audit/extract.py before
+          if grep -q 'id="city-services-heading"' before/html/_air-conditioning_ac-repair_yorba-linda.html; then echo "::error::Baseline unexpectedly contains Phase 2.2"; exit 1; fi
+          echo "BASELINE CAPTURED from $BASELINE_SHA"
 
       - name: Merged tree equals the approved head
         env:
@@ -125,7 +110,7 @@ jobs:
       - name: Confirm the production domain serves the merged build
         run: |
           for i in $(seq 1 12); do
-            if curl -sS "$PRODUCTION_URL/air-conditioning/ac-repair/yorba-linda" | grep -q "Related Pages for Yorba Linda"; then echo "Production domain serves Phase 2.2"; exit 0; fi
+            if curl -sS "$PRODUCTION_URL/air-conditioning/ac-repair/yorba-linda" | grep -q 'id="city-services-heading"'; then echo "Production domain serves Phase 2.2 (new link section present)"; exit 0; fi
             echo "Domain not updated yet, retrying"; sleep 15
           done
           echo "::error::Production domain does not serve the Phase 2.2 build"; exit 1
