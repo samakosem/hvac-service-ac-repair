@@ -21,7 +21,6 @@ export type PPCCity = {
   emergencyBody: string;
   whyUsPoints: { heading: string; body: string }[];
   faqs: { question: string; answer: string }[];
-  reviews: { name: string; location: string; body: string; rating: number }[];
 };
 
 export const PPC_CITIES: PPCCity[] = [
@@ -107,26 +106,6 @@ export const PPC_CITIES: PPCCity[] = [
           "Yes. We offer flexible financing options including 0% interest promotions for qualified buyers. Ask us about current offers when you request your free estimate.",
       },
     ],
-    reviews: [
-      {
-        name: "Maria T.",
-        location: "Pasadena, CA",
-        body: "Called at 8am on a Saturday during a heat wave. Technician arrived by noon, diagnosed a bad capacitor, and had it fixed within the hour. Absolutely saved us.",
-        rating: 5,
-      },
-      {
-        name: "David K.",
-        location: "Bungalow Heaven, Pasadena",
-        body: "Replaced our 20-year-old unit in our 1920s Craftsman. They handled the permit, worked carefully around our original hardwood floors, and cleaned up perfectly. Great price too.",
-        rating: 5,
-      },
-      {
-        name: "Jennifer L.",
-        location: "Pasadena, CA",
-        body: "Very professional from start to finish. The technician explained everything clearly and didn't pressure me into an expensive replacement when a repair was the right call.",
-        rating: 5,
-      },
-    ],
   },
   {
     slug: "los-angeles",
@@ -208,26 +187,6 @@ export const PPC_CITIES: PPCCity[] = [
         question: "Can you help with an AC unit in a condo or apartment in LA?",
         answer:
           "Yes. We work with condo units, apartment buildings, and multi-family properties. We coordinate with building management as needed and are familiar with LA's permitting requirements for multi-unit buildings.",
-      },
-    ],
-    reviews: [
-      {
-        name: "Carlos R.",
-        location: "Silver Lake, Los Angeles",
-        body: "Had my AC go out on a Friday afternoon in August. They sent someone Saturday morning, found a bad contactor, and had it running in 45 minutes. Highly recommend.",
-        rating: 5,
-      },
-      {
-        name: "Stephanie M.",
-        location: "Eagle Rock, Los Angeles",
-        body: "Installed a new Lennox system in our older home. They did a full duct inspection, sealed several leaks, and the house cools evenly for the first time in years.",
-        rating: 5,
-      },
-      {
-        name: "James W.",
-        location: "Valley Village, Los Angeles",
-        body: "Very honest technician. Told me my repair would hold another season rather than pushing for replacement. I'll definitely be calling them back when it's time.",
-        rating: 5,
       },
     ],
   },
@@ -313,26 +272,6 @@ export const PPC_CITIES: PPCCity[] = [
           "We install Lennox, Trane, Carrier, and Goodman systems, along with ductless equipment from Mitsubishi, Daikin, and Fujitsu. We'll recommend the best fit for your home's needs and budget.",
       },
     ],
-    reviews: [
-      {
-        name: "Lisa H.",
-        location: "Yorba Linda, OC",
-        body: "Honest, fast, and fairly priced. Diagnosed a refrigerant leak in our 12-year-old Lennox unit, gave us options for repair vs. replace, and let us decide without any pressure. Will use again.",
-        rating: 5,
-      },
-      {
-        name: "Robert N.",
-        location: "Anaheim Hills, OC",
-        body: "Replaced our 2002 Carrier system with a new Trane. They handled the SCE rebate paperwork, pulled the permit, and were done in one day. House cools perfectly now.",
-        rating: 5,
-      },
-      {
-        name: "Angela S.",
-        location: "Newport Beach, OC",
-        body: "Salt air had corroded our condenser coils beyond repair. They replaced the outdoor unit and also installed a corrosion protection coating on the new one. Great pro-active thinking.",
-        rating: 5,
-      },
-    ],
   },
   {
     slug: "malibu",
@@ -414,26 +353,6 @@ export const PPC_CITIES: PPCCity[] = [
         question: "Do you service gated or remote properties in Malibu?",
         answer:
           "Yes. We regularly service gated estates and canyon properties throughout Malibu. Please provide gate codes or contact information for property managers when scheduling and we'll coordinate accordingly.",
-      },
-    ],
-    reviews: [
-      {
-        name: "Thomas B.",
-        location: "Malibu, CA",
-        body: "Our condenser was completely corroded after five years on the bluff. They replaced it with a marine-coated unit and applied corrosion protection — very knowledgeable about coastal conditions.",
-        rating: 5,
-      },
-      {
-        name: "Sandra G.",
-        location: "Malibu Canyon, CA",
-        body: "Installed a new heat pump system at our canyon property. The technician had to navigate a steep driveway and worked efficiently despite the access challenges. Top quality work.",
-        rating: 5,
-      },
-      {
-        name: "Michael P.",
-        location: "Pacific Coast Highway, Malibu",
-        body: "Added a whole-home air purifier after the last fire season. Air quality inside has improved dramatically. Quick installation, clean work, professional crew.",
-        rating: 5,
       },
     ],
   },
@@ -519,26 +438,6 @@ export const PPC_CITIES: PPCCity[] = [
           "In Santa Clarita's extreme summer climate, systems typically last 12–16 years with annual maintenance — shorter than the 15–20 year average in milder climates. Heavy seasonal use and sustained high temperatures accelerate wear on compressors and electrical components.",
       },
     ],
-    reviews: [
-      {
-        name: "Kevin M.",
-        location: "Valencia, Santa Clarita",
-        body: "108 degrees outside and our AC died on a Sunday. Called at 7am, tech arrived by 11am, replaced a capacitor and a contactor, and had us cooling by noon. Absolute lifesavers.",
-        rating: 5,
-      },
-      {
-        name: "Patricia J.",
-        location: "Saugus, Santa Clarita",
-        body: "Replaced our 16-year-old Carrier system. They identified that our upstairs zone had severely undersized ducts and fixed them during the installation. No more hot bedrooms.",
-        rating: 5,
-      },
-      {
-        name: "Brian T.",
-        location: "Canyon Country, Santa Clarita",
-        body: "Honest diagnosis — told me my compressor was still good and that a capacitor and refrigerant recharge would solve the problem for another few seasons. Saved me thousands.",
-        rating: 5,
-      },
-    ],
   },
   {
     slug: "laguna-niguel",
@@ -620,26 +519,6 @@ export const PPC_CITIES: PPCCity[] = [
         question: "How do I know if my AC system qualifies for a rebate in Laguna Niguel?",
         answer:
           "Most high-efficiency systems we install qualify for SCE (Southern California Edison) rebates. Rebate eligibility depends on SEER2 rating, system type, and current program availability. We'll include applicable rebate information in your installation estimate.",
-      },
-    ],
-    reviews: [
-      {
-        name: "Michelle D.",
-        location: "Laguna Niguel, CA",
-        body: "Very impressed. Gave me a written quote, explained my options clearly, and didn't push me toward the most expensive solution. The installation was clean and done in one day.",
-        rating: 5,
-      },
-      {
-        name: "Richard F.",
-        location: "Bear Brand Ranch, Laguna Niguel",
-        body: "Replaced our 28-year-old Carrier system. They navigated our HOA requirements without any issues and the new Lennox unit is whisper quiet compared to the old one.",
-        rating: 5,
-      },
-      {
-        name: "Laura K.",
-        location: "Marina Hills, Laguna Niguel",
-        body: "Quick response on a same-day repair call. Refrigerant leak fixed, system recharged, and running perfectly. Very professional technician who explained everything.",
-        rating: 5,
       },
     ],
   },

@@ -9,11 +9,13 @@
  *    should read from this file.
  *
  * Status values:
- *  - "verified":    owner matched the review to the live Google Business
- *                   Profile and recorded the date in `verifiedOn`.
+ *  - "verified":    owner matched the review to its original Google review
+ *                   and recorded the date in `verifiedOn`. Only these are
+ *                   displayed (see isDisplayable).
  *  - "unconfirmed": copied from the Google Business Profile on 2026-07-13 (git
- *                   history) but not yet re-checked. Displayed today.
- *  - "flagged":     displayed today, but needs owner review before it stays.
+ *                   history) but not yet matched to its source. Not displayed.
+ *  - "flagged":     needs owner review (e.g. written in the business voice).
+ *                   Not displayed.
  *
  * `relativeDate` is the age Google showed when the text was copied on
  * REVIEWS_CAPTURED_ON. It is not updated automatically, so it goes stale.
@@ -263,3 +265,10 @@ export const REVIEWS: Review[] = [
     note: "Written in the business voice (\"our technicians\", \"contact us\"), not a customer describing a job. Owner to confirm on the Google Business Profile before it stays on the site.",
   },
 ];
+
+/** A review may be shown on the site only once the owner has verified it. */
+export function isDisplayable(review: Review): boolean {
+  return review.status === "verified" && Boolean(review.verifiedOn);
+}
+
+export const DISPLAYABLE_REVIEWS: Review[] = REVIEWS.filter(isDisplayable);

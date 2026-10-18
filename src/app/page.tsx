@@ -8,6 +8,7 @@ import HomeLeadForm from "@/components/home/HomeLeadForm";
 import EmergencyStrip from "@/components/home/EmergencyStrip";
 import ServicesGrid from "@/components/home/ServicesGrid";
 import GoogleReviewsCarousel from "@/components/home/GoogleReviewsCarousel";
+import { FIVE_STAR_REVIEWS, GOOGLE_PROFILE_URL, REVIEWS_ARE_REAL } from "@/lib/content/googleReviews";
 import RepairVsInstall from "@/components/home/RepairVsInstall";
 import WhyChooseUs from "@/components/home/WhyChooseUs";
 import MaintenancePlan from "@/components/home/MaintenancePlan";
@@ -45,7 +46,7 @@ export default function HomePage() {
       {/* Trust bar immediately below hero for PPC + organic visitors */}
       <ConversionTrustBar variant="light" />
       {/* Google-style reviews carousel — below hero/quote, before services */}
-      <GoogleReviewsCarousel />
+      <GoogleReviewsCarousel reviews={REVIEWS_ARE_REAL ? FIVE_STAR_REVIEWS : []} profileUrl={GOOGLE_PROFILE_URL} />
       <ServicesGrid />
       <RepairVsInstall />
       {/* Summer cooling season banner — seasonal relevance */}

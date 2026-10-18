@@ -16,7 +16,6 @@ export type CityServicePage = {
   urgencyNote: string; // "X appointments available today" type copy
   responseTime: string; // "typically 1–3 hours"
   nearbyCities: { name: string; slug: string; urlBase: string }[];
-  reviews: { name: string; neighborhood: string; body: string; rating: number; date: string }[];
   faqs: { question: string; answer: string }[];
   pricingNote: string;
   whyUsHeadline: string;
@@ -52,29 +51,6 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       { name: "Brea", slug: "brea", urlBase: "/air-conditioning/ac-repair" },
       { name: "Fullerton", slug: "fullerton", urlBase: "/air-conditioning/ac-repair" },
       { name: "Orange", slug: "orange", urlBase: "/air-conditioning/ac-repair" },
-    ],
-    reviews: [
-      {
-        name: "Sarah K.",
-        neighborhood: "Weir Canyon",
-        body: "Called at 9am on a Monday after our AC stopped blowing cold. Tech arrived by noon, diagnosed a bad capacitor, fixed it in 45 minutes. Priced fairly — no upselling at all.",
-        rating: 5,
-        date: "June 2025",
-      },
-      {
-        name: "Mike R.",
-        neighborhood: "Yorba Linda Hills",
-        body: "These guys are based right here in town. They were at my door within 2 hours, found a refrigerant leak, quoted me in writing, and had it fixed same day. Outstanding.",
-        rating: 5,
-        date: "July 2025",
-      },
-      {
-        name: "Linda T.",
-        neighborhood: "Vista Del Verde",
-        body: "Replaced our 20-year-old Carrier unit. They handled permits, cleaned up perfectly, and the new system is whisper quiet. Best HVAC experience I've had.",
-        rating: 5,
-        date: "May 2025",
-      },
     ],
     faqs: [
       {
@@ -161,29 +137,6 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       { name: "Garden Grove", slug: "garden-grove", urlBase: "/air-conditioning/ac-repair" },
       { name: "Fullerton", slug: "fullerton", urlBase: "/air-conditioning/ac-repair" },
     ],
-    reviews: [
-      {
-        name: "Carlos M.",
-        neighborhood: "Anaheim Hills",
-        body: "Our AC died on a 100-degree Saturday. Called in the morning, tech was here by early afternoon. Capacitor replaced and system running in under an hour. No weekend upcharge either.",
-        rating: 5,
-        date: "July 2025",
-      },
-      {
-        name: "Diane W.",
-        neighborhood: "West Anaheim",
-        body: "Quick, professional, and fair pricing. Didn't try to sell me a new system when a simple repair was all I needed. Refreshingly honest.",
-        rating: 5,
-        date: "June 2025",
-      },
-      {
-        name: "Omar H.",
-        neighborhood: "Anaheim Resort Area",
-        body: "They handle our restaurant's commercial HVAC. Fast response, understand the urgency of keeping the dining room cool for customers. Highly recommend for business owners.",
-        rating: 5,
-        date: "August 2025",
-      },
-    ],
     faqs: [
       {
         question: "How fast can you get to Anaheim for an AC repair?",
@@ -268,29 +221,6 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       { name: "Anaheim", slug: "anaheim", urlBase: "/air-conditioning/ac-repair" },
       { name: "Brea", slug: "brea", urlBase: "/air-conditioning/ac-repair" },
     ],
-    reviews: [
-      {
-        name: "Priya S.",
-        neighborhood: "North Fullerton",
-        body: "I manage several rental properties in Fullerton and this is now my go-to HVAC company. Fast, reliable, and my tenants always call me back happy.",
-        rating: 5,
-        date: "July 2025",
-      },
-      {
-        name: "James D.",
-        neighborhood: "Downtown Fullerton",
-        body: "1960s house with the original ductwork — they knew exactly what they were dealing with. Honest assessment, reasonable price, same-day fix.",
-        rating: 5,
-        date: "June 2025",
-      },
-      {
-        name: "Nancy F.",
-        neighborhood: "Fullerton Hills",
-        body: "Very professional. Didn't push for a replacement when my system still had life in it. The repair held perfectly through the whole summer.",
-        rating: 5,
-        date: "August 2025",
-      },
-    ],
     faqs: [
       {
         question: "How fast can you get to Fullerton for an AC repair?",
@@ -373,29 +303,6 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       { name: "Costa Mesa", slug: "costa-mesa", urlBase: "/air-conditioning/ac-repair" },
       { name: "Laguna Niguel", slug: "laguna-niguel", urlBase: "/air-conditioning/ac-repair" },
       { name: "Mission Viejo", slug: "mission-viejo", urlBase: "/air-conditioning/ac-repair" },
-    ],
-    reviews: [
-      {
-        name: "Kevin L.",
-        neighborhood: "Woodbridge, Irvine",
-        body: "Very knowledgeable about our multi-zone system. Diagnosed the issue quickly, gave a clear written quote, and repaired it same day with a labor warranty. Exactly what I expected.",
-        rating: 5,
-        date: "July 2025",
-      },
-      {
-        name: "Sophia C.",
-        neighborhood: "Irvine Spectrum area",
-        body: "Called for our office suite in the Spectrum. They arrived on time, were professional around our employees, and had the system fixed without disruption to our business.",
-        rating: 5,
-        date: "June 2025",
-      },
-      {
-        name: "Alan B.",
-        neighborhood: "Turtle Rock, Irvine",
-        body: "Our Lennox inverter system needed a control board. They had the part, knew exactly how to install it, and tested thoroughly before leaving. Premium service at fair pricing.",
-        rating: 5,
-        date: "August 2025",
-      },
     ],
     faqs: [
       {
@@ -480,29 +387,6 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       { name: "Villa Park", slug: "villa-park", urlBase: "/air-conditioning/ac-repair" },
       { name: "Tustin", slug: "tustin", urlBase: "/air-conditioning/ac-repair" },
       { name: "Santa Ana", slug: "santa-ana", urlBase: "/air-conditioning/ac-repair" },
-    ],
-    reviews: [
-      {
-        name: "Elena R.",
-        neighborhood: "Old Towne Orange",
-        body: "Our 1940s bungalow needed careful HVAC work. They assessed the old ductwork honestly, recommended what was still salvageable, and completed the repair without any damage to our historic home.",
-        rating: 5,
-        date: "July 2025",
-      },
-      {
-        name: "Tom N.",
-        neighborhood: "Santiago Hills, Orange",
-        body: "Called during a heat wave. Arrived within 2 hours, found a blown capacitor, had it replaced and running within the hour. Great service.",
-        rating: 5,
-        date: "June 2025",
-      },
-      {
-        name: "Grace P.",
-        neighborhood: "Orange Park Acres",
-        body: "Very fair pricing and honest about what I needed. Refreshing to find an HVAC company that doesn't push unnecessary repairs.",
-        rating: 5,
-        date: "August 2025",
-      },
     ],
     faqs: [
       {
@@ -591,29 +475,6 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       { name: "Orange", slug: "orange", urlBase: "/air-conditioning/emergency-ac-repair" },
       { name: "Fullerton", slug: "fullerton", urlBase: "/air-conditioning/emergency-ac-repair" },
     ],
-    reviews: [
-      {
-        name: "David H.",
-        neighborhood: "Yorba Linda",
-        body: "AC died on a Saturday afternoon. Called, got a real person, tech arrived in 90 minutes. Fixed in one visit. No weekend charge. Couldn't believe how fast.",
-        rating: 5,
-        date: "July 2025",
-      },
-      {
-        name: "Maria S.",
-        neighborhood: "Weir Canyon",
-        body: "105 degrees outside and our system failed. They came out within 2 hours, diagnosed the compressor issue, and gave us options. Honest and fast — exactly what we needed.",
-        rating: 5,
-        date: "August 2025",
-      },
-      {
-        name: "Bob T.",
-        neighborhood: "Vista Del Verde",
-        body: "Sunday emergency call — they actually answered. Technician knew his stuff, had the part on the truck, and we had cold air by early afternoon.",
-        rating: 5,
-        date: "June 2025",
-      },
-    ],
     faqs: [
       {
         question: "Do you charge extra for emergency or weekend calls in Yorba Linda?",
@@ -693,29 +554,6 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       { name: "Orange", slug: "orange", urlBase: "/air-conditioning/emergency-ac-repair" },
       { name: "Garden Grove", slug: "garden-grove", urlBase: "/air-conditioning/emergency-ac-repair" },
       { name: "Fullerton", slug: "fullerton", urlBase: "/air-conditioning/emergency-ac-repair" },
-    ],
-    reviews: [
-      {
-        name: "Rachel M.",
-        neighborhood: "Anaheim Hills",
-        body: "105-degree Saturday, called at noon, tech arrived by 2:30pm. Found a bad contactor, fixed it on the spot. No weekend charge. This is the only HVAC company I'll call.",
-        rating: 5,
-        date: "July 2025",
-      },
-      {
-        name: "Fernando G.",
-        neighborhood: "West Anaheim",
-        body: "Called for my elderly parents when their AC went out. The dispatcher was reassuring and the tech was there within 2 hours. Quick fix, great people.",
-        rating: 5,
-        date: "August 2025",
-      },
-      {
-        name: "Kim C.",
-        neighborhood: "Anaheim Resort District",
-        body: "Our restaurant's AC failed during a busy dinner service. They responded immediately and had the system back up before the kitchen got critical. Excellent emergency response.",
-        rating: 5,
-        date: "June 2025",
-      },
     ],
     faqs: [
       {
@@ -800,29 +638,6 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
       { name: "Fullerton", slug: "fullerton", urlBase: "/heating/heating-repair" },
       { name: "Orange", slug: "orange", urlBase: "/heating/heating-repair" },
     ],
-    reviews: [
-      {
-        name: "Chris W.",
-        neighborhood: "Yorba Linda Hills",
-        body: "Furnace stopped working in December. Called in the morning, tech arrived by noon. Cracked heat exchanger diagnosed and replaced. Very thorough safety check included.",
-        rating: 5,
-        date: "December 2024",
-      },
-      {
-        name: "Ann M.",
-        neighborhood: "Weir Canyon",
-        body: "Came out for an annual tune-up and caught a failing igniter before it became an emergency. Saved us from a cold night. Highly recommended.",
-        rating: 5,
-        date: "October 2024",
-      },
-      {
-        name: "Gary L.",
-        neighborhood: "Vista Del Verde",
-        body: "They handle both our AC and heating — makes it simple. Know the system well, always fair pricing, always on time.",
-        rating: 5,
-        date: "January 2025",
-      },
-    ],
     faqs: [
       {
         question: "Do you repair both AC and heating systems in Yorba Linda?",
@@ -905,29 +720,6 @@ export const AC_TUNEUP_CITIES: CityServicePage[] = [
       { name: "Brea", slug: "brea", urlBase: "/air-conditioning/ac-tune-up" },
       { name: "Fullerton", slug: "fullerton", urlBase: "/air-conditioning/ac-tune-up" },
       { name: "Orange", slug: "orange", urlBase: "/air-conditioning/ac-tune-up" },
-    ],
-    reviews: [
-      {
-        name: "Patricia N.",
-        neighborhood: "Yorba Linda Hills",
-        body: "Tune-up caught a failing capacitor before it became an emergency. Saved me from a breakdown in July. $99 well spent.",
-        rating: 5,
-        date: "April 2025",
-      },
-      {
-        name: "Steve K.",
-        neighborhood: "Fairmont area",
-        body: "The tech was thorough, walked me through everything he found, and didn't try to upsell anything unnecessary. System ran great all summer.",
-        rating: 5,
-        date: "March 2025",
-      },
-      {
-        name: "Ruth C.",
-        neighborhood: "Vista Del Verde",
-        body: "Annual tune-up customer for 3 years now. System is 18 years old and still going strong. Worth every penny.",
-        rating: 5,
-        date: "May 2025",
-      },
     ],
     faqs: [
       {
@@ -1013,29 +805,6 @@ export const LOCAL_HVAC_CITIES: CityServicePage[] = [
       { name: "Brea", slug: "brea", urlBase: "/hvac-repair" },
       { name: "Fullerton", slug: "fullerton", urlBase: "/hvac-repair" },
       { name: "Orange", slug: "orange", urlBase: "/hvac-repair" },
-    ],
-    reviews: [
-      {
-        name: "Donna L.",
-        neighborhood: "Weir Canyon",
-        body: "Finally found a local company I can trust. They answer their own phones, show up on time, and don't try to sell you a new system when you just need a repair.",
-        rating: 5,
-        date: "June 2025",
-      },
-      {
-        name: "Frank B.",
-        neighborhood: "Yorba Linda Hills",
-        body: "Had a bad experience with a national chain — way overpriced and they kept calling to sell maintenance packages. These guys are local, honest, and fair.",
-        rating: 5,
-        date: "July 2025",
-      },
-      {
-        name: "Helen T.",
-        neighborhood: "Vista Del Verde",
-        body: "Exactly what you want from a local business. Same technician every time, knows our system, and we can actually call and talk to someone.",
-        rating: 5,
-        date: "August 2025",
-      },
     ],
     faqs: [
       {

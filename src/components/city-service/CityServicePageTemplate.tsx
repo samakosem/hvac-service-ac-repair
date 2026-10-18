@@ -7,6 +7,7 @@ import { SITE } from "@/lib/config/site";
 import { IMG_HERO } from "@/lib/config/images";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import type { CityServicePage } from "@/lib/config/city-service-pages";
+import { QuickChecksGrid, QuickChecksHeader, quickChecksKind } from "@/components/ui/QuickChecks";
 
 // ── Icon helpers ──────────────────────────────────────────────────────────────
 
@@ -369,14 +370,11 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
         </div>
       </section>
 
-      {/* ── REVIEWS ──────────────────────────────────────────────────────────── */}
-      <section className="py-16 lg:py-20 bg-warm-white" aria-labelledby="reviews-heading">
+      {/* ── QUICK CHECKS (replaces unverified testimonials) ───────────────────── */}
+      <section className="py-16 lg:py-20 bg-warm-white" aria-labelledby="quick-checks-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="section-label section-label-blue w-fit mx-auto mb-3">Customer Reviews</div>
-            <h2 id="reviews-heading" className="text-3xl sm:text-4xl font-bold text-slate-900">
-              What {page.cityName} Homeowners Say
-            </h2>
+            <QuickChecksHeader kind={quickChecksKind(page.serviceSlug)} />
             <div className="flex items-center justify-center gap-2 mt-4">
               <Stars rating={5} />
               <span className="font-bold text-slate-800">5.0</span>
@@ -384,18 +382,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {page.reviews.map((review, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col gap-4">
-                <Stars rating={review.rating} />
-                <p className="text-slate-700 text-sm leading-relaxed flex-1">&ldquo;{review.body}&rdquo;</p>
-                <div className="border-t border-slate-100 pt-3">
-                  <p className="text-slate-900 font-semibold text-sm">{review.name}</p>
-                  <p className="text-slate-400 text-xs">{review.neighborhood}, {page.cityName} · {review.date}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <QuickChecksGrid kind={quickChecksKind(page.serviceSlug)} />
         </div>
       </section>
 

@@ -59,131 +59,6 @@ function pricingNote(serviceSlug: string): string {
   }
 }
 
-// ─── Reviews (rotate through a pool keyed by service) ────────────────────────
-
-type Review = { name: string; neighborhood: string; body: string; rating: number; date: string };
-
-function reviews(city: City, serviceSlug: string): Review[] {
-  const pools: Record<string, Review[]> = {
-    "ac-repair": [
-      {
-        name: "Jennifer M.",
-        neighborhood: city.name,
-        body: `Called in the morning when our AC stopped blowing cold. Technician arrived same day, found a failed capacitor, and had it running within the hour. Fair pricing and no upselling.`,
-        rating: 5,
-        date: "July 2025",
-      },
-      {
-        name: "Robert S.",
-        neighborhood: city.name,
-        body: `Fast response to ${city.name}. They diagnosed a refrigerant leak, gave a written quote, and fixed it same visit. Honest and professional — exactly what I needed.`,
-        rating: 5,
-        date: "June 2025",
-      },
-      {
-        name: "Lisa C.",
-        neighborhood: city.name,
-        body: `Our AC was struggling in the heat. These guys showed up on time, found the issue immediately, and repaired it without pushing unnecessary parts. Highly recommend.`,
-        rating: 5,
-        date: "August 2025",
-      },
-    ],
-    "emergency-ac-repair": [
-      {
-        name: "David K.",
-        neighborhood: city.name,
-        body: `AC failed on a Saturday afternoon. Called, got a real person, tech was here in under 2 hours. Fixed on the spot, no weekend surcharge. Couldn't ask for more.`,
-        rating: 5,
-        date: "July 2025",
-      },
-      {
-        name: "Angela R.",
-        neighborhood: city.name,
-        body: `Emergency call on a hot Sunday — they actually answered. Technician knew exactly what was wrong, had the part on the truck, and we had cold air within the hour.`,
-        rating: 5,
-        date: "August 2025",
-      },
-      {
-        name: "Paul N.",
-        neighborhood: city.name,
-        body: `AC died during a heat wave. They came out same day, diagnosed a bad contactor, and fixed it fast. No emergency markup. I'll use them for every future call.`,
-        rating: 5,
-        date: "June 2025",
-      },
-    ],
-    "heating-repair": [
-      {
-        name: "Christine B.",
-        neighborhood: city.name,
-        body: `Furnace stopped working in December. Called in the morning, tech arrived same day, diagnosed a failed igniter, and had heat running before dinner. Very thorough.`,
-        rating: 5,
-        date: "December 2024",
-      },
-      {
-        name: "Mark L.",
-        neighborhood: city.name,
-        body: `They handle both our AC and heating. Same technician every time, knows our system, always fair pricing. Having one reliable company for everything is worth a lot.`,
-        rating: 5,
-        date: "January 2025",
-      },
-      {
-        name: "Sandra P.",
-        neighborhood: city.name,
-        body: `Annual heating check caught a cracked heat exchanger before it became a safety issue. They explained everything clearly and didn't pressure us on the repair. Very trustworthy.`,
-        rating: 5,
-        date: "October 2024",
-      },
-    ],
-    "ac-tune-up": [
-      {
-        name: "Patricia W.",
-        neighborhood: city.name,
-        body: `Spring tune-up caught a failing capacitor before it became an emergency in July. $99 well spent — saved me from a breakdown on the hottest week of the year.`,
-        rating: 5,
-        date: "April 2025",
-      },
-      {
-        name: "Kevin H.",
-        neighborhood: city.name,
-        body: `Tech was thorough, walked me through everything he found, and didn't try to upsell anything unnecessary. System ran great all summer. I'll book the same service next spring.`,
-        rating: 5,
-        date: "March 2025",
-      },
-      {
-        name: "Dorothy F.",
-        neighborhood: city.name,
-        body: `Annual tune-up customer for years. System is old and still going strong because of consistent maintenance. Worth every penny for the peace of mind.`,
-        rating: 5,
-        date: "May 2025",
-      },
-    ],
-    "hvac-repair": [
-      {
-        name: "Thomas A.",
-        neighborhood: city.name,
-        body: `Finally found a local HVAC company I can trust. They answer their own phones, show up on time, and give honest assessments without pushing for a full replacement.`,
-        rating: 5,
-        date: "June 2025",
-      },
-      {
-        name: "Helen G.",
-        neighborhood: city.name,
-        body: `Same technician every visit, knows our system, and we can call and talk to someone directly. Exactly what you want from a local business.`,
-        rating: 5,
-        date: "July 2025",
-      },
-      {
-        name: "Frank D.",
-        neighborhood: city.name,
-        body: `Switched from a national chain — night and day difference. These guys are honest, fast, and don't push unnecessary work. Local makes all the difference.`,
-        rating: 5,
-        date: "August 2025",
-      },
-    ],
-  };
-  return pools[serviceSlug] ?? pools["ac-repair"];
-}
-
 // ─── FAQs per service ─────────────────────────────────────────────────────────
 
 function faqs(city: City, serviceSlug: string): { question: string; answer: string }[] {
@@ -614,7 +489,6 @@ export function generateCityServicePages(
       urgencyNote: urgencyNote(city),
       responseTime: responseTime(city),
       nearbyCities: nearbyCities(city, serviceSlug),
-      reviews: reviews(city, serviceSlug),
       faqs: faqs(city, serviceSlug),
       pricingNote: pricingNote(serviceSlug),
       whyUsHeadline: meta.whyUsHeadline(city.name),

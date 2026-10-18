@@ -9,6 +9,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import { resolveService } from "@/lib/seo/buildServicePage";
 import { IMG_HERO } from "@/lib/config/images";
+import { QuickChecksGrid, QuickChecksHeader } from "@/components/ui/QuickChecks";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
@@ -75,29 +76,6 @@ function ArrowIcon({ className }: { className?: string }) {
 
 // ── Static content ────────────────────────────────────────────────────────────
 
-const REVIEWS = [
-  {
-    name: "Lisa H.",
-    location: "Yorba Linda",
-    body: "Honest, fast, and fairly priced. Diagnosed a refrigerant leak in our 12-year-old Lennox unit, gave us options for repair vs. replace, and let us decide without any pressure.",
-    rating: 5,
-    date: "June 2025",
-  },
-  {
-    name: "Robert N.",
-    location: "Anaheim Hills",
-    body: "AC died on a 100-degree Saturday. Called in the morning, tech arrived by early afternoon, replaced a bad capacitor, and had us cooling in under an hour. No weekend charge.",
-    rating: 5,
-    date: "July 2025",
-  },
-  {
-    name: "Angela S.",
-    location: "Irvine",
-    body: "Very professional. The technician explained everything clearly and didn't pressure me into an expensive replacement when a repair was the right call.",
-    rating: 5,
-    date: "August 2025",
-  },
-];
 
 const OC_CITIES = [
   { name: "Yorba Linda", slug: "yorba-linda" },
@@ -402,32 +380,18 @@ export default function AcRepairPage() {
         </div>
       </section>
 
-      {/* ── REVIEWS ──────────────────────────────────────────────────────────── */}
-      <section className="py-16 lg:py-20 bg-warm-white" aria-labelledby="reviews-heading">
+      {/* ── QUICK CHECKS (replaces unverified testimonials) ───────────────────── */}
+      <section className="py-16 lg:py-20 bg-warm-white" aria-labelledby="quick-checks-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <div className="section-label section-label-blue w-fit mx-auto mb-3">Customer Reviews</div>
-            <h2 id="reviews-heading" className="text-3xl sm:text-4xl font-bold text-slate-900">
-              What Orange County Homeowners Say
-            </h2>
+            <QuickChecksHeader kind="ac-repair" />
             <div className="flex items-center justify-center gap-2 mt-4">
               <Stars rating={5} />
               <span className="font-bold text-slate-800">5.0</span>
               <span className="text-slate-500 text-sm">· 100+ Google reviews</span>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {REVIEWS.map((review, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm flex flex-col gap-4">
-                <Stars rating={review.rating} />
-                <p className="text-slate-700 text-sm leading-relaxed flex-1">&ldquo;{review.body}&rdquo;</p>
-                <div className="border-t border-slate-100 pt-3">
-                  <p className="text-slate-900 font-semibold text-sm">{review.name}</p>
-                  <p className="text-slate-400 text-xs">{review.location} · {review.date}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <QuickChecksGrid kind="ac-repair" />
         </div>
       </section>
 

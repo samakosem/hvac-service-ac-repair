@@ -1,8 +1,10 @@
 /**
  * Homepage carousel adapter. Review data lives in ./reviews.ts, the single
  * source of truth for customer reviews. Add, edit or remove reviews there.
+ * Only verified reviews reach the carousel; with none verified it shows a
+ * link to the Google Business Profile instead.
  */
-import { REVIEWS, GOOGLE_PROFILE_URL } from "./reviews";
+import { DISPLAYABLE_REVIEWS, GOOGLE_PROFILE_URL } from "./reviews";
 
 export { GOOGLE_PROFILE_URL };
 
@@ -22,7 +24,7 @@ export type GoogleReview = {
  */
 export const REVIEWS_ARE_REAL = true;
 
-export const GOOGLE_REVIEWS: GoogleReview[] = REVIEWS.filter((r) => r.source === "google").map((r) => ({
+export const GOOGLE_REVIEWS: GoogleReview[] = DISPLAYABLE_REVIEWS.filter((r) => r.source === "google").map((r) => ({
   reviewerName: r.reviewerName,
   initials: r.initials,
   reviewerImage: r.reviewerImage,

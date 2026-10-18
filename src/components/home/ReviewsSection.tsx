@@ -1,35 +1,5 @@
 import Link from "next/link";
-
-const HIGHLIGHTS = [
-  {
-    theme: "Fast Response",
-    icon: "⚡",
-    quote:
-      "Customers consistently mention same-day or next-morning arrival — even during summer heat waves.",
-    detail: "Speed & availability",
-  },
-  {
-    theme: "Honest Technicians",
-    icon: "💬",
-    quote:
-      "Our technicians explain the problem clearly and recommend the most cost-effective solution — not the most expensive one.",
-    detail: "No upsells, no pressure",
-  },
-  {
-    theme: "Clean Workmanship",
-    icon: "🧹",
-    quote:
-      "Shoe covers, clean work areas, and zero mess left behind. This shows up in customer feedback without being asked.",
-    detail: "Professional every time",
-  },
-  {
-    theme: "Upfront Pricing",
-    icon: "📋",
-    quote:
-      "Homeowners receive a written estimate before work starts and pay exactly the quoted amount — no surprise charges.",
-    detail: "Transparent & fair",
-  },
-];
+import { GOOGLE_PROFILE_URL } from "@/lib/content/reviews";
 
 function StarIcon() {
   return (
@@ -53,10 +23,10 @@ export default function ReviewsSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-4">
-          <span className="section-label section-label-white mb-4">Customer Experience Highlights</span>
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <span className="section-label section-label-white mb-4">Google Reviews</span>
           <h2 id="reviews-heading" className="text-3xl sm:text-4xl font-bold text-white mt-4 mb-3">
-            Why Local Homeowners Call Us Back
+            Reviews From Local Homeowners
           </h2>
           {/* Google rating summary */}
           <div className="flex items-center justify-center gap-2 mt-2 mb-3">
@@ -65,30 +35,11 @@ export default function ReviewsSection() {
             <span className="text-slate-400 text-sm">on Google</span>
           </div>
           <p className="text-slate-400 leading-relaxed text-sm">
-            Based on direct customer feedback — here are the qualities our customers mention most consistently.
+            Read what customers say in their own words on our{" "}
+            <a href={GOOGLE_PROFILE_URL} target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:underline">
+              Google Business Profile
+            </a>.
           </p>
-        </div>
-
-        {/* Highlight cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
-          {HIGHLIGHTS.map((item, i) => (
-            <div
-              key={item.theme}
-              className={`card-navy p-6 rounded-2xl flex flex-col gap-4 animate-fade-in-up stagger-${i + 1} border border-white/6`}
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl" aria-hidden="true">{item.icon}</span>
-                  <span className="font-bold text-white text-sm">{item.theme}</span>
-                </div>
-                <Stars count={5} />
-              </div>
-              <p className="text-slate-300 text-sm leading-relaxed flex-1">
-                &ldquo;{item.quote}&rdquo;
-              </p>
-              <p className="text-slate-500 text-xs font-medium uppercase tracking-wide">{item.detail}</p>
-            </div>
-          ))}
         </div>
 
         {/* Google review CTA */}

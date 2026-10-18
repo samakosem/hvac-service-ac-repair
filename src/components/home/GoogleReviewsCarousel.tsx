@@ -2,12 +2,7 @@
 
 import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import {
-  FIVE_STAR_REVIEWS,
-  REVIEWS_ARE_REAL,
-  GOOGLE_PROFILE_URL,
-  type GoogleReview,
-} from "@/lib/content/googleReviews";
+import type { GoogleReview } from "@/lib/content/googleReviews";
 
 const CHAR_LIMIT = 150;
 
@@ -64,11 +59,11 @@ function Avatar({ review }: { review: GoogleReview }) {
   );
 }
 
-function ReviewCard({ review }: { review: GoogleReview }) {
+function ReviewCard({ review, profileUrl }: { review: GoogleReview; profileUrl: string }) {
   const [expanded, setExpanded] = useState(false);
   const isLong = review.reviewText.length > CHAR_LIMIT;
   const shown = !expanded && isLong ? review.reviewText.slice(0, CHAR_LIMIT).trimEnd() + "…" : review.reviewText;
-  const href = review.googleReviewUrl ?? GOOGLE_PROFILE_URL;
+  const href = review.googleReviewUrl ?? profileUrl;
 
   return (
     <div className="snap-start shrink-0 w-[280px] sm:w-[300px]">
@@ -121,7 +116,11 @@ function ReviewCard({ review }: { review: GoogleReview }) {
   );
 }
 
-export default function GoogleReviewsCarousel() {
+/**
+ * Reviews arrive as props from the server component so that only displayable
+ * (verified) reviews are ever sent to the browser.
+ */
+export default function GoogleReviewsCarousel({ reviews, profileUrl }: { reviews: GoogleReview[]; profileUrl: string }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(true);
@@ -154,7 +153,7 @@ export default function GoogleReviewsCarousel() {
   }
 
   // Guard: never render placeholder reviews in production.
-  if (!REVIEWS_ARE_REAL || FIVE_STAR_REVIEWS.length === 0) {
+  if (reviews.length === 0) {
     return (
       <section className="py-14 lg:py-16 bg-slate-50 border-y border-slate-100" aria-labelledby="google-reviews-heading">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -167,7 +166,7 @@ export default function GoogleReviewsCarousel() {
           </h2>
           <p className="text-slate-500 text-sm">
             Verified Google reviews are being added. Read them on our{" "}
-            <a href={GOOGLE_PROFILE_URL} target="_blank" rel="noopener noreferrer" className="text-hvac-blue-600 font-semibold hover:underline">
+            <a href={profileUrl} target="_blank" rel="noopener noreferrer" className="text-hvac-blue-600 font-semibold hover:underline">
               Google Business Profile
             </a>.
           </p>
@@ -210,9 +209,9 @@ export default function GoogleReviewsCarousel() {
             ref={trackRef}
             className="flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 -mx-1 px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            {FIVE_STAR_REVIEWS.map((review, i) => (
+            {reviews.map((review, i) => (
               <div key={`${review.reviewerName}-${i}`} data-card>
-                <ReviewCard review={review} />
+                <ReviewCard review={review} profileUrl={profileUrl} />
               </div>
             ))}
           </div>
