@@ -1,0 +1,177 @@
+# Runs scripts/verify-preview.mjs (from the PR commit) against the live Vercel
+# preview of that commit and against production. Read-only: it changes nothing
+# on either deployment and never merges.
+name: SEO live verification
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: "Full commit SHA to verify (must be PR #1 head)"
+        required: false
+
+permissions:
+  contents: read
+  deployments: read
+  pull-requests: read
+
+concurrency:
+  group: seo-live-verify
+  cancel-in-progress: true
+
+env:
+  TARGET_SHA: ${{ inputs.sha || '611fb2f1c85740437fe8b5551e9d9927376768e0' }}
+  PR_NUMBER: "1"
+  PRODUCTION_URL: https://www.hvacserviceacrepair.com
+  BRANCH_PREVIEW_URL: https://hvac-service-ac-repair-git-seo-te-f73496-sams-projects-4743330d.vercel.app
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Confirm target is the latest PR commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          head=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" --jq .head.sha)
+          echo "PR #${PR_NUMBER} head: $head"
+          echo "Target:        $TARGET_SHA"
+          if [ "$head" != "$TARGET_SHA" ]; then
+            echo "::error::PR #${PR_NUMBER} head is $head, not $TARGET_SHA. Re-run with the new SHA."
+            exit 1
+          fi
+
+      - name: Wait for the Vercel preview of the target commit
+        id: preview
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Vercel's GitHub integration records each build as a GitHub Deployment
+          # whose sha is the commit it built; environment_url is that build's
+          # immutable URL, so it can only serve this commit.
+          deadline=$(( $(date +%s) + 1800 ))
+          while :; do
+            dep=$(gh api "repos/${GITHUB_REPOSITORY}/deployments?sha=${TARGET_SHA}&environment=Preview&per_page=20" \
+              --jq '[.[] | select(.creator.login == "vercel[bot]")] | first')
+            if [ -n "$dep" ] && [ "$dep" != "null" ]; then
+              id=$(jq -r .id <<<"$dep")
+              dep_sha=$(jq -r .sha <<<"$dep")
+              status=$(gh api "repos/${GITHUB_REPOSITORY}/deployments/${id}/statuses?per_page=1" --jq 'first // {}')
+              state=$(jq -r '.state // "pending"' <<<"$status")
+              echo "Deployment $id (sha $dep_sha): $state"
+              case "$state" in
+                success)
+                  if [ "$dep_sha" != "$TARGET_SHA" ]; then
+                    echo "::error::Deployment $id is for $dep_sha, not $TARGET_SHA"; exit 1
+                  fi
+                  url=$(jq -r .environment_url <<<"$status")
+                  echo "url=$url" >> "$GITHUB_OUTPUT"
+                  echo "id=$id" >> "$GITHUB_OUTPUT"
+                  echo "Preview READY: $url"
+                  break ;;
+                failure|error|inactive)
+                  echo "::error::Vercel deployment $id ended in state '$state'"; exit 1 ;;
+              esac
+            else
+              echo "No Vercel deployment for $TARGET_SHA yet"
+            fi
+            [ "$(date +%s)" -ge "$deadline" ] && { echo "::error::Timed out waiting for the Vercel preview"; exit 1; }
+            sleep 20
+          done
+
+      - name: Check preview access and that it matches the branch preview URL
+        env:
+          PREVIEW_URL: ${{ steps.preview.outputs.url }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: |
+          hdr=()
+          [ -n "$VERCEL_AUTOMATION_BYPASS_SECRET" ] && hdr=(-H "x-vercel-protection-bypass: $VERCEL_AUTOMATION_BYPASS_SECRET")
+          code=$(curl -sS -o /tmp/preview.html -w '%{http_code}' "${hdr[@]}" "$PREVIEW_URL/")
+          echo "Preview HTTP $code"
+          if [ "$code" = 401 ] || [ "$code" = 403 ]; then
+            echo "::error::The preview is protected by Vercel Deployment Protection. In Vercel: Project Settings → Deployment Protection → Protection Bypass for Automation, generate a secret, then add it in GitHub as the repository secret VERCEL_AUTOMATION_BYPASS_SECRET."
+            exit 1
+          fi
+          [ "$code" = 200 ] || { echo "::error::Preview returned HTTP $code"; exit 1; }
+          # Next.js embeds the build ID in every page; matching IDs prove the
+          # branch alias currently serves the same build as the commit's URL.
+          build_id() { grep -oE '/_next/static/[A-Za-z0-9_-]{8,}/_(buildManifest|ssgManifest)' "$1" | head -1 | cut -d/ -f4; }
+          curl -sS -o /tmp/alias.html "${hdr[@]}" "$BRANCH_PREVIEW_URL/" || true
+          a=$(build_id /tmp/preview.html); b=$(build_id /tmp/alias.html)
+          echo "Build ID: commit URL=${a:-unknown} branch URL=${b:-unknown}"
+          if [ -n "$a" ] && [ -n "$b" ] && [ "$a" != "$b" ]; then
+            echo "::warning::Branch preview URL serves a different build than ${TARGET_SHA}. Checks use the commit URL."
+          fi
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.TARGET_SHA }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run the 10 SEO checks (preview vs production)
+        id: verify
+        env:
+          PREVIEW_URL: ${{ steps.preview.outputs.url }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: |
+          set +e
+          node scripts/verify-preview.mjs \
+            --preview "$PREVIEW_URL" \
+            --production "$PRODUCTION_URL" \
+            --concurrency 6 \
+            --json seo-results.json | tee seo-output.txt
+          echo "exit=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: Summarise results
+        if: always() && steps.verify.outcome != 'skipped'
+        env:
+          PREVIEW_URL: ${{ steps.preview.outputs.url }}
+          SCRIPT_EXIT: ${{ steps.verify.outputs.exit }}
+        run: |
+          node --input-type=module <<'EOF'
+          import { readFileSync, appendFileSync } from "node:fs";
+          const out = (s) => appendFileSync(process.env.GITHUB_STEP_SUMMARY, s + "\n");
+          let data;
+          try { data = JSON.parse(readFileSync("seo-results.json", "utf8")); }
+          catch { out("## SEO live verification\n\n**FAIL**: no results file; see the run log."); process.exit(1); }
+          const { preview, production, comparison } = data;
+          const problems = [];
+          if (preview.unreachable) problems.push(`Preview unreachable: ${preview.unreachable}`);
+          if (!production) problems.push("Production was not checked");
+          else if (production.unreachable) problems.push(`Production unreachable: ${production.unreachable}`);
+          if (!comparison) problems.push("Preview/production comparison (check 10) did not run");
+          const rows = [...(preview.results ?? []), ...(comparison ? [comparison] : [])];
+          if (rows.length !== 10) problems.push(`Expected 10 checks, got ${rows.length}`);
+          rows.filter((r) => !r.pass).forEach((r) => problems.push(`Check ${r.id} failed: ${r.name}`));
+          const pass = problems.length === 0 && process.env.SCRIPT_EXIT === "0";
+          out(`## SEO live verification: ${pass ? "PASS" : "FAIL"}\n`);
+          out(`- Commit: \`${process.env.TARGET_SHA}\``);
+          out(`- Preview: ${process.env.PREVIEW_URL}`);
+          out(`- Production: ${process.env.PRODUCTION_URL}\n`);
+          out("| # | Check | Preview | Production | Notes |\n|---|---|---|---|---|");
+          for (const r of rows) {
+            const p = production?.results?.find((x) => x.id === r.id);
+            const notes = [...r.info, ...r.failures.slice(0, 5).map((f) => `✗ ${f}`)].join("<br>").replaceAll("|", "\\|");
+            out(`| ${r.id} | ${r.name} | ${r.pass ? "✅ PASS" : "❌ FAIL"} | ${r.id === 10 ? "n/a" : p ? (p.pass ? "pass" : "fail") : "-"} | ${notes} |`);
+          }
+          if (problems.length) out("\n### Problems\n" + problems.map((p) => `- ${p}`).join("\n"));
+          out("\nProduction failures on checks 1-9 are expected where check 10 lists them as fixed by the PR.");
+          process.exit(pass ? 0 : 1);
+          EOF
+
+      - name: Upload results
+        if: always() && steps.verify.outcome != 'skipped'
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-live-verification
+          path: |
+            seo-results.json
+            seo-output.txt
+          if-no-files-found: ignore
