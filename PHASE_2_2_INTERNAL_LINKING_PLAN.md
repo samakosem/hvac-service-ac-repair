@@ -300,7 +300,7 @@ Approved scope: H1 and H2 for all 37 cities, M1. Optional items O1 to O5 not imp
 | Item | Where | Pages | Links added |
 |---|---|---|---|
 | H1 | `CityPageTemplate.tsx`: sidebar card "{City} Service Pages" above "Nearby Cities We Serve" | 37 hubs | 185 |
-| H2 | `CityServicePageTemplate.tsx`: "More HVAC Services in {City}" row at the top of the existing nearby-cities section (hub link highlighted, then the 4 sibling services) | 185 city service pages | 925 |
+| H2 | `CityServicePageTemplate.tsx`: "Related Pages for {City}" row at the top of the existing nearby-cities section (hub link "{City} service area overview" highlighted, then the 4 sibling services). Wording kept navigational so it makes no coverage claim for cities whose service area is unconfirmed | 185 city service pages | 925 |
 | M1 | `ServicePageTemplate.tsx` optional `cityLinks` prop, passed only by `/air-conditioning/emergency-ac-repair`, `/air-conditioning/ac-tune-up` and `/heating`: "… by City" row with the six priority cities plus "All Orange County service areas" | 3 | 21 |
 | **Total** | | **225** | **1,131** |
 

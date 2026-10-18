@@ -395,7 +395,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
           {(cityHub || siblingServices.length > 0) && (
             <nav aria-labelledby="city-services-heading" className="mb-10">
               <h2 id="city-services-heading" className="text-lg font-bold text-slate-800 mb-4">
-                More HVAC Services in {page.cityName}
+                Related Pages for {page.cityName}
               </h2>
               <div className="flex flex-wrap gap-3">
                 {cityHub && (
@@ -403,7 +403,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
                     href={cityHub}
                     className="inline-flex items-center gap-1.5 min-h-11 px-4 py-2 rounded-xl bg-hvac-blue-50 border border-hvac-blue-200 text-hvac-blue-700 font-semibold text-sm hover:border-hvac-blue-400 transition-colors"
                   >
-                    All HVAC services in {page.cityName}
+                    {page.cityName} service area overview
                     <ArrowIcon className="w-3.5 h-3.5" />
                   </Link>
                 )}
