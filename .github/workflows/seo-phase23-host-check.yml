@@ -1,0 +1,48 @@
+# Phase 2.3: read-only check of the apex and vercel.app host behaviour (HEAD/GET only).
+name: SEO phase 2.3 host check
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase23-host-check.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  hosts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: DNS
+        run: |
+          for h in hvacserviceacrepair.com www.hvacserviceacrepair.com; do
+            echo "== $h"; dig +short A "$h"; dig +short AAAA "$h"; dig +short CNAME "$h"
+          done
+      - name: Redirect responses (status line and key headers per hop)
+        run: |
+          trace() {
+            echo; echo "#### $1"
+            curl -sS -o /dev/null -D - --max-redirs 0 "$1" | grep -iE '^(HTTP/|location:|server:|x-vercel-id:|x-robots-tag:|strict-transport-security:|cache-control:|refresh:)' || true
+          }
+          for u in \
+            https://hvacserviceacrepair.com/ \
+            https://hvacserviceacrepair.com/service-areas/orange-county/villa-park \
+            https://hvacserviceacrepair.com/sitemap.xml \
+            http://hvacserviceacrepair.com/ \
+            http://www.hvacserviceacrepair.com/ \
+            https://www.hvacserviceacrepair.com/ \
+            https://hvac-service-ac-repair.vercel.app/ \
+            https://hvac-service-ac-repair.vercel.app/robots.txt \
+            https://hvac-service-ac-repair.vercel.app/sitemap.xml ; do trace "$u"; done
+          echo; echo "#### Full chains"
+          for u in http://hvacserviceacrepair.com/ https://hvacserviceacrepair.com/about-us; do
+            curl -sS -o /dev/null -L -w "$u -> %{url_effective} [%{http_code}] hops=%{num_redirects}\n" "$u"
+          done
+      - name: vercel.app content signals
+        run: |
+          body=$(curl -sS https://hvac-service-ac-repair.vercel.app/service-areas/orange-county/villa-park)
+          echo "canonical: $(grep -o '<link rel="canonical"[^>]*>' <<<"$body" | head -1)"
+          echo "robots meta: $(grep -o '<meta name="robots"[^>]*>' <<<"$body" | head -1)"
+          echo "robots.txt sitemap line: $(curl -sS https://hvac-service-ac-repair.vercel.app/robots.txt | grep -i sitemap)"
+          echo "sitemap first loc: $(curl -sS https://hvac-service-ac-repair.vercel.app/sitemap.xml | grep -o '<loc>[^<]*' | head -1)"
