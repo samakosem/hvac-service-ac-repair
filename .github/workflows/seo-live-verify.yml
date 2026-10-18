@@ -6,6 +6,7 @@ name: SEO live verification
 on:
   push:
     branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-live-verify.yml]
   workflow_dispatch:
     inputs:
       sha:

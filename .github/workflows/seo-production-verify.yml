@@ -1,0 +1,154 @@
+# After PR #1 is merged: waits for Vercel's production deployment of the merge
+# commit, confirms the production domain serves it, then runs the SEO checks
+# against the live domain. Read-only.
+name: SEO production verification
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-production-verify.yml]
+
+permissions:
+  contents: read
+  deployments: read
+  pull-requests: read
+
+concurrency:
+  group: seo-production-verify
+  cancel-in-progress: true
+
+env:
+  PR_NUMBER: "1"
+  PRODUCTION_URL: https://www.hvacserviceacrepair.com
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Resolve the merge commit of PR #1
+        id: target
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          pr=$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}")
+          merged=$(jq -r .merged <<<"$pr")
+          sha=$(jq -r .merge_commit_sha <<<"$pr")
+          main=$(gh api "repos/${GITHUB_REPOSITORY}/commits/main" --jq .sha)
+          echo "PR merged: $merged  merge commit: $sha  main head: $main"
+          [ "$merged" = true ] || { echo "::error::PR #${PR_NUMBER} is not merged"; exit 1; }
+          [ "$sha" = "$main" ] || echo "::warning::main has moved past the merge commit; verifying the merge commit's deployment"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Wait for the Vercel production deployment to be READY
+        id: deploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TARGET_SHA: ${{ steps.target.outputs.sha }}
+        run: |
+          deadline=$(( $(date +%s) + 1800 ))
+          while :; do
+            dep=$(gh api "repos/${GITHUB_REPOSITORY}/deployments?sha=${TARGET_SHA}&environment=Production&per_page=20" \
+              --jq '[.[] | select(.creator.login == "vercel[bot]")] | first')
+            if [ -n "$dep" ] && [ "$dep" != "null" ]; then
+              id=$(jq -r .id <<<"$dep")
+              status=$(gh api "repos/${GITHUB_REPOSITORY}/deployments/${id}/statuses?per_page=1" --jq 'first // {}')
+              state=$(jq -r '.state // "pending"' <<<"$status")
+              echo "Production deployment $id (sha $(jq -r .sha <<<"$dep")): $state"
+              case "$state" in
+                success)
+                  echo "url=$(jq -r .environment_url <<<"$status")" >> "$GITHUB_OUTPUT"
+                  echo "READY: $(jq -r .environment_url <<<"$status")"
+                  break ;;
+                failure|error|inactive)
+                  echo "::error::Vercel production deployment $id ended in state '$state'"; exit 1 ;;
+              esac
+            else
+              echo "No Vercel production deployment for $TARGET_SHA yet"
+            fi
+            [ "$(date +%s)" -ge "$deadline" ] && { echo "::error::Timed out waiting for the production deployment"; exit 1; }
+            sleep 20
+          done
+
+      - name: Confirm the production domain serves the new deployment
+        env:
+          DEPLOY_URL: ${{ steps.deploy.outputs.url }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+        run: |
+          build_id() { grep -oE '/_next/static/[A-Za-z0-9_-]{8,}/_(buildManifest|ssgManifest)' "$1" | head -1 | cut -d/ -f4; }
+          curl -sS -o /tmp/domain.html "$PRODUCTION_URL/"
+          domain_id=$(build_id /tmp/domain.html)
+          hdr=()
+          [ -n "$VERCEL_AUTOMATION_BYPASS_SECRET" ] && hdr=(-H "x-vercel-protection-bypass: $VERCEL_AUTOMATION_BYPASS_SECRET")
+          code=$(curl -sS -o /tmp/deploy.html -w '%{http_code}' "${hdr[@]}" "$DEPLOY_URL/")
+          deploy_id=$(build_id /tmp/deploy.html)
+          echo "Build ID on $PRODUCTION_URL: ${domain_id:-unknown}"
+          echo "Build ID on deployment URL (HTTP $code): ${deploy_id:-unknown}"
+          if [ "$code" = 200 ] && [ -n "$deploy_id" ]; then
+            [ "$domain_id" = "$deploy_id" ] || { echo "::error::Production domain serves build $domain_id, not the new deployment ($deploy_id)"; exit 1; }
+            echo "Production domain is assigned to the new deployment (build IDs match)"
+          else
+            echo "::warning::Deployment URL is protected (HTTP $code), so build IDs cannot be compared. Falling back to content markers that only exist after the merge."
+          fi
+          # Content that only the merged code produces.
+          robots=$(curl -sS "$PRODUCTION_URL/robots.txt")
+          if grep -qiE '^disallow:\s*/_next/' <<<"$robots"; then
+            echo "::error::Production robots.txt still disallows /_next/: the domain is serving the pre-merge build"; exit 1
+          fi
+          canon=$(curl -sS "$PRODUCTION_URL/air-conditioning/ac-repair/yorba-linda" | grep -oE '<link[^>]+rel="canonical"[^>]*>')
+          echo "Canonical marker: $canon"
+          grep -q 'href="https://www.hvacserviceacrepair.com/air-conditioning/ac-repair/yorba-linda"' <<<"$canon" \
+            || { echo "::error::Production canonical still has the pre-merge trailing slash"; exit 1; }
+          echo "Production domain serves post-merge content"
+
+      - name: Check hosting-level headers and redirects
+        run: |
+          fail=0
+          show() { curl -sS -o /dev/null -w '%{http_code} %{redirect_url}' "$1"; }
+          echo "http apex  : $(show http://hvacserviceacrepair.com/contact)"
+          echo "https apex : $(show https://hvacserviceacrepair.com/contact)"
+          echo "http www   : $(show http://www.hvacserviceacrepair.com/contact)"
+          final=$(curl -sSL -o /dev/null -w '%{url_effective} %{http_code} %{num_redirects}' http://hvacserviceacrepair.com/contact)
+          echo "http apex final: $final"
+          [[ "$final" == "https://www.hvacserviceacrepair.com/contact 200 "* ]] || { echo "::error::http apex does not end at https://www/contact"; fail=1; }
+          xr=$(curl -sSI "$PRODUCTION_URL/" | grep -i '^x-robots-tag' || true)
+          echo "X-Robots-Tag on /: ${xr:-none}"
+          if grep -qi noindex <<<"$xr"; then echo "::error::Production sends X-Robots-Tag noindex"; fail=1; fi
+          exit $fail
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.target.outputs.sha }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run the SEO checks against production
+        run: |
+          # The domain is passed as --preview because it now carries the PR's
+          # changes; checks 1-9 assert the fixed state.
+          node scripts/verify-preview.mjs --preview "$PRODUCTION_URL" --concurrency 6 \
+            --json seo-production.json | tee seo-production.txt
+
+      - name: Summarise
+        if: always()
+        run: |
+          [ -f seo-production.txt ] || exit 0
+          {
+            echo "## SEO production verification"
+            echo '```'
+            grep -E '^(PASS|FAIL|RESULT|      [·✗])' seo-production.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-production-verification
+          path: |
+            seo-production.json
+            seo-production.txt
+          if-no-files-found: ignore
