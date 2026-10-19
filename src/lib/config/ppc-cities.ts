@@ -245,7 +245,7 @@ export const PPC_CITIES: PPCCity[] = [
       },
       {
         heading: "No Unnecessary Upsells",
-        body: "Our reputation is built on honest work. We don't upsell unnecessary repairs and we back every job with a satisfaction guarantee.",
+        body: "Our reputation is built on honest work. We don't upsell unnecessary repairs.",
       },
     ],
     faqs: [

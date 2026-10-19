@@ -212,7 +212,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     heroHeadline: "Fast AC Repair Across Southern California",
     heroSubtext:
-      "Your AC stopped working. We diagnose the real problem, give you a written price, and fix it — usually the same visit. No guesswork, no upsells.",
+      "Your AC stopped working. We diagnose the real problem, give you a written price, and fix it. No guesswork, no upsells.",
     whatItIncludes: [
       "Full system diagnostic to identify the root cause",
       "Capacitor, contactor, and relay replacement",
@@ -295,7 +295,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     slug: "emergency-ac-repair",
     seoTitle: "Emergency AC Repair Southern California | Available 7 Days",
     metaDescription:
-      "Emergency AC repair in Orange County. Available 7 days a week including weekends. Fast dispatch from Yorba Linda. Call (714) 410-2784 now.",
+      "Emergency AC repair in Orange County. Open 24 hours a day, 7 days a week. Dispatched from Yorba Linda. Call (714) 410-2784 now.",
     h1: "Emergency AC Repair",
     primaryKeyword: "emergency AC repair Orange County",
     secondaryKeywords: [
@@ -333,9 +333,9 @@ export const SERVICE_CONTENT: ServiceContent[] = [
           "For emergencies, call rather than submitting a form. We triage emergency calls by urgency and dispatch the next available technician from our Yorba Linda location.",
       },
       {
-        title: "Fast Dispatch",
+        title: "Dispatch",
         description:
-          "We'll give you an estimated arrival time. Our dispatch is based in Yorba Linda — close to most of Orange County — so travel times are short.",
+          "We'll give you an estimated arrival time. Our dispatch is based in Yorba Linda, close to most of Orange County.",
       },
       {
         title: "Diagnose and Repair",
