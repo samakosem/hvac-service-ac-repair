@@ -266,7 +266,7 @@ export default function CityPageTemplate({ city, county, serviceLinks, hub }: Pr
                 <address className="not-italic mt-4 text-xs text-slate-500 space-y-0.5">
                   <p>Based at: {SITE.address.street}</p>
                   <p>{SITE.address.city}, {SITE.address.state} {SITE.address.zip}</p>
-                  <p className="mt-2">{SITE.hours.summary}, including emergency service</p>
+                  <p className="mt-2">{`${SITE.hours.summary}, including emergency service`}</p>
                 </address>
               </div>
 
