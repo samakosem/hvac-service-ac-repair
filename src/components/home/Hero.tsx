@@ -74,7 +74,7 @@ export default function Hero() {
           {/* Subheadline */}
           <p className="text-lg lg:text-xl text-slate-200 leading-relaxed max-w-lg pl-4 border-l-2 border-copper-500/60 stagger-1 animate-fade-in-up">
             AC not cooling? Get fast local HVAC repair, installation, and maintenance
-            from local technicians near you.
+            from our team based in Yorba Linda.
           </p>
 
           {/* Trust bullets — 3 core signals, inline */}
