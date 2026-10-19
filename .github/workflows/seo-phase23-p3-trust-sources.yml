@@ -1,0 +1,18 @@
+# Phase 2.3 P3: read-only lookup of the Google Business Profile link and CSLB license records.
+name: SEO phase 2.3 P3 trust sources
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase23-p3-trust-sources.yml, .github/seo-checks/p3_trust_sources.py]
+permissions:
+  contents: read
+jobs:
+  lookup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: pip install --quiet beautifulsoup4 lxml
+      - run: python3 .github/seo-checks/p3_trust_sources.py
