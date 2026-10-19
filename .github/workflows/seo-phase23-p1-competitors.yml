@@ -1,0 +1,20 @@
+# Phase 2.3 P1: read-only structural comparison of public competitor city pages (one GET per URL).
+name: SEO phase 2.3 P1 competitor structure
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase23-p1-competitors.yml, .github/seo-checks/p1_competitors.py]
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: { persist-credentials: false }
+      - run: pip install --quiet beautifulsoup4 lxml
+      - run: python3 .github/seo-checks/p1_competitors.py
