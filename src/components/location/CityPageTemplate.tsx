@@ -7,12 +7,35 @@ import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import { IMG_HERO } from "@/lib/config/images";
 import PhoneLink from "@/components/ui/PhoneLink";
 import JsonLd from "@/components/ui/JsonLd";
+import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import { schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import { serviceHref } from "@/lib/config/routes";
 import { SITE } from "@/lib/config/site";
 import { getAllCities } from "@/lib/config/locations";
 import type { City, County } from "@/lib/config/locations";
 import type { CityServiceLink } from "@/lib/config/city-service-links";
+import type { CityHubContent, HubText } from "@/lib/content/city-hubs";
+
+/** Hub copy with inline links: plain strings, internal links and official external sources. */
+function RichText({ text }: { text: HubText }) {
+  return (
+    <>
+      {text.map((part, i) =>
+        typeof part === "string" ? (
+          part
+        ) : part.href.startsWith("/") ? (
+          <Link key={i} href={part.href} className="text-hvac-blue-700 font-medium underline underline-offset-2 hover:text-hvac-blue-800">
+            {part.label}
+          </Link>
+        ) : (
+          <a key={i} href={part.href} rel="noopener" className="text-hvac-blue-700 font-medium underline underline-offset-2 hover:text-hvac-blue-800">
+            {part.label}
+          </a>
+        ),
+      )}
+    </>
+  );
+}
 
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -57,18 +80,21 @@ type Props = {
   county: County;
   /** This city's service pages (resolved on the server). */
   serviceLinks: CityServiceLink[];
+  /** Hand-written hub content (Phase 2.3 P1). Hubs without it render as before. */
+  hub?: CityHubContent;
 };
 
-export default function CityPageTemplate({ city, county, serviceLinks }: Props) {
+export default function CityPageTemplate({ city, county, serviceLinks, hub }: Props) {
   const canonicalPath = `/service-areas/${county.slug}/${city.slug}`;
 
   const serviceSchema = schemaService({
     name: `HVAC Service in ${city.name}, ${county.name}`,
-    description: city.blurb,
+    description: hub?.blurb ?? city.blurb,
     url: canonicalPath,
     areaServed: `${city.name}, ${county.name}, CA`,
   });
-  const faqSchema = schemaFaqPage(city.faqs);
+  const faqs = hub?.faqs ?? city.faqs;
+  const faqSchema = schemaFaqPage(faqs);
 
   // Resolve nearby cities for display
   const allCities = getAllCities();
@@ -77,7 +103,7 @@ export default function CityPageTemplate({ city, county, serviceLinks }: Props) 
     .filter(Boolean) as City[];
 
   // Top services with canonical paths
-  const topServices = city.topServiceSlugs.map((slug) => ({
+  const topServices = hub?.serviceCards ?? city.topServiceSlugs.map((slug) => ({
     slug,
     href: serviceHref(slug),
     label: slug
@@ -93,7 +119,7 @@ export default function CityPageTemplate({ city, county, serviceLinks }: Props) 
     { slug: "heating-services", label: "Heating Services" },
     { slug: "air-duct-cleaning", label: "Air Duct Cleaning" },
     { slug: "ductless-mini-split", label: "Ductless Mini-Split" },
-  ].filter((s) => !city.topServiceSlugs.includes(s.slug));
+  ].filter((s) => hub || !city.topServiceSlugs.includes(s.slug));
 
   return (
     <>
@@ -113,6 +139,8 @@ export default function CityPageTemplate({ city, county, serviceLinks }: Props) 
           />
           <div className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-900/55 to-navy-900/15" />
           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-navy-950/70 to-transparent" />
+          {/* Hub pages carry longer intro copy: darken the photo behind it on small screens */}
+          {hub && <div className="absolute inset-0 bg-navy-950/60 lg:bg-navy-950/25" />}
         </div>
         <div aria-hidden="true" className="absolute -right-24 top-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-hvac-blue-500/15 blur-3xl pointer-events-none" />
         <div aria-hidden="true" className="absolute inset-0 bg-dot-grid opacity-15 pointer-events-none" />
@@ -131,11 +159,11 @@ export default function CityPageTemplate({ city, county, serviceLinks }: Props) 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
               HVAC Service in {city.name}, CA
             </h1>
-            <p className="text-slate-300 text-lg leading-relaxed mb-3 max-w-2xl">
-              {city.blurb}
+            <p className={`${hub ? "text-slate-100" : "text-slate-300"} text-lg leading-relaxed mb-3 max-w-2xl`}>
+              {hub?.blurb ?? city.blurb}
             </p>
-            <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-2xl">
-              {city.localContext}
+            <p className={`${hub ? "text-slate-200 text-base" : "text-slate-400 text-sm"} leading-relaxed mb-8 max-w-2xl`}>
+              {hub?.localContext ?? city.localContext}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
@@ -152,7 +180,7 @@ export default function CityPageTemplate({ city, county, serviceLinks }: Props) 
               </Link>
             </div>
 
-            <p className="mt-4 text-slate-500 text-xs">
+            <p className={`mt-4 ${hub ? "text-slate-300 text-sm" : "text-slate-500 text-xs"}`}>
               Based in Yorba Linda · Serving {city.name} and surrounding {county.name} cities
             </p>
           </div>
@@ -198,7 +226,7 @@ export default function CityPageTemplate({ city, county, serviceLinks }: Props) 
               <div className="bg-slate-50 rounded-2xl border border-slate-200 p-6">
                 <h3 className="font-bold text-slate-900 text-base mb-4">All Services Available in {city.name}</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                  {[...topServices, ...GENERAL_SERVICES.map((s) => ({ ...s, href: serviceHref(s.slug) }))].map((svc) => (
+                  {[...(hub ? [] : topServices), ...GENERAL_SERVICES.map((s) => ({ ...s, href: serviceHref(s.slug) }))].map((svc) => (
                     <Link
                       key={svc.slug}
                       href={svc.href}
@@ -222,7 +250,7 @@ export default function CityPageTemplate({ city, county, serviceLinks }: Props) 
               <div className="bg-slate-900 rounded-2xl p-6 text-white">
                 <p className="font-bold text-base mb-1">Schedule in {city.name}</p>
                 <p className="text-slate-400 text-sm mb-4">
-                  Call us or submit online — we respond within 1 hour during business hours.
+                  {hub ? hub.sidebarNote : "Call us or submit online — we respond within 1 hour during business hours."}
                 </p>
                 <PhoneLink
                   className="inline-flex items-center gap-2 text-hvac-blue-400 font-semibold text-sm hover:text-hvac-blue-300 transition-colors mb-3"
@@ -238,9 +266,15 @@ export default function CityPageTemplate({ city, county, serviceLinks }: Props) 
                 <address className="not-italic mt-4 text-xs text-slate-500 space-y-0.5">
                   <p>Based at: {SITE.address.street}</p>
                   <p>{SITE.address.city}, {SITE.address.state} {SITE.address.zip}</p>
-                  <p className="mt-2">Mon–Fri: {SITE.hours.weekdays}</p>
-                  <p>Sat: {SITE.hours.saturday}</p>
-                  <p>{SITE.hours.sunday}</p>
+                  {hub ? (
+                    <p className="mt-2">Open 24 hours, 7 days a week, including emergency service</p>
+                  ) : (
+                    <>
+                      <p className="mt-2">Mon–Fri: {SITE.hours.weekdays}</p>
+                      <p>Sat: {SITE.hours.saturday}</p>
+                      <p>{SITE.hours.sunday}</p>
+                    </>
+                  )}
                 </address>
               </div>
 
@@ -299,6 +333,40 @@ export default function CityPageTemplate({ city, county, serviceLinks }: Props) 
         </div>
       </section>
 
+      {hub && (
+        <section className="py-14 lg:py-20 bg-white" aria-label={`HVAC information for ${city.name}`}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+              <div className="lg:col-span-2 flex flex-col gap-10">
+                {hub.sections.map((section) => (
+                  <div key={section.heading}>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-4">{section.heading}</h2>
+                    <div className="flex flex-col gap-4">
+                      {section.paragraphs.map((paragraph, i) => (
+                        <p key={i} className="text-slate-700 leading-relaxed">
+                          <RichText text={paragraph} />
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div id="request-service" className="scroll-mt-24">
+                <h2 className="text-2xl font-bold text-slate-900 leading-tight mb-4">Request Service in {city.name}</h2>
+                <div className="bg-white rounded-2xl shadow-xl p-6 border border-slate-100">
+                  <SingleStepQuoteForm
+                    heading=""
+                    subheading={hub.formNote}
+                    ctaLabel="Request Service"
+                    formLabel="Request HVAC service"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── FAQ ──────────────────────────────────────────────────────────── */}
       <section className="py-14 lg:py-20 bg-warm-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -319,7 +387,7 @@ export default function CityPageTemplate({ city, county, serviceLinks }: Props) 
               />
             </div>
             <div className="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm px-6">
-              {city.faqs.map((faq) => (
+              {faqs.map((faq) => (
                 <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
               ))}
             </div>
@@ -335,7 +403,7 @@ export default function CityPageTemplate({ city, county, serviceLinks }: Props) 
             Ready to Schedule HVAC Service in {city.name}?
           </h2>
           <p className="text-slate-300 mb-8 max-w-xl mx-auto text-sm">
-            Call us or submit a free estimate request. Based in Yorba Linda — serving {city.name} and all of {county.name}.
+            {hub ? hub.ctaNote : <>Call us or submit a free estimate request. Based in Yorba Linda — serving {city.name} and all of {county.name}.</>}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <PhoneLink
