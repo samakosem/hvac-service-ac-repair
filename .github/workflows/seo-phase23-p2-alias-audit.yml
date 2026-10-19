@@ -1,0 +1,36 @@
+# Phase 2.3 P2 audit: the public vercel.app alias. Read-only GET requests; no POSTs, no leads.
+name: SEO phase 2.3 P2 vercel.app alias audit
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase23-p2-alias-audit.yml, .github/seo-checks/p2_vercel_alias.py]
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with: { persist-credentials: false }
+      - name: Other Vercel hostnames for this project (status and protection only)
+        run: |
+          for u in https://hvac-service-ac-repair.vercel.app/ \
+                   https://hvac-service-ac-repair-sams-projects-4743330d.vercel.app/ \
+                   https://hvac-service-ac-repair-git-main-sams-projects-4743330d.vercel.app/ \
+                   https://hvac-service-ac-repair-np1fcdh5w-sams-projects-4743330d.vercel.app/ ; do
+            echo "#### $u"
+            curl -sS -o /dev/null -D - --max-redirs 0 "$u" | grep -iE '^(HTTP/|location:|x-robots-tag:|server:)' | sed 's/nonce=[^&]*/nonce=.../' || true
+          done
+      - name: Alias content, indexing signals, links, tracking, API
+        run: python3 .github/seo-checks/p2_vercel_alias.py
+      - name: Vercel documentation on domain redirects
+        run: |
+          for u in https://vercel.com/docs/domains/working-with-domains/deploying-and-redirecting.md \
+                   https://vercel.com/docs/domains/working-with-domains/deploying-and-redirecting ; do
+            echo "#### $u"
+            curl -sSL "$u" | sed 's/<[^>]*>/ /g' | tr -s ' ' | grep -ioE '.{0,220}(vercel\.app|redirect to|status code|30[1278]|permanent|temporary).{0,220}' | sort -u | head -40 || true
+          done
