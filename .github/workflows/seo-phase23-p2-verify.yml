@@ -1,0 +1,39 @@
+# Phase 2.3 P2 post-change verification: vercel.app alias -> www (308). Read-only GET requests; no leads.
+name: SEO phase 2.3 P2 alias redirect verify
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase23-p2-verify.yml, .github/seo-checks/p2_alias_verify.py]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PRODUCTION_URL: https://www.hvacserviceacrepair.com
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: ci, persist-credentials: false }
+      - uses: actions/checkout@v4
+        with: { ref: main, path: site, persist-credentials: false }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Raw headers
+        run: |
+          for u in https://hvac-service-ac-repair.vercel.app/ https://hvacserviceacrepair.com/ https://www.hvacserviceacrepair.com/; do
+            echo "#### $u"; curl -sS -o /dev/null -D - --max-redirs 0 "$u" | grep -iE '^(HTTP/|location:|server:|x-robots-tag:)' || true
+          done
+      - name: vercel.app alias -> exact www URL on all sitemap paths, query strings, previews
+        run: python3 ci/.github/seo-checks/p2_alias_verify.py
+      - name: Apex 308, www 200 + canonical, 181 Ads pages GTM/tel/form (P0 check, unchanged)
+        if: always()
+        run: python3 ci/.github/seo-checks/p0_apex.py 308
+      - name: Standard SEO checks 1-10 against production
+        if: always()
+        run: node site/scripts/verify-preview.mjs --preview "$PRODUCTION_URL" --production "$PRODUCTION_URL" --concurrency 6
