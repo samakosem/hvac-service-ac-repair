@@ -8,7 +8,7 @@ type Props = {
 
 const CONFIG = {
   hero: {
-    heading: "Get a Free Same-Day Estimate",
+    heading: "Get a Free Estimate",
     subheading: "Tell us your name, number, and what's going on — we'll take it from there.",
     bg: "bg-white",
     label: "Free estimate form",
@@ -21,13 +21,13 @@ const CONFIG = {
   },
   mid: {
     heading: "Ready to Fix Your HVAC System?",
-    subheading: "Same-day service available. No obligation. Just honest answers.",
+    subheading: "Open 24/7. No obligation. Just honest answers.",
     bg: "bg-slate-50",
     label: "Mid-page estimate form",
   },
   prefooter: {
-    heading: "Don't Sweat It — Get Help Today",
-    subheading: "Submit your info and we'll call you back within the hour.",
+    heading: "Don't Sweat It. Get Help 24/7.",
+    subheading: "Submit your info and we'll call you back to schedule.",
     bg: "bg-hvac-blue-700",
     label: "Pre-footer estimate form",
   },
@@ -41,7 +41,7 @@ const ESTIMATE_POINTS = [
   LICENSE
     ? { title: LICENSE, desc: "Local HVAC technicians near you." }
     : { title: "Based in Yorba Linda", desc: "Local HVAC technicians near you." },
-  { title: "Same-Day Service", desc: "Emergency AC & heating help available 24/7." },
+  { title: "Open 24/7", desc: "Emergency AC & heating help available 24/7." },
 ];
 
 export default function HomeLeadForm({ variant = "hero" }: Props) {
@@ -179,7 +179,7 @@ export default function HomeLeadForm({ variant = "hero" }: Props) {
             ) : (
               <>
                 <p className="text-copper-600 text-sm font-semibold uppercase tracking-widest mb-3">
-                  Free Estimates · Same-Day Available
+                  Free Estimates · Open 24/7
                 </p>
                 <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 leading-tight">
                   {c.heading}

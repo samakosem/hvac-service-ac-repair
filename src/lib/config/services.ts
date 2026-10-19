@@ -16,7 +16,7 @@ export const SERVICES: Service[] = [
     shortTitle: "AC Repair",
     tagline: "Fast, reliable air conditioner repair across Orange County",
     description:
-      "Same-day and emergency AC repair for all makes and models. Our trained HVAC technicians diagnose and fix refrigerant leaks, compressor failures, electrical faults, frozen coils, and more.",
+      "Emergency and scheduled AC repair for all makes and models, 24/7. Our trained HVAC technicians diagnose and fix refrigerant leaks, compressor failures, electrical faults, frozen coils, and more.",
     icon: "wrench",
     category: "cooling",
     featured: true,
@@ -104,7 +104,7 @@ export const SERVICES: Service[] = [
     shortTitle: "Furnace Repair",
     tagline: "Reliable furnace repair when you need it most",
     description:
-      "Diagnosis and repair of gas and electric furnaces, including igniter failures, heat exchanger cracks, blower motor issues, and thermostat malfunctions. Same-day service available.",
+      "Diagnosis and repair of gas and electric furnaces, including igniter failures, heat exchanger cracks, blower motor issues, and thermostat malfunctions. Available 24/7.",
     icon: "flame",
     category: "heating",
     featured: false,

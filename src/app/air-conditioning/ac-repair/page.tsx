@@ -14,9 +14,9 @@ import { QuickChecksGrid, QuickChecksHeader } from "@/components/ui/QuickChecks"
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: "AC Repair — Same-Day Service | Southern California | (714) 410-2784",
+    title: "AC Repair, Open 24/7 | Southern California | (714) 410-2784",
     description:
-      "Same-day AC repair throughout Southern California. Free diagnostic with repair, written quote before any work. Call (714) 410-2784.",
+      "AC repair throughout Southern California, 24/7. Free diagnostic with repair, written quote before any work. Call (714) 410-2784.",
     path: "/air-conditioning/ac-repair",
   });
 }
@@ -82,7 +82,7 @@ export default function AcRepairPage() {
     { name: "AC Repair", href: "/air-conditioning/ac-repair" },
   ]);
   const serviceSchema = schemaService({
-    name: "AC Repair — Same-Day Service",
+    name: "AC Repair, Open 24/7",
     description: service.metaDescription,
     url: "/air-conditioning/ac-repair",
     areaServed: "Orange County",
@@ -127,7 +127,7 @@ export default function AcRepairPage() {
               <div className="flex flex-wrap gap-2">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/25 text-emerald-300 text-xs font-bold uppercase tracking-wider">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
-                  Open Now — Accepting Same-Day Calls
+                  Open 24/7 · Accepting Calls
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-500/15 border border-red-400/25 text-red-300 text-xs font-bold uppercase tracking-wider">
                   <BoltIcon className="w-3 h-3" />
@@ -141,7 +141,7 @@ export default function AcRepairPage() {
 
               {/* H1 */}
               <h1 className="text-4xl sm:text-5xl lg:text-[3.1rem] font-bold text-white leading-[1.1] tracking-tight">
-                AC Repair — Same-Day Service, Southern California
+                AC Repair, Open 24/7, Southern California
               </h1>
 
               <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
@@ -168,7 +168,7 @@ export default function AcRepairPage() {
                   href="#estimate-form"
                   className="inline-flex items-center justify-center gap-2 px-6 py-4 bg-white/9 text-white font-semibold rounded-xl border border-white/16 hover:bg-white/15 active:scale-[0.98] transition-all text-base"
                 >
-                  Get Same-Day Service
+                  Request Service
                   <ArrowIcon className="w-4 h-4" />
                 </a>
               </div>
@@ -183,7 +183,7 @@ export default function AcRepairPage() {
 
               {/* Trust badges */}
               <div className="flex flex-wrap gap-2">
-                {[...credentialBadges(), "Same-Day Service", "Free Estimates", "0% Financing"].map((b) => (
+                {[...credentialBadges(), "Open 24/7", "Free Estimates", "0% Financing"].map((b) => (
                   <span key={b} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/7 border border-white/10 text-xs font-medium text-slate-200">
                     <CheckIcon className="w-3 h-3 text-emerald-400" />
                     {b}
@@ -195,9 +195,9 @@ export default function AcRepairPage() {
             {/* RIGHT — Form (desktop) */}
             <div id="estimate-form" className="hidden lg:block bg-white rounded-2xl shadow-xl p-7 border border-white/10">
               <SingleStepQuoteForm
-                heading="Get Same-Day AC Repair Service"
+                heading="Get AC Repair Service"
                 subheading="Open 24/7 · Real people answer your call"
-                ctaLabel="Get Same-Day Service"
+                ctaLabel="Request Service"
                 defaultService="AC Repair"
               />
             </div>
@@ -209,9 +209,9 @@ export default function AcRepairPage() {
       <div id="estimate-form-mobile" className="lg:hidden bg-white px-4 py-8 border-b border-slate-100">
         <div className="max-w-xl mx-auto">
           <SingleStepQuoteForm
-            heading="Get Same-Day Service"
+            heading="Get AC Repair Service"
             subheading="Open 24/7 · Real people answer"
-            ctaLabel="Get Same-Day Service"
+            ctaLabel="Request Service"
             defaultService="AC Repair"
           />
         </div>
@@ -224,7 +224,7 @@ export default function AcRepairPage() {
             {[
               ...(licenseNumberLabel() ? [{ icon: <ShieldIcon className="w-4 h-4 text-copper-400" />, text: licenseNumberLabel() as string }] : []),
               ...(CREDENTIALS.epaCertified ? [{ icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "EPA Certified" }] : []),
-              { icon: <BoltIcon className="w-4 h-4 text-copper-400" />, text: "Same-Day Availability" },
+              { icon: <BoltIcon className="w-4 h-4 text-copper-400" />, text: "Open 24/7" },
               { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "Free Estimates" },
               { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "0% Financing Available" },
               { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "Based in Yorba Linda" },
@@ -428,10 +428,10 @@ export default function AcRepairPage() {
             <div className="flex flex-col gap-5">
               <div className="section-label section-label-white w-fit">Ready to Get Fixed?</div>
               <h2 className="text-3xl sm:text-4xl font-bold text-white">
-                AC Not Cooling? We&rsquo;re Available Today — Southern California.
+                AC Not Cooling? We&rsquo;re Open 24/7 in Southern California.
               </h2>
               <p className="text-slate-300 text-lg leading-relaxed">
-                Free estimates. Same-day availability. Real people answer your call. Based in Yorba Linda — serving all of Orange County.
+                Free estimates. Open 24/7. Real people answer your call. Based in Yorba Linda — serving all of Orange County.
               </p>
               <div className="flex flex-col gap-2">
                 <p className="text-slate-400 text-sm">Mon–Fri {SITE.hours.weekdays} · Sat {SITE.hours.saturday}</p>
@@ -448,9 +448,9 @@ export default function AcRepairPage() {
             </div>
             <div className="bg-white rounded-2xl shadow-xl p-7">
               <SingleStepQuoteForm
-                heading="Request Same-Day AC Service"
+                heading="Request AC Service"
                 subheading="We'll contact you to schedule."
-                ctaLabel="Get Same-Day Service"
+                ctaLabel="Request Service"
                 defaultService="AC Repair"
               />
             </div>

@@ -80,7 +80,7 @@ export default function ServicesPage() {
               HVAC Services in Orange County, CA
             </h1>
             <p className="text-slate-300 text-lg leading-relaxed mb-8">
-              Air conditioning, heating, ductless systems, air duct services, and commercial HVAC — all from our Yorba Linda team. Same-day appointments across Orange County.
+              Air conditioning, heating, ductless systems, air duct services, and commercial HVAC — all from our Yorba Linda team. Open 24/7 across Orange County.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <PhoneLink

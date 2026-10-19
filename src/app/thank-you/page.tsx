@@ -35,7 +35,7 @@ export default function ThankYouPage() {
         <div className="bg-slate-100 rounded-xl p-6 w-full text-left">
           <p className="font-semibold text-slate-800 mb-1">Need immediate help?</p>
           <p className="text-slate-600 text-sm mb-3">
-            For same-day or emergency service, call us directly:
+            For urgent or emergency service, call us directly, 24/7:
           </p>
           <a
             href={`tel:${SITE.phone}`}

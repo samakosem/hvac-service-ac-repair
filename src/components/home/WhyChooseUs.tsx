@@ -11,9 +11,9 @@ const REASONS = [
   },
   {
     number: "02",
-    title: "Same-Day, 7 Days a Week",
+    title: "Open 24/7",
     description:
-      "AC failures don't respect weekends. We schedule same-day appointments across Orange County and respond to emergencies on Sundays when most shops are closed.",
+      "AC failures don't respect weekends. We're open 24 hours a day, 7 days a week, including emergency service on weekends.",
     accent: "copper",
   },
   {

@@ -7,7 +7,7 @@ const TRUST_ITEMS = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    label: "Same-Day Service Available",
+    label: "Open 24/7",
   },
   {
     icon: (

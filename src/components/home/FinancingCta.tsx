@@ -15,7 +15,7 @@ export default function FinancingCta() {
             </h2>
             <p className="text-slate-600 leading-relaxed text-sm">
               A broken AC in an Orange County summer isn&rsquo;t something you can wait on. We work with
-              financing options to help make same-day repairs and new system installations accessible —
+              financing options to help make repairs and new system installations accessible —
               ask us about current promotions when you call.
             </p>
             <ul className="space-y-2 text-sm text-slate-700">

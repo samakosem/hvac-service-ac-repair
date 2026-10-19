@@ -157,8 +157,8 @@ export default async function BlogPostPage({ params }: Props) {
             Ready to schedule service in Orange County?
           </h2>
           <p className="text-white/80 text-sm leading-relaxed max-w-md">
-            Get a free in-home estimate. Our technicians cover all of Orange County —
-            same-day availability on most calls.
+            Get a free in-home estimate. Our technicians cover all of Orange County,
+            24 hours a day, 7 days a week.
           </p>
           <Link
             href="/contact"

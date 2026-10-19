@@ -31,9 +31,9 @@ export const COUNTIES: County[] = [
     slug: "orange-county",
     name: "Orange County",
     blurb:
-      "Our home territory. We provide fast, same-day HVAC service across all of Orange County, from Yorba Linda to San Clemente.",
+      "Our home territory. We provide HVAC service 24 hours a day, 7 days a week across all of Orange County, from Yorba Linda to San Clemente.",
     serviceNote:
-      "Our shop on Yorba Linda Blvd puts us within a short drive of virtually every Orange County city. Same-day appointments are available for most locations, and emergency dispatch is available 7 days a week.",
+      "Our shop on Yorba Linda Blvd puts us within a short drive of virtually every Orange County city. We're open 24/7, including emergency service.",
     climateNote:
       "Orange County's climate varies significantly from coastal cities like Huntington Beach — where marine layer and salt air affect equipment — to inland areas like Anaheim Hills and Yorba Linda, which see summer heat regularly exceeding 95°F. We understand the difference and recommend accordingly.",
     cities: [
@@ -289,7 +289,7 @@ export const COUNTIES: County[] = [
           {
             question: "How quickly can you come to Tustin for AC repair?",
             answer:
-              "Tustin is well within our same-day service zone. Morning calls typically get same-day scheduling, and urgent calls receive priority dispatch.",
+              "Tustin is well within our service area, and we're open 24/7. Call us and we'll give you the earliest available arrival window.",
           },
           {
             question: "Do you offer commercial HVAC service in Tustin?",
@@ -630,9 +630,9 @@ export const COUNTIES: County[] = [
         nearbySlugs: ["garden-grove", "huntington-beach", "fountain-valley", "santa-ana", "buena-park"],
         faqs: [
           {
-            question: "Do you offer same-day AC repair in Westminster?",
+            question: "Do you offer emergency AC repair in Westminster?",
             answer:
-              "Yes. Westminster is within our Orange County same-day service zone. Morning calls typically receive same-day appointments.",
+              "Yes. Westminster is within our Orange County service area, and we're open 24/7. Call us and we'll give you the earliest available arrival window.",
           },
           {
             question: "My Westminster home has an older R-22 system — what are my options?",
@@ -656,7 +656,7 @@ export const COUNTIES: County[] = [
     blurb:
       "Serving the western Riverside County communities closest to our Yorba Linda base.",
     serviceNote:
-      "We serve western Riverside County cities — Corona, Norco, and Eastvale — that sit just across the county line from our Yorba Linda location. Same-day service is typically available for these areas.",
+      "We serve western Riverside County cities — Corona, Norco, and Eastvale — that sit just across the county line from our Yorba Linda location. We're open 24/7 for these areas.",
     climateNote:
       "Western Riverside County cities experience significantly hotter summers than coastal OC — temperatures regularly exceed 100°F in Corona and Norco from June through September. High-performance cooling systems and consistent maintenance are especially important in this climate.",
     cities: [
@@ -683,9 +683,9 @@ export const COUNTIES: County[] = [
               "Yes. We're familiar with the equipment in newer Corona developments, including the systems installed in Terramor, Sycamore Creek, and South Corona communities.",
           },
           {
-            question: "Can you come to Corona on the same day for an AC emergency?",
+            question: "Can you come to Corona for an AC emergency?",
             answer:
-              "In most cases, yes. Corona is within our standard same-day service zone. Emergency calls are dispatched as a priority.",
+              "Yes. Corona is within our standard service area, and we're open 24/7, including emergencies. Call us and we'll give you the earliest available arrival window.",
           },
         ],
       },
@@ -757,7 +757,7 @@ export const COUNTIES: County[] = [
     blurb:
       "Serving the western edge of San Bernardino County, including the Chino Valley area adjacent to our Orange County service territory.",
     serviceNote:
-      "The Chino Valley cities — Chino Hills, Chino, and Ontario — are within our standard service area. These communities sit just northeast of our Yorba Linda location and receive the same same-day service as most of Orange County.",
+      "The Chino Valley cities — Chino Hills, Chino, and Ontario — are within our standard service area. These communities sit just northeast of our Yorba Linda location and receive the same 24/7 service as most of Orange County.",
     climateNote:
       "Western San Bernardino County cities are inland and experience very hot summers — Ontario and Chino regularly exceed 100°F in July and August. High-efficiency, high-capacity cooling systems are essential here, and equipment works considerably harder than in coastal OC.",
     cities: [
@@ -813,9 +813,9 @@ export const COUNTIES: County[] = [
               "Chino is fully inland and regularly sees temperatures above 100°F from June through September. Heat events can push temperatures to 108–110°F, putting significant stress on cooling systems.",
           },
           {
-            question: "Do you offer same-day AC repair in Chino?",
+            question: "Do you offer emergency AC repair in Chino?",
             answer:
-              "Yes. Chino is within our same-day service territory. We dispatch urgently for AC failures during hot weather.",
+              "Yes. Chino is within our service area, and we're open 24/7. Call us and we'll give you the earliest available arrival window.",
           },
         ],
       },
@@ -842,9 +842,9 @@ export const COUNTIES: County[] = [
               "Yes. We work with commercial and industrial properties in the Ontario Airport area, including warehouse, logistics, and office facilities. Commercial maintenance contracts are available.",
           },
           {
-            question: "Can you do same-day AC repair in Ontario?",
+            question: "Do you offer AC repair in Ontario?",
             answer:
-              "Ontario is at the edge of our same-day service zone. We can often dispatch same-day, but call early — morning calls are more likely to get same-day service than afternoon calls.",
+              "Yes. Ontario is at the edge of our service area. Call us and we'll give you the earliest available arrival window.",
           },
         ],
       },
@@ -1050,7 +1050,7 @@ export const COUNTIES: County[] = [
           {
             question: "Is Diamond Bar in your service area?",
             answer:
-              "Yes. Diamond Bar borders our home city of Yorba Linda and is within our core service area. Same-day scheduling is typically available.",
+              "Yes. Diamond Bar borders our home city of Yorba Linda and is within our core service area. We're open 24/7.",
           },
           {
             question: "What neighborhoods in Diamond Bar do you serve?",
@@ -1077,8 +1077,8 @@ export const COUNTIES: County[] = [
         nearbySlugs: ["diamond-bar", "walnut", "hacienda-heights", "brea", "yorba-linda"],
         faqs: [
           {
-            question: "Do you offer same-day service in Rowland Heights?",
-            answer: "Yes. Rowland Heights is within our standard same-day service zone.",
+            question: "Do you serve Rowland Heights?",
+            answer: "Yes. Rowland Heights is within our standard service area, and we're open 24/7.",
           },
           {
             question: "What brands do you service in Rowland Heights?",
@@ -1112,8 +1112,8 @@ export const COUNTIES: County[] = [
             answer: "Yes. Commercial HVAC in Walnut's business corridors is part of our service scope.",
           },
           {
-            question: "Is same-day AC repair available in Walnut?",
-            answer: "Typically yes — call us in the morning for the best chance of same-day service.",
+            question: "Is AC repair available in Walnut?",
+            answer: "Yes. We're open 24/7. Call us and we'll give you the earliest available arrival window.",
           },
         ],
       },
@@ -1160,8 +1160,8 @@ export const COUNTIES: County[] = [
             answer: "Yes. We're experienced with hillside properties and the access and equipment considerations they involve.",
           },
           {
-            question: "Is La Habra Heights in your same-day service area?",
-            answer: "It borders our core service area. Same-day is usually available — call to confirm.",
+            question: "Is La Habra Heights in your service area?",
+            answer: "Yes. It borders our core service area. Call to confirm availability for your address.",
           },
           {
             question: "Can you install mini-splits in a La Habra Heights property?",

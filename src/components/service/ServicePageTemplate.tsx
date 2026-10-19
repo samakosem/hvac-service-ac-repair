@@ -152,7 +152,7 @@ export default function ServicePageTemplate({ service, image, cityLinks }: Props
             </div>
 
             <p className="mt-4 text-slate-500 text-xs">
-              Same-day appointments available · Serving Southern California
+              Open 24/7 · Serving Southern California
             </p>
           </div>
         </div>

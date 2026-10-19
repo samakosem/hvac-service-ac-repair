@@ -53,8 +53,8 @@ type Props = {
 export default function SingleStepQuoteForm({
   heading,
   subheading,
-  ctaLabel = "Get Same-Day Service",
-  formLabel = "Request same-day HVAC service",
+  ctaLabel = "Request Service",
+  formLabel = "Request HVAC service",
   defaultService = "",
   variant = "light",
 }: Props) {

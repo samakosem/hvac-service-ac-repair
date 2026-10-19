@@ -15,7 +15,7 @@ import { CREDENTIALS, licenseLabel } from "@/lib/config/credentials";
 const TRUST_BADGES = [
   ...(licenseLabel() ? [{ label: licenseLabel() as string, icon: "shield" }] : []),
   ...(CREDENTIALS.epaCertified ? [{ label: "EPA Certified", icon: "leaf" }] : []),
-  { label: "Same-Day Service", icon: "bolt" },
+  { label: "Open 24/7", icon: "bolt" },
   { label: "Free Estimates", icon: "tag" },
 ];
 
@@ -489,7 +489,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
             Emergency HVAC Service
           </div>
           <h2 id="emergency-heading" className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            AC Out in {city.name}? We Respond the Same Day.
+            AC Out in {city.name}? We&rsquo;re Open 24/7.
           </h2>
           <p className="text-slate-300 text-lg leading-relaxed max-w-3xl mx-auto mb-8">
             {city.emergencyBody}
@@ -497,7 +497,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
             {[
-              { label: "Same-Day Response", icon: <BoltIcon className="w-5 h-5 text-red-400" /> },
+              { label: "Open 24 Hours", icon: <BoltIcon className="w-5 h-5 text-red-400" /> },
               { label: "7-Day Availability", icon: <PhoneIcon className="w-5 h-5 text-red-400" /> },
               { label: "Real Person Answers", icon: <CheckIcon className="w-5 h-5 text-red-400" /> },
             ].map((item) => (
@@ -604,7 +604,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
                 Schedule Your {city.name} HVAC Service Today
               </h2>
               <p className="text-slate-300 text-lg leading-relaxed">
-                Free estimates. Same-day availability. Real people answer your call. Serving {city.name} and all surrounding communities.
+                Free estimates. Open 24/7. Real people answer your call. Serving {city.name} and all surrounding communities.
               </p>
 
               <div className="flex flex-col gap-3">

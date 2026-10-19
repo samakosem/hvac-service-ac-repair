@@ -43,7 +43,7 @@ export default function Footer() {
               Need AC Repair or HVAC Service Today?
             </p>
             <p className="text-orange-100 text-sm mt-1">
-              Same-day appointments available. Call now or request a free quote online.
+              Open 24/7, including emergencies. Call now or request a free quote online.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">

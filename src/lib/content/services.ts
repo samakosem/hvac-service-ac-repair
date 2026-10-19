@@ -33,7 +33,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     slug: "air-conditioning",
     seoTitle: "Air Conditioning Services — Southern California",
     metaDescription:
-      "Complete air conditioning services in Orange County — repair, installation, maintenance, and ductless systems. Based in Yorba Linda. Call (714) 410-2784 for same-day service.",
+      "Complete air conditioning services in Orange County — repair, installation, maintenance, and ductless systems. Based in Yorba Linda, open 24/7. Call (714) 410-2784.",
     h1: "Air Conditioning Services",
     primaryKeyword: "air conditioning services Orange County",
     secondaryKeywords: [
@@ -43,9 +43,9 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     heroHeadline: "Every AC Service Southern California Homeowners Need",
     heroSubtext:
-      "From same-day repairs to full system replacements, ductless mini-splits, and commercial cooling — our Yorba Linda team handles all of it across Southern California.",
+      "From emergency repairs to full system replacements, ductless mini-splits, and commercial cooling — our Yorba Linda team handles all of it across Southern California.",
     whatItIncludes: [
-      "Emergency and same-day AC repair",
+      "24/7 emergency AC repair",
       "New air conditioner installation and system replacements",
       "Seasonal AC maintenance and tune-ups",
       "Ductless mini-split installation and repair",
@@ -66,7 +66,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         title: "Call or Request Online",
         description:
-          "Reach us by phone or submit a contact form. We'll ask a few questions about your system and schedule an appointment — often same-day.",
+          "Reach us by phone or submit a contact form. We'll ask a few questions about your system and schedule an appointment. We're open 24/7.",
       },
       {
         title: "On-Site Diagnosis",
@@ -93,7 +93,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         question: "How quickly can you respond to an AC problem?",
         answer:
-          "For most Orange County cities we offer same-day service. Call us in the morning and we aim to have a technician at your home the same day. Emergency calls are prioritized.",
+          "We're open 24 hours a day, 7 days a week, including emergency service, across Orange County. Call us and we'll give you the earliest available arrival window.",
       },
       {
         question: "Do you service all AC brands?",
@@ -108,7 +108,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     relatedSlugs: ["ac-repair", "ac-installation", "ac-maintenance", "ductless-mini-split"],
     ctaHeadline: "Need AC Service in Southern California?",
-    ctaSubtext: "Same-day appointments available across Southern California. Call us or submit a request and we'll respond within the hour.",
+    ctaSubtext: "Open 24/7 across Southern California. Call us or submit a request and we'll contact you to schedule.",
     category: "cooling",
   },
 
@@ -129,7 +129,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     heroSubtext:
       "We're based at 18340 Yorba Linda Blvd, close to Yorba Linda, Placentia, Brea, Anaheim Hills, and every surrounding city. One call covers every AC need.",
     whatItIncludes: [
-      "Same-day and emergency AC repair",
+      "24/7 emergency AC repair",
       "AC installation and full system replacement",
       "Annual and seasonal maintenance tune-ups",
       "Ductless mini-split installation and service",
@@ -192,17 +192,17 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     relatedSlugs: ["ac-repair", "ac-installation", "ac-maintenance", "air-conditioning"],
     ctaHeadline: "Local Yorba Linda AC Service, Open 24/7",
-    ctaSubtext: "We're minutes away from most Yorba Linda, Placentia, and Brea neighborhoods. Call now for same-day availability.",
+    ctaSubtext: "Our shop is close to most Yorba Linda, Placentia, and Brea neighborhoods. Call now, 24/7.",
     category: "cooling",
   },
 
   // ─── AC REPAIR ────────────────────────────────────────────────────────────
   {
     slug: "ac-repair",
-    seoTitle: "AC Repair — Southern California | Same-Day Service",
+    seoTitle: "AC Repair, Southern California | Open 24/7",
     metaDescription:
-      "Same-day AC repair in Orange County, CA. We fix all makes and models — refrigerant leaks, compressor issues, frozen coils, electrical faults. Call (714) 410-2784.",
-    h1: "AC Repair — Same-Day Service",
+      "AC repair in Orange County, CA, open 24/7. We fix all makes and models — refrigerant leaks, compressor issues, frozen coils, electrical faults. Call (714) 410-2784.",
+    h1: "AC Repair, Open 24/7",
     primaryKeyword: "AC repair Orange County",
     secondaryKeywords: [
       "air conditioner repair Orange County CA",
@@ -276,7 +276,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         question: "Can you fix my AC the same day?",
         answer:
-          "In most cases, yes. We carry common repair parts on our service vehicles. If a part needs to be ordered, we'll give you a realistic timeline. Same-day completion depends on part availability and job complexity.",
+          "It depends on the problem and the parts it needs. If a part needs to be ordered, we'll give you a realistic timeline.",
       },
       {
         question: "My AC is freezing up — what causes that?",
@@ -285,8 +285,8 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["emergency-ac-repair", "ac-maintenance", "ac-installation", "ac-tune-up"],
-    ctaHeadline: "AC Not Cooling? We Can Fix It Today.",
-    ctaSubtext: "Same-day AC repair across Southern California. Written estimate before any work starts. Call (714) 410-2784.",
+    ctaHeadline: "AC Not Cooling? We're Open 24/7.",
+    ctaSubtext: "AC repair across Southern California. Written estimate before any work starts. Call (714) 410-2784.",
     category: "cooling",
   },
 
@@ -308,7 +308,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     heroSubtext:
       "An AC failure during a Southern California heat wave isn't something you wait on. We dispatch emergency calls quickly and prioritize getting your home cooled down.",
     whatItIncludes: [
-      "Priority same-day scheduling for emergency calls",
+      "24/7 scheduling for emergency calls",
       "Full system diagnosis on arrival",
       "On-the-spot repair for most common failures",
       "Refrigerant recharge if needed",
@@ -960,14 +960,14 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     relatedSlugs: ["heat-pump-repair", "heat-pump-installation", "ac-installation"],
     ctaHeadline: "Heat Pump Not Working? We Diagnose Both Modes.",
-    ctaSubtext: "Local Southern California heat pump service — same-day availability for most areas. Call (714) 410-2784.",
+    ctaSubtext: "Local Southern California heat pump service, open 24/7. Call (714) 410-2784.",
     category: "heating",
   },
 
   // ─── HEAT PUMP REPAIR ─────────────────────────────────────────────────────
   {
     slug: "heat-pump-repair",
-    seoTitle: "Heat Pump Repair Southern California | Same-Day Service",
+    seoTitle: "Heat Pump Repair Southern California | Open 24/7",
     metaDescription:
       "Heat pump repair in Orange County, CA. We diagnose and repair reversing valve failures, refrigerant issues, defrost problems, and more. Call (714) 410-2784.",
     h1: "Heat Pump Repair",
@@ -1040,7 +1040,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     relatedSlugs: ["heat-pump-services", "heat-pump-installation", "ac-repair"],
     ctaHeadline: "Heat Pump Not Heating or Cooling Correctly?",
-    ctaSubtext: "We diagnose both modes and repair all makes. Call for same-day service across Southern California.",
+    ctaSubtext: "We diagnose both modes and repair all makes. Call us 24/7 across Southern California.",
     category: "heating",
   },
 
@@ -1129,7 +1129,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     slug: "heating-services",
     seoTitle: "Heating Services Southern California | Furnace & Heat Pump",
     metaDescription:
-      "Heating services in Orange County, CA — furnace repair, furnace installation, heat pump service, and heating maintenance. Call (714) 410-2784 for same-day service.",
+      "Heating services in Orange County, CA — furnace repair, furnace installation, heat pump service, and heating maintenance. Open 24/7. Call (714) 410-2784.",
     h1: "Heating Services",
     primaryKeyword: "heating services Orange County",
     secondaryKeywords: [
@@ -1195,16 +1195,16 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     relatedSlugs: ["furnace-repair", "furnace-installation", "heat-pump-services"],
     ctaHeadline: "Heater Not Working in Southern California?",
-    ctaSubtext: "Same-day heating repair available. We service gas furnaces and heat pumps across Southern California.",
+    ctaSubtext: "Heating repair available 24/7. We service gas furnaces and heat pumps across Southern California.",
     category: "heating",
   },
 
   // ─── FURNACE REPAIR ───────────────────────────────────────────────────────
   {
     slug: "furnace-repair",
-    seoTitle: "Furnace Repair Southern California | Same-Day Heating Repair",
+    seoTitle: "Furnace Repair Southern California | Open 24/7",
     metaDescription:
-      "Furnace repair in Orange County, CA. Gas and electric furnace diagnosis and same-day repair. Igniter, heat exchanger, blower motor, and more. Call (714) 410-2784.",
+      "Furnace repair in Orange County, CA. Gas and electric furnace diagnosis and repair, 24/7. Igniter, heat exchanger, blower motor, and more. Call (714) 410-2784.",
     h1: "Furnace Repair — Gas & Electric Furnaces",
     primaryKeyword: "furnace repair Orange County",
     secondaryKeywords: [
@@ -1277,8 +1277,8 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["furnace-installation", "heating-services", "furnace-maintenance"],
-    ctaHeadline: "Furnace Down in Southern California? We Fix It Today.",
-    ctaSubtext: "Same-day furnace repair available. Gas and electric systems serviced. Call (714) 410-2784.",
+    ctaHeadline: "Furnace Down in Southern California? We're Open 24/7.",
+    ctaSubtext: "Furnace repair available 24/7. Gas and electric systems serviced. Call (714) 410-2784.",
     category: "heating",
   },
 

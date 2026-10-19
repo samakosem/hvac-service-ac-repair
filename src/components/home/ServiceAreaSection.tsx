@@ -23,8 +23,8 @@ export default function ServiceAreaSection() {
               in our immediate surrounding area.
             </p>
             <p className="text-slate-600 leading-relaxed">
-              Most Orange County jobs get a same-day or next-morning appointment. For emergency calls,
-              we dispatch immediately regardless of where you are in the county.
+              We&rsquo;re open 24 hours a day, 7 days a week, and we take emergency calls from anywhere
+              in the county.
             </p>
 
             {/* Counties covered */}

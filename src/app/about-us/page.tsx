@@ -243,7 +243,7 @@ export default function AboutPage() {
 
       <CtaSection
         heading="Ready to Work with a Team You Can Trust?"
-        subtext="Request a free estimate today — we'll get back to you within the hour."
+        subtext="Request a free estimate and we'll contact you to schedule."
         primaryLabel="Get a Free Estimate"
         primaryHref="/contact"
         variant="blue"

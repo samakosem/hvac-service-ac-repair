@@ -5,8 +5,8 @@ import Link from "next/link";
 
 const FAQS = [
   {
-    q: "Do you offer same-day AC repair in Orange County?",
-    a: "Yes. We schedule same-day appointments for most areas of Orange County, including Yorba Linda, Anaheim Hills, Brea, Fullerton, Placentia, and surrounding cities. Call us in the morning and we aim to be there the same day.",
+    q: "Are you open 24/7 in Orange County?",
+    a: "Yes. We're open 24 hours a day, 7 days a week, including emergency service, across Orange County, including Yorba Linda, Anaheim Hills, Brea, Fullerton, Placentia, and surrounding cities. Call us and we'll give you the earliest available arrival window.",
   },
   {
     q: "What brands of HVAC equipment do you service?",

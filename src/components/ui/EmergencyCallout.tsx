@@ -22,7 +22,7 @@ export default function EmergencyCallout({ city, variant = "banner" }: Props) {
           </p>
         </div>
         <p className="text-red-700 text-sm leading-relaxed">
-          System completely out? We offer same-day emergency service {location} — a real person answers your call.
+          System completely out? We offer 24/7 emergency service {location}, and a real person answers your call.
         </p>
         <a
           href={`tel:${SITE.phone}`}
@@ -35,7 +35,7 @@ export default function EmergencyCallout({ city, variant = "banner" }: Props) {
           Call Now — {SITE.phoneDisplay}
         </a>
         <p className="text-red-500 text-xs">
-          Same-day availability · 7 days a week · Real person answers
+          Open 24/7 · Real person answers
         </p>
       </div>
     );
@@ -51,7 +51,7 @@ export default function EmergencyCallout({ city, variant = "banner" }: Props) {
           </span>
           <p className="font-semibold">
             <strong>AC not cooling?</strong>{" "}
-            Same-day emergency HVAC service available {location}.
+            24/7 emergency HVAC service available {location}.
           </p>
         </div>
         <PhoneLink

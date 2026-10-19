@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE.name}`,
   },
   description:
-    "Professional AC repair, installation, and HVAC maintenance across Orange County, CA. Same-day service. Call (714) 410-2784.",
+    "Professional AC repair, installation, and HVAC maintenance across Orange County, CA. Open 24/7. Call (714) 410-2784.",
   metadataBase: new URL(SITE.domain),
   // favicon.ico, icon.png and apple-icon.png in src/app/ are auto-detected by
   // Next.js App Router. Only the extra PWA sizes below need declaring.

@@ -10,7 +10,7 @@ import { licenseLabel } from "@/lib/config/credentials";
 const LICENSE = licenseLabel();
 
 const TRUST_BULLETS = [
-  "Same-Day Appointments",
+  "Open 24/7",
   LICENSE ?? "Based in Yorba Linda",
   "Upfront Pricing",
 ];
@@ -56,7 +56,7 @@ export default function Hero() {
               Open Now
             </span>
             <span className="px-3 sm:px-3.5 py-1.5 text-red-200 text-[10px] sm:text-[11px] font-bold uppercase tracking-widest whitespace-nowrap">
-              Same-Day HVAC Calls
+              24/7 HVAC Calls
             </span>
           </div>
 

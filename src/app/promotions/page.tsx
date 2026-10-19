@@ -124,7 +124,7 @@ export default function PromotionsPage() {
               {[
                 "No hidden fees",
                 "Written estimates before work begins",
-                "Same-day availability",
+                "Open 24/7",
                 ...(licenseLabel() ? [licenseLabel() as string] : []),
               ].map((pill) => (
                 <span
@@ -164,7 +164,7 @@ export default function PromotionsPage() {
             {[
               { n: promos.length.toString() + "+", label: "Active Offers" },
               { n: "Free", label: "Estimates & Inspections" },
-              { n: "Same-Day", label: "Service Available" },
+              { n: "24/7", label: "Service Available" },
               { n: "5-County", label: "Service Area" },
             ].map(({ n, label }) => (
               <div key={label} className="text-center">
@@ -185,7 +185,7 @@ export default function PromotionsPage() {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white" />
             </span>
             <p>
-              <strong>Emergency AC repair available today.</strong> Diagnostic fee waived when repair is completed at time of service.
+              <strong>Emergency AC repair available 24/7.</strong> Diagnostic fee waived when repair is completed at time of service.
             </p>
           </div>
           <a

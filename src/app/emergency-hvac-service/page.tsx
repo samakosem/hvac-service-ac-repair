@@ -10,9 +10,9 @@ import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: "Emergency HVAC Service — Same-Day Available | (714) 410-2784",
+    title: "Emergency HVAC Service, Open 24/7 | (714) 410-2784",
     description:
-      "Emergency HVAC service throughout Southern California. Real people answer — same-day AC and heating repair. No emergency surcharge. Call (714) 410-2784 now.",
+      "Emergency HVAC service throughout Southern California. Open 24/7, and real people answer. No emergency surcharge. Call (714) 410-2784 now.",
     path: "/emergency-hvac-service",
   });
 }
@@ -62,7 +62,7 @@ const FAQS = [
   {
     question: "How fast can you respond to an emergency call?",
     answer:
-      "We're based in Yorba Linda and dispatch to all of Orange County. Most emergency calls see a technician arrive within 1–4 hours same day.",
+      "We're based in Yorba Linda, open 24/7, and dispatch to all of Orange County. Call us and we'll give you the earliest available arrival window.",
   },
   {
     question: "Who answers when I call — a person or a call center?",
@@ -112,7 +112,7 @@ export default function EmergencyHvacPage() {
   ]);
   const serviceSchema = schemaService({
     name: "Emergency HVAC Service Orange County",
-    description: "Same-day emergency AC and heating repair across Orange County. Real people answer — no voicemail. No emergency surcharge.",
+    description: "24/7 emergency AC and heating repair across Orange County. Real people answer, no voicemail. No emergency surcharge.",
     url: "/emergency-hvac-service",
     areaServed: "Orange County",
   });
@@ -157,7 +157,7 @@ export default function EmergencyHvacPage() {
               </h1>
 
               <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
-                AC completely stopped? Heater not working? Call now — a technician can be at your home today. Real people answer, no voicemail.
+                AC completely stopped? Heater not working? Call now, 24/7. Real people answer, no voicemail.
               </p>
 
               {/* Mobile phone first */}
@@ -192,7 +192,7 @@ export default function EmergencyHvacPage() {
 
               {/* Trust badges */}
               <div className="flex flex-wrap gap-2">
-                {[...credentialBadges(), "Same-Day Dispatch", "Real Person Answers", "No Emergency Surcharge", "0% Financing"].map((b) => (
+                {[...credentialBadges(), "Open 24/7", "Real Person Answers", "No Emergency Surcharge", "0% Financing"].map((b) => (
                   <span key={b} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/7 border border-white/10 text-xs font-medium text-slate-200">
                     <CheckIcon />
                     {b}
@@ -345,7 +345,7 @@ export default function EmergencyHvacPage() {
       <section className="py-12 bg-red-600" aria-label="Emergency CTA">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-white mb-3">Don&rsquo;t Suffer Through the Heat. Call Now — We Answer Live.</h2>
-          <p className="text-red-100 text-lg mb-6">Same-day emergency HVAC service across Orange County. No voicemail. No surcharges.</p>
+          <p className="text-red-100 text-lg mb-6">24/7 emergency HVAC service across Orange County. No voicemail. No surcharges.</p>
           <PhoneLink
             className="inline-flex items-center justify-center gap-2.5 px-10 py-5 bg-white text-red-600 font-bold rounded-xl shadow-lg hover:bg-red-50 active:scale-[0.98] transition-all text-xl"
             showIcon
