@@ -46,18 +46,13 @@ export function schemaHvacBusiness() {
       latitude: SITE.geo.lat,
       longitude: SITE.geo.lng,
     },
+    // Open 24/7 (owner confirmed, Phase 2.3 P3); 00:00 to 23:59 every day is schema.org's form for 24 hours.
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "07:00",
-        closes: "19:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Saturday"],
-        opens: "08:00",
-        closes: "17:00",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        opens: "00:00",
+        closes: "23:59",
       },
     ],
     areaServed: [

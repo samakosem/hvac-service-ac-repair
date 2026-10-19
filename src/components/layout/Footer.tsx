@@ -81,9 +81,8 @@ export default function Footer() {
             <address className="not-italic text-sm text-slate-400 space-y-1.5 mb-4">
               <p>{SITE.address.street}</p>
               <p>{SITE.address.city}, {SITE.address.state} {SITE.address.zip}</p>
-              <p className="text-slate-500 text-xs mt-3">Mon–Fri: {SITE.hours.weekdays}</p>
-              <p className="text-slate-500 text-xs">Sat: {SITE.hours.saturday}</p>
-              <p className="text-slate-500 text-xs">{SITE.hours.sunday}</p>
+              <p className="text-slate-500 text-xs mt-3">{SITE.hours.summary}</p>
+              <p className="text-slate-500 text-xs">Including emergency service</p>
             </address>
             <PhoneLink
               className="inline-flex items-center gap-2 text-hvac-blue-400 hover:text-hvac-blue-300 font-semibold text-sm transition-colors"

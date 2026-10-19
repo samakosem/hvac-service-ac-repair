@@ -16,10 +16,11 @@ export const SITE = {
     lat: 33.8886,
     lng: -117.8131,
   },
+  // Owner confirmed (Phase 2.3 P3): open 24 hours a day, 7 days a week, including emergency service.
   hours: {
-    weekdays: "7:00 AM – 7:00 PM",
-    saturday: "8:00 AM – 5:00 PM",
-    sunday: "Emergency Service Available",
+    summary: "Open 24 hours, 7 days a week",
+    everyDay: "Open 24 hours",
+    emergency: "Available 24/7",
   },
   serviceArea: "Orange County, CA and surrounding counties",
   social: {

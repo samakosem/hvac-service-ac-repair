@@ -473,7 +473,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
             {page.ctaBannerText}
           </h2>
           <p className="text-white/80 text-lg mb-6">
-            Call now or request a free estimate online. We're open 24/7.
+            Call now or request a free estimate online. We&rsquo;re open 24/7.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <PhoneLink
@@ -490,7 +490,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
             </a>
           </div>
           <p className="text-white/60 text-sm mt-4">
-            {SITE.address.full}{licenseNumberLabel() && ` · ${licenseNumberLabel()}`} · {SITE.hours.weekdays} Mon–Fri · {SITE.hours.saturday} Sat
+            {SITE.address.full}{licenseNumberLabel() && ` · ${licenseNumberLabel()}`} · {SITE.hours.summary}
           </p>
         </div>
       </section>

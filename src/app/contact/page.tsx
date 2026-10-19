@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const CONTACT_FAQS = [
   {
     q: "How quickly can you respond to a service request?",
-    a: "For emergency calls, we aim to respond within hours. For standard service requests submitted online, we follow up within 1 business hour during operating hours (Mon–Fri 7 AM–7 PM, Sat 8 AM–5 PM).",
+    a: "We're open 24 hours a day, 7 days a week, including emergency service. Call us for the fastest help. For requests submitted online, we'll contact you to schedule.",
   },
   {
     q: "Do you charge a diagnostic fee?",
@@ -30,7 +30,7 @@ const CONTACT_FAQS = [
   },
   {
     q: "Do you offer after-hours or weekend service?",
-    a: "Yes. Saturday hours are 8:00 AM – 5:00 PM. Emergency service is available on Sundays — call us directly for immediate help.",
+    a: "Yes. We're open 24 hours a day, 7 days a week, including weekends and emergency service. Call us directly.",
   },
 ];
 
@@ -158,16 +158,12 @@ export default function ContactPage() {
                   <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mb-2">Hours</p>
                   <ul className="space-y-1.5 text-sm text-slate-700">
                     <li className="flex justify-between">
-                      <span>Mon – Fri</span>
-                      <span className="font-medium">{SITE.hours.weekdays}</span>
+                      <span>Every day</span>
+                      <span className="font-medium">{SITE.hours.everyDay}</span>
                     </li>
                     <li className="flex justify-between">
-                      <span>Saturday</span>
-                      <span className="font-medium">{SITE.hours.saturday}</span>
-                    </li>
-                    <li className="flex justify-between">
-                      <span>Sunday</span>
-                      <span className="font-medium text-copper-600">{SITE.hours.sunday}</span>
+                      <span>Emergency service</span>
+                      <span className="font-medium text-copper-600">{SITE.hours.emergency}</span>
                     </li>
                   </ul>
                 </div>

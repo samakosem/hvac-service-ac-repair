@@ -612,7 +612,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
                   <PhoneIcon className="w-5 h-5 text-copper-400 shrink-0" />
                   <div>
                     <p className="text-white font-bold text-lg">{SITE.phoneDisplay}</p>
-                    <p className="text-slate-400 text-xs">Mon–Fri {SITE.hours.weekdays} · Sat {SITE.hours.saturday}</p>
+                    <p className="text-slate-400 text-xs">{SITE.hours.summary}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">

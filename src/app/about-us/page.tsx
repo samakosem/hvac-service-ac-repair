@@ -171,16 +171,12 @@ export default function AboutPage() {
                 <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mb-2">Hours</p>
                 <ul className="space-y-1.5 text-sm text-slate-700">
                   <li className="flex justify-between">
-                    <span>Mon – Fri</span>
-                    <span className="font-medium">{SITE.hours.weekdays}</span>
+                    <span>Every day</span>
+                    <span className="font-medium">{SITE.hours.everyDay}</span>
                   </li>
                   <li className="flex justify-between">
-                    <span>Saturday</span>
-                    <span className="font-medium">{SITE.hours.saturday}</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span>Sunday</span>
-                    <span className="font-medium text-copper-600">{SITE.hours.sunday}</span>
+                    <span>Emergency service</span>
+                    <span className="font-medium text-copper-600">{SITE.hours.emergency}</span>
                   </li>
                 </ul>
               </div>

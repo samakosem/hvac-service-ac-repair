@@ -48,9 +48,12 @@ export default function ReviewsSection() {
 
         {/* Google review CTA */}
         <div className="rounded-2xl bg-white/5 border border-white/10 p-8 text-center max-w-2xl mx-auto">
-          <div className="flex justify-center mb-3">
-            <Stars />
-          </div>
+          {/* Five gold stars read as a rating claim, so they only show with a verified rating. */}
+          {rating && (
+            <div className="flex justify-center mb-3">
+              <Stars />
+            </div>
+          )}
           <h3 className="text-white font-bold text-lg mb-2">Had service with us?</h3>
           <p className="text-slate-400 text-sm leading-relaxed mb-5">
             Your review helps other local homeowners find honest, reliable HVAC service.
@@ -58,7 +61,7 @@ export default function ReviewsSection() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
-              href="https://www.google.com/maps/search/HVAC+Service+AC+Repair+Yorba+Linda"
+              href={GOOGLE_PROFILE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-slate-800 font-semibold text-sm hover:bg-slate-50 transition-colors shadow-sm"

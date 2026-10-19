@@ -434,7 +434,7 @@ export default function AcRepairPage() {
                 Free estimates. Open 24/7. Real people answer your call. Based in Yorba Linda — serving all of Orange County.
               </p>
               <div className="flex flex-col gap-2">
-                <p className="text-slate-400 text-sm">Mon–Fri {SITE.hours.weekdays} · Sat {SITE.hours.saturday}</p>
+                <p className="text-slate-400 text-sm">{SITE.hours.summary}</p>
                 <p className="text-slate-400 text-sm">{SITE.address.full}</p>
                 {credentialBadges().length > 0 && (
                   <p className="text-slate-400 text-sm">{[licenseNumberLabel(), CREDENTIALS.epaCertified ? "EPA Certified" : null, CREDENTIALS.insured ? "Insured" : null].filter(Boolean).join(" · ")}</p>
