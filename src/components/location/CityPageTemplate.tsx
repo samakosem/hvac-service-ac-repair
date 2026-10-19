@@ -266,9 +266,15 @@ export default function CityPageTemplate({ city, county, serviceLinks, hub }: Pr
                 <address className="not-italic mt-4 text-xs text-slate-500 space-y-0.5">
                   <p>Based at: {SITE.address.street}</p>
                   <p>{SITE.address.city}, {SITE.address.state} {SITE.address.zip}</p>
-                  <p className="mt-2">Mon–Fri: {SITE.hours.weekdays}</p>
-                  <p>Sat: {SITE.hours.saturday}</p>
-                  <p>{SITE.hours.sunday}</p>
+                  {hub ? (
+                    <p className="mt-2">Open 24 hours, 7 days a week, including emergency service</p>
+                  ) : (
+                    <>
+                      <p className="mt-2">Mon–Fri: {SITE.hours.weekdays}</p>
+                      <p>Sat: {SITE.hours.saturday}</p>
+                      <p>{SITE.hours.sunday}</p>
+                    </>
+                  )}
                 </address>
               </div>
 
@@ -352,6 +358,7 @@ export default function CityPageTemplate({ city, county, serviceLinks, hub }: Pr
                     heading=""
                     subheading={hub.formNote}
                     ctaLabel="Request Service"
+                    formLabel="Request HVAC service"
                   />
                 </div>
               </div>

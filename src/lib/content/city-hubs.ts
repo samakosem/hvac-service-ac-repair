@@ -49,14 +49,15 @@ const R22_FAQ = {
 };
 
 const SHARED = {
-  sidebarNote: "Call us or send a request online, and we will contact you to schedule.",
+  sidebarNote:
+    "We are open 24 hours a day, 7 days a week, including emergency service. Call us or send a request online.",
   formNote: "Tell us what is going on and where. We will contact you to schedule.",
 };
 
 export const CITY_HUBS: Record<string, CityHubContent> = {
   "orange-county/placentia": {
     meta: {
-      title: "HVAC Service in Placentia, CA: Heating and Air Conditioning",
+      title: "Placentia HVAC: Furnace & AC Service",
       description:
         "Heating and air conditioning service in Placentia, CA: furnace and heating repair, AC repair, tune-ups and new system installation. Call (714) 410-2784.",
     },
@@ -154,7 +155,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
 
   "orange-county/costa-mesa": {
     meta: {
-      title: "HVAC Service in Costa Mesa, CA: Heating and Air Conditioning",
+      title: "Costa Mesa HVAC Repair & Installation",
       description:
         "HVAC service in Costa Mesa, CA: furnace and heating repair, AC and HVAC installation, and maintenance for coastal homes. Call (714) 410-2784.",
     },
@@ -256,7 +257,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
 
   "orange-county/yorba-linda": {
     meta: {
-      title: "HVAC Service in Yorba Linda, CA: Heating and Air Conditioning",
+      title: "Yorba Linda HVAC: Furnace & AC Service",
       description:
         "Heating and air conditioning from our shop on Yorba Linda Blvd: furnace and heating repair, AC service, tune-ups and replacements. Call (714) 410-2784.",
     },

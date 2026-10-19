@@ -45,6 +45,7 @@ type Props = {
   heading?: string;
   subheading?: string;
   ctaLabel?: string;
+  formLabel?: string;
   defaultService?: string;
   variant?: "light" | "dark";
 };
@@ -53,6 +54,7 @@ export default function SingleStepQuoteForm({
   heading,
   subheading,
   ctaLabel = "Get Same-Day Service",
+  formLabel = "Request same-day HVAC service",
   defaultService = "",
   variant = "light",
 }: Props) {
@@ -121,7 +123,7 @@ export default function SingleStepQuoteForm({
     : "form-field";
 
   return (
-    <form onSubmit={handleSubmit} noValidate aria-label="Request same-day HVAC service">
+    <form onSubmit={handleSubmit} noValidate aria-label={formLabel}>
       {(heading || subheading) && (
         <div className="mb-4">
           {heading && <p className={`font-bold text-lg ${variant === "dark" ? "text-white" : "text-slate-900"}`}>{heading}</p>}
