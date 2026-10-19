@@ -221,7 +221,7 @@ export default function AboutPage() {
             {[
               {
                 role: "Field Technicians",
-                body: "Our field techs hold EPA 608 certification and carry the most common repair parts on every truck — capacitors, contactors, thermostats, and refrigerant — so most repairs complete on the first visit.",
+                body: "Field techs handle diagnostics, repairs and maintenance visits, and give you a written quote before any repair work begins.",
               },
               {
                 role: "Senior Technicians",

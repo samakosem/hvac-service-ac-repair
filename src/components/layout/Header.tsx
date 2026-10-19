@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 import { SITE } from "@/lib/config/site";
 import { pushEvent } from "@/lib/gtm";
 import PhoneLink from "@/components/ui/PhoneLink";
+import { licenseLabel } from "@/lib/config/credentials";
+
+const LICENSE_LABEL = licenseLabel();
 
 const NAV_LINKS = [
   {
@@ -65,13 +68,17 @@ export default function Header() {
         <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-9 text-xs font-medium text-white">
           <div className="flex items-center gap-5">
-            <span className="flex items-center gap-1.5 whitespace-nowrap">
-              <svg className="w-3.5 h-3.5 text-white/90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              Licensed &amp; Insured
-            </span>
-            <span aria-hidden="true" className="w-px h-3.5 bg-white/25" />
+            {LICENSE_LABEL && (
+              <>
+                <span className="flex items-center gap-1.5 whitespace-nowrap">
+                  <svg className="w-3.5 h-3.5 text-white/90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {LICENSE_LABEL}
+                </span>
+                <span aria-hidden="true" className="w-px h-3.5 bg-white/25" />
+              </>
+            )}
             <span className="flex items-center gap-1.5 whitespace-nowrap font-semibold">
               <span className="relative flex w-2 h-2" aria-hidden="true">
                 <span className="absolute inline-flex w-full h-full rounded-full bg-emerald-300 opacity-70 animate-ping" />

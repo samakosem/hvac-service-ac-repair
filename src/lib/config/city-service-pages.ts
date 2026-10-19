@@ -1,3 +1,4 @@
+import { licenseOrHoursPoint } from "@/lib/config/credentials";
 // City × Service landing page data
 // URL pattern: /air-conditioning/[service]/[city]/
 // Also used for /heating/heating-repair/[city]/ and /hvac-repair/[city]/
@@ -37,7 +38,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/ac-repair",
     metaTitle: "AC Repair in Yorba Linda, CA | Same-Day Service | (714) 410-2784",
     metaDescription:
-      "Fast AC repair in Yorba Linda, CA. Licensed HVAC technicians, same-day appointments, free diagnostic with repair. Call (714) 410-2784).",
+      "Fast AC repair in Yorba Linda, CA. Same-day appointments, free diagnostic with repair. Call (714) 410-2784).",
     h1: "AC Repair in Yorba Linda, CA — Same-Day Service",
     heroSubheadline:
       "Your AC stopped working? We diagnose, quote, and fix it — usually same day. No guesswork, no upsells.",
@@ -66,7 +67,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "Do you work on older R-22 systems?",
         answer:
-          "Yes. We're EPA-certified to handle R-22 refrigerant. Many Yorba Linda homes built in the 1970s–1990s still run R-22 systems, and we can service, recharge, or help you transition to a modern R-410A system.",
+          "Yes. Many Yorba Linda homes built in the 1970s–1990s still run R-22 systems, and we can service, recharge, or help you transition to a modern R-410A system.",
       },
       {
         question: "Do you offer financing?",
@@ -86,10 +87,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
         heading: "We're Based Here",
         body: "Our shop is on Yorba Linda Blvd. Shorter drive = faster response than companies commuting from other cities.",
       },
-      {
-        heading: "CSLB Licensed & Fully Insured",
-        body: "Fully licensed California contractor. EPA-certified technicians. Background-checked team.",
-      },
+      licenseOrHoursPoint(),
       {
         heading: "Same Technician Start to Finish",
         body: "You deal with one person — not a rotating cast. Your tech diagnoses, quotes, and fixes the problem.",
@@ -102,7 +100,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     servicesListHeadline: "What We Repair in Yorba Linda Homes",
     servicesList: [
       "Capacitor & contactor replacement",
-      "Refrigerant leak detection & recharge (EPA-certified)",
+      "Refrigerant leak detection & recharge",
       "Compressor diagnosis & replacement",
       "Thermostat & control board repair",
       "Condenser fan motor replacement",
@@ -122,7 +120,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/ac-repair",
     metaTitle: "AC Repair in Anaheim, CA | Same-Day HVAC Service | (714) 410-2784",
     metaDescription:
-      "AC repair in Anaheim, CA — same-day service for homes and businesses. Licensed technicians, free diagnostic with repair. Call (714) 410-2784).",
+      "AC repair in Anaheim, CA — same-day service for homes and businesses. Free diagnostic with repair. Call (714) 410-2784).",
     h1: "AC Repair in Anaheim, CA — Same-Day Service",
     heroSubheadline:
       "Anaheim's heat won't wait. We diagnose, quote, and repair your AC — usually the same day you call.",
@@ -289,10 +287,10 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/ac-repair",
     metaTitle: "AC Repair in Irvine, CA | Same-Day HVAC Service | (714) 410-2784",
     metaDescription:
-      "Fast AC repair in Irvine, CA for homes, condos, and offices. Licensed HVAC technicians, same-day service, free estimates. Call (714) 410-2784.",
+      "Fast AC repair in Irvine, CA for homes, condos, and offices. Same-day service, free estimates. Call (714) 410-2784.",
     h1: "AC Repair in Irvine, CA — Same-Day Service",
     heroSubheadline:
-      "Premium AC repair for Irvine homes, condos, and office parks — licensed technicians, written warranties, same-day availability.",
+      "Premium AC repair for Irvine homes, condos, and office parks, with same-day availability.",
     localContext:
       "Irvine is master-planned with large HOA communities, tech campuses, and high-rise condos — systems tend to be newer but complex (multi-zone, smart thermostats, inverter compressors). Residents expect premium service and brand-certified technicians. Commercial HVAC is a significant opportunity in the Spectrum and John Wayne Airport corridor. We're familiar with Irvine's HOA requirements and permit processes.",
     urgencyNote: "Serving Woodbridge, Northwood, Quail Hill, Turtle Rock, the Spectrum, and all Irvine communities.",

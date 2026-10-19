@@ -8,12 +8,13 @@ import { SITE } from "@/lib/config/site";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import type { PPCCity } from "@/lib/config/ppc-cities";
 import { QuickChecksGrid, QuickChecksHeader } from "@/components/ui/QuickChecks";
+import { CREDENTIALS, licenseLabel } from "@/lib/config/credentials";
 
 // ── Static trust data ────────────────────────────────────────────────────────
 
 const TRUST_BADGES = [
-  { label: "Licensed & Insured", icon: "shield" },
-  { label: "EPA Certified", icon: "leaf" },
+  ...(licenseLabel() ? [{ label: licenseLabel() as string, icon: "shield" }] : []),
+  ...(CREDENTIALS.epaCertified ? [{ label: "EPA Certified", icon: "leaf" }] : []),
   { label: "Same-Day Service", icon: "bolt" },
   { label: "Free Estimates", icon: "tag" },
 ];
@@ -327,7 +328,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
             Free In-Home Estimate on Any New System
           </h2>
           <p className="text-white/85 text-lg max-w-2xl mx-auto mb-6">
-            No obligations, no pressure. A licensed technician comes to your {city.name} home, evaluates your system, and gives you a written quote — completely free.
+            No obligations, no pressure. A technician comes to your {city.name} home, evaluates your system, and gives you a written quote — completely free.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <PhoneLink

@@ -96,7 +96,7 @@ export const PROMOTIONS: Promotion[] = [
     category: "inspection",
     categoryLabel: "Inspection",
     description:
-      "Not sure if your system needs repair or replacement? Schedule a visit and we'll send a licensed tech to inspect your entire HVAC system at no charge. You'll get a plain-English rundown of what we find — no obligation to proceed.",
+      "Not sure if your system needs repair or replacement? Schedule a visit and we'll send a technician to inspect your entire HVAC system at no charge. You'll get a plain-English rundown of what we find — no obligation to proceed.",
     disclaimer: "Available for scheduled service visits in our service area. One inspection per household. Cannot be combined with other promotional offers. Restrictions may apply.",
     ctaText: "Schedule Free Inspection",
     ctaHref: "/contact",

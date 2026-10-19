@@ -4,6 +4,7 @@ import JsonLd from "@/components/ui/JsonLd";
 import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import PhoneLink from "@/components/ui/PhoneLink";
 import { SITE } from "@/lib/config/site";
+import { CREDENTIALS, credentialBadges, licenseNumberLabel } from "@/lib/config/credentials";
 import { IMG_HERO } from "@/lib/config/images";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import type { CityServicePage } from "@/lib/config/city-service-pages";
@@ -195,7 +196,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
 
               {/* Trust badges */}
               <div className="flex flex-wrap gap-2">
-                {["Licensed & Insured", "EPA Certified", "Same-Day Service", "Free Estimates", "0% Financing"].map((b) => (
+                {[...credentialBadges(), "Same-Day Service", "Free Estimates", "0% Financing"].map((b) => (
                   <span key={b} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/7 border border-white/10 text-xs font-medium text-slate-200">
                     <CheckIcon className="w-3 h-3 text-emerald-400" />
                     {b}
@@ -237,8 +238,8 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-slate-300">
             {[
-              { icon: <ShieldIcon className="w-4 h-4 text-copper-400" />, text: "CSLB Licensed & Insured" },
-              { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "EPA Certified" },
+              ...(licenseNumberLabel() ? [{ icon: <ShieldIcon className="w-4 h-4 text-copper-400" />, text: licenseNumberLabel() as string }] : []),
+              ...(CREDENTIALS.epaCertified ? [{ icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "EPA Certified" }] : []),
               { icon: <BoltIcon className="w-4 h-4 text-copper-400" />, text: "Same-Day Availability" },
               { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "Free Estimates" },
               { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "0% Financing Available" },
@@ -489,7 +490,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
             </a>
           </div>
           <p className="text-white/60 text-sm mt-4">
-            {SITE.address.full} · CSLB Licensed & Insured · {SITE.hours.weekdays} Mon–Fri · {SITE.hours.saturday} Sat
+            {SITE.address.full}{licenseNumberLabel() && ` · ${licenseNumberLabel()}`} · {SITE.hours.weekdays} Mon–Fri · {SITE.hours.saturday} Sat
           </p>
         </div>
       </section>

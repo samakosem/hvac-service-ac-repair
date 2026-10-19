@@ -5,6 +5,7 @@ import JsonLd from "@/components/ui/JsonLd";
 import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import PhoneLink from "@/components/ui/PhoneLink";
 import { SITE } from "@/lib/config/site";
+import { credentialBadges, licenseNumberLabel } from "@/lib/config/credentials";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -191,7 +192,7 @@ export default function EmergencyHvacPage() {
 
               {/* Trust badges */}
               <div className="flex flex-wrap gap-2">
-                {["Licensed & Insured", "Same-Day Dispatch", "Real Person Answers", "No Emergency Surcharge", "0% Financing"].map((b) => (
+                {[...credentialBadges(), "Same-Day Dispatch", "Real Person Answers", "No Emergency Surcharge", "0% Financing"].map((b) => (
                   <span key={b} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/7 border border-white/10 text-xs font-medium text-slate-200">
                     <CheckIcon />
                     {b}
@@ -350,7 +351,7 @@ export default function EmergencyHvacPage() {
             showIcon
             label={`Call ${SITE.phoneDisplay}`}
           />
-          <p className="text-red-200 text-sm mt-4">{SITE.address.full} · CSLB Licensed · 7 Days a Week</p>
+          <p className="text-red-200 text-sm mt-4">{SITE.address.full}{licenseNumberLabel() && ` · ${licenseNumberLabel()}`} · 7 Days a Week</p>
         </div>
       </section>
 

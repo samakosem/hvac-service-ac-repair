@@ -2,6 +2,14 @@ import Link from "next/link";
 import { SITE } from "@/lib/config/site";
 import PhoneLink from "@/components/ui/PhoneLink";
 import { SERVICE_AREA_COUNTIES } from "@/lib/config/locations";
+import { CREDENTIALS, licenseNumberLabel } from "@/lib/config/credentials";
+
+// Only credentials the owner has confirmed (see credentials.ts).
+const CREDENTIAL_BADGES = [
+  licenseNumberLabel(),
+  CREDENTIALS.insured ? "Insured" : null,
+  CREDENTIALS.epaCertified ? "EPA Certified" : null,
+].filter((b): b is string => b !== null);
 
 const FOOTER_SERVICE_LINKS = [
   { label: "Air Conditioning",     href: "/air-conditioning" },
@@ -164,12 +172,13 @@ export default function Footer() {
             </ul>
 
             {/* Trust badges */}
+            {CREDENTIAL_BADGES.length > 0 && (
             <div className="mt-6 pt-5 border-t border-white/8">
               <p className="text-xs text-slate-500 uppercase tracking-wider mb-3">
                 Trusted &amp; Verified
               </p>
               <div className="flex flex-wrap gap-2">
-                {["Licensed", "Insured", "EPA Certified"].map((badge) => (
+                {CREDENTIAL_BADGES.map((badge) => (
                   <span
                     key={badge}
                     className="inline-flex items-center px-2.5 py-1 rounded-md bg-white/6 border border-white/10 text-xs text-slate-300 font-medium"
@@ -182,6 +191,7 @@ export default function Footer() {
                 ))}
               </div>
             </div>
+            )}
           </div>
         </div>
 

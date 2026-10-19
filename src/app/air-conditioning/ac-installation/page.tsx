@@ -4,13 +4,14 @@ import JsonLd from "@/components/ui/JsonLd";
 import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import PhoneLink from "@/components/ui/PhoneLink";
 import { SITE } from "@/lib/config/site";
+import { licenseNumberLabel } from "@/lib/config/credentials";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "AC Installation & Replacement — Free In-Home Estimate | (714) 410-2784",
     description:
-      "New AC system installation throughout Southern California. Free in-home estimates, 0% financing, all major brands. Licensed HVAC contractor. Call (714) 410-2784).",
+      "New AC system installation throughout Southern California. Free in-home estimates, 0% financing, all major brands. Call (714) 410-2784.",
     path: "/air-conditioning/ac-installation",
   });
 }
@@ -59,7 +60,7 @@ const FAQS = [
   {
     question: "Is a free estimate really free?",
     answer:
-      "Yes — completely free, no obligation. A licensed technician visits your home, evaluates your existing system and ductwork, and provides a written quote for the recommended replacement.",
+      "Yes — completely free, no obligation. A technician visits your home, evaluates your existing system and ductwork, and provides a written quote for the recommended replacement.",
   },
 ];
 
@@ -95,7 +96,7 @@ export default function AcInstallationPage() {
   ]);
   const serviceSchema = schemaService({
     name: "AC Installation & Replacement — Free In-Home Estimate",
-    description: "Free in-home estimates for new AC system installation and replacement across Orange County. 0% financing, all major brands, licensed contractor.",
+    description: "Free in-home estimates for new AC system installation and replacement across Orange County. 0% financing, all major brands.",
     url: "/air-conditioning/ac-installation",
     areaServed: "Orange County",
   });
@@ -160,7 +161,7 @@ export default function AcInstallationPage() {
             <div id="estimate-form" className="hidden lg:block bg-white rounded-2xl shadow-xl p-7">
               <SingleStepQuoteForm
                 heading="Schedule Your Free In-Home Estimate"
-                subheading="No pressure. A licensed technician evaluates your home and gives you a written quote — completely free."
+                subheading="No pressure. A technician evaluates your home and gives you a written quote — completely free."
                 ctaLabel="Schedule My Free Estimate"
                 defaultService="AC Installation / Replacement"
               />
@@ -301,7 +302,7 @@ export default function AcInstallationPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {[
-              { n: "01", h: "Free Estimate", b: "Licensed tech visits, evaluates your system and ductwork, provides written quote." },
+              { n: "01", h: "Free Estimate", b: "A technician visits, evaluates your system and ductwork, provides written quote." },
               { n: "02", h: "Equipment Selection", b: "Choose from our recommended systems with full brand comparisons and rebate info." },
               { n: "03", h: "Installation Day", b: "Crew arrives, removes old equipment, installs new system. Most jobs done in one day." },
               { n: "04", h: "Commission & Test", b: "Full system commissioning — we verify airflow, refrigerant charge, and thermostat operation." },
@@ -353,7 +354,7 @@ export default function AcInstallationPage() {
             Ready for a Free In-Home Estimate?
           </h2>
           <p className="text-white/80 text-lg mb-6">
-            No obligation, no pressure. A licensed technician comes to your Orange County home — completely free.
+            No obligation, no pressure. A technician comes to your Orange County home — completely free.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <PhoneLink
@@ -366,7 +367,7 @@ export default function AcInstallationPage() {
               <ArrowIcon className="w-4 h-4" />
             </a>
           </div>
-          <p className="text-white/60 text-sm mt-4">{SITE.address.full} · CSLB Licensed · 0% Financing Available</p>
+          <p className="text-white/60 text-sm mt-4">{SITE.address.full}{licenseNumberLabel() && ` · ${licenseNumberLabel()}`} · 0% Financing Available</p>
         </div>
       </section>
 

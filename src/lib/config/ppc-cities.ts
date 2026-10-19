@@ -1,5 +1,6 @@
 import type { SiteImage } from "@/lib/config/images";
 import { generatePPCCities } from "@/lib/config/ppc-city-generator";
+import { licenseOrHoursPoint } from "@/lib/config/credentials";
 
 export type PPCCity = {
   slug: string;
@@ -131,10 +132,10 @@ export const PPC_CITIES: PPCCity[] = [
     },
     metaTitle: "AC Repair & HVAC Service in Los Angeles, CA — Same-Day Available",
     metaDescription:
-      "Professional AC repair, replacement & HVAC service in Los Angeles, CA. Same-day service. Free estimate. Licensed & insured. Call (714) 410-2784.",
+      "Professional AC repair, replacement & HVAC service in Los Angeles, CA. Same-day service. Free estimate. Call (714) 410-2784.",
     h1: "AC Repair & HVAC Service in Los Angeles, CA",
     heroSubheadline:
-      "Fast AC repair, new system installation & emergency HVAC service across Los Angeles. Licensed technicians — real people answer your call.",
+      "Fast AC repair, new system installation & emergency HVAC service across Los Angeles. Real people answer your call.",
     climate:
       "Los Angeles experiences a Mediterranean climate with hot, dry summers — but inland neighborhoods like the Valley, Silver Lake, and East LA can see temperatures 10–20°F hotter than the coast. Santa Ana wind events push interior temperatures higher still, stressing older equipment and triggering breakdowns at the worst possible time.",
     commonProblems:
@@ -154,10 +155,7 @@ export const PPC_CITIES: PPCCity[] = [
         heading: "Serving All of LA",
         body: "From the Valley to the Westside, Silver Lake to Eagle Rock — we dispatch technicians across Los Angeles with same-day availability.",
       },
-      {
-        heading: "CSLB Licensed & Insured",
-        body: "We're a fully licensed California contractor. Our technicians are background-checked, EPA-certified, and professionally trained.",
-      },
+      licenseOrHoursPoint(),
       {
         heading: "Free Estimates on Replacements",
         body: "New system quotes are always free. We provide written estimates so you can compare with confidence — no pressure, no obligation.",
@@ -214,7 +212,7 @@ export const PPC_CITIES: PPCCity[] = [
     },
     metaTitle: "AC Repair & HVAC Service in Orange County, CA — (714) 410-2784",
     metaDescription:
-      "Your local Orange County HVAC contractor. Same-day AC repair, replacement & maintenance. Free estimates. Licensed & insured. Call (714) 410-2784.",
+      "Your local Orange County HVAC contractor. Same-day AC repair, replacement & maintenance. Free estimates. Call (714) 410-2784.",
     h1: "AC Repair & HVAC Service in Orange County, CA",
     heroSubheadline:
       "Orange County's trusted HVAC team — same-day AC repair, system installation & free estimates. Based in Yorba Linda, serving all of OC.",
@@ -380,7 +378,7 @@ export const PPC_CITIES: PPCCity[] = [
     },
     metaTitle: "AC Repair & HVAC Service in Santa Clarita, CA — Same-Day Service",
     metaDescription:
-      "Fast AC repair & HVAC service in Santa Clarita, CA. Same-day availability during heat waves. Free estimates. Licensed & insured. Call (714) 410-2784.",
+      "Fast AC repair & HVAC service in Santa Clarita, CA. Same-day availability during heat waves. Free estimates. Call (714) 410-2784.",
     h1: "AC Repair & HVAC Service in Santa Clarita, CA",
     heroSubheadline:
       "Same-day AC repair & HVAC service for Santa Clarita homes — because summer in the SCV is no time to wait.",
@@ -463,10 +461,10 @@ export const PPC_CITIES: PPCCity[] = [
     },
     metaTitle: "AC Repair & HVAC Service in Laguna Niguel, CA — Free Estimates",
     metaDescription:
-      "Expert AC repair, installation & HVAC service in Laguna Niguel, CA. Same-day service available. Licensed & insured. Free estimate. Call (714) 410-2784.",
+      "Expert AC repair, installation & HVAC service in Laguna Niguel, CA. Same-day service available. Free estimate. Call (714) 410-2784.",
     h1: "AC Repair & HVAC Service in Laguna Niguel, CA",
     heroSubheadline:
-      "Same-day AC repair, premium system installation & free estimates for Laguna Niguel homeowners. Licensed. Local. Trusted.",
+      "Same-day AC repair, premium system installation & free estimates for Laguna Niguel homeowners. Local and trusted.",
     climate:
       "Laguna Niguel enjoys a pleasant coastal-adjacent climate, but warm summers and occasional inland heat events mean air conditioning is essential — not optional. The city's mix of newer master-planned communities and older hillside homes creates a range of HVAC needs, from routine maintenance on aging systems to full replacements and ductless installations in homes with complex layouts.",
     commonProblems:

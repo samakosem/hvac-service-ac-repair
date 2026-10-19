@@ -174,7 +174,7 @@ export default function AcNotCoolingPage() {
                 A Free Diagnostic Tells You Exactly What&rsquo;s Wrong
               </h2>
               <p className="text-slate-300 text-lg leading-relaxed">
-                Our licensed technician will diagnose the exact cause — and give you a written quote before any work starts. No charge for the diagnostic.
+                Our technician will diagnose the exact cause — and give you a written quote before any work starts. No charge for the diagnostic.
               </p>
               <div className="flex flex-col gap-3">
                 {["Same-day appointments available", "Written quote — no surprises", "Free diagnostic — no charge", "All brands serviced", "Orange County-wide coverage"].map((item) => (

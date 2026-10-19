@@ -1,4 +1,5 @@
 import type { PPCCity } from "@/lib/config/ppc-cities";
+import { licenseOrHoursPoint } from "@/lib/config/credentials";
 
 // ─── Image pools (rotate by city index) ──────────────────────────────────────
 const HERO_IMAGES = [
@@ -334,10 +335,7 @@ function whyUsPoints(city: CityEntry): PPCCity["whyUsPoints"] {
       heading: "Transparent Flat-Rate Pricing",
       body: "You receive a written quote before any work begins. No surprise charges, no upselling to a replacement when a repair is the right call. Free diagnostic on every service call.",
     },
-    {
-      heading: "Licensed, Insured, Background-Checked",
-      body: "Every technician is California-licensed, fully insured, and background-checked before entering your home. We carry liability coverage and workers' compensation on every job.",
-    },
+    licenseOrHoursPoint(),
   ];
 }
 
@@ -384,7 +382,7 @@ export function generatePPCCities(existingSlugs: Set<string>): PPCCity[] {
       metaTitle: `AC Repair & HVAC Service in ${city.name}, CA — Same-Day Service`,
       metaDescription: `Expert AC repair, installation & HVAC service in ${city.name}, CA. Same-day availability. Free estimates on replacements. Call (714) 410-2784 — we answer 7 days a week.`,
       h1: `AC Repair & HVAC Service in ${city.name}, CA`,
-      heroSubheadline: `Same-day AC repair, system replacement & HVAC maintenance for ${city.name} homes. Licensed technicians — real people answer your call 7 days a week.`,
+      heroSubheadline: `Same-day AC repair, system replacement & HVAC maintenance for ${city.name} homes. Real people answer your call 7 days a week.`,
       climate: REGION_CLIMATE[city.region],
       commonProblems: REGION_COMMON_PROBLEMS[city.region],
       homeownerConcerns: REGION_HOMEOWNER_CONCERNS[city.region],

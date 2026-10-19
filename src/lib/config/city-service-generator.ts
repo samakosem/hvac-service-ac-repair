@@ -6,6 +6,7 @@
 
 import { getAllCities, type City } from "@/lib/config/locations";
 import type { CityServicePage } from "@/lib/config/city-service-pages";
+import { licenseOrHoursPoint } from "@/lib/config/credentials";
 
 // ─── Response time by county ─────────────────────────────────────────────────
 
@@ -184,10 +185,7 @@ function faqs(city: City, serviceSlug: string): { question: string; answer: stri
 
 function whyUsPoints(city: City, serviceSlug: string): { heading: string; body: string }[] {
   const basePoints = [
-    {
-      heading: "CSLB Licensed & Fully Insured",
-      body: "Fully licensed California contractor. EPA-certified technicians. Background-checked team.",
-    },
+    licenseOrHoursPoint(),
     {
       heading: "Written Quote Before Any Work",
       body: "You approve the price in writing before we start. No bill surprises.",
@@ -283,7 +281,7 @@ function servicesList(serviceSlug: string): string[] {
     case "ac-repair":
       return [
         "Capacitor & contactor replacement",
-        "Refrigerant leak detection & recharge (EPA-certified)",
+        "Refrigerant leak detection & recharge",
         "Compressor diagnosis & replacement",
         "Thermostat & control board repair",
         "Condenser fan motor replacement",
@@ -445,7 +443,7 @@ function metaTitle(city: City, serviceSlug: string): string {
 function metaDescription(city: City, serviceSlug: string): string {
   switch (serviceSlug) {
     case "ac-repair":
-      return `Fast AC repair in ${city.name}, CA. Licensed HVAC technicians, same-day appointments, free diagnostic with repair. Call (714) 410-2784.`;
+      return `Fast AC repair in ${city.name}, CA. Same-day appointments, free diagnostic with repair. Call (714) 410-2784.`;
     case "emergency-ac-repair":
       return `Emergency AC repair in ${city.name}, CA. Same-day service — real people answer, no voicemail. Free diagnostic, no emergency surcharge. Call (714) 410-2784.`;
     case "heating-repair":

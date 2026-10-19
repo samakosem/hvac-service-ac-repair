@@ -192,7 +192,7 @@ export const SERVICES: Service[] = [
     shortTitle: "Refrigerant Service",
     tagline: "Restore cooling performance with proper refrigerant service",
     description:
-      "EPA-certified refrigerant handling for R-22, R-410A, and R-32 systems. We locate and repair refrigerant leaks before recharging to prevent recurrence.",
+      "Refrigerant service for R-22, R-410A, and R-32 systems. We locate and repair refrigerant leaks before recharging to prevent recurrence.",
     icon: "tank",
     category: "cooling",
     featured: false,
