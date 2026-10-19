@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { SERVICE_AREA_COUNTIES, getCountyBySlug, getCityBySlug } from "@/lib/config/locations";
 import { getCityMeta } from "@/lib/content/locations";
+import { getCityHub } from "@/lib/content/city-hubs";
 import CityPageTemplate from "@/components/location/CityPageTemplate";
 import { cityServiceLinks } from "@/lib/config/city-service-links";
 
@@ -26,7 +27,7 @@ export async function generateMetadata({
   const county = getCountyBySlug(countySlug);
   const city = getCityBySlug(citySlug, countySlug);
   if (!county || !city) return {};
-  const meta = getCityMeta(city.name, county.name);
+  const meta = getCityHub(countySlug, citySlug)?.meta ?? getCityMeta(city.name, county.name);
   return buildMetadata({
     title: meta.title,
     description: meta.description,
@@ -44,5 +45,12 @@ export default async function CityPage({
   const city = getCityBySlug(citySlug, countySlug);
   if (!county || !city) notFound();
 
-  return <CityPageTemplate city={city} county={county} serviceLinks={cityServiceLinks(city.slug)} />;
+  return (
+    <CityPageTemplate
+      city={city}
+      county={county}
+      serviceLinks={cityServiceLinks(city.slug)}
+      hub={getCityHub(countySlug, citySlug)}
+    />
+  );
 }
