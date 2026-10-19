@@ -212,7 +212,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
             <div id="estimate-form" className="hidden lg:block bg-white rounded-2xl shadow-xl p-7 border border-slate-100">
               <SingleStepQuoteForm
                 heading={`Get ${isEmergency ? "Emergency Help" : "Same-Day Service"} in ${page.cityName}`}
-                subheading={`We respond within 1 hour · Average arrival: ${page.responseTime}`}
+                subheading="Call us 24/7 or send a request. We'll contact you to schedule."
                 ctaLabel={ctaLabel}
                 defaultService={defaultService}
               />
@@ -226,7 +226,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
         <div className="max-w-xl mx-auto">
           <SingleStepQuoteForm
             heading={`Free Estimate in ${page.cityName}`}
-            subheading={`We respond within 1 hour · Average arrival: ${page.responseTime}`}
+            subheading="Call us 24/7 or send a request. We'll contact you to schedule."
             ctaLabel={ctaLabel}
             defaultService={defaultService}
           />
@@ -329,12 +329,12 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
               {
                 n: "01",
                 heading: "Call or Submit",
-                body: "Call or fill the form above. A real person confirms availability — usually within 1 hour.",
+                body: "Call or fill out the form above. We'll confirm a time with you.",
               },
               {
                 n: "02",
-                heading: `Technician Arrives ${isEmergency ? "Same Day" : "Same Day"}`,
-                body: `Your tech arrives with a written quote. Average arrival in ${page.cityName}: ${page.responseTime}.`,
+                heading: "Technician Arrives",
+                body: "Your tech diagnoses the problem and gives you a written quote before any work.",
               },
               {
                 n: "03",
@@ -473,7 +473,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
             {page.ctaBannerText}
           </h2>
           <p className="text-white/80 text-lg mb-6">
-            Call now or request a free estimate online. We respond within 1 hour.
+            Call now or request a free estimate online. We're open 24/7.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <PhoneLink

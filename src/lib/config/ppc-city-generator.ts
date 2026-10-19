@@ -307,7 +307,7 @@ function repairBody(city: CityEntry): string {
   const heatNote = ["riverside", "san-bernardino"].includes(city.region)
     ? `In ${city.county}'s extreme heat, a broken AC is an urgent health issue — not just an inconvenience.`
     : `When your AC breaks down in ${city.name}, fast diagnosis is critical.`;
-  return `${heatNote} Our technicians arrive with a fully stocked van and diagnose the issue on the first visit. We repair all major brands — Lennox, Carrier, Trane, Goodman, Rheem, York — and most repairs are completed the same day. Common repairs include capacitor and contactor replacement, refrigerant recharge, evaporator coil cleaning, blower motor repair, and condensate drain clearing.`;
+  return `${heatNote} Our technicians diagnose the problem and give you a written quote before any work. We repair all major brands — Lennox, Carrier, Trane, Goodman, Rheem, York. Common repairs include capacitor and contactor replacement, refrigerant recharge, evaporator coil cleaning, blower motor repair, and condensate drain clearing.`;
 }
 
 function installBody(city: CityEntry): string {
@@ -328,8 +328,8 @@ function whyUsPoints(city: CityEntry): PPCCity["whyUsPoints"] {
       body: `Our technicians are familiar with ${city.county}'s housing stock, permit requirements, and the HVAC brands most common in the area. We're not a national franchise — we're a local company that depends on referrals.`,
     },
     {
-      heading: "Same-Day Service Available",
-      body: `We keep our schedule flexible to accommodate emergency calls throughout ${city.name} and surrounding areas. Most customers calling before noon get a same-day appointment.`,
+      heading: "Flexible Scheduling",
+      body: `We keep our schedule flexible to accommodate emergency calls throughout ${city.name} and surrounding areas.`,
     },
     {
       heading: "Transparent Flat-Rate Pricing",

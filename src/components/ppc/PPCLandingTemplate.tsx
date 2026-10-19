@@ -27,8 +27,8 @@ const PROCESS_STEPS = [
   },
   {
     number: "02",
-    heading: "Same-Day Dispatch",
-    body: "We confirm a technician and arrival window. Most customers get same-day service when they call before noon.",
+    heading: "We Schedule Your Visit",
+    body: "We confirm a technician and an arrival window with you.",
   },
   {
     number: "03",
@@ -291,7 +291,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
               <div id="estimate-form" className="hidden lg:block bg-white rounded-2xl shadow-xl p-6 border border-slate-100">
                 <SingleStepQuoteForm
                   heading={`Get Your Free Estimate in ${city.name}`}
-                  subheading="We respond within 1 hour during business hours."
+                  subheading="We'll contact you to schedule."
                 />
               </div>
 
@@ -312,7 +312,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
         <div className="max-w-xl mx-auto">
           <SingleStepQuoteForm
             heading={`Free Estimate in ${city.name}`}
-            subheading="We respond within 1 hour during business hours."
+            subheading="We'll contact you to schedule."
           />
         </div>
       </div>
@@ -639,7 +639,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
             <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-8 border border-white/10">
               <SingleStepQuoteForm
                 heading={`Request Service in ${city.name}`}
-                subheading="We'll respond within 1 hour during business hours."
+                subheading="We'll contact you to schedule."
               />
             </div>
           </div>

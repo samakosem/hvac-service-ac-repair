@@ -82,7 +82,7 @@ export default function ContactPage() {
               <div className="rounded-2xl border border-slate-200 bg-white shadow-card p-6 sm:p-8">
                 <SingleStepQuoteForm
                   heading="Request a Free Estimate"
-                  subheading="Fill out the form and we'll follow up within 1 hour during business hours."
+                  subheading="Fill out the form and we'll contact you to schedule."
                 />
               </div>
             </div>

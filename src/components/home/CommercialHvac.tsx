@@ -39,7 +39,7 @@ export default function CommercialHvac() {
             </h2>
             <p className="text-slate-400 leading-relaxed">
               From single-unit offices to multi-tenant retail centers, we provide commercial HVAC service
-              built around your schedule and your tenants. Fast response, clear communication, and
+              built around your schedule and your tenants. Clear communication and
               maintenance programs that reduce costly emergency calls.
             </p>
 

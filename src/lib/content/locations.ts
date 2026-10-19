@@ -24,14 +24,14 @@ export const COUNTY_FAQS: Record<string, { question: string; answer: string }[]>
   ],
   "orange-county": [
     {
-      question: "Do you offer same-day HVAC service across all of Orange County?",
+      question: "Do you serve all of Orange County?",
       answer:
-        "We provide same-day service for most of Orange County. Cities close to our Yorba Linda shop — Placentia, Anaheim, Brea, Fullerton, Orange — typically get morning-to-afternoon same-day windows. Farther cities like San Clemente or Laguna Niguel also get same-day service for most calls, though arrival windows may be slightly later.",
+        "Yes, 24 hours a day, 7 days a week. Cities close to our Yorba Linda shop, such as Placentia, Anaheim, Brea, Fullerton and Orange, are a short drive away. For farther cities like San Clemente or Laguna Niguel, arrival windows may be later. Call us and we'll give you an arrival window when you book.",
     },
     {
       question: "What HVAC brands do you service in Orange County?",
       answer:
-        "All major residential and commercial brands — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Daikin, Mitsubishi, LG, and others. We carry common parts for the most frequently serviced brands so repairs often happen on the first visit.",
+        "All major residential and commercial brands — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Daikin, Mitsubishi, LG, and others.",
     },
     {
       question: "How does coastal climate affect AC systems in Orange County?",

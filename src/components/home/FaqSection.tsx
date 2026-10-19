@@ -10,7 +10,7 @@ const FAQS = [
   },
   {
     q: "What brands of HVAC equipment do you service?",
-    a: "We work on all major residential and commercial brands — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Mitsubishi, Daikin, LG, and others. We stock common parts for the most frequently serviced systems.",
+    a: "We work on all major residential and commercial brands — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Mitsubishi, Daikin, LG, and others.",
   },
   {
     q: "How much does AC repair typically cost in Orange County?",

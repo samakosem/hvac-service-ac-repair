@@ -96,7 +96,7 @@ type Props = {
 export default function QuoteForm({
   variant = "full",
   heading = "Request a Free Estimate",
-  subheading = "We'll respond within 1 hour during business hours.",
+  subheading = "We'll contact you to schedule.",
 }: Props) {
   const id = useId();
   const router = useRouter();

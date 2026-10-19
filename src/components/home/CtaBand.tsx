@@ -59,7 +59,7 @@ export default function CtaBand() {
               Request a Free Estimate
             </Link>
             <p className="text-slate-500 text-xs text-center">
-              We respond within 1 hour during business hours
+              We&rsquo;re open 24/7, including emergencies
             </p>
           </div>
         </div>

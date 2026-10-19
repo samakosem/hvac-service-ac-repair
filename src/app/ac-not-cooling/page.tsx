@@ -193,7 +193,7 @@ export default function AcNotCoolingPage() {
             <div className="bg-white rounded-2xl shadow-xl p-7">
               <SingleStepQuoteForm
                 heading="Schedule My Free Diagnostic"
-                subheading="We respond within 1 hour · Same-day availability"
+                subheading="Open 24/7 · We'll contact you to schedule"
                 ctaLabel="Schedule My Diagnostic"
                 defaultService="Not Sure — Need Diagnosis"
               />

@@ -81,7 +81,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         title: "Service Completed",
         description:
-          "We complete the repair, installation, or maintenance — most jobs in a single visit. We clean up before we leave.",
+          "We complete the repair, installation, or maintenance, and we clean up before we leave.",
       },
     ],
     faqs: [
@@ -98,7 +98,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         question: "Do you service all AC brands?",
         answer:
-          "Yes — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Mitsubishi, Daikin, LG, and others. We stock common parts for the most frequently serviced systems.",
+          "Yes — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Mitsubishi, Daikin, LG, and others.",
       },
       {
         question: "Is AC maintenance really necessary in Southern California?",
@@ -127,7 +127,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     heroHeadline: "Your Local Yorba Linda AC Team",
     heroSubtext:
-      "We're based at 18340 Yorba Linda Blvd — which means fast response times to Yorba Linda, Placentia, Brea, Anaheim Hills, and every surrounding city. One call covers every AC need.",
+      "We're based at 18340 Yorba Linda Blvd, close to Yorba Linda, Placentia, Brea, Anaheim Hills, and every surrounding city. One call covers every AC need.",
     whatItIncludes: [
       "Same-day and emergency AC repair",
       "AC installation and full system replacement",
@@ -160,7 +160,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         title: "Approval and Work",
         description:
-          "You approve the written estimate before we begin. Most jobs are finished in a single visit.",
+          "You approve the written estimate before we begin.",
       },
       {
         title: "Follow-Up",
@@ -182,7 +182,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         question: "Can I book a same-day AC service appointment?",
         answer:
-          "In most cases, yes. Call us before noon and we'll do our best to have someone at your home the same day. Availability depends on current schedule and location.",
+          "Call us any time, 24/7. Availability depends on the current schedule and your location, and we'll give you the earliest available time when you call.",
       },
       {
         question: "Do you charge a diagnostic fee?",
@@ -191,7 +191,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["ac-repair", "ac-installation", "ac-maintenance", "air-conditioning"],
-    ctaHeadline: "Local Yorba Linda AC Service — Fast Response",
+    ctaHeadline: "Local Yorba Linda AC Service, Open 24/7",
     ctaSubtext: "We're minutes away from most Yorba Linda, Placentia, and Brea neighborhoods. Call now for same-day availability.",
     category: "cooling",
   },
@@ -340,7 +340,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         title: "Diagnose and Repair",
         description:
-          "The technician diagnoses the failure, explains the cause and cost, and performs the repair. Most common emergency failures are fixable in a single visit.",
+          "The technician diagnoses the failure, explains the cause and cost, and performs the repair once you approve it.",
       },
       {
         title: "System Verified and Running",
@@ -367,7 +367,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         question: "Can you fix my AC on the first emergency visit?",
         answer:
-          "Most emergency calls are resolved on the first visit. We carry common repair parts. The only exception is when a major component like a compressor needs to be ordered — in that case, we'll give you a clear timeline and options.",
+          "It depends on the problem and the parts it needs. If a major component like a compressor needs to be ordered, we'll give you a clear timeline and options.",
       },
     ],
     relatedSlugs: ["ac-repair", "ac-services", "air-conditioning"],
@@ -1215,7 +1215,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     heroHeadline: "Furnace Not Heating? We Diagnose the Actual Problem.",
     heroSubtext:
-      "Furnace failures have a handful of common causes — and most can be fixed in a single visit. We identify the real issue before recommending any work.",
+      "Furnace failures have a handful of common causes. We identify the real issue before recommending any work.",
     whatItIncludes: [
       "Igniter inspection and replacement (hot surface or spark)",
       "Flame sensor cleaning and replacement",

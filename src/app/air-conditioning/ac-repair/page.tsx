@@ -196,7 +196,7 @@ export default function AcRepairPage() {
             <div id="estimate-form" className="hidden lg:block bg-white rounded-2xl shadow-xl p-7 border border-white/10">
               <SingleStepQuoteForm
                 heading="Get Same-Day AC Repair Service"
-                subheading="We respond within 1 hour · Real people answer your call"
+                subheading="Open 24/7 · Real people answer your call"
                 ctaLabel="Get Same-Day Service"
                 defaultService="AC Repair"
               />
@@ -210,7 +210,7 @@ export default function AcRepairPage() {
         <div className="max-w-xl mx-auto">
           <SingleStepQuoteForm
             heading="Get Same-Day Service"
-            subheading="We respond within 1 hour · Real people answer"
+            subheading="Open 24/7 · Real people answer"
             ctaLabel="Get Same-Day Service"
             defaultService="AC Repair"
           />
@@ -449,7 +449,7 @@ export default function AcRepairPage() {
             <div className="bg-white rounded-2xl shadow-xl p-7">
               <SingleStepQuoteForm
                 heading="Request Same-Day AC Service"
-                subheading="We'll respond within 1 hour during business hours."
+                subheading="We'll contact you to schedule."
                 ctaLabel="Get Same-Day Service"
                 defaultService="AC Repair"
               />

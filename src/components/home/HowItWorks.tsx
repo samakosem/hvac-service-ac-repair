@@ -18,9 +18,9 @@ const STEPS = [
   },
   {
     step: "3",
-    title: "We Fix It — Often Same Visit",
+    title: "We Fix It",
     description:
-      "We stock common parts on our vehicles. Most repairs are completed on the first visit. If a part needs to be ordered, we'll tell you the timeline upfront.",
+      "Once you approve the price, we do the work. If a part needs to be ordered, we'll tell you the timeline upfront.",
     action: null,
   },
   {

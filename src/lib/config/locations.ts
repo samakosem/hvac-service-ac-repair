@@ -43,7 +43,7 @@ export const COUNTIES: County[] = [
         county: "Orange County",
         countySlug: "orange-county",
         blurb:
-          "As our home base, Yorba Linda gets priority scheduling and faster response times than outlying areas. Serving single-family homes, tract communities, and commercial properties throughout the city.",
+          "Yorba Linda is our home base. Serving single-family homes, tract communities, and commercial properties throughout the city.",
         localContext:
           "Yorba Linda's hillside topography and mix of 1970s–2000s tract homes means we frequently work on both older R-22 systems due for replacement and newer R-410A equipment needing maintenance. Summer temperatures regularly push above 95°F in the inland neighborhoods near Weir Canyon, making a functioning AC non-negotiable from June through September.",
         topServiceSlugs: ["ac-repair", "ac-maintenance", "ac-replacement"],
@@ -52,12 +52,12 @@ export const COUNTIES: County[] = [
           {
             question: "How quickly can you get to Yorba Linda for an AC repair?",
             answer:
-              "Because our shop is on Yorba Linda Blvd, we can often reach most parts of the city within 30–60 minutes for same-day calls. Morning calls placed before 10 AM typically get a same-day appointment.",
+              "Our shop is on Yorba Linda Blvd, and we're open 24/7. Call us and we'll give you an arrival window when you book.",
           },
           {
             question: "What HVAC brands are most common in Yorba Linda homes?",
             answer:
-              "Yorba Linda's 1970s–1990s housing stock runs a lot of older Carrier, Trane, and Lennox systems. We stock parts for all three brands and can usually complete repairs on the first visit.",
+              "Yorba Linda's 1970s–1990s housing stock runs a lot of older Carrier, Trane, and Lennox systems, and we service all three.",
           },
           {
             question: "Do you service commercial properties in Yorba Linda?",
@@ -190,7 +190,7 @@ export const COUNTIES: County[] = [
         blurb:
           "Providing fast AC and heating service to Placentia residents and businesses. Our Yorba Linda shop puts us just minutes from most Placentia neighborhoods.",
         localContext:
-          "Placentia is one of our most frequently served cities outside Yorba Linda — it borders our home base directly. The city's 1970s and 1980s residential tracts run Carrier, Trane, and Bryant systems predominantly, and we stock parts for all three. Placentia has hot summers with limited coastal breeze relief, making reliable AC essential from May through October.",
+          "Placentia borders our Yorba Linda home base. The city's 1970s and 1980s residential tracts run Carrier, Trane, and Bryant systems predominantly. Placentia has hot summers with limited coastal breeze relief, making reliable AC essential from May through October.",
         topServiceSlugs: ["ac-repair", "ac-maintenance", "ac-tune-up"],
         nearbySlugs: ["yorba-linda", "anaheim", "fullerton", "brea", "orange"],
         faqs: [
@@ -584,7 +584,7 @@ export const COUNTIES: County[] = [
           {
             question: "How far south do you travel for service calls?",
             answer:
-              "San Clemente is at the edge of our Orange County service territory. We make regular runs there — same-day scheduling is typically available, though arrival windows may be wider than closer cities.",
+              "San Clemente is at the edge of our Orange County service territory. We make regular runs there, though arrival windows may be wider than for cities closer to our shop.",
           },
         ],
       },
@@ -668,7 +668,7 @@ export const COUNTIES: County[] = [
         blurb:
           "Corona is a growing part of our service territory. We serve residential neighborhoods, commercial centers, and industrial areas throughout the city.",
         localContext:
-          "Corona's rapid growth has produced a wide range of housing stock, from 1970s–1980s established neighborhoods near downtown to large 2000s master-planned communities in the north and south portions of the city. The city regularly exceeds 100°F in summer, making reliable AC critical. We stock parts for the Carrier, Trane, and Goodman systems most common in Corona's newer developments.",
+          "Corona's rapid growth has produced a wide range of housing stock, from 1970s–1980s established neighborhoods near downtown to large 2000s master-planned communities in the north and south portions of the city. The city regularly exceeds 100°F in summer, making reliable AC critical.",
         topServiceSlugs: ["ac-repair", "ac-installation", "ac-maintenance"],
         nearbySlugs: ["norco", "eastvale", "chino-hills", "yorba-linda", "anaheim-hills"],
         faqs: [
@@ -776,7 +776,7 @@ export const COUNTIES: County[] = [
           {
             question: "How quickly can you reach Chino Hills for an AC repair?",
             answer:
-              "Chino Hills is adjacent to our Orange County service territory. We can typically dispatch same-day for urgent calls, with arrival within a few hours.",
+              "Chino Hills is adjacent to our Orange County service territory. We're open 24/7. Call us and we'll give you an arrival window when you book.",
           },
           {
             question: "My Chino Hills home is from the 1990s — should I replace the HVAC?",

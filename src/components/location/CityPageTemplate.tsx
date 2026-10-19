@@ -250,7 +250,7 @@ export default function CityPageTemplate({ city, county, serviceLinks, hub }: Pr
               <div className="bg-slate-900 rounded-2xl p-6 text-white">
                 <p className="font-bold text-base mb-1">Schedule in {city.name}</p>
                 <p className="text-slate-400 text-sm mb-4">
-                  {hub ? hub.sidebarNote : "Call us or submit online — we respond within 1 hour during business hours."}
+                  {hub ? hub.sidebarNote : "Call us 24/7 or submit online, and we will contact you to schedule."}
                 </p>
                 <PhoneLink
                   className="inline-flex items-center gap-2 text-hvac-blue-400 font-semibold text-sm hover:text-hvac-blue-300 transition-colors mb-3"

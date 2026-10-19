@@ -214,7 +214,7 @@ export default function EmergencyHvacPage() {
               </div>
               <SingleStepQuoteForm
                 heading=""
-                subheading="We respond within 1 hour · Real person dispatches your call"
+                subheading="Open 24/7 · A real person takes your call"
                 ctaLabel="Get Emergency Help Now"
                 defaultService="Emergency AC Repair"
               />
@@ -228,7 +228,7 @@ export default function EmergencyHvacPage() {
         <div className="max-w-xl mx-auto">
           <SingleStepQuoteForm
             heading="Get Emergency Help Now"
-            subheading="We respond within 1 hour — real person picks up your call"
+            subheading="Open 24/7 · A real person takes your call"
             ctaLabel="Get Emergency Help Now"
             defaultService="Emergency AC Repair"
           />
@@ -272,9 +272,9 @@ export default function EmergencyHvacPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
-              { n: "01", h: "Call or Submit", b: "A real person answers and dispatches a technician. We confirm arrival window within 60 minutes." },
-              { n: "02", h: "Same-Day Arrival", b: "Your technician arrives with a stocked van and a written quote. No surprise charges, ever." },
-              { n: "03", h: "Repaired Today", b: "Most emergency repairs completed in one visit. Warranty on parts and labor." },
+              { n: "01", h: "Call or Submit", b: "A real person answers, dispatches a technician and confirms an arrival window with you." },
+              { n: "02", h: "Technician Arrives", b: "Your technician diagnoses the problem and gives you a written quote. No surprise charges." },
+              { n: "03", h: "Repair", b: "Once you approve the quote, we make the repair. Warranty on parts and labor." },
             ].map((step) => (
               <div key={step.n} className="flex flex-col gap-4 text-center items-center">
                 <div className="w-14 h-14 rounded-2xl bg-red-500/20 border border-red-400/30 flex items-center justify-center">

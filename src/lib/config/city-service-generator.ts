@@ -9,6 +9,7 @@ import type { CityServicePage } from "@/lib/config/city-service-pages";
 import { licenseOrHoursPoint } from "@/lib/config/credentials";
 
 // ─── Response time by county ─────────────────────────────────────────────────
+// Not rendered since Phase 2.3 P3: arrival times are not verified.
 
 function responseTime(city: City): string {
   switch (city.countySlug) {
@@ -80,7 +81,7 @@ function faqs(city: City, serviceSlug: string): { question: string; answer: stri
       }
     : {
         question: `How quickly can you get to ${city.name} for service?`,
-        answer: `${city.name} is within our same-day service zone. Most calls placed before noon receive same-day scheduling.`,
+        answer: "We're open 24/7, including emergencies. Call us and we'll give you the earliest available arrival window.",
       };
 
   switch (serviceSlug) {
@@ -91,7 +92,7 @@ function faqs(city: City, serviceSlug: string): { question: string; answer: stri
         {
           question: "Do you work on all AC brands?",
           answer:
-            "Yes — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Mitsubishi, Daikin, LG, and all other major brands. We stock common parts to complete most repairs on the first visit.",
+            "Yes — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Mitsubishi, Daikin, LG, and all other major brands.",
         },
         {
           question: "Do you offer financing on AC repairs?",
@@ -116,7 +117,7 @@ function faqs(city: City, serviceSlug: string): { question: string; answer: stri
         {
           question: "Can you fix my AC on the first emergency visit?",
           answer:
-            "Most emergency calls are resolved on the first visit. We carry common repair parts. If a major component needs ordering, we'll give you a clear timeline and options.",
+            "It depends on the problem and the parts it needs. If a component needs ordering, we'll give you a clear timeline and options.",
         },
       ];
 
@@ -196,13 +197,13 @@ function whyUsPoints(city: City, serviceSlug: string): { heading: string; body: 
     case "ac-repair":
       return [
         {
-          heading: `Fast Dispatch to ${city.name}`,
-          body: `Based in Yorba Linda, we reach ${city.name} faster than companies commuting from LA or distant OC.`,
+          heading: "Based in Yorba Linda",
+          body: `Our shop is on Yorba Linda Blvd, and we serve ${city.name} and nearby cities.`,
         },
         ...basePoints,
         {
-          heading: "Parts on the Truck",
-          body: "We stock common capacitors, contactors, and fan motors. Most repairs done in one visit.",
+          heading: "All Major Brands",
+          body: "We repair Carrier, Trane, Lennox, Goodman, Rheem, and other major brands.",
         },
       ];
 
@@ -244,7 +245,7 @@ function whyUsPoints(city: City, serviceSlug: string): { heading: string; body: 
         },
         {
           heading: "Flexible Scheduling",
-          body: "Most tune-up appointments available within 48 hours. Morning and afternoon windows available.",
+          body: "Call to book a tune-up at a time that works for you.",
         },
         {
           heading: "Local, Honest Team",
@@ -388,7 +389,7 @@ const SERVICE_META: Record<string, ServiceMeta> = {
     urlBase: "/air-conditioning/ac-tune-up",
     h1: (c) => `AC Tune-Up in ${c} — Starting at $99`,
     heroSubheadline: (c) =>
-      `A 20-point maintenance visit keeps your ${c} AC running efficiently all summer. Most appointments available within 48 hours.`,
+      `A 20-point maintenance visit keeps your ${c} AC running efficiently all summer.`,
     servicesListHeadline: (c) => `What's Included in Your ${c} AC Tune-Up`,
     whyUsHeadline: (c) => `Why ${c} Homeowners Tune Up with Us`,
     ctaBannerText: (c) => `Ready for a Tune-Up? Book Your ${c} AC Service Today.`,
