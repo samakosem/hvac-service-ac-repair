@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 env:
-  EXPECT_APEX_STATUS: "307"
+  EXPECT_APEX_STATUS: "308"
   PRODUCTION_URL: https://www.hvacserviceacrepair.com
 
 jobs:
