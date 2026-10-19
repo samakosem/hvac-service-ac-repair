@@ -1,0 +1,35 @@
+# Phase 2.3 P1: confirm the public facts used in the city hub copy (read-only GET of official pages).
+name: SEO phase 2.3 P1 source check
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase23-p1-sources.yml]
+
+permissions:
+  contents: read
+
+jobs:
+  sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Fetch and quote the relevant sentences
+        run: |
+          check() {
+            url="$1"; shift
+            echo; echo "#### $url"
+            body=$(curl -sSL -A "Mozilla/5.0 (compatible; hvac-seo-research/1.0)" --max-time 40 -w '\nHTTP_STATUS:%{http_code} FINAL:%{url_effective}' "$url")
+            echo "$body" | tail -1
+            text=$(echo "$body" | sed 's/<[^>]*>/ /g; s/&nbsp;/ /g; s/&amp;/\&/g; s/&#39;/'"'"'/g' | tr -s ' \n\t' ' ')
+            for pat in "$@"; do
+              echo "  [$pat]"; echo "$text" | grep -ioE ".{0,160}${pat}.{0,200}" | head -3 | sed 's/^/    /' || echo "    (not found)"
+            done
+          }
+          check https://www.yorbalindaca.gov/477/Permit-Process "heating, ventilating" "mechanical"
+          check https://placentia.org/58/Building-and-Safety "mechanical" "993-8124" "2025 California"
+          check https://www.costamesaca.gov/government/departments-and-divisions/economic-and-development-services/building-safety "TESSA" "754-5273" "Insta-Permit"
+          check https://www.epa.gov/ods-phaseout/residential-air-conditioning-and-phaseout-hcfc-22-what-you-need-know "January 1, 2020" "continue to use"
+          check https://www.epa.gov/climate-hfcs-reduction/technology-transitions-residential-and-light-commercial-air-conditioning-and-heat "700" "January 1, 2025" "R-454B" "R-32" "install"
+          check https://www.epa.gov/climate-hfcs-reduction/technology-transitions-program "700" "January 1, 2025" "residential"
+          check https://www.achrnews.com/articles/166226-epa-removes-r-410a-installation-deadline "January 1, 2026" "manufactured or imported"
