@@ -347,7 +347,7 @@ function faqs(city: CityEntry): PPCCity["faqs"] {
     },
     {
       question: `My AC is running but not cooling my ${city.name} home — what's wrong?`,
-      answer: `The most common causes are low refrigerant (from a leak), a dirty evaporator coil blocking airflow, a failing capacitor preventing the compressor from reaching full power, or a clogged condensate drain causing a safety shutoff. Our technician diagnoses the specific issue on the first visit.`,
+      answer: `The most common causes are low refrigerant (from a leak), a dirty evaporator coil blocking airflow, a failing capacitor preventing the compressor from reaching full power, or a clogged condensate drain causing a safety shutoff. Our technician diagnoses the specific issue before recommending a repair.`,
     },
     {
       question: `Is it worth repairing or replacing my AC system in ${city.name}?`,

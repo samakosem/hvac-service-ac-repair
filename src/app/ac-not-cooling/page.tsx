@@ -78,7 +78,7 @@ const FAQS = [
   {
     question: "How quickly can you get to my home in Orange County?",
     answer:
-      "Same-day service for most Orange County cities. We're based in Yorba Linda and dispatch across the county — typically 1–4 hours for same-day calls.",
+      "Same-day service is available across Orange County. We're based in Yorba Linda, open 24/7, and dispatch across the county. Call us and we'll give you the earliest available arrival window.",
   },
 ];
 
