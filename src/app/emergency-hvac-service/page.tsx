@@ -5,6 +5,7 @@ import JsonLd from "@/components/ui/JsonLd";
 import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import PhoneLink from "@/components/ui/PhoneLink";
 import { SITE } from "@/lib/config/site";
+import { credentialBadges, licenseNumberLabel } from "@/lib/config/credentials";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -61,7 +62,7 @@ const FAQS = [
   {
     question: "How fast can you respond to an emergency call?",
     answer:
-      "We're based in Yorba Linda and dispatch to all of Orange County. Most emergency calls see a technician arrive within 1–4 hours same day.",
+      "We're based in Yorba Linda, open 24/7, and dispatch to all of Orange County. Same-day service is available. Call us and we'll give you the earliest available arrival window.",
   },
   {
     question: "Who answers when I call — a person or a call center?",
@@ -191,7 +192,7 @@ export default function EmergencyHvacPage() {
 
               {/* Trust badges */}
               <div className="flex flex-wrap gap-2">
-                {["Licensed & Insured", "Same-Day Dispatch", "Real Person Answers", "No Emergency Surcharge", "0% Financing"].map((b) => (
+                {[...credentialBadges(), "Same-Day Service", "Real Person Answers", "No Emergency Surcharge", "0% Financing"].map((b) => (
                   <span key={b} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/7 border border-white/10 text-xs font-medium text-slate-200">
                     <CheckIcon />
                     {b}
@@ -213,7 +214,7 @@ export default function EmergencyHvacPage() {
               </div>
               <SingleStepQuoteForm
                 heading=""
-                subheading="We respond within 1 hour · Real person dispatches your call"
+                subheading="Open 24/7 · A real person takes your call"
                 ctaLabel="Get Emergency Help Now"
                 defaultService="Emergency AC Repair"
               />
@@ -227,7 +228,7 @@ export default function EmergencyHvacPage() {
         <div className="max-w-xl mx-auto">
           <SingleStepQuoteForm
             heading="Get Emergency Help Now"
-            subheading="We respond within 1 hour — real person picks up your call"
+            subheading="Open 24/7 · A real person takes your call"
             ctaLabel="Get Emergency Help Now"
             defaultService="Emergency AC Repair"
           />
@@ -271,9 +272,9 @@ export default function EmergencyHvacPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
-              { n: "01", h: "Call or Submit", b: "A real person answers and dispatches a technician. We confirm arrival window within 60 minutes." },
-              { n: "02", h: "Same-Day Arrival", b: "Your technician arrives with a stocked van and a written quote. No surprise charges, ever." },
-              { n: "03", h: "Repaired Today", b: "Most emergency repairs completed in one visit. Warranty on parts and labor." },
+              { n: "01", h: "Call or Submit", b: "A real person answers, dispatches a technician and confirms an arrival window with you." },
+              { n: "02", h: "Technician Arrives", b: "Your technician diagnoses the problem and gives you a written quote. No surprise charges." },
+              { n: "03", h: "Repair", b: "Once you approve the quote, we make the repair. Warranty on parts and labor." },
             ].map((step) => (
               <div key={step.n} className="flex flex-col gap-4 text-center items-center">
                 <div className="w-14 h-14 rounded-2xl bg-red-500/20 border border-red-400/30 flex items-center justify-center">
@@ -350,7 +351,7 @@ export default function EmergencyHvacPage() {
             showIcon
             label={`Call ${SITE.phoneDisplay}`}
           />
-          <p className="text-red-200 text-sm mt-4">{SITE.address.full} · CSLB Licensed · 7 Days a Week</p>
+          <p className="text-red-200 text-sm mt-4">{SITE.address.full}{licenseNumberLabel() && ` · ${licenseNumberLabel()}`} · 7 Days a Week</p>
         </div>
       </section>
 

@@ -32,8 +32,8 @@ const COVERAGE_NOTE: Record<string, string> = {
   "orange-county": "Same-day service · Core territory",
   "riverside-county": "Same-day service · Adjacent to OC",
   "san-bernardino-county": "Same-day service · Chino Valley area",
-  "ventura-county": "Scheduled service · Extended area",
-  "santa-barbara-county": "Scheduled service · Limited availability",
+  "ventura-county": "24/7 emergency service · Eastern Ventura County",
+  "santa-barbara-county": "24/7 emergency service · Santa Barbara & Goleta",
 };
 
 export default function ServiceAreasPage() {

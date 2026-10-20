@@ -81,7 +81,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         title: "Service Completed",
         description:
-          "We complete the repair, installation, or maintenance — most jobs in a single visit. We clean up before we leave.",
+          "We complete the repair, installation, or maintenance, and we clean up before we leave.",
       },
     ],
     faqs: [
@@ -93,12 +93,12 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         question: "How quickly can you respond to an AC problem?",
         answer:
-          "For most Orange County cities we offer same-day service. Call us in the morning and we aim to have a technician at your home the same day. Emergency calls are prioritized.",
+          "We offer same-day service across Orange County, and we're open 24/7. Call us and we'll give you the earliest available arrival window. Emergency calls are prioritized.",
       },
       {
         question: "Do you service all AC brands?",
         answer:
-          "Yes — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Mitsubishi, Daikin, LG, and others. We stock common parts for the most frequently serviced systems.",
+          "Yes — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Mitsubishi, Daikin, LG, and others.",
       },
       {
         question: "Is AC maintenance really necessary in Southern California?",
@@ -108,7 +108,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     relatedSlugs: ["ac-repair", "ac-installation", "ac-maintenance", "ductless-mini-split"],
     ctaHeadline: "Need AC Service in Southern California?",
-    ctaSubtext: "Same-day appointments available across Southern California. Call us or submit a request and we'll respond within the hour.",
+    ctaSubtext: "Same-day appointments available across Southern California. Call us or submit a request and we'll contact you to schedule.",
     category: "cooling",
   },
 
@@ -127,7 +127,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     heroHeadline: "Your Local Yorba Linda AC Team",
     heroSubtext:
-      "We're based at 18340 Yorba Linda Blvd — which means fast response times to Yorba Linda, Placentia, Brea, Anaheim Hills, and every surrounding city. One call covers every AC need.",
+      "We're based at 18340 Yorba Linda Blvd, close to Yorba Linda, Placentia, Brea, Anaheim Hills, and every surrounding city. One call covers every AC need.",
     whatItIncludes: [
       "Same-day and emergency AC repair",
       "AC installation and full system replacement",
@@ -160,7 +160,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         title: "Approval and Work",
         description:
-          "You approve the written estimate before we begin. Most jobs are finished in a single visit.",
+          "You approve the written estimate before we begin.",
       },
       {
         title: "Follow-Up",
@@ -182,7 +182,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         question: "Can I book a same-day AC service appointment?",
         answer:
-          "In most cases, yes. Call us before noon and we'll do our best to have someone at your home the same day. Availability depends on current schedule and location.",
+          "Call us any time, 24/7. Availability depends on the current schedule and your location, and we'll give you the earliest available time when you call.",
       },
       {
         question: "Do you charge a diagnostic fee?",
@@ -191,7 +191,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["ac-repair", "ac-installation", "ac-maintenance", "air-conditioning"],
-    ctaHeadline: "Local Yorba Linda AC Service — Fast Response",
+    ctaHeadline: "Local Yorba Linda AC Service, Open 24/7",
     ctaSubtext: "We're minutes away from most Yorba Linda, Placentia, and Brea neighborhoods. Call now for same-day availability.",
     category: "cooling",
   },
@@ -212,12 +212,12 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     heroHeadline: "Fast AC Repair Across Southern California",
     heroSubtext:
-      "Your AC stopped working. We diagnose the real problem, give you a written price, and fix it — usually the same visit. No guesswork, no upsells.",
+      "Your AC stopped working. We diagnose the real problem, give you a written price, and fix it. No guesswork, no upsells.",
     whatItIncludes: [
       "Full system diagnostic to identify the root cause",
       "Capacitor, contactor, and relay replacement",
       "Refrigerant leak detection and repair",
-      "Refrigerant recharge (EPA-certified handling)",
+      "Refrigerant recharge",
       "Frozen evaporator coil diagnosis and correction",
       "Compressor and fan motor diagnosis",
       "Electrical fault identification and repair",
@@ -276,7 +276,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         question: "Can you fix my AC the same day?",
         answer:
-          "In most cases, yes. We carry common repair parts on our service vehicles. If a part needs to be ordered, we'll give you a realistic timeline. Same-day completion depends on part availability and job complexity.",
+          "Same-day service is available, but whether the repair is finished the same day depends on the problem and the parts it needs. If a part needs to be ordered, we'll give you a realistic timeline.",
       },
       {
         question: "My AC is freezing up — what causes that?",
@@ -285,7 +285,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["emergency-ac-repair", "ac-maintenance", "ac-installation", "ac-tune-up"],
-    ctaHeadline: "AC Not Cooling? We Can Fix It Today.",
+    ctaHeadline: "AC Not Cooling? Same-Day Repair Available.",
     ctaSubtext: "Same-day AC repair across Southern California. Written estimate before any work starts. Call (714) 410-2784.",
     category: "cooling",
   },
@@ -295,7 +295,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     slug: "emergency-ac-repair",
     seoTitle: "Emergency AC Repair Southern California | Available 7 Days",
     metaDescription:
-      "Emergency AC repair in Orange County. Available 7 days a week including weekends. Fast dispatch from Yorba Linda. Call (714) 410-2784 now.",
+      "Emergency AC repair in Orange County. Open 24 hours a day, 7 days a week. Dispatched from Yorba Linda. Call (714) 410-2784 now.",
     h1: "Emergency AC Repair",
     primaryKeyword: "emergency AC repair Orange County",
     secondaryKeywords: [
@@ -311,7 +311,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       "Priority same-day scheduling for emergency calls",
       "Full system diagnosis on arrival",
       "On-the-spot repair for most common failures",
-      "Refrigerant recharge if needed (EPA-certified)",
+      "Refrigerant recharge if needed",
       "Capacitor, contactor, and relay replacement",
       "Compressor and motor assessment",
       "Temporary cooling guidance while you wait",
@@ -333,14 +333,14 @@ export const SERVICE_CONTENT: ServiceContent[] = [
           "For emergencies, call rather than submitting a form. We triage emergency calls by urgency and dispatch the next available technician from our Yorba Linda location.",
       },
       {
-        title: "Fast Dispatch",
+        title: "Dispatch",
         description:
-          "We'll give you an estimated arrival time. Our dispatch is based in Yorba Linda — close to most of Orange County — so travel times are short.",
+          "We'll give you an estimated arrival time. Our dispatch is based in Yorba Linda, close to most of Orange County.",
       },
       {
         title: "Diagnose and Repair",
         description:
-          "The technician diagnoses the failure, explains the cause and cost, and performs the repair. Most common emergency failures are fixable in a single visit.",
+          "The technician diagnoses the failure, explains the cause and cost, and performs the repair once you approve it.",
       },
       {
         title: "System Verified and Running",
@@ -367,7 +367,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         question: "Can you fix my AC on the first emergency visit?",
         answer:
-          "Most emergency calls are resolved on the first visit. We carry common repair parts. The only exception is when a major component like a compressor needs to be ordered — in that case, we'll give you a clear timeline and options.",
+          "It depends on the problem and the parts it needs. If a major component like a compressor needs to be ordered, we'll give you a clear timeline and options.",
       },
     ],
     relatedSlugs: ["ac-repair", "ac-services", "air-conditioning"],
@@ -1215,7 +1215,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ],
     heroHeadline: "Furnace Not Heating? We Diagnose the Actual Problem.",
     heroSubtext:
-      "Furnace failures have a handful of common causes — and most can be fixed in a single visit. We identify the real issue before recommending any work.",
+      "Furnace failures have a handful of common causes. We identify the real issue before recommending any work.",
     whatItIncludes: [
       "Igniter inspection and replacement (hot surface or spark)",
       "Flame sensor cleaning and replacement",
@@ -1277,7 +1277,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["furnace-installation", "heating-services", "furnace-maintenance"],
-    ctaHeadline: "Furnace Down in Southern California? We Fix It Today.",
+    ctaHeadline: "Furnace Down in Southern California? Same-Day Repair Available.",
     ctaSubtext: "Same-day furnace repair available. Gas and electric systems serviced. Call (714) 410-2784.",
     category: "heating",
   },

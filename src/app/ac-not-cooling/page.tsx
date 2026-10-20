@@ -78,7 +78,7 @@ const FAQS = [
   {
     question: "How quickly can you get to my home in Orange County?",
     answer:
-      "Same-day service for most Orange County cities. We're based in Yorba Linda and dispatch across the county — typically 1–4 hours for same-day calls.",
+      "Same-day service is available across Orange County. We're based in Yorba Linda, open 24/7, and dispatch across the county. Call us and we'll give you the earliest available arrival window.",
   },
 ];
 
@@ -174,7 +174,7 @@ export default function AcNotCoolingPage() {
                 A Free Diagnostic Tells You Exactly What&rsquo;s Wrong
               </h2>
               <p className="text-slate-300 text-lg leading-relaxed">
-                Our licensed technician will diagnose the exact cause — and give you a written quote before any work starts. No charge for the diagnostic.
+                Our technician will diagnose the exact cause — and give you a written quote before any work starts. No charge for the diagnostic.
               </p>
               <div className="flex flex-col gap-3">
                 {["Same-day appointments available", "Written quote — no surprises", "Free diagnostic — no charge", "All brands serviced", "Orange County-wide coverage"].map((item) => (
@@ -193,7 +193,7 @@ export default function AcNotCoolingPage() {
             <div className="bg-white rounded-2xl shadow-xl p-7">
               <SingleStepQuoteForm
                 heading="Schedule My Free Diagnostic"
-                subheading="We respond within 1 hour · Same-day availability"
+                subheading="Open 24/7 · We'll contact you to schedule"
                 ctaLabel="Schedule My Diagnostic"
                 defaultService="Not Sure — Need Diagnosis"
               />

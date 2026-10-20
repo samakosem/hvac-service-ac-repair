@@ -8,12 +8,13 @@ import { SITE } from "@/lib/config/site";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import type { PPCCity } from "@/lib/config/ppc-cities";
 import { QuickChecksGrid, QuickChecksHeader } from "@/components/ui/QuickChecks";
+import { CREDENTIALS, licenseLabel } from "@/lib/config/credentials";
 
 // ── Static trust data ────────────────────────────────────────────────────────
 
 const TRUST_BADGES = [
-  { label: "Licensed & Insured", icon: "shield" },
-  { label: "EPA Certified", icon: "leaf" },
+  ...(licenseLabel() ? [{ label: licenseLabel() as string, icon: "shield" }] : []),
+  ...(CREDENTIALS.epaCertified ? [{ label: "EPA Certified", icon: "leaf" }] : []),
   { label: "Same-Day Service", icon: "bolt" },
   { label: "Free Estimates", icon: "tag" },
 ];
@@ -26,8 +27,8 @@ const PROCESS_STEPS = [
   },
   {
     number: "02",
-    heading: "Same-Day Dispatch",
-    body: "We confirm a technician and arrival window. Most customers get same-day service when they call before noon.",
+    heading: "We Schedule Your Visit",
+    body: "We confirm a technician and an arrival window with you.",
   },
   {
     number: "03",
@@ -290,7 +291,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
               <div id="estimate-form" className="hidden lg:block bg-white rounded-2xl shadow-xl p-6 border border-slate-100">
                 <SingleStepQuoteForm
                   heading={`Get Your Free Estimate in ${city.name}`}
-                  subheading="We respond within 1 hour during business hours."
+                  subheading="We'll contact you to schedule."
                 />
               </div>
 
@@ -311,7 +312,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
         <div className="max-w-xl mx-auto">
           <SingleStepQuoteForm
             heading={`Free Estimate in ${city.name}`}
-            subheading="We respond within 1 hour during business hours."
+            subheading="We'll contact you to schedule."
           />
         </div>
       </div>
@@ -327,7 +328,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
             Free In-Home Estimate on Any New System
           </h2>
           <p className="text-white/85 text-lg max-w-2xl mx-auto mb-6">
-            No obligations, no pressure. A licensed technician comes to your {city.name} home, evaluates your system, and gives you a written quote — completely free.
+            No obligations, no pressure. A technician comes to your {city.name} home, evaluates your system, and gives you a written quote — completely free.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <PhoneLink
@@ -488,7 +489,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
             Emergency HVAC Service
           </div>
           <h2 id="emergency-heading" className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            AC Out in {city.name}? We Respond the Same Day.
+            AC Out in {city.name}? Same-Day Service Available.
           </h2>
           <p className="text-slate-300 text-lg leading-relaxed max-w-3xl mx-auto mb-8">
             {city.emergencyBody}
@@ -496,7 +497,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-8">
             {[
-              { label: "Same-Day Response", icon: <BoltIcon className="w-5 h-5 text-red-400" /> },
+              { label: "Same-Day Service", icon: <BoltIcon className="w-5 h-5 text-red-400" /> },
               { label: "7-Day Availability", icon: <PhoneIcon className="w-5 h-5 text-red-400" /> },
               { label: "Real Person Answers", icon: <CheckIcon className="w-5 h-5 text-red-400" /> },
             ].map((item) => (
@@ -611,7 +612,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
                   <PhoneIcon className="w-5 h-5 text-copper-400 shrink-0" />
                   <div>
                     <p className="text-white font-bold text-lg">{SITE.phoneDisplay}</p>
-                    <p className="text-slate-400 text-xs">Mon–Fri {SITE.hours.weekdays} · Sat {SITE.hours.saturday}</p>
+                    <p className="text-slate-400 text-xs">{SITE.hours.summary}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -638,7 +639,7 @@ export default function PPCLandingTemplate({ city, path }: Props) {
             <div className="bg-white rounded-2xl shadow-xl p-6 lg:p-8 border border-white/10">
               <SingleStepQuoteForm
                 heading={`Request Service in ${city.name}`}
-                subheading="We'll respond within 1 hour during business hours."
+                subheading="We'll contact you to schedule."
               />
             </div>
           </div>

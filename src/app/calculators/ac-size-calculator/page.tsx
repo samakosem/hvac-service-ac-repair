@@ -183,7 +183,7 @@ export default function AcSizeCalculatorPage() {
 
       <CtaSection
         heading="Get a Free In-Home Load Calculation"
-        subtext="Our licensed technicians perform Manual J load calculations on every installation — at no charge. Get an accurate size and a written quote."
+        subtext="Our technicians perform Manual J load calculations on every installation — at no charge. Get an accurate size and a written quote."
         primaryLabel="Request a Free Estimate"
         primaryHref="/contact"
         variant="blue"

@@ -1,7 +1,9 @@
+import { licenseLabel, licenseNumberLabel } from "@/lib/config/credentials";
+
 const TRUST_ITEMS = [
   {
-    label: "Licensed & Insured",
-    sub: "CSLB Certified",
+    label: licenseLabel(),
+    sub: licenseNumberLabel(),
     icon: (
       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
@@ -10,7 +12,7 @@ const TRUST_ITEMS = [
   },
   {
     label: "Same-Day Availability",
-    sub: "Call before noon",
+    sub: "Open 24/7",
     icon: (
       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
@@ -46,7 +48,10 @@ const TRUST_ITEMS = [
       </svg>
     ),
   },
-];
+].filter((i): i is typeof i & { label: string } => i.label !== null);
+
+// Static class names so Tailwind keeps them.
+const LG_COLS: Record<number, string> = { 4: "lg:grid-cols-4", 5: "lg:grid-cols-5" };
 
 type Props = {
   variant?: "light" | "dark";
@@ -61,7 +66,7 @@ export default function ConversionTrustBar({ variant = "light" }: Props) {
       className={`border-y py-4 ${isDark ? "bg-navy-900 border-white/8" : "bg-white border-slate-100 shadow-sm"}`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-0 lg:divide-x lg:divide-white/8">
+        <div className={`grid grid-cols-2 sm:grid-cols-3 ${LG_COLS[TRUST_ITEMS.length] ?? "lg:grid-cols-5"} gap-3 lg:gap-0 lg:divide-x lg:divide-white/8`}>
           {TRUST_ITEMS.map((item) => (
             <div
               key={item.label}

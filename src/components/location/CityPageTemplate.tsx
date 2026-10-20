@@ -250,7 +250,7 @@ export default function CityPageTemplate({ city, county, serviceLinks, hub }: Pr
               <div className="bg-slate-900 rounded-2xl p-6 text-white">
                 <p className="font-bold text-base mb-1">Schedule in {city.name}</p>
                 <p className="text-slate-400 text-sm mb-4">
-                  {hub ? hub.sidebarNote : "Call us or submit online — we respond within 1 hour during business hours."}
+                  {hub ? hub.sidebarNote : "Call us 24/7 or submit online, and we will contact you to schedule."}
                 </p>
                 <PhoneLink
                   className="inline-flex items-center gap-2 text-hvac-blue-400 font-semibold text-sm hover:text-hvac-blue-300 transition-colors mb-3"
@@ -266,15 +266,7 @@ export default function CityPageTemplate({ city, county, serviceLinks, hub }: Pr
                 <address className="not-italic mt-4 text-xs text-slate-500 space-y-0.5">
                   <p>Based at: {SITE.address.street}</p>
                   <p>{SITE.address.city}, {SITE.address.state} {SITE.address.zip}</p>
-                  {hub ? (
-                    <p className="mt-2">Open 24 hours, 7 days a week, including emergency service</p>
-                  ) : (
-                    <>
-                      <p className="mt-2">Mon–Fri: {SITE.hours.weekdays}</p>
-                      <p>Sat: {SITE.hours.saturday}</p>
-                      <p>{SITE.hours.sunday}</p>
-                    </>
-                  )}
+                  <p className="mt-2">{`${SITE.hours.summary}, including emergency service`}</p>
                 </address>
               </div>
 

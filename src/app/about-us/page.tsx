@@ -171,16 +171,12 @@ export default function AboutPage() {
                 <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mb-2">Hours</p>
                 <ul className="space-y-1.5 text-sm text-slate-700">
                   <li className="flex justify-between">
-                    <span>Mon – Fri</span>
-                    <span className="font-medium">{SITE.hours.weekdays}</span>
+                    <span>Every day</span>
+                    <span className="font-medium">{SITE.hours.everyDay}</span>
                   </li>
                   <li className="flex justify-between">
-                    <span>Saturday</span>
-                    <span className="font-medium">{SITE.hours.saturday}</span>
-                  </li>
-                  <li className="flex justify-between">
-                    <span>Sunday</span>
-                    <span className="font-medium text-copper-600">{SITE.hours.sunday}</span>
+                    <span>Emergency service</span>
+                    <span className="font-medium text-copper-600">{SITE.hours.emergency}</span>
                   </li>
                 </ul>
               </div>
@@ -221,7 +217,7 @@ export default function AboutPage() {
             {[
               {
                 role: "Field Technicians",
-                body: "Our field techs hold EPA 608 certification and carry the most common repair parts on every truck — capacitors, contactors, thermostats, and refrigerant — so most repairs complete on the first visit.",
+                body: "Field techs handle diagnostics, repairs and maintenance visits, and give you a written quote before any repair work begins.",
               },
               {
                 role: "Senior Technicians",
@@ -243,7 +239,7 @@ export default function AboutPage() {
 
       <CtaSection
         heading="Ready to Work with a Team You Can Trust?"
-        subtext="Request a free estimate today — we'll get back to you within the hour."
+        subtext="Request a free estimate today and we'll contact you to schedule."
         primaryLabel="Get a Free Estimate"
         primaryHref="/contact"
         variant="blue"

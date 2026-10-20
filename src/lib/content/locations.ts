@@ -24,14 +24,14 @@ export const COUNTY_FAQS: Record<string, { question: string; answer: string }[]>
   ],
   "orange-county": [
     {
-      question: "Do you offer same-day HVAC service across all of Orange County?",
+      question: "Do you serve all of Orange County?",
       answer:
-        "We provide same-day service for most of Orange County. Cities close to our Yorba Linda shop — Placentia, Anaheim, Brea, Fullerton, Orange — typically get morning-to-afternoon same-day windows. Farther cities like San Clemente or Laguna Niguel also get same-day service for most calls, though arrival windows may be slightly later.",
+        "Yes, 24 hours a day, 7 days a week. Cities close to our Yorba Linda shop, such as Placentia, Anaheim, Brea, Fullerton and Orange, are a short drive away. For farther cities like San Clemente or Laguna Niguel, arrival windows may be later. Call us and we'll give you an arrival window when you book.",
     },
     {
       question: "What HVAC brands do you service in Orange County?",
       answer:
-        "All major residential and commercial brands — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Daikin, Mitsubishi, LG, and others. We carry common parts for the most frequently serviced brands so repairs often happen on the first visit.",
+        "All major residential and commercial brands — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Daikin, Mitsubishi, LG, and others.",
     },
     {
       question: "How does coastal climate affect AC systems in Orange County?",
@@ -110,17 +110,17 @@ export const COUNTY_FAQS: Record<string, { question: string; answer: string }[]>
     {
       question: "Which Ventura County cities do you service?",
       answer:
-        "We extend service to Thousand Oaks, Simi Valley, and Moorpark in eastern Ventura County. These are at the edge of our service range, so same-day scheduling is not guaranteed. We serve this area on a scheduled basis — call to confirm availability.",
+        "We serve Thousand Oaks, Simi Valley, and Moorpark in eastern Ventura County, including 24/7 emergency service. Call us and we'll give you the earliest available arrival window.",
     },
     {
-      question: "Why is your service more limited in Ventura County?",
+      question: "Do you offer emergency HVAC service in Ventura County?",
       answer:
-        "Distance from our Yorba Linda base means we can't maintain the same response times as we do in Orange County. We're honest about this — if you need emergency service in Ventura County, there may be local providers better positioned to respond quickly.",
+        "Yes. We're open 24 hours a day, 7 days a week, including emergency service in Ventura County. Arrival times depend on your location and our schedule, and we'll give you an honest estimate when you call.",
     },
     {
       question: "What services do you offer in Ventura County?",
       answer:
-        "Repair, maintenance, and system replacement for residential properties. We do not offer emergency response in this extended territory due to distance.",
+        "Repair, maintenance, system replacement, and 24/7 emergency service for residential properties.",
     },
     {
       question: "Is there an additional charge for Ventura County service?",
@@ -138,12 +138,12 @@ export const COUNTY_FAQS: Record<string, { question: string; answer: string }[]>
     {
       question: "Do you actually serve Santa Barbara County from Yorba Linda?",
       answer:
-        "Yes, but only on a scheduled, non-emergency basis for specific project types — primarily mini-split installations and planned maintenance. Santa Barbara is at the outer limit of our range. We don't take emergency calls at this distance.",
+        "Yes. We serve Santa Barbara and Goleta for repairs, installations, maintenance, and 24/7 emergency service. Arrival times depend on your location and our schedule, and we'll give you an honest estimate when you call.",
     },
     {
       question: "What HVAC services do you offer in Santa Barbara County?",
       answer:
-        "Ductless mini-split installation, system replacement, and scheduled maintenance for residential properties. We evaluate requests case by case given the distance.",
+        "AC and heating repair, ductless mini-split installation, system replacement, maintenance, and 24/7 emergency service for residential properties.",
     },
     {
       question: "Is AC really necessary in the Santa Barbara area?",
@@ -192,13 +192,13 @@ export const COUNTY_META: Record<string, { title: string; description: string; h
   "ventura-county": {
     title: "HVAC Service in Ventura County, CA | Thousand Oaks, Simi Valley & Moorpark",
     description:
-      "Extended HVAC service to Thousand Oaks, Simi Valley, and Moorpark in Ventura County. Scheduled repair, maintenance, and installation. Based in Yorba Linda. Call (714) 410-2784.",
+      "HVAC service in Thousand Oaks, Simi Valley, and Moorpark, Ventura County. Repair, maintenance, installation, and 24/7 emergency service. Call (714) 410-2784.",
     h1: "HVAC Service in Ventura County, CA",
   },
   "santa-barbara-county": {
-    title: "HVAC Service in Santa Barbara County, CA | Scheduled Service",
+    title: "HVAC Service in Santa Barbara County, CA | 24/7 Emergency Service",
     description:
-      "Extended HVAC service to Santa Barbara and Goleta for scheduled installations and maintenance. Based in Yorba Linda. Limited availability — call to confirm. (714) 410-2784.",
+      "HVAC service in Santa Barbara and Goleta: repair, installation, maintenance, and 24/7 emergency service. Call (714) 410-2784.",
     h1: "HVAC Service in Santa Barbara County, CA",
   },
 };

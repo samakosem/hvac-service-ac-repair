@@ -1,4 +1,5 @@
 import type { PPCCity } from "@/lib/config/ppc-cities";
+import { licenseOrHoursPoint } from "@/lib/config/credentials";
 
 // ─── Image pools (rotate by city index) ──────────────────────────────────────
 const HERO_IMAGES = [
@@ -306,7 +307,7 @@ function repairBody(city: CityEntry): string {
   const heatNote = ["riverside", "san-bernardino"].includes(city.region)
     ? `In ${city.county}'s extreme heat, a broken AC is an urgent health issue — not just an inconvenience.`
     : `When your AC breaks down in ${city.name}, fast diagnosis is critical.`;
-  return `${heatNote} Our technicians arrive with a fully stocked van and diagnose the issue on the first visit. We repair all major brands — Lennox, Carrier, Trane, Goodman, Rheem, York — and most repairs are completed the same day. Common repairs include capacitor and contactor replacement, refrigerant recharge, evaporator coil cleaning, blower motor repair, and condensate drain clearing.`;
+  return `${heatNote} Our technicians diagnose the problem and give you a written quote before any work. We repair all major brands — Lennox, Carrier, Trane, Goodman, Rheem, York. Common repairs include capacitor and contactor replacement, refrigerant recharge, evaporator coil cleaning, blower motor repair, and condensate drain clearing.`;
 }
 
 function installBody(city: CityEntry): string {
@@ -327,17 +328,14 @@ function whyUsPoints(city: CityEntry): PPCCity["whyUsPoints"] {
       body: `Our technicians are familiar with ${city.county}'s housing stock, permit requirements, and the HVAC brands most common in the area. We're not a national franchise — we're a local company that depends on referrals.`,
     },
     {
-      heading: "Same-Day Service Available",
-      body: `We keep our schedule flexible to accommodate emergency calls throughout ${city.name} and surrounding areas. Most customers calling before noon get a same-day appointment.`,
+      heading: "Flexible Scheduling",
+      body: `We keep our schedule flexible to accommodate emergency calls throughout ${city.name} and surrounding areas.`,
     },
     {
       heading: "Transparent Flat-Rate Pricing",
       body: "You receive a written quote before any work begins. No surprise charges, no upselling to a replacement when a repair is the right call. Free diagnostic on every service call.",
     },
-    {
-      heading: "Licensed, Insured, Background-Checked",
-      body: "Every technician is California-licensed, fully insured, and background-checked before entering your home. We carry liability coverage and workers' compensation on every job.",
-    },
+    licenseOrHoursPoint(),
   ];
 }
 
@@ -345,11 +343,11 @@ function faqs(city: CityEntry): PPCCity["faqs"] {
   return [
     {
       question: `How quickly can you respond to an AC emergency in ${city.name}?`,
-      answer: `For emergency calls in ${city.name}, we aim for same-day service — often within 2–4 hours during regular business hours. Weekend and evening availability is offered for urgent situations where indoor temperatures are dangerously high.`,
+      answer: `Same-day emergency service is available in ${city.name}, 24 hours a day, 7 days a week. Call us and we'll give you the earliest available arrival window.`,
     },
     {
       question: `My AC is running but not cooling my ${city.name} home — what's wrong?`,
-      answer: `The most common causes are low refrigerant (from a leak), a dirty evaporator coil blocking airflow, a failing capacitor preventing the compressor from reaching full power, or a clogged condensate drain causing a safety shutoff. Our technician diagnoses the specific issue on the first visit.`,
+      answer: `The most common causes are low refrigerant (from a leak), a dirty evaporator coil blocking airflow, a failing capacitor preventing the compressor from reaching full power, or a clogged condensate drain causing a safety shutoff. Our technician diagnoses the specific issue before recommending a repair.`,
     },
     {
       question: `Is it worth repairing or replacing my AC system in ${city.name}?`,
@@ -384,7 +382,7 @@ export function generatePPCCities(existingSlugs: Set<string>): PPCCity[] {
       metaTitle: `AC Repair & HVAC Service in ${city.name}, CA — Same-Day Service`,
       metaDescription: `Expert AC repair, installation & HVAC service in ${city.name}, CA. Same-day availability. Free estimates on replacements. Call (714) 410-2784 — we answer 7 days a week.`,
       h1: `AC Repair & HVAC Service in ${city.name}, CA`,
-      heroSubheadline: `Same-day AC repair, system replacement & HVAC maintenance for ${city.name} homes. Licensed technicians — real people answer your call 7 days a week.`,
+      heroSubheadline: `Same-day AC repair, system replacement & HVAC maintenance for ${city.name} homes. Real people answer your call 7 days a week.`,
       climate: REGION_CLIMATE[city.region],
       commonProblems: REGION_COMMON_PROBLEMS[city.region],
       homeownerConcerns: REGION_HOMEOWNER_CONCERNS[city.region],

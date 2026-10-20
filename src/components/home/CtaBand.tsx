@@ -31,7 +31,7 @@ export default function CtaBand() {
             </h2>
             <p className="text-slate-300 leading-relaxed mb-5">
               {SITE.name} — your local HVAC team, nearby and ready. Call now or submit a
-              request online and we&rsquo;ll be in touch within the hour during business hours.
+              request online and we&rsquo;ll contact you to schedule. We&rsquo;re open 24/7.
             </p>
             <ul className="space-y-1.5">
               {POINTS.map((point) => (
@@ -59,7 +59,7 @@ export default function CtaBand() {
               Request a Free Estimate
             </Link>
             <p className="text-slate-500 text-xs text-center">
-              We respond within 1 hour during business hours
+              We&rsquo;re open 24/7, including emergencies
             </p>
           </div>
         </div>

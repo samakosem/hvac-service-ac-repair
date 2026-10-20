@@ -13,7 +13,7 @@ const REASONS = [
     number: "02",
     title: "Same-Day, 7 Days a Week",
     description:
-      "AC failures don't respect weekends. We schedule same-day appointments across Orange County and respond to emergencies on Sundays when most shops are closed.",
+      "AC failures don't respect weekends. We schedule same-day appointments across Orange County and take emergency calls 24 hours a day, 7 days a week.",
     accent: "copper",
   },
   {
@@ -27,7 +27,7 @@ const REASONS = [
     number: "04",
     title: "All Major Brands Serviced",
     description:
-      "Carrier, Trane, Lennox, Goodman, Rheem, Bryant, Mitsubishi, Daikin — we work on all of them. We stock common parts so most repairs don't need a second trip.",
+      "Carrier, Trane, Lennox, Goodman, Rheem, Bryant, Mitsubishi, Daikin — we work on all of them.",
     accent: "copper",
   },
   {
@@ -57,7 +57,7 @@ export default function WhyChooseUs() {
         </h2>
         <p className="text-slate-400 leading-relaxed">
           {SITE.name} is a local Orange County operation. No franchise fees, no national dispatch queues —
-          just a local team that picks up the phone and shows up on time.
+          just a local team that picks up the phone.
         </p>
       </div>
 

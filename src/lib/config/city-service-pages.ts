@@ -1,3 +1,4 @@
+import { licenseOrHoursPoint } from "@/lib/config/credentials";
 // City × Service landing page data
 // URL pattern: /air-conditioning/[service]/[city]/
 // Also used for /heating/heating-repair/[city]/ and /hvac-repair/[city]/
@@ -14,7 +15,6 @@ export type CityServicePage = {
   heroSubheadline: string;
   localContext: string;
   urgencyNote: string; // "X appointments available today" type copy
-  responseTime: string; // "typically 1–3 hours"
   nearbyCities: { name: string; slug: string; urlBase: string }[];
   faqs: { question: string; answer: string }[];
   pricingNote: string;
@@ -37,14 +37,13 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/ac-repair",
     metaTitle: "AC Repair in Yorba Linda, CA | Same-Day Service | (714) 410-2784",
     metaDescription:
-      "Fast AC repair in Yorba Linda, CA. Licensed HVAC technicians, same-day appointments, free diagnostic with repair. Call (714) 410-2784).",
+      "Fast AC repair in Yorba Linda, CA. Same-day appointments, free diagnostic with repair. Call (714) 410-2784).",
     h1: "AC Repair in Yorba Linda, CA — Same-Day Service",
     heroSubheadline:
-      "Your AC stopped working? We diagnose, quote, and fix it — usually same day. No guesswork, no upsells.",
+      "Your AC stopped working? We diagnose, quote, and fix it, with same-day service available. No guesswork, no upsells.",
     localContext:
       "Yorba Linda's hillside tract homes and 1970s–2000s construction mean we frequently work on both older R-22 systems due for replacement and newer R-410A equipment needing maintenance. Summer temperatures regularly push above 95°F in inland neighborhoods near Weir Canyon, making a functioning AC non-negotiable from June through September. Our shop is on Yorba Linda Blvd — we're literally your neighbors.",
-    urgencyNote: "Serving Weir Canyon, Fairmont, and all Yorba Linda neighborhoods — faster dispatch than any out-of-area company.",
-    responseTime: "typically 1–3 hours same day",
+    urgencyNote: "Serving Weir Canyon, Fairmont, and all Yorba Linda neighborhoods. Same-day service available.",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/air-conditioning/ac-repair" },
       { name: "Placentia", slug: "placentia", urlBase: "/air-conditioning/ac-repair" },
@@ -56,7 +55,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "How fast can you get to Yorba Linda for an AC repair?",
         answer:
-          "Because our shop is on Yorba Linda Blvd, we can reach most parts of the city within 1–3 hours for same-day calls. Morning calls placed before 10 AM typically get a same-day appointment.",
+          "Our shop is on Yorba Linda Blvd, and we're open 24/7. Call us and we'll give you an arrival window when you book.",
       },
       {
         question: "Do you charge a diagnostic fee?",
@@ -66,7 +65,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "Do you work on older R-22 systems?",
         answer:
-          "Yes. We're EPA-certified to handle R-22 refrigerant. Many Yorba Linda homes built in the 1970s–1990s still run R-22 systems, and we can service, recharge, or help you transition to a modern R-410A system.",
+          "Yes. Many Yorba Linda homes built in the 1970s–1990s still run R-22 systems, and we can service, recharge, or help you transition to a modern R-410A system.",
       },
       {
         question: "Do you offer financing?",
@@ -84,25 +83,22 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     whyUsPoints: [
       {
         heading: "We're Based Here",
-        body: "Our shop is on Yorba Linda Blvd. Shorter drive = faster response than companies commuting from other cities.",
+        body: "Our shop is on Yorba Linda Blvd, close to homes across the city.",
       },
-      {
-        heading: "CSLB Licensed & Fully Insured",
-        body: "Fully licensed California contractor. EPA-certified technicians. Background-checked team.",
-      },
+      licenseOrHoursPoint(),
       {
         heading: "Same Technician Start to Finish",
         body: "You deal with one person — not a rotating cast. Your tech diagnoses, quotes, and fixes the problem.",
       },
       {
-        heading: "Parts on the Truck",
-        body: "We stock common capacitors, contactors, and motors. Most Yorba Linda repairs done in one visit.",
+        heading: "Written Quote Before Any Work",
+        body: "You approve the price in writing before we start. No bill surprises.",
       },
     ],
     servicesListHeadline: "What We Repair in Yorba Linda Homes",
     servicesList: [
       "Capacitor & contactor replacement",
-      "Refrigerant leak detection & recharge (EPA-certified)",
+      "Refrigerant leak detection & recharge",
       "Compressor diagnosis & replacement",
       "Thermostat & control board repair",
       "Condenser fan motor replacement",
@@ -122,14 +118,13 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/ac-repair",
     metaTitle: "AC Repair in Anaheim, CA | Same-Day HVAC Service | (714) 410-2784",
     metaDescription:
-      "AC repair in Anaheim, CA — same-day service for homes and businesses. Licensed technicians, free diagnostic with repair. Call (714) 410-2784).",
+      "AC repair in Anaheim, CA — same-day service for homes and businesses. Free diagnostic with repair. Call (714) 410-2784).",
     h1: "AC Repair in Anaheim, CA — Same-Day Service",
     heroSubheadline:
-      "Anaheim's heat won't wait. We diagnose, quote, and repair your AC — usually the same day you call.",
+      "Anaheim's heat won't wait. We diagnose, quote, and repair your AC, with same-day service available.",
     localContext:
-      "Anaheim spans two very different climates: the coastal-influenced flatlands near the 5 freeway and the significantly hotter Anaheim Hills area, which sees some of the highest summer temperatures in the county. Anaheim Hills homes often have larger systems covering more square footage, while the resort district and surrounding commercial areas have specific commercial cooling demands year-round. We're 25–30 minutes from most Anaheim neighborhoods.",
+      "Anaheim spans two very different climates: the coastal-influenced flatlands near the 5 freeway and the significantly hotter Anaheim Hills area, which sees some of the highest summer temperatures in the county. Anaheim Hills homes often have larger systems covering more square footage, while the resort district and surrounding commercial areas have specific commercial cooling demands year-round. Our shop is in nearby Yorba Linda.",
     urgencyNote: "Serving Anaheim Hills, the resort district, and all residential neighborhoods — from the 91 corridor to La Palma Ave.",
-    responseTime: "typically 1.5–3 hours same day",
     nearbyCities: [
       { name: "Yorba Linda", slug: "yorba-linda", urlBase: "/air-conditioning/ac-repair" },
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/air-conditioning/ac-repair" },
@@ -141,7 +136,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "How fast can you get to Anaheim for an AC repair?",
         answer:
-          "We're based in nearby Yorba Linda — typically 25–30 minutes to most Anaheim areas. Same-day service is available for most calls placed before noon.",
+          "Our shop is in nearby Yorba Linda, and we're open 24/7. Call us and we'll give you an arrival window when you book.",
       },
       {
         question: "Do you service commercial properties in Anaheim?",
@@ -168,8 +163,8 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     whyUsHeadline: "Why Anaheim Homeowners & Businesses Choose Us",
     whyUsPoints: [
       {
-        heading: "Fast from Yorba Linda",
-        body: "Based 25 minutes away — faster response than companies dispatching from LA or far-south OC.",
+        heading: "Based in Neighboring Yorba Linda",
+        body: "Our shop is on Yorba Linda Blvd, a short drive from Anaheim.",
       },
       {
         heading: "Residential & Commercial",
@@ -212,9 +207,8 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     heroSubheadline:
       "AC down in Fullerton? We respond fast — same-day service for homes, rental properties, and small businesses.",
     localContext:
-      "Fullerton's housing stock runs from 1950s–1980s single-family homes near downtown to newer developments and college-area rentals near Cal State Fullerton. Older homes frequently have aging systems — and landlords managing multi-unit buildings need fast, reliable service to keep tenants comfortable. Hot summers plus older ductwork equals frequent refrigerant and duct issues. We're about 15–20 minutes from most Fullerton neighborhoods.",
+      "Fullerton's housing stock runs from 1950s–1980s single-family homes near downtown to newer developments and college-area rentals near Cal State Fullerton. Older homes frequently have aging systems — and landlords managing multi-unit buildings need fast, reliable service to keep tenants comfortable. Hot summers plus older ductwork equals frequent refrigerant and duct issues. Our shop is in nearby Yorba Linda.",
     urgencyNote: "Serving downtown Fullerton, CSUF area, and all residential and rental neighborhoods.",
-    responseTime: "typically 1–2.5 hours same day",
     nearbyCities: [
       { name: "Yorba Linda", slug: "yorba-linda", urlBase: "/air-conditioning/ac-repair" },
       { name: "Placentia", slug: "placentia", urlBase: "/air-conditioning/ac-repair" },
@@ -225,7 +219,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "How fast can you get to Fullerton for an AC repair?",
         answer:
-          "We're about 15–20 minutes from most Fullerton neighborhoods. Same-day service available for calls placed before noon.",
+          "Our shop is in nearby Yorba Linda, and we're open 24/7. Call us and we'll give you an arrival window when you book.",
       },
       {
         question: "Do you work with landlords and property managers in Fullerton?",
@@ -255,11 +249,11 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       },
       {
         heading: "Older Home Specialists",
-        body: "Fullerton's 1950s–1980s housing stock runs systems we service daily. We stock parts for older Carrier, Trane, and Lennox units.",
+        body: "Fullerton's 1950s–1980s housing stock runs older Carrier, Trane, and Lennox systems, and we service them.",
       },
       {
-        heading: "15–20 Minute Response",
-        body: "Based in nearby Yorba Linda — faster than most competitors operating from farther out.",
+        heading: "Based in Nearby Yorba Linda",
+        body: "Our shop on Yorba Linda Blvd is a short drive from Fullerton.",
       },
       {
         heading: "No Surprise Bills",
@@ -289,14 +283,13 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/ac-repair",
     metaTitle: "AC Repair in Irvine, CA | Same-Day HVAC Service | (714) 410-2784",
     metaDescription:
-      "Fast AC repair in Irvine, CA for homes, condos, and offices. Licensed HVAC technicians, same-day service, free estimates. Call (714) 410-2784.",
+      "Fast AC repair in Irvine, CA for homes, condos, and offices. Same-day service, free estimates. Call (714) 410-2784.",
     h1: "AC Repair in Irvine, CA — Same-Day Service",
     heroSubheadline:
-      "Premium AC repair for Irvine homes, condos, and office parks — licensed technicians, written warranties, same-day availability.",
+      "Premium AC repair for Irvine homes, condos, and office parks, with same-day availability.",
     localContext:
       "Irvine is master-planned with large HOA communities, tech campuses, and high-rise condos — systems tend to be newer but complex (multi-zone, smart thermostats, inverter compressors). Residents expect premium service and brand-certified technicians. Commercial HVAC is a significant opportunity in the Spectrum and John Wayne Airport corridor. We're familiar with Irvine's HOA requirements and permit processes.",
     urgencyNote: "Serving Woodbridge, Northwood, Quail Hill, Turtle Rock, the Spectrum, and all Irvine communities.",
-    responseTime: "typically 1.5–3 hours same day",
     nearbyCities: [
       { name: "Tustin", slug: "tustin", urlBase: "/air-conditioning/ac-repair" },
       { name: "Lake Forest", slug: "lake-forest", urlBase: "/air-conditioning/ac-repair" },
@@ -318,7 +311,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "How fast can you get to Irvine?",
         answer:
-          "From our Yorba Linda base, we can typically reach most Irvine neighborhoods within 30–45 minutes. Same-day appointments available.",
+          "Our shop is in nearby Yorba Linda, and we're open 24/7. Call us and we'll give you an arrival window when you book.",
       },
       {
         question: "Do you navigate Irvine HOA requirements for repairs and equipment placement?",
@@ -378,9 +371,8 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     heroSubheadline:
       "AC out in Orange? We repair it — same day, with a written quote before we start.",
     localContext:
-      "Orange has a diverse mix: historic Old Towne with homes pre-dating the 1960s, newer developments near Santiago Canyon, and commercial corridors along Chapman and Katella. Older homes near Old Towne may have original ductwork or window AC setups requiring a full assessment. Summer temps hit 95–100°F inland near Santiago Canyon. We're about 20 minutes from most Orange neighborhoods.",
+      "Orange has a diverse mix: historic Old Towne with homes pre-dating the 1960s, newer developments near Santiago Canyon, and commercial corridors along Chapman and Katella. Older homes near Old Towne may have original ductwork or window AC setups requiring a full assessment. Summer temps hit 95–100°F inland near Santiago Canyon. Our shop is in nearby Yorba Linda.",
     urgencyNote: "Serving Old Towne Orange, Santiago Canyon, the Metrolink corridor, and all residential neighborhoods.",
-    responseTime: "typically 1–2 hours same day",
     nearbyCities: [
       { name: "Yorba Linda", slug: "yorba-linda", urlBase: "/air-conditioning/ac-repair" },
       { name: "Anaheim", slug: "anaheim", urlBase: "/air-conditioning/ac-repair" },
@@ -397,12 +389,12 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "How fast can you get to Orange, CA for an AC repair?",
         answer:
-          "About 20 minutes from our Yorba Linda shop to most Orange neighborhoods. Same-day service typically within 1–2 hours.",
+          "Our shop is in nearby Yorba Linda, and we're open 24/7. Call us and we'll give you an arrival window when you book.",
       },
       {
         question: "Do you service the Santiago Hills and Canyon area of Orange?",
         answer:
-          "Yes — including Santiago Hills, Orange Park Acres, and Canyon communities. We know the area and stock parts for the systems common there.",
+          "Yes — including Santiago Hills, Orange Park Acres, and Canyon communities.",
       },
       {
         question: "Do you charge a diagnostic fee?",
@@ -421,12 +413,12 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
         body: "We know Orange's full range — from historic 1940s homes to modern Santiago Hills developments.",
       },
       {
-        heading: "20-Minute Response",
-        body: "Based in Yorba Linda — a short drive to any Orange neighborhood for fast same-day service.",
+        heading: "Based in Nearby Yorba Linda",
+        body: "Based in Yorba Linda, a short drive to any Orange neighborhood for same-day service.",
       },
       {
         heading: "Historic Home Experience",
-        body: "We've worked on dozens of Old Towne and pre-war homes. We're careful, thorough, and honest.",
+        body: "We work on Old Towne and pre-war homes. We're careful, thorough, and honest.",
       },
       {
         heading: "Written Quote — Always",
@@ -466,8 +458,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       "Real people answer — no voicemail. Same-day emergency HVAC service, 7 days a week.",
     localContext:
       "Our shop is on Yorba Linda Blvd — we have the shortest drive time of any HVAC company serving this city. When temperatures hit 95–100°F in inland neighborhoods near Weir Canyon, we treat every AC outage as an emergency and prioritize Yorba Linda calls.",
-    urgencyNote: "Average response time in Yorba Linda: 1–3 hours. We dispatch from Yorba Linda Blvd.",
-    responseTime: "1–3 hours same day",
+    urgencyNote: "Open 24/7, including emergency service. We dispatch from Yorba Linda Blvd.",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/air-conditioning/emergency-ac-repair" },
       { name: "Placentia", slug: "placentia", urlBase: "/air-conditioning/emergency-ac-repair" },
@@ -484,7 +475,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       {
         question: "How fast can you get to Yorba Linda for an emergency?",
         answer:
-          "1–3 hours same day for emergency calls. Our shop is on Yorba Linda Blvd, so we're closer than any other company.",
+          "Same-day emergency service is available 24/7, and our shop is on Yorba Linda Blvd. Call us and we'll give you the earliest available arrival window.",
       },
       {
         question: "What if you can't fix it today?",
@@ -509,12 +500,12 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
         body: "Weekend and same-day emergency calls are priced the same as regular service. No surprises.",
       },
       {
-        heading: "Closest Shop in the City",
-        body: "Based on Yorba Linda Blvd — shorter drive than any competitor means faster arrival.",
+        heading: "Based in Yorba Linda",
+        body: "Our shop is on Yorba Linda Blvd, close to homes across the city.",
       },
       {
-        heading: "Fully Stocked Trucks",
-        body: "We carry common parts to resolve most emergency repairs in a single visit.",
+        heading: "Open 24 Hours, 7 Days a Week",
+        body: "Call any time, day or night, including for emergency heating and cooling service.",
       },
     ],
     servicesListHeadline: "Common Emergency AC Situations We Handle",
@@ -545,9 +536,8 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
     heroSubheadline:
       "Anaheim reaches 95–100°F in summer. Real people answer our phones — same-day emergency service for homes and businesses.",
     localContext:
-      "Anaheim's summer heat is serious — especially for families with young children, elderly residents, and businesses that can't afford HVAC downtime. We serve both residential and commercial customers and understand the urgency of keeping Anaheim homes and businesses cool. Response time from Yorba Linda: approximately 25–35 minutes.",
-    urgencyNote: "Average response time in Anaheim: 1.5–3 hours. 24/7 availability for hospitality and commercial customers.",
-    responseTime: "1.5–3 hours same day",
+      "Anaheim's summer heat is serious — especially for families with young children, elderly residents, and businesses that can't afford HVAC downtime. We serve both residential and commercial customers and understand the urgency of keeping Anaheim homes and businesses cool.",
+    urgencyNote: "Open 24/7 for homes, hospitality and commercial customers.",
     nearbyCities: [
       { name: "Yorba Linda", slug: "yorba-linda", urlBase: "/air-conditioning/emergency-ac-repair" },
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/air-conditioning/emergency-ac-repair" },
@@ -569,7 +559,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       {
         question: "How fast can you reach Anaheim for an emergency?",
         answer:
-          "About 25–35 minutes from our Yorba Linda base. Emergency response time in Anaheim: typically 1.5–3 hours from your call.",
+          "Our shop is in nearby Yorba Linda, and we're open 24/7. Call us and we'll give you an arrival window when you book.",
       },
       {
         question: "Do you work nights and weekends in Anaheim?",
@@ -582,7 +572,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
     whyUsPoints: [
       {
         heading: "Real People Answer",
-        body: "No voicemail, no call centers. A dispatcher picks up your call and can confirm availability immediately.",
+        body: "No voicemail, no call centers. A dispatcher picks up your call and confirms availability with you.",
       },
       {
         heading: "Residential & Commercial",
@@ -593,8 +583,8 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
         body: "Same pricing whether you call on a Tuesday afternoon or Saturday morning. No surprise charges.",
       },
       {
-        heading: "Parts-Ready Trucks",
-        body: "Most common emergency repairs — capacitors, contactors, fan motors — completed in a single visit.",
+        heading: "Open 24 Hours, 7 Days a Week",
+        body: "Call any time, day or night, including for emergency heating and cooling service.",
       },
     ],
     servicesListHeadline: "Common Emergency AC Situations We Handle in Anaheim",
@@ -630,7 +620,6 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
     localContext:
       "Yorba Linda winters drop to 40°F overnight — don't wait until your heater fails in January. Most Yorba Linda homes have split systems that handle both heating and cooling. One service call covers both. We're based on Yorba Linda Blvd and stock furnace parts for the brands most common in local homes.",
     urgencyNote: "Same-day heating service available. Don't wait for winter to discover a failed furnace.",
-    responseTime: "typically 1–3 hours same day",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/heating/heating-repair" },
       { name: "Placentia", slug: "placentia", urlBase: "/heating/heating-repair" },
@@ -669,7 +658,7 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
       },
       {
         heading: "Based in Yorba Linda",
-        body: "Fastest response in the city. We're on Yorba Linda Blvd, not commuting from another county.",
+        body: "We're on Yorba Linda Blvd, not commuting from another county.",
       },
       {
         heading: "Seasonal Tune-Up Specialists",
@@ -709,11 +698,10 @@ export const AC_TUNEUP_CITIES: CityServicePage[] = [
       "AC tune-up and maintenance in Yorba Linda, CA. 20-point inspection starting at $99. Same-week appointments. Call (714) 410-2784.",
     h1: "AC Tune-Up in Yorba Linda — Starting at $99",
     heroSubheadline:
-      "A 20-point maintenance visit keeps your system running efficiently all summer. Most appointments available within 48 hours.",
+      "A 20-point maintenance visit keeps your system running efficiently all summer.",
     localContext:
       "Inland temps in Yorba Linda hit 95–100°F — an under-maintained system works 30% harder and fails more often during peak heat. Yorba Linda's mix of 1970s–2000s housing means many systems are approaching or past their ideal service interval. A spring tune-up is the most cost-effective investment you can make before cooling season.",
-    urgencyNote: "Most tune-up appointments available within 48 hours. Book before summer rush.",
-    responseTime: "within 48 hours for most appointments",
+    urgencyNote: "Book your tune-up before the summer rush.",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/air-conditioning/ac-tune-up" },
       { name: "Placentia", slug: "placentia", urlBase: "/air-conditioning/ac-tune-up" },
@@ -756,7 +744,7 @@ export const AC_TUNEUP_CITIES: CityServicePage[] = [
       },
       {
         heading: "Flexible Scheduling",
-        body: "Most tune-up appointments available within 48 hours. Morning and afternoon windows available.",
+        body: "Call to book a tune-up at a time that works for you.",
       },
       {
         heading: "Local, Honest Team",
@@ -798,7 +786,6 @@ export const LOCAL_HVAC_CITIES: CityServicePage[] = [
     localContext:
       "We've been serving Yorba Linda homes from our shop on Yorba Linda Blvd. We know the neighborhoods — Weir Canyon, Fairmont, Vista Del Verde, the hillside tracts — and the systems that run in them. When you call, you reach our actual team, not a national dispatch center.",
     urgencyNote: "Same-day service from your local Yorba Linda HVAC team.",
-    responseTime: "typically 1–3 hours same day",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/hvac-repair" },
       { name: "Placentia", slug: "placentia", urlBase: "/hvac-repair" },
@@ -844,8 +831,8 @@ export const LOCAL_HVAC_CITIES: CityServicePage[] = [
         body: "We're not incentivized to push unnecessary repairs or replacements. Just honest diagnosis.",
       },
       {
-        heading: "10 Minutes from Your Home",
-        body: "Based on Yorba Linda Blvd — the fastest response in the city.",
+        heading: "Based in Yorba Linda",
+        body: "Our shop is on Yorba Linda Blvd, close to homes across the city.",
       },
     ],
     servicesListHeadline: "Full HVAC Services for Yorba Linda Homes & Businesses",

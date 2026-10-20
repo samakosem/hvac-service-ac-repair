@@ -1,5 +1,6 @@
 import type { SiteImage } from "@/lib/config/images";
 import { generatePPCCities } from "@/lib/config/ppc-city-generator";
+import { licenseOrHoursPoint } from "@/lib/config/credentials";
 
 export type PPCCity = {
   slug: string;
@@ -61,7 +62,7 @@ export const PPC_CITIES: PPCCity[] = [
     localContext:
       "We serve all of Pasadena — from Bungalow Heaven and the historic districts near Old Town, to newer neighborhoods along the 210 corridor. Our trucks are familiar with the area and can often arrive the same day you call.",
     repairBody:
-      "When your AC stops cooling in Pasadena summer heat, every minute counts. Our technicians diagnose the problem on the first visit — we carry a full parts inventory so most repairs are completed the same day. Common repairs include capacitor replacement, refrigerant recharge, contactor and relay fixes, and evaporator coil cleaning. We repair all major brands: Lennox, Carrier, Trane, Goodman, Rheem, and more.",
+      "When your AC stops cooling in Pasadena summer heat, every minute counts. Our technicians diagnose the problem and give you a written quote before any work. Common repairs include capacitor replacement, refrigerant recharge, contactor and relay fixes, and evaporator coil cleaning. We repair all major brands: Lennox, Carrier, Trane, Goodman, Rheem, and more.",
     installBody:
       "Replacing an aging system in Pasadena is an investment that pays off quickly given the region's long cooling season. We install high-efficiency systems sized precisely to your home — avoiding the oversized units that short-cycle and spike humidity. We offer Lennox, Trane, and Goodman equipment with manufacturer warranties, and we handle all permits and inspections.",
     emergencyBody:
@@ -72,8 +73,8 @@ export const PPC_CITIES: PPCCity[] = [
         body: "We've served homes throughout the San Gabriel Valley for years. Our technicians know local building styles, permit requirements, and common equipment brands used in the area.",
       },
       {
-        heading: "Same-Day Service Guarantee",
-        body: "We keep our schedule flexible to accommodate emergency calls. Most Pasadena customers get a same-day appointment when they call before noon.",
+        heading: "Flexible Scheduling",
+        body: "We keep our schedule flexible to accommodate emergency calls across Pasadena.",
       },
       {
         heading: "Transparent, Flat-Rate Pricing",
@@ -88,7 +89,7 @@ export const PPC_CITIES: PPCCity[] = [
       {
         question: "How quickly can you respond to an AC emergency in Pasadena?",
         answer:
-          "For emergency calls, we aim for same-day service — often within 2–4 hours during regular business hours. Weekend and evening availability is offered for urgent situations where the home is unsafe due to heat.",
+          "Same-day emergency service is available in Pasadena, 24 hours a day, 7 days a week. Call us and we'll give you the earliest available arrival window.",
       },
       {
         question: "My Pasadena home is older — can my ductwork handle a new system?",
@@ -131,10 +132,10 @@ export const PPC_CITIES: PPCCity[] = [
     },
     metaTitle: "AC Repair & HVAC Service in Los Angeles, CA — Same-Day Available",
     metaDescription:
-      "Professional AC repair, replacement & HVAC service in Los Angeles, CA. Same-day service. Free estimate. Licensed & insured. Call (714) 410-2784.",
+      "Professional AC repair, replacement & HVAC service in Los Angeles, CA. Same-day service. Free estimate. Call (714) 410-2784.",
     h1: "AC Repair & HVAC Service in Los Angeles, CA",
     heroSubheadline:
-      "Fast AC repair, new system installation & emergency HVAC service across Los Angeles. Licensed technicians — real people answer your call.",
+      "Fast AC repair, new system installation & emergency HVAC service across Los Angeles. Real people answer your call.",
     climate:
       "Los Angeles experiences a Mediterranean climate with hot, dry summers — but inland neighborhoods like the Valley, Silver Lake, and East LA can see temperatures 10–20°F hotter than the coast. Santa Ana wind events push interior temperatures higher still, stressing older equipment and triggering breakdowns at the worst possible time.",
     commonProblems:
@@ -142,9 +143,9 @@ export const PPC_CITIES: PPCCity[] = [
     homeownerConcerns:
       "Los Angeles homeowners and renters are concerned about cost — both the price of repairs and the long-term cost of running an inefficient system. Many are also interested in going ductless to avoid major renovation work, and want assurance that their contractor is properly licensed and won't disappear after the job.",
     localContext:
-      "We serve neighborhoods throughout the LA area including Silver Lake, Los Feliz, Echo Park, Highland Park, Eagle Rock, the Westside, and the San Fernando Valley. Our vans are dispatched from Orange County and can reach most LA neighborhoods within the hour.",
+      "We serve neighborhoods throughout the LA area including Silver Lake, Los Feliz, Echo Park, Highland Park, Eagle Rock, the Westside, and the San Fernando Valley. Our technicians are dispatched from our Orange County shop.",
     repairBody:
-      "A broken AC in Los Angeles can mean hours or days of sweltering indoor heat. Our repair technicians arrive with a stocked service van and diagnose problems fast. We handle refrigerant issues, electrical failures, thermostat replacements, drain line clogs, and fan motor repairs. Repairs are quoted in writing before work begins — no surprises.",
+      "A broken AC in Los Angeles can mean hours or days of sweltering indoor heat. We handle refrigerant issues, electrical failures, thermostat replacements, drain line clogs, and fan motor repairs. Repairs are quoted in writing before work begins — no surprises.",
     installBody:
       "Los Angeles has one of the highest rates of ductless mini-split adoption in California — ideal for older homes without existing duct systems, room additions, and ADUs. We install single-zone and multi-zone ductless systems along with traditional central AC, all sized to meet ACCA Manual J standards for LA's specific climate zones.",
     emergencyBody:
@@ -154,10 +155,7 @@ export const PPC_CITIES: PPCCity[] = [
         heading: "Serving All of LA",
         body: "From the Valley to the Westside, Silver Lake to Eagle Rock — we dispatch technicians across Los Angeles with same-day availability.",
       },
-      {
-        heading: "CSLB Licensed & Insured",
-        body: "We're a fully licensed California contractor. Our technicians are background-checked, EPA-certified, and professionally trained.",
-      },
+      licenseOrHoursPoint(),
       {
         heading: "Free Estimates on Replacements",
         body: "New system quotes are always free. We provide written estimates so you can compare with confidence — no pressure, no obligation.",
@@ -214,7 +212,7 @@ export const PPC_CITIES: PPCCity[] = [
     },
     metaTitle: "AC Repair & HVAC Service in Orange County, CA — (714) 410-2784",
     metaDescription:
-      "Your local Orange County HVAC contractor. Same-day AC repair, replacement & maintenance. Free estimates. Licensed & insured. Call (714) 410-2784.",
+      "Your local Orange County HVAC contractor. Same-day AC repair, replacement & maintenance. Free estimates. Call (714) 410-2784.",
     h1: "AC Repair & HVAC Service in Orange County, CA",
     heroSubheadline:
       "Orange County's trusted HVAC team — same-day AC repair, system installation & free estimates. Based in Yorba Linda, serving all of OC.",
@@ -227,7 +225,7 @@ export const PPC_CITIES: PPCCity[] = [
     localContext:
       "We're based in Yorba Linda and serve every city in Orange County — Anaheim, Irvine, Santa Ana, Huntington Beach, Costa Mesa, Newport Beach, Fullerton, Orange, Brea, Placentia, Villa Park, Yorba Linda, and more. No long drive times, no out-of-area surcharges.",
     repairBody:
-      "As an Orange County-based contractor, we're positioned to offer genuinely fast response times throughout the county. Our service vans are stocked for the most common repairs — capacitors, contactors, fan motors, refrigerant, and drain line clearing — and we complete most repairs in a single visit. We repair every major brand and offer a parts warranty on all work performed.",
+      "As an Orange County-based contractor, our shop in Yorba Linda is central to the county. Common repairs include capacitors, contactors, fan motors, refrigerant, and drain line clearing. We repair every major brand and offer a parts warranty on all work performed.",
     installBody:
       "Orange County homeowners replacing an aging system can take advantage of current utility rebates from SCE and SoCalGas, which can offset thousands of dollars on high-efficiency equipment. We are familiar with the rebate process and can help you qualify. We install Lennox, Trane, Goodman, and Carrier systems with full manufacturer warranties.",
     emergencyBody:
@@ -247,7 +245,7 @@ export const PPC_CITIES: PPCCity[] = [
       },
       {
         heading: "No Unnecessary Upsells",
-        body: "Our reputation is built on honest work. We don't upsell unnecessary repairs and we back every job with a satisfaction guarantee.",
+        body: "Our reputation is built on honest work. We don't upsell unnecessary repairs.",
       },
     ],
     faqs: [
@@ -310,7 +308,7 @@ export const PPC_CITIES: PPCCity[] = [
     localContext:
       "We serve the full Malibu coastline from Las Virgenes to Point Mugu — including Pacific Coast Highway corridor homes, Malibu Canyon properties, and hillside estates. We're experienced working at remote and gated properties and can coordinate with property managers.",
     repairBody:
-      "Repairing HVAC in Malibu requires understanding the marine environment. We use marine-grade components where applicable, apply corrosion protection coatings, and always test system performance under real-load conditions before leaving the job. We carry stocked vans for same-day repairs and can reach most Malibu locations within 90 minutes.",
+      "Repairing HVAC in Malibu requires understanding the marine environment. We use marine-grade components where applicable, apply corrosion protection coatings, and always test system performance under real-load conditions before leaving the job.",
     installBody:
       "New HVAC installations in Malibu require careful equipment selection. We recommend systems with marine-grade coil coatings for ocean-proximate properties, properly sized heat pumps for year-round efficiency, and whole-home filtration to address wildfire smoke and canyon dust. We handle all LA County permitting and final inspections.",
     emergencyBody:
@@ -380,7 +378,7 @@ export const PPC_CITIES: PPCCity[] = [
     },
     metaTitle: "AC Repair & HVAC Service in Santa Clarita, CA — Same-Day Service",
     metaDescription:
-      "Fast AC repair & HVAC service in Santa Clarita, CA. Same-day availability during heat waves. Free estimates. Licensed & insured. Call (714) 410-2784.",
+      "Fast AC repair & HVAC service in Santa Clarita, CA. Same-day availability during heat waves. Free estimates. Call (714) 410-2784.",
     h1: "AC Repair & HVAC Service in Santa Clarita, CA",
     heroSubheadline:
       "Same-day AC repair & HVAC service for Santa Clarita homes — because summer in the SCV is no time to wait.",
@@ -412,8 +410,8 @@ export const PPC_CITIES: PPCCity[] = [
         body: "Heat doesn't take weekends off. We dispatch technicians Saturday and Sunday for emergency AC outages throughout Santa Clarita Valley.",
       },
       {
-        heading: "Fast Parts Turnaround",
-        body: "Our vans are stocked with the most common parts for Carrier, Lennox, Goodman, and Rheem — the brands installed in most SCV homes. Fewer return trips, faster repairs.",
+        heading: "Common Brands Serviced",
+        body: "We repair Carrier, Lennox, Goodman, Rheem, and other common brands.",
       },
     ],
     faqs: [
@@ -463,10 +461,10 @@ export const PPC_CITIES: PPCCity[] = [
     },
     metaTitle: "AC Repair & HVAC Service in Laguna Niguel, CA — Free Estimates",
     metaDescription:
-      "Expert AC repair, installation & HVAC service in Laguna Niguel, CA. Same-day service available. Licensed & insured. Free estimate. Call (714) 410-2784.",
+      "Expert AC repair, installation & HVAC service in Laguna Niguel, CA. Same-day service available. Free estimate. Call (714) 410-2784.",
     h1: "AC Repair & HVAC Service in Laguna Niguel, CA",
     heroSubheadline:
-      "Same-day AC repair, premium system installation & free estimates for Laguna Niguel homeowners. Licensed. Local. Trusted.",
+      "Same-day AC repair, premium system installation & free estimates for Laguna Niguel homeowners. Local and trusted.",
     climate:
       "Laguna Niguel enjoys a pleasant coastal-adjacent climate, but warm summers and occasional inland heat events mean air conditioning is essential — not optional. The city's mix of newer master-planned communities and older hillside homes creates a range of HVAC needs, from routine maintenance on aging systems to full replacements and ductless installations in homes with complex layouts.",
     commonProblems:
@@ -476,11 +474,11 @@ export const PPC_CITIES: PPCCity[] = [
     localContext:
       "We serve all of Laguna Niguel including Bear Brand Ranch, Monarch Beach, Marina Hills, and surrounding communities. Our South OC service area includes neighboring Aliso Viejo, Laguna Hills, Dana Point, and San Clemente — no travel surcharges.",
     repairBody:
-      "We provide prompt, professional AC repair throughout Laguna Niguel. Our technicians arrive in stocked service vans, diagnose the problem accurately on the first visit, and complete most repairs the same day. We quote in writing before any work starts and back repairs with a parts warranty. We service all major brands including Carrier, Lennox, Trane, and Goodman.",
+      "We provide professional AC repair throughout Laguna Niguel. Our technicians diagnose the problem and quote in writing before any work starts, and we back repairs with a parts warranty. We service all major brands including Carrier, Lennox, Trane, and Goodman.",
     installBody:
       "Laguna Niguel homeowners upgrading their systems can choose from a range of high-efficiency options. We install central air conditioning, heat pump systems for year-round efficiency, and ductless mini-splits ideal for additions, casitas, and homes with limited duct access. All installations include a Manual J load calculation and full system commissioning.",
     emergencyBody:
-      "When your AC fails unexpectedly, we offer same-day response across Laguna Niguel. We answer calls 7 days a week during service hours and offer weekend availability for urgent situations. Our goal is to restore your comfort the same day you call — not schedule you for next week.",
+      "When your AC fails unexpectedly, we offer same-day service across Laguna Niguel, and we answer calls 24 hours a day, 7 days a week. Our goal is to restore your comfort the same day you call, not schedule you for next week.",
     whyUsPoints: [
       {
         heading: "South OC Specialists",

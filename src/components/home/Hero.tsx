@@ -5,10 +5,13 @@ import Link from "next/link";
 import PhoneLink from "@/components/ui/PhoneLink";
 import { SITE } from "@/lib/config/site";
 import { IMG_HERO } from "@/lib/config/images";
+import { licenseLabel } from "@/lib/config/credentials";
+
+const LICENSE = licenseLabel();
 
 const TRUST_BULLETS = [
   "Same-Day Appointments",
-  "Licensed & Insured",
+  LICENSE ?? "Based in Yorba Linda",
   "Upfront Pricing",
 ];
 
@@ -71,7 +74,7 @@ export default function Hero() {
           {/* Subheadline */}
           <p className="text-lg lg:text-xl text-slate-200 leading-relaxed max-w-lg pl-4 border-l-2 border-copper-500/60 stagger-1 animate-fade-in-up">
             AC not cooling? Get fast local HVAC repair, installation, and maintenance
-            from licensed technicians near you.
+            from our team based in Yorba Linda.
           </p>
 
           {/* Trust bullets — 3 core signals, inline */}
@@ -111,13 +114,17 @@ export default function Hero() {
 
           {/* Trust strip — 3 compact signals, subtle */}
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-6 mt-1 border-t border-white/10 text-slate-300 stagger-3 animate-fade-in-up">
-            <span className="flex items-center gap-1.5 text-xs font-medium">
-              <svg className="w-3.5 h-3.5 text-copper-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-              </svg>
-              Licensed &amp; Insured
-            </span>
-            <span aria-hidden="true" className="hidden sm:block w-px h-3.5 bg-white/15" />
+            {LICENSE && (
+              <>
+                <span className="flex items-center gap-1.5 text-xs font-medium">
+                  <svg className="w-3.5 h-3.5 text-copper-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                  </svg>
+                  {LICENSE}
+                </span>
+                <span aria-hidden="true" className="hidden sm:block w-px h-3.5 bg-white/15" />
+              </>
+            )}
             <span className="flex items-center gap-1.5 text-xs font-medium">
               <svg className="w-3.5 h-3.5 text-copper-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />

@@ -1,5 +1,6 @@
 import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import { SITE } from "@/lib/config/site";
+import { licenseLabel } from "@/lib/config/credentials";
 
 type Props = {
   variant?: "hero" | "estimate" | "mid" | "prefooter";
@@ -26,16 +27,20 @@ const CONFIG = {
   },
   prefooter: {
     heading: "Don't Sweat It — Get Help Today",
-    subheading: "Submit your info and we'll call you back within the hour.",
+    subheading: "Submit your info and we'll call you back to schedule.",
     bg: "bg-hvac-blue-700",
     label: "Pre-footer estimate form",
   },
 } as const;
 
+const LICENSE = licenseLabel();
+
 const ESTIMATE_POINTS = [
   { title: "Fast Callback", desc: "We call back quickly — real people, no voicemail maze." },
   { title: "Upfront Pricing", desc: "Clear quotes before any work begins. No hidden fees." },
-  { title: "Licensed & Insured", desc: "Local, background-checked HVAC technicians near you." },
+  LICENSE
+    ? { title: LICENSE, desc: "Local HVAC technicians near you." }
+    : { title: "Based in Yorba Linda", desc: "Local HVAC technicians near you." },
   { title: "Same-Day Service", desc: "Emergency AC & heating help available 24/7." },
 ];
 
@@ -187,7 +192,7 @@ export default function HomeLeadForm({ variant = "hero" }: Props) {
 
             <ul className={`space-y-2.5 text-sm ${isDark ? "text-blue-100" : "text-slate-600"}`}>
               {[
-                "Licensed & insured HVAC technicians",
+                ...(LICENSE ? [`${LICENSE} HVAC technicians`] : []),
                 "Upfront pricing — no hidden fees",
                 "Serving homeowners and businesses in your local area",
                 "Emergency service available",

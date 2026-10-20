@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
             <div>
               <h2>Who We Are</h2>
               <p>
-                HVAC Service &amp; AC Repair is a licensed HVAC contractor serving Orange County
+                HVAC Service &amp; AC Repair is an HVAC contractor serving Orange County
                 and surrounding areas in Southern California. Our business address is{" "}
                 {SITE.address.full}. Phone:{" "}
                 <a href={`tel:${SITE.phone}`}>{SITE.phoneDisplay}</a>. Email:{" "}

@@ -5,6 +5,7 @@ import JsonLd from "@/components/ui/JsonLd";
 import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import PhoneLink from "@/components/ui/PhoneLink";
 import { SITE } from "@/lib/config/site";
+import { CREDENTIALS, credentialBadges, insuranceLabel, licenseNumberLabel } from "@/lib/config/credentials";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import { resolveService } from "@/lib/seo/buildServicePage";
@@ -15,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "AC Repair — Same-Day Service | Southern California | (714) 410-2784",
     description:
-      "Same-day AC repair throughout Southern California. Licensed technicians, free diagnostic with repair, written quote before any work. Call (714) 410-2784.",
+      "Same-day AC repair throughout Southern California. Free diagnostic with repair, written quote before any work. Call (714) 410-2784.",
     path: "/air-conditioning/ac-repair",
   });
 }
@@ -182,7 +183,7 @@ export default function AcRepairPage() {
 
               {/* Trust badges */}
               <div className="flex flex-wrap gap-2">
-                {["Licensed & Insured", "CSLB Certified", "EPA Certified", "Same-Day Service", "Free Estimates", "0% Financing"].map((b) => (
+                {[...credentialBadges(), "Same-Day Service", "Free Estimates", "0% Financing"].map((b) => (
                   <span key={b} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/7 border border-white/10 text-xs font-medium text-slate-200">
                     <CheckIcon className="w-3 h-3 text-emerald-400" />
                     {b}
@@ -195,7 +196,7 @@ export default function AcRepairPage() {
             <div id="estimate-form" className="hidden lg:block bg-white rounded-2xl shadow-xl p-7 border border-white/10">
               <SingleStepQuoteForm
                 heading="Get Same-Day AC Repair Service"
-                subheading="We respond within 1 hour · Real people answer your call"
+                subheading="Open 24/7 · Real people answer your call"
                 ctaLabel="Get Same-Day Service"
                 defaultService="AC Repair"
               />
@@ -209,7 +210,7 @@ export default function AcRepairPage() {
         <div className="max-w-xl mx-auto">
           <SingleStepQuoteForm
             heading="Get Same-Day Service"
-            subheading="We respond within 1 hour · Real people answer"
+            subheading="Open 24/7 · Real people answer"
             ctaLabel="Get Same-Day Service"
             defaultService="AC Repair"
           />
@@ -221,8 +222,8 @@ export default function AcRepairPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm text-slate-300">
             {[
-              { icon: <ShieldIcon className="w-4 h-4 text-copper-400" />, text: "CSLB Licensed & Insured" },
-              { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "EPA Certified" },
+              ...(licenseNumberLabel() ? [{ icon: <ShieldIcon className="w-4 h-4 text-copper-400" />, text: licenseNumberLabel() as string }] : []),
+              ...(CREDENTIALS.epaCertified ? [{ icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "EPA Certified" }] : []),
               { icon: <BoltIcon className="w-4 h-4 text-copper-400" />, text: "Same-Day Availability" },
               { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "Free Estimates" },
               { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "0% Financing Available" },
@@ -433,9 +434,11 @@ export default function AcRepairPage() {
                 Free estimates. Same-day availability. Real people answer your call. Based in Yorba Linda — serving all of Orange County.
               </p>
               <div className="flex flex-col gap-2">
-                <p className="text-slate-400 text-sm">Mon–Fri {SITE.hours.weekdays} · Sat {SITE.hours.saturday}</p>
+                <p className="text-slate-400 text-sm">{SITE.hours.summary}</p>
                 <p className="text-slate-400 text-sm">{SITE.address.full}</p>
-                <p className="text-slate-400 text-sm">CSLB Licensed · EPA Certified · Fully Insured</p>
+                {credentialBadges().length > 0 && (
+                  <p className="text-slate-400 text-sm">{[licenseNumberLabel(), CREDENTIALS.epaCertified ? "EPA Certified" : null, insuranceLabel()].filter(Boolean).join(" · ")}</p>
+                )}
               </div>
               <PhoneLink
                 className="inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-copper-gradient text-white font-bold rounded-xl shadow-glow-copper hover:opacity-90 active:scale-[0.98] transition-all text-base w-full sm:w-auto"
@@ -446,7 +449,7 @@ export default function AcRepairPage() {
             <div className="bg-white rounded-2xl shadow-xl p-7">
               <SingleStepQuoteForm
                 heading="Request Same-Day AC Service"
-                subheading="We'll respond within 1 hour during business hours."
+                subheading="We'll contact you to schedule."
                 ctaLabel="Get Same-Day Service"
                 defaultService="AC Repair"
               />

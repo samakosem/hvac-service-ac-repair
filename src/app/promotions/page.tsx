@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { SITE } from "@/lib/config/site";
+import { licenseLabel } from "@/lib/config/credentials";
 import { ACTIVE_PROMOTIONS } from "@/lib/config/promotions";
 import JsonLd from "@/components/ui/JsonLd";
 import CtaSection from "@/components/ui/CtaSection";
@@ -46,7 +47,7 @@ const FAQS = [
   },
   {
     q: "Is the free HVAC inspection really free — no strings attached?",
-    a: "Yes. We'll send a licensed technician to inspect your system and give you a written rundown of what we find. If you decide to move forward with repairs, great. If not, there's no charge and no obligation.",
+    a: "Yes. We'll send a technician to inspect your system and give you a written rundown of what we find. If you decide to move forward with repairs, great. If not, there's no charge and no obligation.",
   },
   {
     q: "Do you offer discounts for veterans and seniors?",
@@ -124,7 +125,7 @@ export default function PromotionsPage() {
                 "No hidden fees",
                 "Written estimates before work begins",
                 "Same-day availability",
-                "Licensed & insured",
+                ...(licenseLabel() ? [licenseLabel() as string] : []),
               ].map((pill) => (
                 <span
                   key={pill}

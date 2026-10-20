@@ -6,25 +6,7 @@
 
 import { getAllCities, type City } from "@/lib/config/locations";
 import type { CityServicePage } from "@/lib/config/city-service-pages";
-
-// ─── Response time by county ─────────────────────────────────────────────────
-
-function responseTime(city: City): string {
-  switch (city.countySlug) {
-    case "orange-county":
-      return "typically 1–3 hours same day";
-    case "riverside-county":
-      return "typically 2–4 hours same day";
-    case "san-bernardino-county":
-      return "typically 2–4 hours same day";
-    case "ventura-county":
-      return "scheduled basis — call to confirm";
-    case "santa-barbara-county":
-      return "scheduled basis — call to confirm";
-    default:
-      return "typically 2–4 hours same day";
-  }
-}
+import { licenseOrHoursPoint } from "@/lib/config/credentials";
 
 function urgencyNote(city: City): string {
   switch (city.countySlug) {
@@ -35,9 +17,9 @@ function urgencyNote(city: City): string {
     case "san-bernardino-county":
       return `${city.name} is within our standard service area. Same-day dispatch typically available.`;
     case "ventura-county":
-      return `${city.name} is in our extended service area. Call to confirm same-day availability.`;
+      return `Serving ${city.name}, including 24/7 emergency service. Call to confirm availability for your address.`;
     case "santa-barbara-county":
-      return `${city.name} is at the outer edge of our service range. Scheduled service only — call to confirm.`;
+      return `Serving ${city.name}, including 24/7 emergency service. Call to confirm availability for your address.`;
     default:
       return `Serving ${city.name} — call to confirm same-day availability.`;
   }
@@ -75,11 +57,11 @@ function faqs(city: City, serviceSlug: string): { question: string; answer: stri
   const speedFaq = isExtended
     ? {
         question: `How quickly can you get to ${city.name} for service?`,
-        answer: `${city.name} is in our extended service area. Same-day scheduling is not always guaranteed. Call us in the morning and we'll confirm the earliest available appointment.`,
+        answer: `We serve ${city.name}, including 24/7 emergency service. Call us and we'll give you the earliest available arrival window.`,
       }
     : {
         question: `How quickly can you get to ${city.name} for service?`,
-        answer: `${city.name} is within our same-day service zone. Most calls placed before noon receive same-day scheduling.`,
+        answer: "Same-day service is available, and we're open 24/7, including emergencies. Call us and we'll give you the earliest available arrival window.",
       };
 
   switch (serviceSlug) {
@@ -90,7 +72,7 @@ function faqs(city: City, serviceSlug: string): { question: string; answer: stri
         {
           question: "Do you work on all AC brands?",
           answer:
-            "Yes — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Mitsubishi, Daikin, LG, and all other major brands. We stock common parts to complete most repairs on the first visit.",
+            "Yes — Carrier, Trane, Lennox, Goodman, Rheem, Bryant, York, Mitsubishi, Daikin, LG, and all other major brands.",
         },
         {
           question: "Do you offer financing on AC repairs?",
@@ -115,7 +97,7 @@ function faqs(city: City, serviceSlug: string): { question: string; answer: stri
         {
           question: "Can you fix my AC on the first emergency visit?",
           answer:
-            "Most emergency calls are resolved on the first visit. We carry common repair parts. If a major component needs ordering, we'll give you a clear timeline and options.",
+            "It depends on the problem and the parts it needs. If a component needs ordering, we'll give you a clear timeline and options.",
         },
       ];
 
@@ -184,10 +166,7 @@ function faqs(city: City, serviceSlug: string): { question: string; answer: stri
 
 function whyUsPoints(city: City, serviceSlug: string): { heading: string; body: string }[] {
   const basePoints = [
-    {
-      heading: "CSLB Licensed & Fully Insured",
-      body: "Fully licensed California contractor. EPA-certified technicians. Background-checked team.",
-    },
+    licenseOrHoursPoint(),
     {
       heading: "Written Quote Before Any Work",
       body: "You approve the price in writing before we start. No bill surprises.",
@@ -198,13 +177,13 @@ function whyUsPoints(city: City, serviceSlug: string): { heading: string; body: 
     case "ac-repair":
       return [
         {
-          heading: `Fast Dispatch to ${city.name}`,
-          body: `Based in Yorba Linda, we reach ${city.name} faster than companies commuting from LA or distant OC.`,
+          heading: "Based in Yorba Linda",
+          body: `Our shop is on Yorba Linda Blvd, and we serve ${city.name} and nearby cities.`,
         },
         ...basePoints,
         {
-          heading: "Parts on the Truck",
-          body: "We stock common capacitors, contactors, and fan motors. Most repairs done in one visit.",
+          heading: "All Major Brands",
+          body: "We repair Carrier, Trane, Lennox, Goodman, Rheem, and other major brands.",
         },
       ];
 
@@ -246,7 +225,7 @@ function whyUsPoints(city: City, serviceSlug: string): { heading: string; body: 
         },
         {
           heading: "Flexible Scheduling",
-          body: "Most tune-up appointments available within 48 hours. Morning and afternoon windows available.",
+          body: "Call to book a tune-up at a time that works for you.",
         },
         {
           heading: "Local, Honest Team",
@@ -283,7 +262,7 @@ function servicesList(serviceSlug: string): string[] {
     case "ac-repair":
       return [
         "Capacitor & contactor replacement",
-        "Refrigerant leak detection & recharge (EPA-certified)",
+        "Refrigerant leak detection & recharge",
         "Compressor diagnosis & replacement",
         "Thermostat & control board repair",
         "Condenser fan motor replacement",
@@ -360,7 +339,7 @@ const SERVICE_META: Record<string, ServiceMeta> = {
     urlBase: "/air-conditioning/ac-repair",
     h1: (c) => `AC Repair in ${c}, CA — Same-Day Service`,
     heroSubheadline: (c) =>
-      `AC stopped working in ${c}? We diagnose, quote, and fix it — usually same day. No guesswork, no upsells.`,
+      `AC stopped working in ${c}? We diagnose, quote, and fix it, with same-day service available. No guesswork, no upsells.`,
     servicesListHeadline: (c) => `What We Repair in ${c} Homes`,
     whyUsHeadline: (c) => `Why ${c} Residents Choose Us`,
     ctaBannerText: (c) => `AC Not Cooling in ${c}? We're Available Today.`,
@@ -390,7 +369,7 @@ const SERVICE_META: Record<string, ServiceMeta> = {
     urlBase: "/air-conditioning/ac-tune-up",
     h1: (c) => `AC Tune-Up in ${c} — Starting at $99`,
     heroSubheadline: (c) =>
-      `A 20-point maintenance visit keeps your ${c} AC running efficiently all summer. Most appointments available within 48 hours.`,
+      `A 20-point maintenance visit keeps your ${c} AC running efficiently all summer.`,
     servicesListHeadline: (c) => `What's Included in Your ${c} AC Tune-Up`,
     whyUsHeadline: (c) => `Why ${c} Homeowners Tune Up with Us`,
     ctaBannerText: (c) => `Ready for a Tune-Up? Book Your ${c} AC Service Today.`,
@@ -445,7 +424,7 @@ function metaTitle(city: City, serviceSlug: string): string {
 function metaDescription(city: City, serviceSlug: string): string {
   switch (serviceSlug) {
     case "ac-repair":
-      return `Fast AC repair in ${city.name}, CA. Licensed HVAC technicians, same-day appointments, free diagnostic with repair. Call (714) 410-2784.`;
+      return `Fast AC repair in ${city.name}, CA. Same-day appointments, free diagnostic with repair. Call (714) 410-2784.`;
     case "emergency-ac-repair":
       return `Emergency AC repair in ${city.name}, CA. Same-day service — real people answer, no voicemail. Free diagnostic, no emergency surcharge. Call (714) 410-2784.`;
     case "heating-repair":
@@ -487,7 +466,6 @@ export function generateCityServicePages(
       heroSubheadline: meta.heroSubheadline(city.name),
       localContext: city.localContext,
       urgencyNote: urgencyNote(city),
-      responseTime: responseTime(city),
       nearbyCities: nearbyCities(city, serviceSlug),
       faqs: faqs(city, serviceSlug),
       pricingNote: pricingNote(serviceSlug),
