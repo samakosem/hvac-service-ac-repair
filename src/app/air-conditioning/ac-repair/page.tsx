@@ -5,7 +5,7 @@ import JsonLd from "@/components/ui/JsonLd";
 import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import PhoneLink from "@/components/ui/PhoneLink";
 import { SITE } from "@/lib/config/site";
-import { CREDENTIALS, credentialBadges, licenseNumberLabel } from "@/lib/config/credentials";
+import { CREDENTIALS, credentialBadges, insuranceLabel, licenseNumberLabel } from "@/lib/config/credentials";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
 import { resolveService } from "@/lib/seo/buildServicePage";
@@ -437,7 +437,7 @@ export default function AcRepairPage() {
                 <p className="text-slate-400 text-sm">{SITE.hours.summary}</p>
                 <p className="text-slate-400 text-sm">{SITE.address.full}</p>
                 {credentialBadges().length > 0 && (
-                  <p className="text-slate-400 text-sm">{[licenseNumberLabel(), CREDENTIALS.epaCertified ? "EPA Certified" : null, CREDENTIALS.insured ? "Insured" : null].filter(Boolean).join(" · ")}</p>
+                  <p className="text-slate-400 text-sm">{[licenseNumberLabel(), CREDENTIALS.epaCertified ? "EPA Certified" : null, insuranceLabel()].filter(Boolean).join(" · ")}</p>
                 )}
               </div>
               <PhoneLink

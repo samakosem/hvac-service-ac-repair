@@ -2,12 +2,12 @@ import Link from "next/link";
 import { SITE } from "@/lib/config/site";
 import PhoneLink from "@/components/ui/PhoneLink";
 import { SERVICE_AREA_COUNTIES } from "@/lib/config/locations";
-import { CREDENTIALS, licenseNumberLabel } from "@/lib/config/credentials";
+import { CREDENTIALS, insuranceLabel, licenseNumberLabel } from "@/lib/config/credentials";
 
 // Only credentials the owner has confirmed (see credentials.ts).
 const CREDENTIAL_BADGES = [
   licenseNumberLabel(),
-  CREDENTIALS.insured ? "Insured" : null,
+  insuranceLabel(),
   CREDENTIALS.epaCertified ? "EPA Certified" : null,
 ].filter((b): b is string => b !== null);
 

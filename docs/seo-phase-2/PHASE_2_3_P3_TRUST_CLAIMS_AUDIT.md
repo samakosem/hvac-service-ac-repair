@@ -4,6 +4,34 @@ Date: 2026-10-19. Base: `main` at `90d6701` (Phase 2.3 P1 merged).
 
 Owner confirmation used: the company operates 24 hours a day, 7 days a week, including emergency HVAC service. No other business fact was assumed.
 
+## Update 2026-10-20: owner confirmations
+
+The owner confirmed:
+- the company is licensed and insured, and the license number and policy details should not be published yet;
+- it operates 24/7, including emergency service;
+- it offers same-day AC repair and HVAC service;
+- emergency service covers Los Angeles, Orange, Riverside, Ventura and Santa Barbara counties.
+
+These supersede the earlier assumptions in this report:
+
+- **Licensing and insurance stay hidden.**
+  - The CSLB Advertising Guidelines (cslb.ca.gov, "Put your license number on all advertisements") and B&P Code §7030.5 require licensed contractors to include the license number in all advertising, explicitly including websites.
+  - B&P Code §7027.4(a) allows an "insured" claim only when the ad names the type of insurance.
+  - Without the number and the coverage type, neither claim can be shown. `credentials.ts` now takes `cslbLicenseNumber` and `insuranceType`.
+  - **Needed from the owner:**
+    1. The CSLB license number. We check it against the CSLB license lookup before publishing.
+    2. The insurance type to name, e.g. "General Liability". No policy number or amount is shown.
+    3. Optionally, EPA 608 certification and background-check confirmation.
+- **Compliance risk on the current site.** Because the company is licensed, CSLB rules require the license number on the website whether or not it says "licensed". The site has never shown it. This predates this PR and is not caused by it. It needs the owner's number to resolve.
+- **Same-day messaging is restored.** The production same-day titles, H1s, badges and Ads copy are back. Unsupported details stay out: "before noon" rules and rates, arrival windows, "We Fix It Today" and "usually same day" completion promises, "We Respond the Same Day", stocked parts, and comparative claims. Copy separates same-day *service availability* from same-day *completion*, for example: "Same-day service is available, but whether the repair is finished the same day depends on the problem and the parts it needs."
+- **Ventura and Santa Barbara.** Removed:
+  - "scheduled basis" and "non-emergency" wording;
+  - "emergency repair is not available at this distance";
+  - "local providers may be better positioned";
+  - the "Scheduled Service" Santa Barbara County title.
+  These areas now state 24/7 emergency service. No offices or new territories were added.
+- **`areaServed`** now lists Orange, Riverside, San Bernardino, Los Angeles, Ventura and Santa Barbara counties. San Bernardino was already listed and has city pages.
+
 ## Method
 
 1. Built `main` and crawled all 461 routes (456 sitemap URLs plus redirect and utility routes).
