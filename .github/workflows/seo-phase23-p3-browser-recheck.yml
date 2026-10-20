@@ -1,0 +1,28 @@
+# Phase 2.3 P3: re-run the production browser checks with failing request URLs logged. Read-only;
+# /api/contact is intercepted in the browser (no lead is submitted).
+name: SEO phase 2.3 P3 browser recheck
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase23-p3-browser-recheck.yml]
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Browser checks on production
+        run: |
+          mkdir pw && cd pw && npm init -y >/dev/null && npm i playwright-core@1.56.1 --no-audit --no-fund >/dev/null
+          cp ../.github/seo-checks/p3_browser.cjs . && mkdir shots
+          CHROME_PATH=$(command -v google-chrome) node p3_browser.cjs shots https://www.hvacserviceacrepair.com | tee out.txt
+          echo "== failing requests"; grep -o '"failed":\[[^]]*\]' out.txt | sort | uniq -c
+          echo "== console errors"; grep -o '"errs":\[[^]]*\]' out.txt | sort | uniq -c
+          echo "== main-frame redirects"; grep -o '"redirects":\[[^]]*\]' out.txt | sort | uniq -c

@@ -13,7 +13,12 @@ const PAGES = ["/", "/orange-county-ac-repair", "/los-angeles-ac-repair", "/ac-r
       p.on("pageerror", (e) => errs.push(String(e)));
       p.on("console", (m) => { if (m.type() === "error" && !/googletagmanager|google-analytics|doubleclick|googleadservices|ERR_FAILED/.test(m.text())) errs.push(m.text()); });
       const redirects = [];
-      p.on("response", (r) => { if (r.request().isNavigationRequest() && r.status() >= 300 && r.status() < 400) redirects.push(`${r.status()} ${r.url()}`); });
+      const failed = [];
+      p.on("response", (r) => {
+        const req = r.request();
+        if (req.isNavigationRequest() && req.frame() === p.mainFrame() && r.status() >= 300 && r.status() < 400) redirects.push(`${r.status()} ${r.url()}`);
+        if (r.status() >= 400) failed.push(`${r.status()} ${req.resourceType()} ${r.url()} (page ${p.url().replace(BASE, "")})`);
+      });
       await p.route(/googletagmanager|google-analytics|doubleclick|googleadservices/, (r) => r.abort());
       let calls = 0;
       await p.route("**/api/contact", async (r) => { calls++; await r.fulfill({ status: 200, contentType: "application/json", body: '{"ok":true}' }); });
@@ -43,7 +48,7 @@ const PAGES = ["/", "/orange-county-ac-repair", "/los-angeles-ac-repair", "/ac-r
           form = { errorsOnEmpty: errors, callsAfterEmpty: afterEmpty, calls, url: p.url().replace(BASE, ""), events: ev, submit: await f.locator('button[type="submit"]').textContent().catch(() => "(gone)") };
         }
       }
-      console.log(path, name, JSON.stringify({ status: resp.status(), finalUrl: p.url().replace(BASE, ""), redirects, errs, tel, ...lay, form }));
+      console.log(path, name, JSON.stringify({ status: resp.status(), finalUrl: p.url().replace(BASE, ""), redirects, errs, failed, tel, ...lay, form }));
       await ctx.close();
     }
   }
