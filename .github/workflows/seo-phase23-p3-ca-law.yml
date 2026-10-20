@@ -1,0 +1,19 @@
+# Phase 2.3 P3: read-only fetch of California contractor advertising law text.
+name: SEO phase 2.3 P3 CA advertising law
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase23-p3-ca-law.yml, .github/seo-checks/p3_ca_law.py]
+permissions:
+  contents: read
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: pip install --quiet beautifulsoup4 lxml pdfminer.six
+      - run: python3 .github/seo-checks/p3_ca_law.py
+      - run: "[ -f adv.pdf ] && pdf2txt.py adv.pdf | tr -s ' \\n' | grep -i -n -B2 -A6 'insur\\|license number\\|7030.5\\|internet\\|website' | head -120 || true"
