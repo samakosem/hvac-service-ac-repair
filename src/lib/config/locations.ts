@@ -856,9 +856,9 @@ export const COUNTIES: County[] = [
     slug: "ventura-county",
     name: "Ventura County",
     blurb:
-      "Extended service area covering the eastern Ventura County communities within reasonable distance of our Yorba Linda base.",
+      "HVAC service, including 24/7 emergency service, for the eastern Ventura County communities of Thousand Oaks, Simi Valley, and Moorpark.",
     serviceNote:
-      "We serve eastern Ventura County cities — Thousand Oaks, Simi Valley, and Moorpark — on a scheduled basis. Same-day service availability is more limited than in Orange County. Call to confirm current scheduling availability.",
+      "We serve eastern Ventura County cities, Thousand Oaks, Simi Valley, and Moorpark, for repair, maintenance, installation and 24/7 emergency service. Call us and we'll give you the earliest available arrival window.",
     climateNote:
       "Eastern Ventura County cities like Thousand Oaks and Simi Valley experience inland heat in summer, with temperatures often 10–15°F higher than coastal Ventura. Thousand Oaks has a relatively mild climate but Simi Valley can exceed 100°F during heat events. The mix of newer and older housing stock creates diverse HVAC service needs.",
     cities: [
@@ -868,7 +868,7 @@ export const COUNTIES: County[] = [
         county: "Ventura County",
         countySlug: "ventura-county",
         blurb:
-          "Extended service to Thousand Oaks for HVAC repair, installation, and maintenance.",
+          "HVAC repair, installation, maintenance, and 24/7 emergency service in Thousand Oaks.",
         localContext:
           "Thousand Oaks is one of the Conejo Valley's primary cities — a master-planned community with a mix of 1970s–2000s residential development. Its climate is transitional: cooler than the inland Ventura County cities but warmer than coastal areas. Many homes have older systems that have been serviced less consistently than those in core OC markets.",
         topServiceSlugs: ["ac-repair", "ac-maintenance", "ac-installation"],
@@ -877,7 +877,7 @@ export const COUNTIES: County[] = [
           {
             question: "Do you service Thousand Oaks regularly?",
             answer:
-              "Thousand Oaks is in our extended service area. We schedule service here on a regular basis, though same-day scheduling is less guaranteed than for Orange County cities. Call us to confirm current availability.",
+              "Yes, including 24/7 emergency service. Call us and we'll give you the earliest available arrival window.",
           },
           {
             question: "What HVAC brands are common in Thousand Oaks homes?",
@@ -911,7 +911,7 @@ export const COUNTIES: County[] = [
           {
             question: "Do you come to Simi Valley for emergency AC repair?",
             answer:
-              "We extend service to Simi Valley. Call us directly for emergency situations — we'll give you an honest availability assessment and dispatch as soon as we can.",
+              "Yes. We provide 24/7 emergency service in Simi Valley. Call us directly and we'll give you an honest availability assessment and dispatch as soon as we can.",
           },
           {
             question: "My Simi Valley home has an original 1980s HVAC system — what should I expect?",
@@ -926,16 +926,16 @@ export const COUNTIES: County[] = [
         county: "Ventura County",
         countySlug: "ventura-county",
         blurb:
-          "HVAC service extended to Moorpark for residential repair, maintenance, and system replacement.",
+          "HVAC repair, maintenance, system replacement, and 24/7 emergency service in Moorpark.",
         localContext:
-          "Moorpark is a small agricultural-transitional community in the Conejo Valley with a mix of rural residential and newer planned development. Its climate is warm in summer but generally milder than Simi Valley. Extended service from our Yorba Linda base means call scheduling depends on route availability.",
+          "Moorpark is a small agricultural-transitional community in the Conejo Valley with a mix of rural residential and newer planned development. Its climate is warm in summer but generally milder than Simi Valley. We serve Moorpark from our Yorba Linda base, including 24/7 emergency service.",
         topServiceSlugs: ["ac-repair", "ac-maintenance", "ac-installation"],
         nearbySlugs: ["thousand-oaks", "simi-valley"],
         faqs: [
           {
             question: "Do you service Moorpark homes?",
             answer:
-              "Yes, on an extended-service basis. Moorpark is farther from our Yorba Linda base than our core service area, so same-day scheduling isn't guaranteed. Call us and we'll confirm current availability.",
+              "Yes, including 24/7 emergency service. Call us and we'll give you the earliest available arrival window.",
           },
           {
             question: "What types of HVAC work do you do in Moorpark?",
@@ -957,9 +957,9 @@ export const COUNTIES: County[] = [
     slug: "santa-barbara-county",
     name: "Santa Barbara County",
     blurb:
-      "Limited extended service to southern Santa Barbara County communities for HVAC repair and installation.",
+      "HVAC repair, installation, maintenance, and 24/7 emergency service for southern Santa Barbara County communities.",
     serviceNote:
-      "Santa Barbara County is at the outer edge of our service range. We serve this area on a scheduled, non-emergency basis. Same-day service is not available. Please call to confirm scheduling and discuss any applicable trip considerations.",
+      "We serve Santa Barbara and Goleta for HVAC repair, installation, maintenance, and 24/7 emergency service. Call us and we'll give you the earliest available arrival window.",
     climateNote:
       "The Santa Barbara area has a mild Mediterranean climate — warm, dry summers and cool winters. Cooling demand is lower than inland areas, but many older homes lack central air and rely on mini-splits or window units. Heating can be a greater priority in mountain-adjacent neighborhoods.",
     cities: [
@@ -969,16 +969,16 @@ export const COUNTIES: County[] = [
         county: "Santa Barbara County",
         countySlug: "santa-barbara-county",
         blurb:
-          "Limited HVAC service extended to Santa Barbara for installations and scheduled maintenance.",
+          "HVAC repair, installation, maintenance, and 24/7 emergency service in Santa Barbara.",
         localContext:
-          "Santa Barbara's Mediterranean climate means AC demand is relatively low, but the city's older adobe and craftsman homes — many without any central air — benefit from ductless mini-split installation. We extend service here for specific projects on a scheduled basis.",
+          "Santa Barbara's Mediterranean climate means AC demand is relatively low, but the city's older adobe and craftsman homes — many without any central air — benefit from ductless mini-split installation. We serve Santa Barbara for repairs, installations, maintenance and emergencies.",
         topServiceSlugs: ["ductless-mini-split", "ac-installation", "ac-maintenance"],
         nearbySlugs: ["goleta"],
         faqs: [
           {
             question: "Do you really service Santa Barbara from Yorba Linda?",
             answer:
-              "Yes, but only on a scheduled, non-emergency basis. We take on specific projects in Santa Barbara — typically system installations or larger maintenance jobs — when scheduling allows. Call us to discuss your situation.",
+              "Yes, including 24/7 emergency service. Call us and we'll give you the earliest available arrival window.",
           },
           {
             question: "Is AC necessary in Santa Barbara?",
@@ -988,7 +988,7 @@ export const COUNTIES: County[] = [
           {
             question: "What HVAC services do you offer in Santa Barbara?",
             answer:
-              "Primarily ductless mini-split installation, AC maintenance, and system replacement. Emergency repair is not available at this distance.",
+              "AC and heating repair, ductless mini-split installation, AC maintenance, system replacement, and 24/7 emergency service.",
           },
         ],
       },
@@ -998,16 +998,16 @@ export const COUNTIES: County[] = [
         county: "Santa Barbara County",
         countySlug: "santa-barbara-county",
         blurb:
-          "Extended service to Goleta for scheduled HVAC installation and maintenance projects.",
+          "HVAC repair, installation, maintenance, and 24/7 emergency service in Goleta.",
         localContext:
-          "Goleta is adjacent to Santa Barbara and home to UC Santa Barbara. It shares the same mild coastal climate and has a mix of university-area housing and newer residential development. We take on projects here on a scheduled basis.",
+          "Goleta is adjacent to Santa Barbara and home to UC Santa Barbara. It shares the same mild coastal climate and has a mix of university-area housing and newer residential development. We serve Goleta for repairs, installations, maintenance and emergencies.",
         topServiceSlugs: ["ac-installation", "ductless-mini-split", "ac-maintenance"],
         nearbySlugs: ["santa-barbara"],
         faqs: [
           {
             question: "Do you service Goleta on a regular schedule?",
             answer:
-              "Goleta is at the outer limit of our service range. We accept projects here on a scheduled basis — call us to discuss your specific needs and confirm availability.",
+              "Yes, including 24/7 emergency service. Call us to discuss your needs and confirm availability for your address.",
           },
           {
             question: "Can you install a mini-split in a Goleta home?",

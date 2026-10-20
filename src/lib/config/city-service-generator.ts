@@ -17,9 +17,9 @@ function urgencyNote(city: City): string {
     case "san-bernardino-county":
       return `${city.name} is within our standard service area. Same-day dispatch typically available.`;
     case "ventura-county":
-      return `${city.name} is in our extended service area. Call to confirm same-day availability.`;
+      return `Serving ${city.name}, including 24/7 emergency service. Call to confirm availability for your address.`;
     case "santa-barbara-county":
-      return `${city.name} is at the outer edge of our service range. Scheduled service only — call to confirm.`;
+      return `Serving ${city.name}, including 24/7 emergency service. Call to confirm availability for your address.`;
     default:
       return `Serving ${city.name} — call to confirm same-day availability.`;
   }
@@ -57,11 +57,11 @@ function faqs(city: City, serviceSlug: string): { question: string; answer: stri
   const speedFaq = isExtended
     ? {
         question: `How quickly can you get to ${city.name} for service?`,
-        answer: `${city.name} is in our extended service area. Same-day scheduling is not always guaranteed. Call us in the morning and we'll confirm the earliest available appointment.`,
+        answer: `We serve ${city.name}, including 24/7 emergency service. Call us and we'll give you the earliest available arrival window.`,
       }
     : {
         question: `How quickly can you get to ${city.name} for service?`,
-        answer: "We're open 24/7, including emergencies. Call us and we'll give you the earliest available arrival window.",
+        answer: "Same-day service is available, and we're open 24/7, including emergencies. Call us and we'll give you the earliest available arrival window.",
       };
 
   switch (serviceSlug) {
