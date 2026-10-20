@@ -91,7 +91,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
   const faqSchema = schemaFaqPage(page.faqs);
 
   const heroAccent = isEmergency ? "bg-red-500/15 border-red-400/25 text-red-300" : "bg-copper-500/15 border-copper-400/25 text-copper-300";
-  const ctaLabel = isEmergency ? "Get Emergency Help Now" : "Request Service";
+  const ctaLabel = isEmergency ? "Get Emergency Help Now" : "Get Same-Day Service";
   const defaultService = isEmergency ? "Emergency AC Repair" : page.serviceName === "Heating Repair" ? "Heating / Furnace Repair" : page.serviceName === "AC Tune-Up" ? "AC Maintenance / Tune-Up" : "AC Repair";
 
   return (
@@ -136,7 +136,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
               <div className="flex items-center gap-2 flex-wrap">
                 <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-bold uppercase tracking-wider ${heroAccent}`}>
                   <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
-                  Open 24/7 · Accepting {isEmergency ? "Emergency" : "Service"} Calls
+                  Open Now — Accepting {isEmergency ? "Emergency" : "Same-Day"} Calls
                 </span>
                 {/* Tech available badge */}
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/25 text-emerald-300 text-xs font-bold uppercase tracking-wider">
@@ -196,7 +196,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
 
               {/* Trust badges */}
               <div className="flex flex-wrap gap-2">
-                {[...credentialBadges(), "Open 24/7", "Free Estimates", "0% Financing"].map((b) => (
+                {[...credentialBadges(), "Same-Day Service", "Free Estimates", "0% Financing"].map((b) => (
                   <span key={b} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/7 border border-white/10 text-xs font-medium text-slate-200">
                     <CheckIcon className="w-3 h-3 text-emerald-400" />
                     {b}
@@ -211,7 +211,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
             {/* RIGHT — Form */}
             <div id="estimate-form" className="hidden lg:block bg-white rounded-2xl shadow-xl p-7 border border-slate-100">
               <SingleStepQuoteForm
-                heading={`Get ${isEmergency ? "Emergency Help" : "HVAC Service"} in ${page.cityName}`}
+                heading={`Get ${isEmergency ? "Emergency Help" : "Same-Day Service"} in ${page.cityName}`}
                 subheading="Call us 24/7 or send a request. We'll contact you to schedule."
                 ctaLabel={ctaLabel}
                 defaultService={defaultService}
@@ -240,7 +240,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
             {[
               ...(licenseNumberLabel() ? [{ icon: <ShieldIcon className="w-4 h-4 text-copper-400" />, text: licenseNumberLabel() as string }] : []),
               ...(CREDENTIALS.epaCertified ? [{ icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "EPA Certified" }] : []),
-              { icon: <BoltIcon className="w-4 h-4 text-copper-400" />, text: "Open 24/7" },
+              { icon: <BoltIcon className="w-4 h-4 text-copper-400" />, text: "Same-Day Availability" },
               { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "Free Estimates" },
               { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "0% Financing Available" },
               { icon: <PhoneIcon className="w-4 h-4 text-copper-400" />, text: "Real People Answer" },

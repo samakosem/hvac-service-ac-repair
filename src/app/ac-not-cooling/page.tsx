@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "AC Running But Not Cooling? Causes & Fix | Orange County HVAC",
     description:
-      "Find out why your AC is running but not cooling — and get it fixed. Free diagnostic with repair. Open 24/7. Serving Orange County, CA. (714) 410-2784).",
+      "Find out why your AC is running but not cooling — and get it fixed today. Free diagnostic with repair. Serving Orange County, CA. (714) 410-2784).",
     path: "/ac-not-cooling",
   });
 }
@@ -58,7 +58,7 @@ const FAQS = [
   {
     question: "My AC is running but not cooling — is this an emergency?",
     answer:
-      "In Orange County summer heat, yes — especially for households with children, elderly residents, or medical needs. We're open 24/7 and treat a non-cooling AC as urgent. Call (714) 410-2784.",
+      "In Orange County summer heat, yes — especially for households with children, elderly residents, or medical needs. We treat same-day calls for non-cooling AC as urgent and dispatch quickly. Call (714) 410-2784.",
   },
   {
     question: "How much does it cost to diagnose why my AC isn't cooling?",
@@ -78,7 +78,7 @@ const FAQS = [
   {
     question: "How quickly can you get to my home in Orange County?",
     answer:
-      "We're based in Yorba Linda, open 24/7, and dispatch across the county. Call us and we'll give you the earliest available arrival window.",
+      "Same-day service for most Orange County cities. We're based in Yorba Linda and dispatch across the county — typically 1–4 hours for same-day calls.",
   },
 ];
 
@@ -124,7 +124,7 @@ export default function AcNotCoolingPage() {
             <PhoneLink
               className="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-copper-gradient text-white font-bold rounded-xl shadow-glow-copper hover:opacity-90 active:scale-[0.98] transition-all text-base"
               showIcon
-              label={`Call ${SITE.phoneDisplay}, Open 24/7`}
+              label={`Call ${SITE.phoneDisplay} — Same-Day Diagnosis`}
             />
             <a href="#schedule-diagnostic" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-slate-800 font-semibold rounded-xl border border-slate-200 hover:bg-slate-50 active:scale-[0.98] transition-all text-base">
               Schedule Free Diagnostic
@@ -177,7 +177,7 @@ export default function AcNotCoolingPage() {
                 Our technician will diagnose the exact cause — and give you a written quote before any work starts. No charge for the diagnostic.
               </p>
               <div className="flex flex-col gap-3">
-                {["Open 24/7", "Written quote — no surprises", "Free diagnostic — no charge", "All brands serviced", "Orange County-wide coverage"].map((item) => (
+                {["Same-day appointments available", "Written quote — no surprises", "Free diagnostic — no charge", "All brands serviced", "Orange County-wide coverage"].map((item) => (
                   <div key={item} className="flex items-center gap-2">
                     <CheckIcon className="w-4 h-4 text-emerald-400 shrink-0" />
                     <span className="text-slate-200 text-sm">{item}</span>

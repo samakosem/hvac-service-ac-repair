@@ -133,8 +133,8 @@ export const PROMOTIONS: Promotion[] = [
     category: "inspection",
     categoryLabel: "Estimate",
     description:
-      "We provide free written estimates on AC repair, replacement, and new installations. Know exactly what you're paying before any work begins.",
-    disclaimer: "Availability varies by schedule and service area. Estimates provided for standard residential and light commercial systems. Restrictions may apply.",
+      "We provide free written estimates on AC repair, replacement, and new installations. Know exactly what you're paying before any work begins. Same-day availability subject to scheduling.",
+    disclaimer: "Same-day availability varies by schedule and service area. Estimates provided for standard residential and light commercial systems. Restrictions may apply.",
     ctaText: "Get a Free Estimate",
     ctaHref: "/contact",
     secondaryCta: { text: `Call ${SITE.phoneDisplay}`, tel: SITE.phone },
@@ -291,7 +291,7 @@ export const PROMOTIONS: Promotion[] = [
     icon: ICONS.bolt,
     accent: "copper",
     active: true,
-    badge: "Available 24/7",
+    badge: "Same-Day Available",
     limited: true,
   },
 

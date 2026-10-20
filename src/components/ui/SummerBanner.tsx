@@ -30,8 +30,8 @@ export default function SummerBanner({ city }: Props) {
           Stay Comfortable This Summer{city ? ` in ${city}` : ""}
         </h2>
         <p className="text-hvac-blue-100 text-lg leading-relaxed max-w-2xl mx-auto mb-6">
-          AC not cooling like it should? Don&rsquo;t wait until it fails completely. We&rsquo;re open 24/7
-          {location}. Schedule your free estimate now and beat the summer heat.
+          AC not cooling like it should? Don&rsquo;t wait until it fails completely. Same-day service
+          is available {location} — schedule your free estimate now and beat the summer heat.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">

@@ -25,14 +25,14 @@ const EXPERIENCE_THEMES = [
       "We explain pricing before work starts, so there are no surprise charges at the end.",
   },
   {
-    theme: "24/7 Availability",
+    theme: "Same-Day Service",
     icon: (
       <svg className="w-6 h-6 text-hvac-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8} aria-hidden="true">
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
     description:
-      "We're open 24 hours a day, 7 days a week, because a broken AC in summer is more than an inconvenience.",
+      "We offer same-day service and make it a priority, especially during the summer when a broken AC is more than an inconvenience.",
   },
   {
     theme: "Honest Recommendations",

@@ -84,7 +84,7 @@ export default function Header() {
                 <span className="absolute inline-flex w-full h-full rounded-full bg-emerald-300 opacity-70 animate-ping" />
                 <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-300" />
               </span>
-              Open 24/7, Including Emergencies
+              Open Now — Same-Day Appointments
             </span>
           </div>
           <div className="flex items-center gap-5">

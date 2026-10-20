@@ -343,11 +343,11 @@ function faqs(city: CityEntry): PPCCity["faqs"] {
   return [
     {
       question: `How quickly can you respond to an AC emergency in ${city.name}?`,
-      answer: `We're open 24 hours a day, 7 days a week, including emergency service in ${city.name}. Call us and we'll give you the earliest available arrival window.`,
+      answer: `Same-day emergency service is available in ${city.name}, 24 hours a day, 7 days a week. Call us and we'll give you the earliest available arrival window.`,
     },
     {
       question: `My AC is running but not cooling my ${city.name} home — what's wrong?`,
-      answer: `The most common causes are low refrigerant (from a leak), a dirty evaporator coil blocking airflow, a failing capacitor preventing the compressor from reaching full power, or a clogged condensate drain causing a safety shutoff. Our technician diagnoses the specific issue before recommending a repair.`,
+      answer: `The most common causes are low refrigerant (from a leak), a dirty evaporator coil blocking airflow, a failing capacitor preventing the compressor from reaching full power, or a clogged condensate drain causing a safety shutoff. Our technician diagnoses the specific issue on the first visit.`,
     },
     {
       question: `Is it worth repairing or replacing my AC system in ${city.name}?`,
@@ -379,16 +379,16 @@ export function generatePPCCities(existingSlugs: Set<string>): PPCCity[] {
         ...pick(INSTALL_IMAGES, i),
         alt: `New AC installation in ${city.name}, CA`,
       },
-      metaTitle: `AC Repair & HVAC Service in ${city.name}, CA | Open 24/7`,
-      metaDescription: `Expert AC repair, installation & HVAC service in ${city.name}, CA. Open 24/7. Free estimates on replacements. Call (714) 410-2784.`,
+      metaTitle: `AC Repair & HVAC Service in ${city.name}, CA — Same-Day Service`,
+      metaDescription: `Expert AC repair, installation & HVAC service in ${city.name}, CA. Same-day availability. Free estimates on replacements. Call (714) 410-2784 — we answer 7 days a week.`,
       h1: `AC Repair & HVAC Service in ${city.name}, CA`,
-      heroSubheadline: `AC repair, system replacement & HVAC maintenance for ${city.name} homes. Real people answer your call 24/7.`,
+      heroSubheadline: `Same-day AC repair, system replacement & HVAC maintenance for ${city.name} homes. Real people answer your call 7 days a week.`,
       climate: REGION_CLIMATE[city.region],
       commonProblems: REGION_COMMON_PROBLEMS[city.region],
       homeownerConcerns: REGION_HOMEOWNER_CONCERNS[city.region],
       localContext:
         city.localNote ??
-        `We serve all of ${city.name} and the surrounding ${city.county} area. Our technicians are familiar with local building styles and permit requirements.`,
+        `We serve all of ${city.name} and the surrounding ${city.county} area. Our technicians are familiar with local building styles and permit requirements, and we can often arrive the same day you call.`,
       repairBody: repairBody(city),
       installBody: installBody(city),
       emergencyBody: emergencyBody(city),

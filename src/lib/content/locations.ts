@@ -7,9 +7,9 @@ export const COUNTY_FAQS: Record<string, { question: string; answer: string }[]>
         "We serve the eastern LA County cities closest to our Yorba Linda base: Diamond Bar, Rowland Heights, Walnut, Hacienda Heights, and La Habra Heights. These border Orange County, so we can often reach them quickly for repair, maintenance, and installation.",
     },
     {
-      question: "Do you serve Los Angeles County?",
+      question: "Do you offer same-day service in Los Angeles County?",
       answer:
-        "Yes, the eastern LA County cities near our Orange County base. Because these are at the edge of our core service area, we recommend calling to confirm availability for your address.",
+        "For the eastern LA County cities near our Orange County base, same-day service is often available. Because these are at the edge of our core service area, we recommend calling to confirm availability for your address.",
     },
     {
       question: "What HVAC services do you provide in Los Angeles County?",
@@ -52,9 +52,9 @@ export const COUNTY_FAQS: Record<string, { question: string; answer: string }[]>
 
   "riverside-county": [
     {
-      question: "Do you serve Riverside County?",
+      question: "Do you serve Riverside County on a same-day basis?",
       answer:
-        "Yes, for Corona, Norco, and Eastvale — the western Riverside County cities closest to our Yorba Linda base. Cities farther east in Riverside County are outside our service area.",
+        "Yes, for Corona, Norco, and Eastvale — the western Riverside County cities closest to our Yorba Linda base. Same-day dispatch is typically available for these areas. Cities farther east in Riverside County are outside our service area.",
     },
     {
       question: "How hot does western Riverside County get in summer?",
@@ -82,7 +82,7 @@ export const COUNTY_FAQS: Record<string, { question: string; answer: string }[]>
     {
       question: "Which San Bernardino County cities do you serve?",
       answer:
-        "We serve Chino Hills, Chino, and Ontario — the westernmost San Bernardino County cities that border our Orange County service area. These are within our standard service area.",
+        "We serve Chino Hills, Chino, and Ontario — the westernmost San Bernardino County cities that border our Orange County service area. These are within our standard same-day service zone.",
     },
     {
       question: "How does inland heat affect HVAC systems in the Chino Valley area?",
@@ -174,19 +174,19 @@ export const COUNTY_META: Record<string, { title: string; description: string; h
   "orange-county": {
     title: "HVAC Service in Orange County, CA | AC Repair, Installation & More",
     description:
-      "Local HVAC company serving all of Orange County from Yorba Linda. Open 24/7 for AC repair, installation, maintenance, ductless systems, and commercial HVAC. Call (714) 410-2784.",
+      "Local HVAC company serving all of Orange County from Yorba Linda. Same-day AC repair, installation, maintenance, ductless systems, and commercial HVAC. Call (714) 410-2784.",
     h1: "HVAC Service Across Orange County, CA",
   },
   "riverside-county": {
     title: "HVAC Service in Riverside County, CA | Corona, Norco & Eastvale",
     description:
-      "AC repair, installation, and HVAC maintenance for Corona, Norco, and Eastvale in western Riverside County. Open 24/7. Based in Yorba Linda. Call (714) 410-2784.",
+      "AC repair, installation, and HVAC maintenance for Corona, Norco, and Eastvale in western Riverside County. Same-day service available. Based in Yorba Linda. Call (714) 410-2784.",
     h1: "HVAC Service in Riverside County, CA",
   },
   "san-bernardino-county": {
     title: "HVAC Service in San Bernardino County | Chino Hills, Chino & Ontario",
     description:
-      "AC repair, installation, and HVAC service for Chino Hills, Chino, and Ontario in western San Bernardino County. Open 24/7. Based in Yorba Linda. Call (714) 410-2784.",
+      "AC repair, installation, and HVAC service for Chino Hills, Chino, and Ontario in western San Bernardino County. Same-day service available. Based in Yorba Linda. Call (714) 410-2784.",
     h1: "HVAC Service in San Bernardino County, CA",
   },
   "ventura-county": {
@@ -207,6 +207,6 @@ export const COUNTY_META: Record<string, { title: string; description: string; h
 export function getCityMeta(cityName: string, countyName: string): { title: string; description: string } {
   return {
     title: `HVAC Service in ${cityName}, ${countyName}, CA | AC Repair & Installation`,
-    description: `AC repair, installation, and HVAC maintenance in ${cityName}, ${countyName}. Open 24/7. Local HVAC company based in Yorba Linda. Call (714) 410-2784.`,
+    description: `AC repair, installation, and HVAC maintenance in ${cityName}, ${countyName}. Same-day service available. Local HVAC company based in Yorba Linda. Call (714) 410-2784.`,
   };
 }

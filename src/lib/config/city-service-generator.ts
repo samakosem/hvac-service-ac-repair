@@ -11,17 +11,17 @@ import { licenseOrHoursPoint } from "@/lib/config/credentials";
 function urgencyNote(city: City): string {
   switch (city.countySlug) {
     case "orange-county":
-      return `Serving ${city.name} and surrounding neighborhoods, 24 hours a day, 7 days a week.`;
+      return `Serving ${city.name} and surrounding neighborhoods — same-day appointments available.`;
     case "riverside-county":
-      return `${city.name} is within our service area from Yorba Linda. Open 24/7.`;
+      return `${city.name} is within our same-day service zone from Yorba Linda.`;
     case "san-bernardino-county":
-      return `${city.name} is within our standard service area. Open 24/7.`;
+      return `${city.name} is within our standard service area. Same-day dispatch typically available.`;
     case "ventura-county":
-      return `${city.name} is in our extended service area. Call to confirm availability.`;
+      return `${city.name} is in our extended service area. Call to confirm same-day availability.`;
     case "santa-barbara-county":
       return `${city.name} is at the outer edge of our service range. Scheduled service only — call to confirm.`;
     default:
-      return `Serving ${city.name}. Call to confirm availability.`;
+      return `Serving ${city.name} — call to confirm same-day availability.`;
   }
 }
 
@@ -195,7 +195,7 @@ function whyUsPoints(city: City, serviceSlug: string): { heading: string; body: 
         },
         {
           heading: "No Emergency Surcharge",
-          body: "Weekend and emergency calls are priced the same as regular service. No surprises.",
+          body: "Weekend and same-day emergency calls are priced the same as regular service. No surprises.",
         },
         ...basePoints,
       ];
@@ -337,19 +337,19 @@ const SERVICE_META: Record<string, ServiceMeta> = {
   "ac-repair": {
     serviceName: "AC Repair",
     urlBase: "/air-conditioning/ac-repair",
-    h1: (c) => `AC Repair in ${c}, CA: Open 24/7`,
+    h1: (c) => `AC Repair in ${c}, CA — Same-Day Service`,
     heroSubheadline: (c) =>
-      `AC stopped working in ${c}? We diagnose, quote, and fix it. No guesswork, no upsells.`,
+      `AC stopped working in ${c}? We diagnose, quote, and fix it, with same-day service available. No guesswork, no upsells.`,
     servicesListHeadline: (c) => `What We Repair in ${c} Homes`,
     whyUsHeadline: (c) => `Why ${c} Residents Choose Us`,
-    ctaBannerText: (c) => `AC Not Cooling in ${c}? We're Open 24/7.`,
+    ctaBannerText: (c) => `AC Not Cooling in ${c}? We're Available Today.`,
   },
   "emergency-ac-repair": {
     serviceName: "Emergency AC Repair",
     urlBase: "/air-conditioning/emergency-ac-repair",
-    h1: (c) => `AC Broke Down in ${c}? We're Open 24/7.`,
+    h1: (c) => `AC Broke Down in ${c}? We're Available Today.`,
     heroSubheadline: (c) =>
-      `${c} heat won't wait. Real people answer our phones, with emergency HVAC service 24 hours a day, 7 days a week.`,
+      `${c} heat won't wait. Real people answer our phones — same-day emergency HVAC service, 7 days a week.`,
     servicesListHeadline: (c) => `Common Emergency AC Situations We Handle in ${c}`,
     whyUsHeadline: (c) => `Why ${c} Calls Us for HVAC Emergencies`,
     ctaBannerText: (c) => `Don't Suffer Through the Heat. We Answer Live in ${c}.`,
@@ -357,12 +357,12 @@ const SERVICE_META: Record<string, ServiceMeta> = {
   "heating-repair": {
     serviceName: "Heating Repair",
     urlBase: "/heating/heating-repair",
-    h1: (c) => `AC & Heating Repair in ${c}: Open 24/7`,
+    h1: (c) => `AC & Heating Repair in ${c} — Same-Day Service`,
     heroSubheadline: (c) =>
       `One local team handles your AC and heating in ${c} — from summer emergencies to winter tune-ups.`,
     servicesListHeadline: (c) => `Heating Services We Offer in ${c}`,
     whyUsHeadline: (c) => `Why ${c} Homeowners Trust Us with Heating & AC`,
-    ctaBannerText: (c) => `Heater Not Working in ${c}? We're Open 24/7.`,
+    ctaBannerText: (c) => `Heater Not Working in ${c}? We're Available Today.`,
   },
   "ac-tune-up": {
     serviceName: "AC Tune-Up",
@@ -382,7 +382,7 @@ const SERVICE_META: Record<string, ServiceMeta> = {
       `Not a franchise. Not a call center. We're based in Yorba Linda and serve ${c} with the same local care.`,
     servicesListHeadline: (c) => `Full HVAC Services for ${c} Homes & Businesses`,
     whyUsHeadline: (c) => `Why Local Beats National Chains for HVAC in ${c}`,
-    ctaBannerText: (c) => `Your Local HVAC Team for ${c}, Open 24/7.`,
+    ctaBannerText: (c) => `Your Local HVAC Team for ${c} — Available Today.`,
   },
 };
 
@@ -407,9 +407,9 @@ function nearbyCities(
 function metaTitle(city: City, serviceSlug: string): string {
   switch (serviceSlug) {
     case "ac-repair":
-      return `AC Repair in ${city.name}, CA | Open 24/7 | (714) 410-2784`;
+      return `AC Repair in ${city.name}, CA | Same-Day Service | (714) 410-2784`;
     case "emergency-ac-repair":
-      return `Emergency AC Repair in ${city.name}, CA | Open 24/7 | (714) 410-2784`;
+      return `Emergency AC Repair in ${city.name}, CA | Available Today | (714) 410-2784`;
     case "heating-repair":
       return `Heating Repair in ${city.name}, CA | AC & Heating | (714) 410-2784`;
     case "ac-tune-up":
@@ -424,17 +424,17 @@ function metaTitle(city: City, serviceSlug: string): string {
 function metaDescription(city: City, serviceSlug: string): string {
   switch (serviceSlug) {
     case "ac-repair":
-      return `AC repair in ${city.name}, CA, open 24/7. Free diagnostic with repair. Call (714) 410-2784.`;
+      return `Fast AC repair in ${city.name}, CA. Same-day appointments, free diagnostic with repair. Call (714) 410-2784.`;
     case "emergency-ac-repair":
-      return `Emergency AC repair in ${city.name}, CA, open 24/7. Real people answer, no voicemail. Free diagnostic, no emergency surcharge. Call (714) 410-2784.`;
+      return `Emergency AC repair in ${city.name}, CA. Same-day service — real people answer, no voicemail. Free diagnostic, no emergency surcharge. Call (714) 410-2784.`;
     case "heating-repair":
-      return `AC and heating repair in ${city.name}, CA. Furnace and HVAC service, open 24/7. Free diagnostic with repair. Call (714) 410-2784.`;
+      return `AC and heating repair in ${city.name}, CA. Same-day furnace and HVAC service — free diagnostic with repair. Call (714) 410-2784.`;
     case "ac-tune-up":
-      return `AC tune-up and maintenance in ${city.name}, CA. 20-point inspection starting at $99. Call (714) 410-2784.`;
+      return `AC tune-up and maintenance in ${city.name}, CA. 20-point inspection starting at $99. Same-week appointments. Call (714) 410-2784.`;
     case "hvac-repair":
-      return `Local HVAC repair in ${city.name}, CA. Open 24/7, honest pricing, free diagnostic. Not a franchise. (714) 410-2784.`;
+      return `Local HVAC repair in ${city.name}, CA. Same-day service, honest pricing, free diagnostic. Not a franchise. (714) 410-2784.`;
     default:
-      return `HVAC service in ${city.name}, CA. Open 24/7. Call (714) 410-2784.`;
+      return `HVAC service in ${city.name}, CA. Same-day appointments available. Call (714) 410-2784.`;
   }
 }
 

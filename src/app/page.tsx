@@ -31,7 +31,7 @@ export const metadata: Metadata = buildMetadata({
   // "AC Repair Yorba Linda, CA | HVAC Service & AC Repair"
   title: "AC Repair Yorba Linda, CA",
   description:
-    "Local HVAC company in Yorba Linda, CA, open 24/7. AC repair, HVAC installation, heating, ductless systems, and commercial HVAC service. Call (714) 410-2784.",
+    "Local HVAC company in Yorba Linda, CA. Same-day AC repair, HVAC installation, heating, ductless systems, and commercial HVAC service. Call (714) 410-2784.",
   path: "",
 });
 

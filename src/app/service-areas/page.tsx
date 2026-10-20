@@ -11,7 +11,7 @@ import { SITE } from "@/lib/config/site";
 export const metadata: Metadata = buildMetadata({
   title: "HVAC Service Areas in Southern California | Orange County & Beyond",
   description:
-    "HVAC Service & AC Repair serves Orange County, Riverside County, San Bernardino County, and Ventura County. Based in Yorba Linda, open 24/7. Call (714) 410-2784.",
+    "HVAC Service & AC Repair serves Orange County, Riverside County, San Bernardino County, and Ventura County. Based in Yorba Linda — same-day service across most of OC. Call (714) 410-2784.",
   path: "/service-areas",
 });
 
@@ -29,9 +29,9 @@ const COUNTY_ICONS: Record<string, string> = {
 };
 
 const COVERAGE_NOTE: Record<string, string> = {
-  "orange-county": "Open 24/7 · Core territory",
-  "riverside-county": "Open 24/7 · Adjacent to OC",
-  "san-bernardino-county": "Open 24/7 · Chino Valley area",
+  "orange-county": "Same-day service · Core territory",
+  "riverside-county": "Same-day service · Adjacent to OC",
+  "san-bernardino-county": "Same-day service · Chino Valley area",
   "ventura-county": "Scheduled service · Extended area",
   "santa-barbara-county": "Scheduled service · Limited availability",
 };
@@ -56,7 +56,7 @@ export default function ServiceAreasPage() {
             </h1>
             <p className="text-slate-300 text-lg leading-relaxed mb-6">
               Based in Yorba Linda, we provide AC repair, installation, heating, and ductless HVAC
-              across Orange County and surrounding areas, 24 hours a day, 7 days a week.
+              across Orange County and surrounding areas. Same-day service for most of Orange County.
             </p>
             <address className="not-italic text-sm text-slate-400 mb-7">
               <span className="font-medium text-slate-300">{SITE.name}</span> ·{" "}

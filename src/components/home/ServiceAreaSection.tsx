@@ -23,8 +23,8 @@ export default function ServiceAreaSection() {
               in our immediate surrounding area.
             </p>
             <p className="text-slate-600 leading-relaxed">
-              We&rsquo;re open 24 hours a day, 7 days a week, and we take emergency calls from anywhere
-              in the county.
+              Same-day appointments are available across Orange County, and we take emergency calls
+              24/7 from anywhere in the county.
             </p>
 
             {/* Counties covered */}

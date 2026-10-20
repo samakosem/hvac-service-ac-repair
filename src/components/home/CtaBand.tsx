@@ -3,7 +3,7 @@ import PhoneLink from "@/components/ui/PhoneLink";
 import { SITE } from "@/lib/config/site";
 
 const POINTS = [
-  "Open 24/7, including emergencies",
+  "Same-day appointments available in your area",
   "Written estimate before any work begins",
   "All major HVAC brands serviced",
   "Local HVAC technicians — 7 days a week",
@@ -27,7 +27,7 @@ export default function CtaBand() {
           <div className="max-w-xl">
             <h2 id="cta-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-3 leading-tight">
               AC Not Cooling? Heater Acting Up?<br />
-              <span className="text-gradient-blue">Let&rsquo;s Get It Fixed.</span>
+              <span className="text-gradient-blue">Let&rsquo;s Get It Fixed Today.</span>
             </h2>
             <p className="text-slate-300 leading-relaxed mb-5">
               {SITE.name} — your local HVAC team, nearby and ready. Call now or submit a

@@ -35,15 +35,15 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     serviceSlug: "ac-repair",
     serviceName: "AC Repair",
     urlBase: "/air-conditioning/ac-repair",
-    metaTitle: "AC Repair in Yorba Linda, CA | Open 24/7 | (714) 410-2784",
+    metaTitle: "AC Repair in Yorba Linda, CA | Same-Day Service | (714) 410-2784",
     metaDescription:
-      "AC repair in Yorba Linda, CA, open 24/7. Free diagnostic with repair. Call (714) 410-2784.",
-    h1: "AC Repair in Yorba Linda, CA: Open 24/7",
+      "Fast AC repair in Yorba Linda, CA. Same-day appointments, free diagnostic with repair. Call (714) 410-2784).",
+    h1: "AC Repair in Yorba Linda, CA — Same-Day Service",
     heroSubheadline:
-      "Your AC stopped working? We diagnose, quote, and fix it. No guesswork, no upsells.",
+      "Your AC stopped working? We diagnose, quote, and fix it, with same-day service available. No guesswork, no upsells.",
     localContext:
       "Yorba Linda's hillside tract homes and 1970s–2000s construction mean we frequently work on both older R-22 systems due for replacement and newer R-410A equipment needing maintenance. Summer temperatures regularly push above 95°F in inland neighborhoods near Weir Canyon, making a functioning AC non-negotiable from June through September. Our shop is on Yorba Linda Blvd — we're literally your neighbors.",
-    urgencyNote: "Serving Weir Canyon, Fairmont, and all Yorba Linda neighborhoods, 24/7.",
+    urgencyNote: "Serving Weir Canyon, Fairmont, and all Yorba Linda neighborhoods. Same-day service available.",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/air-conditioning/ac-repair" },
       { name: "Placentia", slug: "placentia", urlBase: "/air-conditioning/ac-repair" },
@@ -106,7 +106,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       "Evaporator coil cleaning & service",
       "Drain line clearing & condensate repair",
     ],
-    ctaBannerText: "AC Not Cooling? We're Open 24/7 in Yorba Linda.",
+    ctaBannerText: "AC Not Cooling? We're Available Today in Yorba Linda.",
   },
 
   // A2 — Anaheim
@@ -116,12 +116,12 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     serviceSlug: "ac-repair",
     serviceName: "AC Repair",
     urlBase: "/air-conditioning/ac-repair",
-    metaTitle: "AC Repair in Anaheim, CA | Open 24/7 | (714) 410-2784",
+    metaTitle: "AC Repair in Anaheim, CA | Same-Day HVAC Service | (714) 410-2784",
     metaDescription:
-      "AC repair in Anaheim, CA for homes and businesses, open 24/7. Free diagnostic with repair. Call (714) 410-2784.",
-    h1: "AC Repair in Anaheim, CA: Open 24/7",
+      "AC repair in Anaheim, CA — same-day service for homes and businesses. Free diagnostic with repair. Call (714) 410-2784).",
+    h1: "AC Repair in Anaheim, CA — Same-Day Service",
     heroSubheadline:
-      "Anaheim's heat won't wait. We diagnose, quote, and repair your AC, and we're open 24/7.",
+      "Anaheim's heat won't wait. We diagnose, quote, and repair your AC, with same-day service available.",
     localContext:
       "Anaheim spans two very different climates: the coastal-influenced flatlands near the 5 freeway and the significantly hotter Anaheim Hills area, which sees some of the highest summer temperatures in the county. Anaheim Hills homes often have larger systems covering more square footage, while the resort district and surrounding commercial areas have specific commercial cooling demands year-round. Our shop is in nearby Yorba Linda.",
     urgencyNote: "Serving Anaheim Hills, the resort district, and all residential neighborhoods — from the 91 corridor to La Palma Ave.",
@@ -190,7 +190,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       "Full system diagnostic — FREE",
       "Drain line clearing & condensate repair",
     ],
-    ctaBannerText: "AC Not Cooling in Anaheim? We're Open 24/7.",
+    ctaBannerText: "AC Not Cooling in Anaheim? We're Available Today.",
   },
 
   // A3 — Fullerton
@@ -200,12 +200,12 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     serviceSlug: "ac-repair",
     serviceName: "AC Repair",
     urlBase: "/air-conditioning/ac-repair",
-    metaTitle: "AC Repair in Fullerton, CA | Open 24/7 | (714) 410-2784",
+    metaTitle: "AC Repair in Fullerton, CA | Fast Same-Day Service | (714) 410-2784",
     metaDescription:
-      "AC repair in Fullerton, CA for homes, rentals, and small businesses, open 24/7. Free diagnostic. (714) 410-2784.",
-    h1: "AC Repair in Fullerton, CA: Open 24/7",
+      "AC repair in Fullerton, CA. Same-day HVAC technicians for homes, rentals, and small businesses. Free diagnostic. (714) 410-2784).",
+    h1: "AC Repair in Fullerton, CA — Same-Day Service",
     heroSubheadline:
-      "AC down in Fullerton? We're open 24/7 for homes, rental properties, and small businesses.",
+      "AC down in Fullerton? We respond fast — same-day service for homes, rental properties, and small businesses.",
     localContext:
       "Fullerton's housing stock runs from 1950s–1980s single-family homes near downtown to newer developments and college-area rentals near Cal State Fullerton. Older homes frequently have aging systems — and landlords managing multi-unit buildings need fast, reliable service to keep tenants comfortable. Hot summers plus older ductwork equals frequent refrigerant and duct issues. Our shop is in nearby Yorba Linda.",
     urgencyNote: "Serving downtown Fullerton, CSUF area, and all residential and rental neighborhoods.",
@@ -271,7 +271,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       "Full system diagnostic — FREE",
       "Drain line clearing & condensate repair",
     ],
-    ctaBannerText: "AC Not Cooling in Fullerton? We're Open 24/7.",
+    ctaBannerText: "AC Not Cooling in Fullerton? We're Available Today.",
   },
 
   // A4 — Irvine
@@ -281,12 +281,12 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     serviceSlug: "ac-repair",
     serviceName: "AC Repair",
     urlBase: "/air-conditioning/ac-repair",
-    metaTitle: "AC Repair in Irvine, CA | Open 24/7 | (714) 410-2784",
+    metaTitle: "AC Repair in Irvine, CA | Same-Day HVAC Service | (714) 410-2784",
     metaDescription:
-      "AC repair in Irvine, CA for homes, condos, and offices, open 24/7. Free estimates. Call (714) 410-2784.",
-    h1: "AC Repair in Irvine, CA: Open 24/7",
+      "Fast AC repair in Irvine, CA for homes, condos, and offices. Same-day service, free estimates. Call (714) 410-2784.",
+    h1: "AC Repair in Irvine, CA — Same-Day Service",
     heroSubheadline:
-      "Premium AC repair for Irvine homes, condos, and office parks, available 24/7.",
+      "Premium AC repair for Irvine homes, condos, and office parks, with same-day availability.",
     localContext:
       "Irvine is master-planned with large HOA communities, tech campuses, and high-rise condos — systems tend to be newer but complex (multi-zone, smart thermostats, inverter compressors). Residents expect premium service and brand-certified technicians. Commercial HVAC is a significant opportunity in the Spectrum and John Wayne Airport corridor. We're familiar with Irvine's HOA requirements and permit processes.",
     urgencyNote: "Serving Woodbridge, Northwood, Quail Hill, Turtle Rock, the Spectrum, and all Irvine communities.",
@@ -354,7 +354,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       "Full system diagnostic — FREE",
       "Commercial package unit service",
     ],
-    ctaBannerText: "AC Not Cooling in Irvine? We're Open 24/7.",
+    ctaBannerText: "AC Not Cooling in Irvine? We're Available Today.",
   },
 
   // A5 — Orange
@@ -364,12 +364,12 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     serviceSlug: "ac-repair",
     serviceName: "AC Repair",
     urlBase: "/air-conditioning/ac-repair",
-    metaTitle: "AC Repair in Orange, CA | Open 24/7 | (714) 410-2784",
+    metaTitle: "AC Repair in Orange, CA | Same-Day Service | (714) 410-2784",
     metaDescription:
-      "AC repair in Orange, CA for homes and businesses, from Old Towne to Santiago Canyon. Open 24/7. Call (714) 410-2784.",
-    h1: "AC Repair in Orange, CA: Open 24/7",
+      "AC repair in Orange, CA. Same-day HVAC service for homes and businesses — from Old Towne to Santiago Canyon. Call (714) 410-2784.",
+    h1: "AC Repair in Orange, CA — Same-Day Service",
     heroSubheadline:
-      "AC out in Orange? We repair it, with a written quote before we start. Open 24/7.",
+      "AC out in Orange? We repair it — same day, with a written quote before we start.",
     localContext:
       "Orange has a diverse mix: historic Old Towne with homes pre-dating the 1960s, newer developments near Santiago Canyon, and commercial corridors along Chapman and Katella. Older homes near Old Towne may have original ductwork or window AC setups requiring a full assessment. Summer temps hit 95–100°F inland near Santiago Canyon. Our shop is in nearby Yorba Linda.",
     urgencyNote: "Serving Old Towne Orange, Santiago Canyon, the Metrolink corridor, and all residential neighborhoods.",
@@ -414,11 +414,11 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       },
       {
         heading: "Based in Nearby Yorba Linda",
-        body: "Based in Yorba Linda, a short drive from any Orange neighborhood.",
+        body: "Based in Yorba Linda, a short drive to any Orange neighborhood for same-day service.",
       },
       {
         heading: "Historic Home Experience",
-        body: "We've worked on dozens of Old Towne and pre-war homes. We're careful, thorough, and honest.",
+        body: "We work on Old Towne and pre-war homes. We're careful, thorough, and honest.",
       },
       {
         heading: "Written Quote — Always",
@@ -436,7 +436,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       "Full system diagnostic — FREE",
       "Window AC assessment & central AC conversion consultation",
     ],
-    ctaBannerText: "AC Not Cooling in Orange? We're Open 24/7.",
+    ctaBannerText: "AC Not Cooling in Orange? We're Available Today.",
   },
 ];
 
@@ -450,12 +450,12 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
     serviceSlug: "emergency-ac-repair",
     serviceName: "Emergency AC Repair",
     urlBase: "/air-conditioning/emergency-ac-repair",
-    metaTitle: "Emergency AC Repair in Yorba Linda, CA | Open 24/7 | (714) 410-2784",
+    metaTitle: "Emergency AC Repair in Yorba Linda, CA | Available Today | (714) 410-2784",
     metaDescription:
-      "AC broke down in Yorba Linda? Emergency HVAC service 24/7. Real people answer, no voicemail. Free diagnostic, no emergency surcharge. Call (714) 410-2784.",
-    h1: "AC Broke Down in Yorba Linda? We're Open 24/7.",
+      "AC broke down in Yorba Linda? Same-day emergency HVAC service — real people answer, no voicemail. Free diagnostic, no emergency surcharge. Call (714) 410-2784).",
+    h1: "AC Broke Down in Yorba Linda? We're Available Today.",
     heroSubheadline:
-      "Real people answer, no voicemail. Emergency HVAC service 24 hours a day, 7 days a week.",
+      "Real people answer — no voicemail. Same-day emergency HVAC service, 7 days a week.",
     localContext:
       "Our shop is on Yorba Linda Blvd — we have the shortest drive time of any HVAC company serving this city. When temperatures hit 95–100°F in inland neighborhoods near Weir Canyon, we treat every AC outage as an emergency and prioritize Yorba Linda calls.",
     urgencyNote: "Open 24/7, including emergency service. We dispatch from Yorba Linda Blvd.",
@@ -475,7 +475,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       {
         question: "How fast can you get to Yorba Linda for an emergency?",
         answer:
-          "We're open 24/7 and our shop is on Yorba Linda Blvd. Call us and we'll give you the earliest available arrival window.",
+          "Same-day emergency service is available 24/7, and our shop is on Yorba Linda Blvd. Call us and we'll give you the earliest available arrival window.",
       },
       {
         question: "What if you can't fix it today?",
@@ -497,7 +497,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       },
       {
         heading: "No Emergency Surcharge",
-        body: "Weekend and emergency calls are priced the same as regular service. No surprises.",
+        body: "Weekend and same-day emergency calls are priced the same as regular service. No surprises.",
       },
       {
         heading: "Based in Yorba Linda",
@@ -529,12 +529,12 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
     serviceSlug: "emergency-ac-repair",
     serviceName: "Emergency AC Repair",
     urlBase: "/air-conditioning/emergency-ac-repair",
-    metaTitle: "Emergency AC Repair in Anaheim, CA | Open 24/7 | (714) 410-2784",
+    metaTitle: "Emergency AC Repair in Anaheim, CA | Same-Day HVAC | (714) 410-2784",
     metaDescription:
-      "Emergency AC repair in Anaheim, CA for homes and businesses, open 24/7. Real technicians answer live. No emergency surcharge. Call (714) 410-2784.",
-    h1: "AC Broke Down in Anaheim? We're Open 24/7.",
+      "Emergency AC repair in Anaheim, CA. Same-day service for homes and businesses — real technicians answer live. No emergency surcharge. Call (714) 410-2784.",
+    h1: "AC Broke Down in Anaheim? We're Available Today.",
     heroSubheadline:
-      "Anaheim reaches 95–100°F in summer. Real people answer our phones, with 24/7 emergency service for homes and businesses.",
+      "Anaheim reaches 95–100°F in summer. Real people answer our phones — same-day emergency service for homes and businesses.",
     localContext:
       "Anaheim's summer heat is serious — especially for families with young children, elderly residents, and businesses that can't afford HVAC downtime. We serve both residential and commercial customers and understand the urgency of keeping Anaheim homes and businesses cool.",
     urgencyNote: "Open 24/7 for homes, hospitality and commercial customers.",
@@ -572,7 +572,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
     whyUsPoints: [
       {
         heading: "Real People Answer",
-        body: "No voicemail, no call centers. A dispatcher picks up your call and can confirm availability immediately.",
+        body: "No voicemail, no call centers. A dispatcher picks up your call and confirms availability with you.",
       },
       {
         heading: "Residential & Commercial",
@@ -613,13 +613,13 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/heating/heating-repair",
     metaTitle: "Heating Repair in Yorba Linda, CA | AC & Heating | (714) 410-2784",
     metaDescription:
-      "AC and heating repair in Yorba Linda, CA. Furnace and HVAC service, open 24/7. Free diagnostic with repair. Call (714) 410-2784.",
-    h1: "AC & Heating Repair in Yorba Linda: Open 24/7",
+      "AC and heating repair in Yorba Linda, CA. Same-day furnace and HVAC service — free diagnostic with repair. Call (714) 410-2784).",
+    h1: "AC & Heating Repair in Yorba Linda — Same-Day Service",
     heroSubheadline:
       "One local team handles your AC and heating — from summer emergencies to winter tune-ups.",
     localContext:
       "Yorba Linda winters drop to 40°F overnight — don't wait until your heater fails in January. Most Yorba Linda homes have split systems that handle both heating and cooling. One service call covers both. We're based on Yorba Linda Blvd and stock furnace parts for the brands most common in local homes.",
-    urgencyNote: "Heating service available 24/7. Don't wait for winter to discover a failed furnace.",
+    urgencyNote: "Same-day heating service available. Don't wait for winter to discover a failed furnace.",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/heating/heating-repair" },
       { name: "Placentia", slug: "placentia", urlBase: "/heating/heating-repair" },
@@ -680,7 +680,7 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
       "New heating system installation (free estimate)",
       "Annual AC + heating maintenance plan",
     ],
-    ctaBannerText: "Heater Not Working in Yorba Linda? We're Open 24/7.",
+    ctaBannerText: "Heater Not Working in Yorba Linda? We're Available Today.",
   },
 ];
 
@@ -779,13 +779,13 @@ export const LOCAL_HVAC_CITIES: CityServicePage[] = [
     urlBase: "/hvac-repair",
     metaTitle: "Local HVAC Repair in Yorba Linda, CA | Your Neighborhood HVAC Team | (714) 410-2784",
     metaDescription:
-      "Local HVAC repair in Yorba Linda, CA. Based on Yorba Linda Blvd — not a franchise, not a call center. Open 24/7, honest pricing. (714) 410-2784.",
+      "Local HVAC repair in Yorba Linda, CA. Based on Yorba Linda Blvd — not a franchise, not a call center. Same-day service, honest pricing. (714) 410-2784.",
     h1: "Local HVAC Repair in Yorba Linda — Your Neighbors",
     heroSubheadline:
       "Not a franchise. Not a call center. We're based on Yorba Linda Blvd and we know your neighborhood.",
     localContext:
       "We've been serving Yorba Linda homes from our shop on Yorba Linda Blvd. We know the neighborhoods — Weir Canyon, Fairmont, Vista Del Verde, the hillside tracts — and the systems that run in them. When you call, you reach our actual team, not a national dispatch center.",
-    urgencyNote: "Open 24/7: your local Yorba Linda HVAC team.",
+    urgencyNote: "Same-day service from your local Yorba Linda HVAC team.",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/hvac-repair" },
       { name: "Placentia", slug: "placentia", urlBase: "/hvac-repair" },
@@ -846,7 +846,7 @@ export const LOCAL_HVAC_CITIES: CityServicePage[] = [
       "Thermostat installation",
       "Commercial HVAC service",
     ],
-    ctaBannerText: "Your Local Yorba Linda HVAC Team, Open 24/7.",
+    ctaBannerText: "Your Local Yorba Linda HVAC Team — Available Today.",
   },
 ];
 
