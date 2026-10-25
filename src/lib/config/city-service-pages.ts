@@ -616,7 +616,7 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
     metaTitle: "Heating Repair in Yorba Linda, CA | AC & Heating | (714) 410-2784",
     metaDescription:
       "AC and heating repair in Yorba Linda, CA. Same-day furnace and HVAC service — free diagnostic with repair. Call (714) 410-2784.",
-    h1: "AC & Heating Repair in Yorba Linda — Same-Day Service",
+    h1: "Heating & Furnace Repair in Yorba Linda — Same-Day Service",
     heroSubheadline:
       "One local team handles your AC and heating — from summer emergencies to winter tune-ups.",
     localContext:

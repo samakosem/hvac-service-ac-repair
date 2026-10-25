@@ -1,5 +1,6 @@
 /**
- * Verified local notes for Orange County AC repair pages (/air-conditioning/ac-repair/[city]).
+ * Verified local notes for Orange County AC repair pages (/air-conditioning/ac-repair/[city]),
+ * plus guide links on selected heating repair pages (/heating/heating-repair/[city]).
  *
  * Copy rules (Phase 5): only facts from an official source already verified for the city hubs
  * (permit offices, see city-hubs.ts) or general coastal maintenance guidance already approved
@@ -22,7 +23,36 @@ const OWNER_CONFIRMED_AREAS: Record<string, string[]> = {
 
 export type CityServiceLocalNotes = { heading: string; paragraphs: HubText[] };
 
+/** Heating repair pages that link to the furnace and heating guides (Phase 7). */
+const HEATING_NOTES = new Set(["yorba-linda"]);
+
+function heatingNotes(citySlug: string): CityServiceLocalNotes | undefined {
+  const city = getCityBySlug(citySlug, "orange-county");
+  if (!city || !HEATING_NOTES.has(citySlug)) return undefined;
+  const paragraphs: HubText[] = [
+    [
+      "If the furnace won't light, lights and then shuts off, or runs without warming the house, our ",
+      { href: "/heating/furnace-repair", label: "furnace repair guide" },
+      " explains the usual causes and how a diagnosis works. Heat pump owners can start with ",
+      { href: "/heat-pumps/heat-pump-repair", label: "heat pump repair" },
+      ", and the ",
+      { href: "/heating", label: "heating services overview" },
+      " covers maintenance and when to call.",
+    ],
+  ];
+  const permit = getPermitOffice("orange-county", citySlug);
+  if (permit) {
+    paragraphs.push([
+      `If a repair visit shows that replacing the furnace makes more sense, replacement equipment in ${city.name} is permitted as mechanical work through the `,
+      { href: permit.url, label: permit.office },
+      ". Ask your contractor whether your project needs a permit; a permitted replacement is inspected after installation.",
+    ]);
+  }
+  return { heading: `Heating Repair Notes for ${city.name}`, paragraphs };
+}
+
 export function getCityServiceLocalNotes(serviceSlug: string, citySlug: string): CityServiceLocalNotes | undefined {
+  if (serviceSlug === "heating-repair") return heatingNotes(citySlug);
   if (serviceSlug !== "ac-repair") return undefined;
   const city = getCityBySlug(citySlug, "orange-county");
   if (!city) return undefined;
