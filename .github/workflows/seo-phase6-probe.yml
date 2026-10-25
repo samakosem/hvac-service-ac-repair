@@ -1,0 +1,36 @@
+# Phase 6: read-only probes. Resolves the two Google Business Profile short links, fetches
+# production robots.txt, and requests key pages with major search/AI crawler user agents
+# (UA-only test: it shows how the CDN responds to the string, not how it treats verified bot IPs).
+name: SEO phase 6 probe
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase6-probe.yml]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Resolve Google Business Profile links
+        run: |
+          for u in "https://maps.app.goo.gl/UKbkKgVhL96wQYBj9" "https://maps.app.goo.gl/q3tdaVN6JDbXpVPKA"; do
+            echo "== $u"; curl -sS -o /dev/null -w "%{http_code} -> %{redirect_url}\n" "$u"
+            final=$(curl -sSL -o /tmp/p.html -w "%{url_effective}" -A "Mozilla/5.0" "$u"); echo "final: $final"
+            grep -oE '<title>[^<]*' /tmp/p.html | head -1; grep -oE '0x[0-9a-f]+:0x[0-9a-f]+' /tmp/p.html | sort | uniq -c | sort -rn | head -2
+          done
+      - name: robots.txt and crawler user agents
+        run: |
+          B=https://www.hvacserviceacrepair.com
+          curl -sS "$B/robots.txt"; echo
+          for ua in "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" \
+                    "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)" \
+                    "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; OAI-SearchBot/1.0; +https://openai.com/searchbot)" \
+                    "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)" \
+                    "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.1; +https://openai.com/gptbot)"; do
+            for p in / /air-conditioning/ac-repair /service-areas/orange-county/placentia /sitemap.xml; do
+              r=$(curl -sS -o /tmp/b -w "%{http_code} %{size_download}" -A "$ua" "$B$p"); h1=$(grep -c "<h1" /tmp/b); echo "$(echo $ua | grep -oE '(Googlebot|bingbot|OAI-SearchBot|PerplexityBot|GPTBot)') $p $r h1=$h1"
+            done
+          done
+          curl -sSI "$B/" | grep -iE "^(x-robots-tag|server|x-vercel|cf-)" || true
