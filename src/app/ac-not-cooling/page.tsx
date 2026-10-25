@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "AC Running But Not Cooling? Causes & Fix | Orange County HVAC",
     description:
-      "Find out why your AC is running but not cooling — and get it fixed today. Free diagnostic with repair. Serving Orange County, CA. (714) 410-2784).",
+      "Find out why your AC is running but not cooling — and get it fixed today. Free diagnostic with repair. Serving Orange County, CA. (714) 410-2784.",
     path: "/ac-not-cooling",
   });
 }
