@@ -55,18 +55,7 @@ const FAQS = [
   },
 ];
 
-// JSON-LD schemas
-function schemaBreadcrumb() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE.domain },
-      { "@type": "ListItem", position: 2, name: "Promotions", item: `${SITE.domain}/promotions` },
-    ],
-  };
-}
-
+// JSON-LD schemas (the BreadcrumbList comes from <Breadcrumbs>)
 function schemaFaq() {
   return {
     "@context": "https://schema.org",
@@ -90,7 +79,6 @@ export default function PromotionsPage() {
 
   return (
     <>
-      <JsonLd data={schemaBreadcrumb()} />
       <JsonLd data={schemaFaq()} />
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}

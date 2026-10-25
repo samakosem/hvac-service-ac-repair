@@ -11,9 +11,9 @@ import CtaSection from "@/components/ui/CtaSection";
 import InteriorHero from "@/components/layout/InteriorHero";
 
 export const metadata: Metadata = buildMetadata({
-  title: "About Us | Local HVAC Company in Yorba Linda, CA",
+  title: "About Our Yorba Linda HVAC Company",
   description:
-    "HVAC Service & AC Repair is a locally operated HVAC company based in Yorba Linda, CA. We serve Orange County and surrounding areas with honest, reliable service.",
+    "HVAC Service & AC Repair is a locally operated HVAC company in Yorba Linda, CA, serving Orange County and surrounding areas with honest, reliable service.",
   path: "/about-us",
 });
 

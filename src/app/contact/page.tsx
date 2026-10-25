@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo/metadata";
 import Link from "next/link";
 import { SITE } from "@/lib/config/site";
 import { SERVICE_AREA_COUNTIES } from "@/lib/config/locations";
@@ -8,12 +9,12 @@ import { schemaContactPage } from "@/lib/seo/schema";
 import InteriorHero from "@/components/layout/InteriorHero";
 import { IMG_AC_REPAIR } from "@/lib/config/images";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Contact Us | Free HVAC Estimates in Orange County, CA",
   description:
     "Contact HVAC Service & AC Repair for fast, honest service across Orange County. Call (714) 410-2784 or request a free estimate online.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 const CONTACT_FAQS = [
   {

@@ -8,9 +8,9 @@ import CtaSection from "@/components/ui/CtaSection";
 import AcSizeCalculator from "@/components/calculators/AcSizeCalculator";
 
 export const metadata: Metadata = buildMetadata({
-  title: "AC Size Calculator — What Tonnage Do I Need? | Orange County",
+  title: "AC Size Calculator: What Tonnage Do I Need?",
   description:
-    "Free AC size calculator for Orange County homeowners. Enter your square footage, ceiling height, insulation, and sun exposure to estimate the right tonnage. Manual J always required for final sizing.",
+    "Free AC size calculator: enter square footage, ceiling height, insulation and sun exposure to estimate tonnage. A Manual J load calculation sets final sizing.",
   path: "/calculators/ac-size-calculator",
 });
 

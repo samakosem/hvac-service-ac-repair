@@ -172,9 +172,9 @@ export const COUNTY_META: Record<string, { title: string; description: string; h
     h1: "HVAC Service in Los Angeles County, CA",
   },
   "orange-county": {
-    title: "HVAC Service in Orange County, CA | AC Repair, Installation & More",
+    title: "HVAC Service in Orange County, CA",
     description:
-      "Local HVAC company serving all of Orange County from Yorba Linda. Same-day AC repair, installation, maintenance, ductless systems, and commercial HVAC. Call (714) 410-2784.",
+      "Local HVAC company serving Orange County from Yorba Linda: same-day AC repair, installation, maintenance, ductless and commercial HVAC. Call (714) 410-2784.",
     h1: "HVAC Service Across Orange County, CA",
   },
   "riverside-county": {

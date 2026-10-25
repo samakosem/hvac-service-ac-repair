@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo/metadata";
 import Link from "next/link";
 import { SITE } from "@/lib/config/site";
 import CtaSection from "@/components/ui/CtaSection";
@@ -6,12 +7,12 @@ import InteriorHero from "@/components/layout/InteriorHero";
 import { IMG_LENNOX_INSTALL } from "@/lib/config/images";
 import { GOOGLE_PROFILE_URL } from "@/lib/content/reviews";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Our Service Standards",
   description:
     "How we handle every HVAC call in Yorba Linda and Orange County: pricing explained up front, honest repair advice and respectful work. Read our Google reviews.",
-  alternates: { canonical: "/reviews" },
-};
+  path: "/reviews",
+});
 
 const EXPERIENCE_THEMES = [
   {

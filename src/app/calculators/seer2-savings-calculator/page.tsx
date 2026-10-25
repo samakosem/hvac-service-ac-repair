@@ -8,9 +8,9 @@ import CtaSection from "@/components/ui/CtaSection";
 import Seer2SavingsCalculator from "@/components/calculators/Seer2SavingsCalculator";
 
 export const metadata: Metadata = buildMetadata({
-  title: "SEER2 Savings Calculator — Is a High-Efficiency AC Worth It?",
+  title: "SEER2 Savings Calculator: New AC Payback",
   description:
-    "Compare annual AC operating costs between your current system and a new higher-efficiency unit. Calculate savings, payback period, and 10-year ROI for Southern California homes.",
+    "Compare yearly AC running costs for your current system and a higher-efficiency unit: savings, payback period and 10-year ROI for Southern California homes.",
   path: "/calculators/seer2-savings-calculator",
 });
 
