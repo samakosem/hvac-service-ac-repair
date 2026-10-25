@@ -1,0 +1,63 @@
+# Phase 3 (PR #7) pre-merge verification. Read-only.
+# Builds the PR head (identical to the Vercel preview), then compares it with production:
+# scripts/verify-preview.mjs (all 10 checks) and a per-page diff of titles, descriptions,
+# canonicals, robots, OG, GTM, tel: links, forms and schema types for all sitemap URLs.
+name: SEO phase 3 PR 7 preview verification
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase3-pr7-preview.yml, .github/seo-checks/phase3_compare.py]
+permissions:
+  contents: read
+env:
+  PR_HEAD: 1a9de20307b6b994af77e40dfb8a3595e530d9dc
+  PREVIEW_URL: https://hvac-service-ac-repair-git-seo-ph-1285d8-sams-projects-4743330d.vercel.app
+  PRODUCTION_URL: https://www.hvacserviceacrepair.com
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: ci, persist-credentials: false }
+      - uses: actions/checkout@v4
+        with: { ref: "${{ env.PR_HEAD }}", path: site, persist-credentials: false }
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: pip install --quiet beautifulsoup4 lxml
+      - name: Vercel preview reachability (informational)
+        run: |
+          curl -sS -o /dev/null -w "preview %{http_code} %{redirect_url}\n" "$PREVIEW_URL/" || true
+      - name: Build and start the PR head
+        run: |
+          cd site && npm ci --no-audit --no-fund >/dev/null && npx next build >/dev/null
+          (npx next start -p 3000 >/dev/null 2>&1 &)
+          for i in $(seq 1 60); do curl -s -o /dev/null http://localhost:3000/ && break; sleep 1; done
+      - name: verify-preview.mjs (PR build vs production)
+        run: node site/scripts/verify-preview.mjs --preview http://localhost:3000 --production "$PRODUCTION_URL" --concurrency 6
+      - name: Crawl both and diff every sitemap page
+        run: |
+          python3 ci/.github/seo-checks/crawl.py "$PRODUCTION_URL" prod
+          python3 ci/.github/seo-checks/crawl.py http://localhost:3000 pr
+          for d in prod pr; do echo "$d: $(awk '{print $1}' $d/status.txt | sort | uniq -c | tr '\n' ' ')"; if grep -v '^200 ' $d/status.txt; then echo "::error::non-200 in $d"; exit 1; fi; done
+          python3 ci/.github/seo-checks/phase3_compare.py prod pr
+      - name: Browser checks on the PR build (forms, conversion event, tel links, overflow; /api/contact intercepted)
+        run: |
+          mkdir pw && cd pw && npm init -y >/dev/null && npm i playwright-core@1.56.1 --no-audit --no-fund >/dev/null
+          cp ../ci/.github/seo-checks/p3_browser.cjs . && mkdir shots
+          CHROME_PATH=$(command -v google-chrome) node p3_browser.cjs shots http://localhost:3000 | tee out.txt
+          node - <<'JS'
+          const lines = require("fs").readFileSync("out.txt", "utf8").trim().split("\n");
+          let fail = lines.length !== 32;
+          for (const l of lines) {
+            const [path, vp, ...rest] = l.split(" "); const r = JSON.parse(rest.join(" "));
+            const ok = { status200: r.status === 200, noRedirect: r.redirects.length === 0, noJsErrors: r.errs.length === 0, callLinks: r.tel > 0, noOverflow: r.overflow === 0 };
+            if (r.form) Object.assign(ok, { validationBlocksEmpty: r.form.errorsOnEmpty > 0 && r.form.callsAfterEmpty === 0, oneMockedRequest: r.form.calls === 1,
+              thankYou: r.form.url.startsWith("/thank-you"), singleConversionEvent: r.form.events.filter((e) => e === "form filled").length === 1 });
+            const bad = Object.entries(ok).filter(([, v]) => !v).map(([k]) => k);
+            console.log(`${bad.length ? "FAIL" : "PASS"} ${path} ${vp}${r.form ? " (form)" : ""}${bad.length ? ": " + bad.join(", ") : ""}`);
+            if (bad.length) fail = true;
+          }
+          console.log(`views: ${lines.length}`);
+          process.exit(fail ? 1 : 0);
+          JS
