@@ -13,13 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Resolve Google Business Profile links
-        run: |
-          for u in "https://maps.app.goo.gl/UKbkKgVhL96wQYBj9" "https://maps.app.goo.gl/q3tdaVN6JDbXpVPKA"; do
-            echo "== $u"; curl -sS -o /dev/null -w "%{http_code} -> %{redirect_url}\n" "$u"
-            final=$(curl -sSL -o /tmp/p.html -w "%{url_effective}" -A "Mozilla/5.0" "$u"); echo "final: $final"
-            grep -oE '<title>[^<]*' /tmp/p.html | head -1; grep -oE '0x[0-9a-f]+:0x[0-9a-f]+' /tmp/p.html | sort | uniq -c | sort -rn | head -2
-          done
       - name: robots.txt and crawler user agents
         run: |
           B=https://www.hvacserviceacrepair.com
@@ -30,7 +23,7 @@ jobs:
                     "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)" \
                     "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.1; +https://openai.com/gptbot)"; do
             for p in / /air-conditioning/ac-repair /service-areas/orange-county/placentia /sitemap.xml; do
-              r=$(curl -sS -o /tmp/b -w "%{http_code} %{size_download}" -A "$ua" "$B$p"); h1=$(grep -c "<h1" /tmp/b); echo "$(echo $ua | grep -oE '(Googlebot|bingbot|OAI-SearchBot|PerplexityBot|GPTBot)') $p $r h1=$h1"
+              r=$(curl -sS -o /tmp/b -w "%{http_code} %{size_download}" -A "$ua" "$B$p"); h1=$(grep -c "<h1" /tmp/b || true); echo "$(echo $ua | grep -oE '(Googlebot|bingbot|OAI-SearchBot|PerplexityBot|GPTBot)') $p $r h1=$h1"
             done
           done
           curl -sSI "$B/" | grep -iE "^(x-robots-tag|server|x-vercel|cf-)" || true
