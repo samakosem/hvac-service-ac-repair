@@ -11,6 +11,7 @@ import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema
 import { resolveService } from "@/lib/seo/buildServicePage";
 import { IMG_HERO } from "@/lib/config/images";
 import { QuickChecksGrid, QuickChecksHeader } from "@/components/ui/QuickChecks";
+import RichText from "@/components/ui/RichText";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
@@ -363,6 +364,26 @@ export default function AcRepairPage() {
         </div>
       </section>
 
+      {/* ── GUIDE ────────────────────────────────────────────────────────────── */}
+      {service.guideSections && service.guideSections.length > 0 && (
+        <section className="py-16 lg:py-20 bg-white" aria-label="AC repair guide">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+            {service.guideSections.map((section) => (
+              <div key={section.heading}>
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-4">{section.heading}</h2>
+                <div className="flex flex-col gap-4">
+                  {section.paragraphs.map((paragraph, i) => (
+                    <p key={i} className="text-slate-700 leading-relaxed">
+                      <RichText text={paragraph} />
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* ── QUICK CHECKS (replaces unverified testimonials) ───────────────────── */}
       <section className="py-16 lg:py-20 bg-warm-white" aria-labelledby="quick-checks-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -383,7 +404,7 @@ export default function AcRepairPage() {
             {OC_CITIES.map((city) => (
               <Link
                 key={city.slug}
-                href={`/air-conditioning/ac-repair/${city.slug}/`}
+                href={`/air-conditioning/ac-repair/${city.slug}`}
                 className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 font-medium text-sm hover:border-hvac-blue-300 hover:text-hvac-blue-700 transition-colors"
               >
                 AC Repair in {city.name}

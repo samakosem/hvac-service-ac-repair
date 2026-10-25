@@ -9,6 +9,7 @@
  * verified fact gets no section.
  */
 import { getCityBySlug } from "@/lib/config/locations";
+import { SITE } from "@/lib/config/site";
 import { getPermitOffice, type HubText } from "@/lib/content/city-hubs";
 
 /** Cities on the Pacific shoreline. */
@@ -58,6 +59,19 @@ export function getCityServiceLocalNotes(serviceSlug: string, citySlug: string):
   if (!city) return undefined;
 
   const paragraphs: HubText[] = [];
+
+  if (citySlug === "yorba-linda") {
+    // Operational base (owner-confirmed, Phase 6). No storefront implied. Phase 8.
+    paragraphs.push([
+      "Yorba Linda is our operational base. For heating, tune-ups and replacement in the city, see ",
+      { href: "/service-areas/orange-county/yorba-linda", label: "HVAC service in Yorba Linda" },
+      ". Our ",
+      { href: "/air-conditioning/ac-repair", label: "AC repair guide" },
+      " explains common failures, how a diagnosis works and when replacement makes sense. If your system has stopped completely, see ",
+      { href: "/air-conditioning/emergency-ac-repair/yorba-linda", label: "emergency AC repair in Yorba Linda" },
+      `. ${SITE.emergencyArrivalOC}`,
+    ]);
+  }
 
   const areas = OWNER_CONFIRMED_AREAS[citySlug];
   if (areas) {
