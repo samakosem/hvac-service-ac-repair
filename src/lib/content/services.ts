@@ -1,4 +1,5 @@
 import { SITE } from "@/lib/config/site";
+import type { HubText } from "@/lib/content/city-hubs";
 
 export type ServiceFaq = {
   question: string;
@@ -27,6 +28,8 @@ export type ServiceContent = {
   ctaHeadline: string;
   ctaSubtext: string;
   category: "cooling" | "heating" | "ductwork" | "commercial" | "maintenance";
+  /** Optional explanatory sections (general technical guidance, no business claims). */
+  guideSections?: { heading: string; paragraphs: HubText[] }[];
 };
 
 export const SERVICE_CONTENT: ServiceContent[] = [
@@ -1203,6 +1206,57 @@ export const SERVICE_CONTENT: ServiceContent[] = [
     ctaHeadline: "Heater Not Working in Southern California?",
     ctaSubtext: "Same-day heating repair available. We service gas furnaces and heat pumps across Southern California.",
     category: "heating",
+    guideSections: [
+      {
+        heading: "Heating Systems We Repair",
+        paragraphs: [
+          [
+            "We repair gas furnaces, heat pumps and ductless mini-splits. A gas furnace burns natural gas and moves the heat through ducts; see ",
+            { href: "/heating/furnace-repair", label: "furnace repair" },
+            " for how furnaces fail and how they are diagnosed. A heat pump is the same outdoor unit that cools in summer, running in reverse to move heat indoors; see ",
+            { href: "/heat-pumps/heat-pump-repair", label: "heat pump repair" },
+            ". Ductless systems heat individual rooms; see ",
+            { href: "/ductless/ductless-mini-split", label: "ductless mini-splits" },
+            ".",
+          ],
+        ],
+      },
+      {
+        heading: "Common Heating Problems",
+        paragraphs: [
+          [
+            "No heat at all is often a thermostat setting, a tripped breaker or furnace switch, or an ignition fault. Heat that runs but never warms the house points to airflow, a failing component or, on heat pumps, a refrigerant or reversing valve problem. Some rooms staying cold while others are warm usually comes from duct leaks, closed or blocked vents, or weak return airflow rather than the heating unit itself. Short cycling, where the system turns on and off every few minutes, is commonly caused by a dirty filter, an overheating furnace or a thermostat problem.",
+          ],
+          [
+            "Heat pumps have one behaviour that looks like a fault but isn't: in heating mode the outdoor unit periodically runs a defrost cycle, and steam rising from it with the fan briefly stopped is normal.",
+          ],
+        ],
+      },
+      {
+        heading: "Heating Maintenance",
+        paragraphs: [
+          [
+            "Heating systems in mild climates run fewer hours, so problems often show up on the first cold night after months off. A check before the heating season covers ignition, burners and flame sensing, venting, the blower and electrical connections on furnaces, and defrost operation and refrigerant-side checks on heat pumps. Between visits, keep the filter clean, keep supply and return vents clear, and keep plants and debris away from a heat pump's outdoor unit. See ",
+            { href: "/heating/furnace-maintenance", label: "furnace maintenance" },
+            " and our ",
+            { href: "/maintenance-plans", label: "maintenance plans" },
+            ".",
+          ],
+        ],
+      },
+      {
+        heading: "When to Call for Service",
+        paragraphs: [
+          [
+            "A gas smell or a carbon monoxide alarm is an emergency: leave the house and call your gas utility or 911 from outside first. Call for service for repeated lockouts or fault codes, a breaker that trips when the heat runs, a burning or electrical smell that lasts, water pooling around the furnace, or any fix that means opening the furnace cabinet. For urgent problems, see ",
+            { href: "/emergency-hvac-service", label: "emergency HVAC service" },
+            ". Our shop is in Yorba Linda; see ",
+            { href: "/heating/heating-repair/yorba-linda", label: "heating repair in Yorba Linda" },
+            " or choose your city below.",
+          ],
+        ],
+      },
+    ],
   },
 
   // ─── FURNACE REPAIR ───────────────────────────────────────────────────────
@@ -1281,11 +1335,80 @@ export const SERVICE_CONTENT: ServiceContent[] = [
         answer:
           "In a split system, the furnace air handler runs the fan and heating independently of the AC. A failed AC component generally doesn't prevent furnace operation, but have a technician confirm this before assuming it's safe to run in heat mode.",
       },
+      {
+        question: "Why is my furnace blowing cold air?",
+        answer:
+          "Check that the thermostat is set to heat and the fan is set to auto rather than on, which runs the blower even when the burners are off. If the settings are right, the usual causes are an ignition fault, a dirty flame sensor, a tripped high-limit switch from restricted airflow, or a gas supply problem.",
+      },
+      {
+        question: "How often should I change my furnace filter?",
+        answer:
+          "One-inch filters typically need changing every one to three months during the heating season; thicker media filters last longer. Check the filter maker's guidance, and change it sooner if it looks dirty. A clogged filter is one of the most common causes of furnace overheating and short cycling.",
+      },
     ],
     relatedSlugs: ["furnace-installation", "heating-services", "furnace-maintenance"],
     ctaHeadline: "Furnace Down in Southern California? Same-Day Repair Available.",
     ctaSubtext: "Same-day furnace repair available. Gas and electric systems serviced. Call (714) 410-2784.",
     category: "heating",
+    guideSections: [
+      {
+        heading: "How a Furnace Starts, and Where It Fails",
+        paragraphs: [
+          [
+            "A modern gas furnace follows the same sequence every time the thermostat calls for heat: the inducer motor starts to clear the flue, a pressure switch confirms the venting is drawing, the igniter heats up, the gas valve opens, and the flame sensor proves the burners lit. Only then does the blower start pushing warm air through the ducts. If any step fails, the control board stops the sequence, and most boards flash a fault code.",
+          ],
+          [
+            "That is why a diagnosis starts by watching the sequence and reading the fault code rather than replacing parts. The step where the furnace stops points to the cause: an inducer or pressure switch problem stops it before ignition, a worn igniter stops it at ignition, and a dirty flame sensor lets the burners light and then shuts them off after a few seconds.",
+          ],
+        ],
+      },
+      {
+        heading: "Common Furnace Failures",
+        paragraphs: [
+          [
+            "Most no-heat calls trace back to a short list of parts: hot surface igniters, which crack and wear out over time; flame sensors coated with residue; pressure switches and inducer motors; blower motors and their capacitors; and control boards. On high-efficiency furnaces, a clogged condensate drain or trap can also trip the pressure switch and stop the furnace.",
+          ],
+          [
+            "Many furnaces lock out after a set number of failed ignition attempts. Turning the power off and on can reset the lockout, but if the furnace keeps locking out, the underlying fault is still there and needs diagnosis.",
+          ],
+        ],
+      },
+      {
+        heading: "Airflow Problems",
+        paragraphs: [
+          [
+            "A furnace needs steady airflow across its heat exchanger. A clogged filter, closed or blocked vents, or a weak blower lets the heat exchanger overheat, and the high-limit switch shuts the burners off to protect it. The result looks like a furnace that runs in short bursts or blows lukewarm air. Replacing a dirty filter is the first thing to check; one-inch filters typically need changing every one to three months, and thicker media filters last longer, so follow the filter maker's guidance. Leaky or undersized ducts cause similar symptoms in some rooms; see ",
+            { href: "/air-duct-services/air-duct-cleaning", label: "air duct services" },
+            ".",
+          ],
+        ],
+      },
+      {
+        heading: "Repair or Replace?",
+        paragraphs: [
+          [
+            "Repair usually makes sense when the furnace is relatively young and the fault is a single component such as an igniter, sensor or motor. Replacement is worth comparing when the furnace is near the end of its typical life, needs repairs repeatedly, has a cracked heat exchanger, or needs a major part that is costly or hard to find. Efficiency matters too: a furnace's AFUE rating is the share of fuel it turns into heat, and older furnaces often rate well below new models. Our ",
+            { href: "/heating/furnace-installation", label: "furnace installation" },
+            " page explains what a replacement involves.",
+          ],
+        ],
+      },
+      {
+        heading: "Furnace Safety",
+        paragraphs: [
+          [
+            "If you smell gas, leave the house without switching anything on or off, and call your gas utility or 911 from outside. Carbon monoxide has no smell, so working CO alarms matter in any home with gas appliances; California law requires them in homes with fuel-burning appliances. Never bypass a safety switch or run a furnace with its burner door off. A brief dusty smell the first time the heat runs each season is normal; a burning or electrical smell that lasts is a reason to turn the furnace off and call for service.",
+          ],
+          [
+            "We repair furnaces across Orange County from our Yorba Linda base; see ",
+            { href: "/heating/heating-repair/yorba-linda", label: "heating repair in Yorba Linda" },
+            " or the ",
+            { href: "/heating", label: "heating services overview" },
+            ".",
+          ],
+        ],
+      },
+    ],
   },
 
   // ─── FURNACE INSTALLATION ─────────────────────────────────────────────────

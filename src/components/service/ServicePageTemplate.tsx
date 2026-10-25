@@ -15,6 +15,7 @@ import { serviceHref, SILO_PARENTS } from "@/lib/config/routes";
 import type { ServiceContent } from "@/lib/content/services";
 import { IMG_HERO, type SiteImage } from "@/lib/config/images";
 import type { CityServiceLink } from "@/lib/config/city-service-links";
+import RichText from "@/components/ui/RichText";
 
 // ─── FAQ Accordion (client interaction only) ─────────────────────────────────
 
@@ -293,6 +294,26 @@ export default function ServicePageTemplate({ service, image, cityLinks }: Props
           </div>
         </div>
       </section>
+
+      {/* ── Guide sections ─────────────────────────────────────────────────── */}
+      {service.guideSections && service.guideSections.length > 0 && (
+        <section className="py-14 lg:py-20 bg-white" aria-label={`${service.h1} guide`}>
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+            {service.guideSections.map((section) => (
+              <div key={section.heading}>
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-4">{section.heading}</h2>
+                <div className="flex flex-col gap-4">
+                  {section.paragraphs.map((paragraph, i) => (
+                    <p key={i} className="text-slate-700 leading-relaxed">
+                      <RichText text={paragraph} />
+                    </p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* ── City pages ─────────────────────────────────────────────────────── */}
       {cityLinks && cityLinks.links.length > 0 && (
