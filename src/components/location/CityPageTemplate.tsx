@@ -14,28 +14,8 @@ import { SITE } from "@/lib/config/site";
 import { getAllCities } from "@/lib/config/locations";
 import type { City, County } from "@/lib/config/locations";
 import type { CityServiceLink } from "@/lib/config/city-service-links";
-import type { CityHubContent, HubText } from "@/lib/content/city-hubs";
-
-/** Hub copy with inline links: plain strings, internal links and official external sources. */
-function RichText({ text }: { text: HubText }) {
-  return (
-    <>
-      {text.map((part, i) =>
-        typeof part === "string" ? (
-          part
-        ) : part.href.startsWith("/") ? (
-          <Link key={i} href={part.href} className="text-hvac-blue-700 font-medium underline underline-offset-2 hover:text-hvac-blue-800">
-            {part.label}
-          </Link>
-        ) : (
-          <a key={i} href={part.href} rel="noopener" className="text-hvac-blue-700 font-medium underline underline-offset-2 hover:text-hvac-blue-800">
-            {part.label}
-          </a>
-        ),
-      )}
-    </>
-  );
-}
+import type { CityHubContent } from "@/lib/content/city-hubs";
+import RichText from "@/components/ui/RichText";
 
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -342,6 +322,45 @@ export default function CityPageTemplate({ city, county, serviceLinks, hub }: Pr
                     </div>
                   </div>
                 ))}
+                {hub.owner?.projects && hub.owner.projects.length > 0 && (
+                  <div>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-4">Recent Work in {city.name}</h2>
+                    <ul className="flex flex-col gap-4">
+                      {hub.owner.projects.map((p) => (
+                        <li key={`${p.month}-${p.system}-${p.problem}`} className="rounded-xl border border-slate-200 p-4">
+                          <p className="text-xs font-semibold uppercase tracking-wide text-copper-600 mb-1">{p.month} · {p.system}</p>
+                          <p className="text-slate-700 leading-relaxed">
+                            <span className="font-semibold text-slate-900">Problem:</span> {p.problem}
+                          </p>
+                          <p className="text-slate-700 leading-relaxed">
+                            <span className="font-semibold text-slate-900">Outcome:</span> {p.outcome}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {hub.owner?.photos && hub.owner.photos.length > 0 && (
+                  <div>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-4">Job Photos from {city.name}</h2>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                      {hub.owner.photos.map((photo) => (
+                        <Image key={photo.src} src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} className="rounded-lg object-cover w-full h-auto" sizes="(max-width: 640px) 50vw, 33vw" />
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {((hub.owner?.neighborhoods && hub.owner.neighborhoods.length > 0) || hub.owner?.arrivalWindow) && (
+                  <div>
+                    <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-4">Where We Work in {city.name}</h2>
+                    {hub.owner?.neighborhoods && hub.owner.neighborhoods.length > 0 && (
+                      <p className="text-slate-700 leading-relaxed mb-3">
+                        Neighborhoods we serve include {hub.owner.neighborhoods.join(", ")}.
+                      </p>
+                    )}
+                    {hub.owner?.arrivalWindow && <p className="text-slate-700 leading-relaxed">{hub.owner.arrivalWindow}</p>}
+                  </div>
+                )}
               </div>
               <div id="request-service" className="scroll-mt-24">
                 <h2 className="text-2xl font-bold text-slate-900 leading-tight mb-4">Request Service in {city.name}</h2>

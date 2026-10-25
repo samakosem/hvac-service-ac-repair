@@ -14,6 +14,8 @@ export type CityServicePage = {
   h1: string;
   heroSubheadline: string;
   localContext: string;
+  /** Set only after the owner confirms every claim in localContext; until then it is not rendered. */
+  localContextVerified?: boolean;
   urgencyNote: string; // "X appointments available today" type copy
   nearbyCities: { name: string; slug: string; urlBase: string }[];
   faqs: { question: string; answer: string }[];

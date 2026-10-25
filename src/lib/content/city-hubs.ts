@@ -29,6 +29,23 @@ export type CityHubContent = {
   sidebarNote: string;
   formNote: string;
   ctaNote: string;
+  /** Owner-supplied facts (see OWNER_CONTENT). Each block renders only when it has entries. */
+  owner?: OwnerContent;
+};
+
+/**
+ * Facts only the owner can supply. Nothing here may be written from templates or guesses:
+ * every entry must come from the owner (job records, photos they took, their own statement).
+ */
+export type OwnerContent = {
+  /** Completed jobs in the city. No customer names without written consent. */
+  projects?: { month: string; system: string; problem: string; outcome: string }[];
+  /** Photos from jobs in the city, stored under /public/uploads. */
+  photos?: { src: string; alt: string; width: number; height: number }[];
+  /** Neighbourhoods or tracts the owner confirms they serve. */
+  neighborhoods?: string[];
+  /** Typical arrival window from the Yorba Linda shop, in the owner's words. */
+  arrivalWindow?: string;
 };
 
 const EPA_R22 = "https://www.epa.gov/ods-phaseout/residential-air-conditioning-and-phaseout-hcfc-22-what-you-need-know";
@@ -362,7 +379,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
 // Still null: the site blocked the check (403), the URL redirected to a home page
 // or PDF, or the office for the address is unconfirmed (Anaheim Hills follows Anaheim).
 
-type PermitOffice = { office: string; url: string };
+export type PermitOffice = { office: string; url: string };
 
 type HubFacts = {
   city: string;
@@ -537,9 +554,32 @@ function buildHub(slug: string, f: HubFacts): CityHubContent {
   };
 }
 
+/** Owner-verified facts per hub, keyed "county/city". Empty until the owner supplies them. */
+const OWNER_CONTENT: Record<string, OwnerContent> = {
+  "orange-county/placentia": {},
+  "orange-county/costa-mesa": {},
+  "orange-county/yorba-linda": {},
+};
+
 export function getCityHub(countySlug: string, citySlug: string): CityHubContent | undefined {
   const key = `${countySlug}/${citySlug}`;
-  if (CITY_HUBS[key]) return CITY_HUBS[key];
   const facts = HUB_FACTS[key];
-  return facts ? buildHub(citySlug, facts) : undefined;
+  const hub = CITY_HUBS[key] ?? (facts ? buildHub(citySlug, facts) : undefined);
+  return hub && OWNER_CONTENT[key] ? { ...hub, owner: OWNER_CONTENT[key] } : hub;
+}
+
+/** Permit offices for the hand-written hubs above, from the sources listed at the top of this file. */
+const HAND_WRITTEN_PERMIT: Record<string, PermitOffice> = {
+  "orange-county/placentia": { office: "City of Placentia Building and Safety Division", url: "https://placentia.org/58/Building-and-Safety" },
+  "orange-county/costa-mesa": {
+    office: "City of Costa Mesa Building Safety Division",
+    url: "https://www.costamesaca.gov/government/departments-and-divisions/economic-and-development-services/building-safety",
+  },
+  "orange-county/yorba-linda": { office: "City of Yorba Linda Building Department", url: "https://www.yorbalindaca.gov/477/Permit-Process" },
+};
+
+/** The verified office that permits HVAC equipment replacement for the city, if one is on file. */
+export function getPermitOffice(countySlug: string, citySlug: string): PermitOffice | undefined {
+  const key = `${countySlug}/${citySlug}`;
+  return HAND_WRITTEN_PERMIT[key] ?? HUB_FACTS[key]?.permit ?? undefined;
 }

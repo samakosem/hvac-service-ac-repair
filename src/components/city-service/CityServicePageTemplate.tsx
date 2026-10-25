@@ -10,6 +10,8 @@ import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema
 import type { CityServicePage } from "@/lib/config/city-service-pages";
 import { QuickChecksGrid, QuickChecksHeader, quickChecksKind } from "@/components/ui/QuickChecks";
 import { cityHubHref, cityServiceLinks } from "@/lib/config/city-service-links";
+import { getCityServiceLocalNotes } from "@/lib/content/city-service-local";
+import RichText from "@/components/ui/RichText";
 
 // ── Icon helpers ──────────────────────────────────────────────────────────────
 
@@ -74,6 +76,9 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
   const hub = BREADCRUMB_HUBS[page.urlBase] ?? { name: page.serviceName, href: page.urlBase };
   const cityHub = cityHubHref(page.citySlug);
   const siblingServices = cityServiceLinks(page.citySlug).filter((link) => link.href !== pageUrl);
+  const localNotes = getCityServiceLocalNotes(page.serviceSlug, page.citySlug);
+  // localContext stays hidden until the owner has confirmed every claim in it.
+  const localContext = page.localContextVerified ? page.localContext : undefined;
 
   const breadcrumbItems = [
     { name: "Home", href: "/" },
@@ -314,6 +319,25 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
           </div>
         </div>
       </section>
+
+      {/* ── LOCAL NOTES (verified sources only) ──────────────────────────────── */}
+      {(localNotes || localContext) && (
+        <section className="py-14 lg:py-16 bg-white" aria-labelledby="local-notes-heading">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 id="local-notes-heading" className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-5">
+              {localNotes?.heading ?? `${page.serviceName} in ${page.cityName}`}
+            </h2>
+            <div className="flex flex-col gap-4">
+              {localContext && <p className="text-slate-700 leading-relaxed">{localContext}</p>}
+              {localNotes?.paragraphs.map((paragraph, i) => (
+                <p key={i} className="text-slate-700 leading-relaxed">
+                  <RichText text={paragraph} />
+                </p>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── HOW IT WORKS ─────────────────────────────────────────────────────── */}
       <section className="py-16 lg:py-20 bg-section-dark" aria-labelledby="process-heading">
