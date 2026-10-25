@@ -1,3 +1,5 @@
+import { SITE } from "@/lib/config/site";
+
 export type ServiceFaq = {
   question: string;
   answer: string;
@@ -357,7 +359,11 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         question: "Are you available on weekends for emergency calls?",
         answer:
-          "Yes. We take emergency calls 7 days a week. Sunday service is available for genuine emergencies. Call us directly and explain your situation — we'll tell you honestly what we can accommodate.",
+          "Yes. We're open 24 hours a day, 7 days a week, including weekends.",
+      },
+      {
+        question: "How fast can a technician get to me in an emergency?",
+        answer: SITE.emergencyArrivalOC,
       },
       {
         question: "What should I do while waiting for emergency AC repair?",

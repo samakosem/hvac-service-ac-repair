@@ -369,15 +369,16 @@ export function generatePPCCities(existingSlugs: Set<string>): PPCCity[] {
       state: "CA",
       heroImage: {
         ...pick(HERO_IMAGES, i),
-        alt: `AC repair and HVAC service in ${city.name}, CA`,
+        // Project photos are not tied to a city, so the alt text names no location.
+        alt: "Air conditioning service by HVAC Service & AC Repair",
       },
       repairImage: {
         ...pick(REPAIR_IMAGES, i),
-        alt: `AC repair service in ${city.name}, CA`,
+        alt: "Air conditioning repair work",
       },
       installImage: {
         ...pick(INSTALL_IMAGES, i),
-        alt: `New AC installation in ${city.name}, CA`,
+        alt: "Air conditioning installation",
       },
       metaTitle: `AC Repair & HVAC Service in ${city.name}, CA — Same-Day Service`,
       metaDescription: `Expert AC repair, installation & HVAC service in ${city.name}, CA. Same-day availability. Free estimates on replacements. Call (714) 410-2784 — we answer 7 days a week.`,

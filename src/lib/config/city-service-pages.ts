@@ -1,4 +1,5 @@
 import { licenseOrHoursPoint } from "@/lib/config/credentials";
+import { SITE } from "@/lib/config/site";
 // City × Service landing page data
 // URL pattern: /air-conditioning/[service]/[city]/
 // Also used for /heating/heating-repair/[city]/ and /hvac-repair/[city]/
@@ -477,7 +478,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       {
         question: "How fast can you get to Yorba Linda for an emergency?",
         answer:
-          "Same-day emergency service is available 24/7, and our shop is on Yorba Linda Blvd. Call us and we'll give you the earliest available arrival window.",
+          `Same-day emergency service is available 24/7, and our shop is on Yorba Linda Blvd. ${SITE.emergencyArrivalOC}`,
       },
       {
         question: "What if you can't fix it today?",
@@ -560,8 +561,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       },
       {
         question: "How fast can you reach Anaheim for an emergency?",
-        answer:
-          "Our shop is in nearby Yorba Linda, and we're open 24/7. Call us and we'll give you an arrival window when you book.",
+        answer: `Our shop is in nearby Yorba Linda, and we're open 24/7. ${SITE.emergencyArrivalOC}`,
       },
       {
         question: "Do you work nights and weekends in Anaheim?",

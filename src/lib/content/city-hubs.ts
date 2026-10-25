@@ -15,6 +15,8 @@
  *   Costa Mesa Building Safety: https://www.costamesaca.gov/government/departments-and-divisions/economic-and-development-services/building-safety
  */
 
+import { SITE } from "@/lib/config/site";
+
 /** A run of text: plain strings, internal links ("/path") and external source links. */
 export type HubText = (string | { href: string; label: string })[];
 
@@ -161,6 +163,10 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
           "Yes. We repair and install heat pumps and ductless mini-split systems as well as central air conditioners and furnaces.",
       },
       {
+        question: "Do you offer emergency HVAC service in Placentia?",
+        answer: `Yes. We are open 24 hours a day, 7 days a week, and same-day service is available in Placentia. ${SITE.emergencyArrivalOC}`,
+      },
+      {
         question: "How do I schedule HVAC service in Placentia?",
         answer:
           "Call (714) 410-2784 or fill in the request form on this page with your name, phone number, the service you need and your address. We will contact you to schedule a visit.",
@@ -263,6 +269,10 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
       },
       R22_FAQ,
       {
+        question: "Do you offer emergency HVAC service in Costa Mesa?",
+        answer: `Yes. We are open 24 hours a day, 7 days a week, and same-day service is available in Costa Mesa. ${SITE.emergencyArrivalOC}`,
+      },
+      {
         question: "Can a Costa Mesa home without ducts get air conditioning?",
         answer:
           "Yes. Ductless mini-split systems cool and heat individual rooms without ductwork, which suits older homes and room additions.",
@@ -357,6 +367,10 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
           "Yes. We repair and install heat pumps and ductless mini-split systems as well as central air conditioners and furnaces.",
       },
       {
+        question: "Do you offer emergency HVAC service in Yorba Linda?",
+        answer: `Yes. We are open 24 hours a day, 7 days a week, and same-day service is available in Yorba Linda. ${SITE.emergencyArrivalOC}`,
+      },
+      {
         question: "How do I schedule HVAC service in Yorba Linda?",
         answer:
           "Call (714) 410-2784 or fill in the request form on this page with your name, phone number, the service you need and your address. We will contact you to schedule a visit.",
@@ -442,8 +456,12 @@ function hubDescription(city: string): string {
   return options.find((d) => d.length <= 160) ?? options[options.length - 1];
 }
 
-function buildHub(slug: string, f: HubFacts): CityHubContent {
+function buildHub(countySlug: string, slug: string, f: HubFacts): CityHubContent {
   const c = f.city;
+  const arrival =
+    countySlug === "orange-county"
+      ? SITE.emergencyArrivalOC
+      : "Arrival times depend on our schedule and your location, and we will give you an estimate when you call.";
   const acRepair = `/air-conditioning/ac-repair/${slug}`;
   const emergency = `/air-conditioning/emergency-ac-repair/${slug}`;
   const tuneUp = `/air-conditioning/ac-tune-up/${slug}`;
@@ -517,7 +535,7 @@ function buildHub(slug: string, f: HubFacts): CityHubContent {
           [
             `We are open 24 hours a day, 7 days a week, and same-day service is available in ${c}. If your system has stopped completely, `,
             { href: emergency, label: `emergency AC repair in ${c}` },
-            " lists what to do while you wait. Arrival times depend on our schedule and your location, and we will give you an honest estimate when you call.",
+            ` lists what to do while you wait. ${countySlug === "orange-county" ? arrival : "Arrival times depend on our schedule and your location, and we will give you an honest estimate when you call."}`,
           ],
           [
             "For a problem that is not about cooling, such as ductwork, thermostats or a system that heats and cools unevenly, see ",
@@ -539,7 +557,7 @@ function buildHub(slug: string, f: HubFacts): CityHubContent {
       },
       {
         question: `Do you offer emergency HVAC service in ${c}?`,
-        answer: `Yes. We are open 24 hours a day, 7 days a week, including emergency service, and same-day service is available in ${c}. Arrival times depend on our schedule and your location, and we will give you an estimate when you call.`,
+        answer: `Yes. We are open 24 hours a day, 7 days a week, including emergency service, and same-day service is available in ${c}. ${arrival}`,
       },
       permitFaq,
       R22_FAQ,
@@ -564,7 +582,7 @@ const OWNER_CONTENT: Record<string, OwnerContent> = {
 export function getCityHub(countySlug: string, citySlug: string): CityHubContent | undefined {
   const key = `${countySlug}/${citySlug}`;
   const facts = HUB_FACTS[key];
-  const hub = CITY_HUBS[key] ?? (facts ? buildHub(citySlug, facts) : undefined);
+  const hub = CITY_HUBS[key] ?? (facts ? buildHub(countySlug, citySlug, facts) : undefined);
   return hub && OWNER_CONTENT[key] ? { ...hub, owner: OWNER_CONTENT[key] } : hub;
 }
 
