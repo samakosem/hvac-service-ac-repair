@@ -217,9 +217,10 @@ export default function Footer() {
             <Link href="/terms" className="hover:text-slate-300 transition-colors">
               Terms of Service
             </Link>
-            <Link href="/sitemap.xml" className="hover:text-slate-300 transition-colors">
+            {/* Plain <a>: sitemap.xml is a route handler, not a page, so Next.js must not prefetch it. */}
+            <a href="/sitemap.xml" className="hover:text-slate-300 transition-colors">
               Sitemap
-            </Link>
+            </a>
           </div>
         </div>
       </div>
