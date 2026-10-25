@@ -37,7 +37,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/ac-repair",
     metaTitle: "AC Repair in Yorba Linda, CA | Same-Day Service | (714) 410-2784",
     metaDescription:
-      "Fast AC repair in Yorba Linda, CA. Same-day appointments, free diagnostic with repair. Call (714) 410-2784).",
+      "Fast AC repair in Yorba Linda, CA. Same-day appointments, free diagnostic with repair. Call (714) 410-2784.",
     h1: "AC Repair in Yorba Linda, CA — Same-Day Service",
     heroSubheadline:
       "Your AC stopped working? We diagnose, quote, and fix it, with same-day service available. No guesswork, no upsells.",
@@ -118,7 +118,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/ac-repair",
     metaTitle: "AC Repair in Anaheim, CA | Same-Day HVAC Service | (714) 410-2784",
     metaDescription:
-      "AC repair in Anaheim, CA — same-day service for homes and businesses. Free diagnostic with repair. Call (714) 410-2784).",
+      "AC repair in Anaheim, CA — same-day service for homes and businesses. Free diagnostic with repair. Call (714) 410-2784.",
     h1: "AC Repair in Anaheim, CA — Same-Day Service",
     heroSubheadline:
       "Anaheim's heat won't wait. We diagnose, quote, and repair your AC, with same-day service available.",
@@ -202,7 +202,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/ac-repair",
     metaTitle: "AC Repair in Fullerton, CA | Fast Same-Day Service | (714) 410-2784",
     metaDescription:
-      "AC repair in Fullerton, CA. Same-day HVAC technicians for homes, rentals, and small businesses. Free diagnostic. (714) 410-2784).",
+      "AC repair in Fullerton, CA. Same-day HVAC technicians for homes, rentals, and small businesses. Free diagnostic. (714) 410-2784.",
     h1: "AC Repair in Fullerton, CA — Same-Day Service",
     heroSubheadline:
       "AC down in Fullerton? We respond fast — same-day service for homes, rental properties, and small businesses.",
@@ -452,7 +452,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/emergency-ac-repair",
     metaTitle: "Emergency AC Repair in Yorba Linda, CA | Available Today | (714) 410-2784",
     metaDescription:
-      "AC broke down in Yorba Linda? Same-day emergency HVAC service — real people answer, no voicemail. Free diagnostic, no emergency surcharge. Call (714) 410-2784).",
+      "AC broke down in Yorba Linda? Same-day emergency HVAC service — real people answer, no voicemail. Free diagnostic, no emergency surcharge. Call (714) 410-2784.",
     h1: "AC Broke Down in Yorba Linda? We're Available Today.",
     heroSubheadline:
       "Real people answer — no voicemail. Same-day emergency HVAC service, 7 days a week.",
@@ -613,7 +613,7 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
     urlBase: "/heating/heating-repair",
     metaTitle: "Heating Repair in Yorba Linda, CA | AC & Heating | (714) 410-2784",
     metaDescription:
-      "AC and heating repair in Yorba Linda, CA. Same-day furnace and HVAC service — free diagnostic with repair. Call (714) 410-2784).",
+      "AC and heating repair in Yorba Linda, CA. Same-day furnace and HVAC service — free diagnostic with repair. Call (714) 410-2784.",
     h1: "AC & Heating Repair in Yorba Linda — Same-Day Service",
     heroSubheadline:
       "One local team handles your AC and heating — from summer emergencies to winter tune-ups.",
