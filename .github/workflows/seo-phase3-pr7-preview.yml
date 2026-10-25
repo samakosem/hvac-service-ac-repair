@@ -34,7 +34,22 @@ jobs:
           (npx next start -p 3000 >/dev/null 2>&1 &)
           for i in $(seq 1 60); do curl -s -o /dev/null http://localhost:3000/ && break; sleep 1; done
       - name: verify-preview.mjs (PR build vs production)
-        run: node site/scripts/verify-preview.mjs --preview http://localhost:3000 --production "$PRODUCTION_URL" --concurrency 6
+        # Check 10 was written for PR #1 and flags any title change; require that its only failures
+        # are titles of the 8 pages this PR retitles, and that checks 1-9 pass on both sides.
+        run: |
+          node site/scripts/verify-preview.mjs --preview http://localhost:3000 --production "$PRODUCTION_URL" --concurrency 6 --json vp.json || true
+          python3 - <<'PY'
+          import json, re, sys
+          d = json.load(open("vp.json"))
+          expected = {"/about-us", "/air-conditioning/ac-repair", "/air-conditioning/emergency-ac-repair", "/heating/furnace-repair",
+                      "/maintenance/residential-maintenance-plan", "/calculators/ac-size-calculator",
+                      "/calculators/seer2-savings-calculator", "/service-areas/orange-county"}
+          bad = [f"{side} {r['id']}" for side in ("preview", "production") for r in d[side]["results"] if not r["pass"]]
+          cmp_fail = d["comparison"]["failures"]
+          paths = {re.match(r"(/\S*): title ", f).group(1) if re.match(r"(/\S*): title ", f) else f for f in cmp_fail}
+          print("checks 1-9 failing:", bad or "none"); print("check 10 differences:", sorted(paths))
+          sys.exit(1 if bad or paths != expected else 0)
+          PY
       - name: Crawl both and diff every sitemap page
         run: |
           python3 ci/.github/seo-checks/crawl.py "$PRODUCTION_URL" prod
