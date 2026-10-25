@@ -14,6 +14,8 @@ export type CityServicePage = {
   h1: string;
   heroSubheadline: string;
   localContext: string;
+  /** Set only after the owner confirms every claim in localContext; until then it is not rendered. */
+  localContextVerified?: boolean;
   urgencyNote: string; // "X appointments available today" type copy
   nearbyCities: { name: string; slug: string; urlBase: string }[];
   faqs: { question: string; answer: string }[];
@@ -43,7 +45,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       "Your AC stopped working? We diagnose, quote, and fix it, with same-day service available. No guesswork, no upsells.",
     localContext:
       "Yorba Linda's hillside tract homes and 1970s–2000s construction mean we frequently work on both older R-22 systems due for replacement and newer R-410A equipment needing maintenance. Summer temperatures regularly push above 95°F in inland neighborhoods near Weir Canyon, making a functioning AC non-negotiable from June through September. Our shop is on Yorba Linda Blvd — we're literally your neighbors.",
-    urgencyNote: "Serving Weir Canyon, Fairmont, and all Yorba Linda neighborhoods. Same-day service available.",
+    urgencyNote: "Serving Yorba Linda and surrounding neighborhoods. Same-day service available.",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/air-conditioning/ac-repair" },
       { name: "Placentia", slug: "placentia", urlBase: "/air-conditioning/ac-repair" },
@@ -802,7 +804,7 @@ export const LOCAL_HVAC_CITIES: CityServicePage[] = [
       {
         question: "What areas around Yorba Linda do you serve?",
         answer:
-          "We service all of Yorba Linda including Weir Canyon, Fairmont, Vista Del Verde, the hillside tracts, and the Yorba Linda Blvd corridor, plus all of Orange County.",
+          "We serve all of Yorba Linda and the rest of Orange County. Call (714) 410-2784 to confirm service for your address.",
       },
       {
         question: "Do you offer any maintenance plans for Yorba Linda homeowners?",
