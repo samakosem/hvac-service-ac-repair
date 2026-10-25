@@ -288,11 +288,78 @@ export const SERVICE_CONTENT: ServiceContent[] = [
         answer:
           "Frozen coils are typically caused by low refrigerant charge, restricted airflow from a dirty filter or closed vents, or a dirty evaporator coil. Running a frozen system can damage the compressor, so we recommend turning the fan to 'on' mode and calling us promptly.",
       },
+      {
+        question: "Why is water leaking from my indoor AC unit?",
+        answer:
+          "An air conditioner removes moisture from the air, and that water drains through a condensate line. When the line or its trap clogs, water backs up into the drain pan and overflows. Many systems have a float switch that shuts the AC off before it overflows, so a system that suddenly stops cooling with a full drain pan often has a clogged drain. A frozen coil that thaws can also leave water around the unit.",
+      },
+      {
+        question: "Does my AC need more refrigerant every year?",
+        answer:
+          "No. An air conditioner doesn't use up refrigerant; it circulates the same charge in a sealed system. If the charge is low, there is a leak. Adding refrigerant without finding and repairing the leak only works until it leaks out again.",
+      },
     ],
     relatedSlugs: ["emergency-ac-repair", "ac-maintenance", "ac-installation", "ac-tune-up"],
     ctaHeadline: "AC Not Cooling? Same-Day Repair Available.",
     ctaSubtext: "Same-day AC repair across Southern California. Written estimate before any work starts. Call (714) 410-2784.",
     category: "cooling",
+    guideSections: [
+      {
+        heading: "Common AC Failures",
+        paragraphs: [
+          [
+            "Most AC repairs come down to a few parts. Capacitors help the compressor and outdoor fan motor start and keep running; when one weakens, the outdoor unit may hum without starting or the fan may not spin. Contactors switch power to the outdoor unit and wear with use. A refrigerant leak lowers cooling capacity and can freeze the indoor coil. A clogged condensate drain can leak water or trip a float switch that shuts the system off. Dirty filters and coils cut airflow and heat transfer. Compressor failure is the most serious and costly, and often decides between repair and replacement.",
+          ],
+          [
+            "If your AC runs but blows warm air, our ",
+            { href: "/ac-not-cooling", label: "AC not cooling guide" },
+            " walks through the checks to make before you call.",
+          ],
+        ],
+      },
+      {
+        heading: "How an AC Repair Diagnosis Works",
+        paragraphs: [
+          [
+            "A diagnosis starts with the basics: thermostat settings, the breaker and the outdoor disconnect, and the air filter. A technician then tests electrical parts such as the capacitor and contactor, measures the temperature drop across the indoor coil, and checks refrigerant pressures against the manufacturer's specifications. Coils, the condensate drain and airflow are inspected as well. Measuring before replacing parts is what separates a repair from guesswork. Under federal rules, anyone who handles refrigerant must hold EPA Section 608 certification.",
+          ],
+        ],
+      },
+      {
+        heading: "Repair or Replace Your AC?",
+        paragraphs: [
+          [
+            "A single failed part on a system in good condition is usually worth repairing. Replacement is worth comparing when the compressor fails on an older system, repairs keep recurring, or the system uses R-22 refrigerant, which has not been produced or imported in the U.S. since January 1, 2020, so repairs that need refrigerant depend on reclaimed supply. Newer systems are also more efficient. Our ",
+            { href: "/air-conditioning/ac-replacement", label: "AC replacement" },
+            " page covers what a replacement involves, and the ",
+            { href: "/calculators/seer2-savings-calculator", label: "SEER2 savings calculator" },
+            " estimates running-cost differences.",
+          ],
+        ],
+      },
+      {
+        heading: "Maintenance That Prevents Repairs",
+        paragraphs: [
+          [
+            "Change the filter regularly, keep supply and return vents open, and keep leaves, plants and debris away from the outdoor unit so it can move air freely. A yearly ",
+            { href: "/air-conditioning/ac-tune-up", label: "AC tune-up" },
+            " before summer cleans the coils, checks the capacitor, contactor and refrigerant charge, and clears the condensate drain, which catches many of the failures above before they stop the system. See also our ",
+            { href: "/maintenance-plans", label: "maintenance plans" },
+            ".",
+          ],
+        ],
+      },
+      {
+        heading: "AC Safety",
+        paragraphs: [
+          [
+            "If the indoor coil or refrigerant lines are covered in ice, turn the system off at the thermostat and let it thaw before it runs again. Turn off power at the breaker and the outdoor disconnect before cleaning around the outdoor unit. Don't open electrical panels: capacitors can hold a dangerous charge even with the power off. If you smell burning or see smoke, shut the system off at the breaker and call for service. For a breakdown that can't wait, see ",
+            { href: "/air-conditioning/emergency-ac-repair", label: "emergency AC repair" },
+            ".",
+          ],
+        ],
+      },
+    ],
   },
 
   // ─── EMERGENCY AC REPAIR ──────────────────────────────────────────────────

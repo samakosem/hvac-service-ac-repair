@@ -301,7 +301,7 @@ export default function EmergencyHvacPage() {
             {OC_CITIES.map((city) => (
               <Link
                 key={city.slug}
-                href={`/air-conditioning/emergency-ac-repair/${city.slug}/`}
+                href={`/air-conditioning/emergency-ac-repair/${city.slug}`}
                 className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 font-medium text-sm hover:border-red-300 hover:text-red-700 transition-colors"
               >
                 {city.name}
