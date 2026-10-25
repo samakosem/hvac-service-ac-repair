@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo/metadata";
 import { SITE } from "@/lib/config/site";
 import InteriorHero from "@/components/layout/InteriorHero";
 import { IMG_AC_INSTALLATION } from "@/lib/config/images";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "HVAC Careers in Orange County | Join Our Team — Yorba Linda, CA",
   description:
     "HVAC Service & AC Repair is hiring experienced HVAC technicians and service dispatchers in the Yorba Linda / Orange County area. Apply today.",
-  alternates: { canonical: "/careers" },
-};
+  path: "/careers",
+});
 
 const OPEN_ROLES = [
   {

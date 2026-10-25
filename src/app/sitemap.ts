@@ -14,9 +14,10 @@ function url(
   priority: number,
   changeFrequency: SitemapEntry["changeFrequency"] = "monthly",
 ): SitemapEntry {
+  // No lastModified: a build timestamp on every URL changes on each deploy without the content
+  // changing, which teaches Google to ignore lastmod. Add real per-page dates if they are tracked.
   return {
     url: `${base}${path}`,
-    lastModified: new Date(),
     changeFrequency,
     priority,
   };

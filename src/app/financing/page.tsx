@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo/metadata";
 import { SITE } from "@/lib/config/site";
 import JsonLd from "@/components/ui/JsonLd";
 import { schemaFaqPage } from "@/lib/seo/schema";
@@ -6,12 +7,12 @@ import CtaSection from "@/components/ui/CtaSection";
 import InteriorHero from "@/components/layout/InteriorHero";
 import { IMG_COMMERCIAL_PRIMARY } from "@/lib/config/images";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "HVAC Financing Options | AC Repair & Installation — Orange County, CA",
   description:
     "Don't let cost stop you from getting reliable HVAC service. Ask about financing options for AC installation, replacement, and major repairs in Orange County.",
-  alternates: { canonical: "/financing" },
-};
+  path: "/financing",
+});
 
 const FINANCING_OPTIONS = [
   {

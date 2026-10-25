@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildMetadata } from "@/lib/seo/metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { IMG_MAINTENANCE } from "@/lib/config/images";
@@ -8,12 +9,12 @@ import CtaSection from "@/components/ui/CtaSection";
 import PhoneLink from "@/components/ui/PhoneLink";
 import InteriorHero from "@/components/layout/InteriorHero";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "HVAC Maintenance Plans | Residential & Commercial — Orange County, CA",
   description:
     "Protect your HVAC investment with a seasonal maintenance plan from HVAC Service & AC Repair. Residential and commercial plans available across Orange County.",
-  alternates: { canonical: "/maintenance-plans" },
-};
+  path: "/maintenance-plans",
+});
 
 const RESIDENTIAL_INCLUDES = [
   "Full system inspection — filters, coils, electrical, refrigerant check",

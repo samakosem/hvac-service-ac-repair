@@ -293,7 +293,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── EMERGENCY AC REPAIR ──────────────────────────────────────────────────
   {
     slug: "emergency-ac-repair",
-    seoTitle: "Emergency AC Repair Southern California | Available 7 Days",
+    seoTitle: "24/7 Emergency AC Repair in Orange County",
     metaDescription:
       "Emergency AC repair in Orange County. Open 24 hours a day, 7 days a week. Dispatched from Yorba Linda. Call (714) 410-2784 now.",
     h1: "Emergency AC Repair",
@@ -1202,9 +1202,9 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── FURNACE REPAIR ───────────────────────────────────────────────────────
   {
     slug: "furnace-repair",
-    seoTitle: "Furnace Repair Southern California | Same-Day Heating Repair",
+    seoTitle: "Furnace Repair in Orange County, CA",
     metaDescription:
-      "Furnace repair in Orange County, CA. Gas and electric furnace diagnosis and same-day repair. Igniter, heat exchanger, blower motor, and more. Call (714) 410-2784.",
+      "Furnace repair in Orange County, CA: gas and electric furnace diagnosis and same-day repair of igniters, heat exchangers and blowers. Call (714) 410-2784.",
     h1: "Furnace Repair — Gas & Electric Furnaces",
     primaryKeyword: "furnace repair Orange County",
     secondaryKeywords: [
@@ -1769,7 +1769,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
   // ─── RESIDENTIAL MAINTENANCE PLAN ────────────────────────────────────────
   {
     slug: "residential-maintenance-plan",
-    seoTitle: "Residential HVAC Maintenance Plan Southern California | Tune-Up Program",
+    seoTitle: "Home HVAC Maintenance Plan in Orange County",
     metaDescription:
       "Residential HVAC maintenance plans in Orange County, CA. Scheduled seasonal service, priority response, and full system documentation. Call (714) 410-2784.",
     h1: "Residential HVAC Maintenance Plan",

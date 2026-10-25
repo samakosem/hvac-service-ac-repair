@@ -14,7 +14,7 @@ import { QuickChecksGrid, QuickChecksHeader } from "@/components/ui/QuickChecks"
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: "AC Repair — Same-Day Service | Southern California | (714) 410-2784",
+    title: "Same-Day AC Repair in Orange County, CA",
     description:
       "Same-day AC repair throughout Southern California. Free diagnostic with repair, written quote before any work. Call (714) 410-2784.",
     path: "/air-conditioning/ac-repair",
