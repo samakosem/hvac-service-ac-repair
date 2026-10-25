@@ -122,7 +122,7 @@ export const IMG_LENNOX_INSTALL: SiteImage = {
 export const GALLERY_IMAGES: Array<SiteImage & { size: "large" | "small" }> = [
   {
     src: "/uploads/AC REPAIR SERVICE (8).jpeg",
-    alt: "New Goodman AC condenser installed at a residential property in Yorba Linda, CA",
+    alt: "New Goodman AC condenser installed at a residential property",
     width: 900,
     height: 1200,
     size: "large",

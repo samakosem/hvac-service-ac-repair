@@ -62,7 +62,7 @@ const FAQS = [
   {
     question: "How fast can you respond to an emergency call?",
     answer:
-      "We're based in Yorba Linda, open 24/7, and dispatch to all of Orange County. Same-day service is available. Call us and we'll give you the earliest available arrival window.",
+      `We're based in Yorba Linda, open 24/7, and dispatch to all of Orange County. Same-day service is available. ${SITE.emergencyArrivalOC}`,
   },
   {
     question: "Who answers when I call — a person or a call center?",

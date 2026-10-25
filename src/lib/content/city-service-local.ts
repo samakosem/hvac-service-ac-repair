@@ -3,8 +3,9 @@
  *
  * Copy rules (Phase 5): only facts from an official source already verified for the city hubs
  * (permit offices, see city-hubs.ts) or general coastal maintenance guidance already approved
- * for the Costa Mesa hub (Phase 2.3 P1). No neighbourhoods, jobs, response times, temperatures,
- * brands or statistics. A city with no verified fact gets no section.
+ * for the Costa Mesa hub (Phase 2.3 P1), plus areas the owner confirmed by name (Phase 6). No
+ * other neighbourhoods, jobs, response times, temperatures, brands or statistics. A city with no
+ * verified fact gets no section.
  */
 import { getCityBySlug } from "@/lib/config/locations";
 import { getPermitOffice, type HubText } from "@/lib/content/city-hubs";
@@ -14,6 +15,11 @@ const ON_COAST = new Set(["huntington-beach", "newport-beach", "san-clemente"]);
 /** Near the coast but not on it (matches the Costa Mesa hub copy). */
 const NEAR_COAST = new Set(["costa-mesa"]);
 
+/** Neighbourhoods the owner confirmed by name (Phase 6). */
+const OWNER_CONFIRMED_AREAS: Record<string, string[]> = {
+  "laguna-niguel": ["Bear Brand Ranch"],
+};
+
 export type CityServiceLocalNotes = { heading: string; paragraphs: HubText[] };
 
 export function getCityServiceLocalNotes(serviceSlug: string, citySlug: string): CityServiceLocalNotes | undefined {
@@ -22,6 +28,11 @@ export function getCityServiceLocalNotes(serviceSlug: string, citySlug: string):
   if (!city) return undefined;
 
   const paragraphs: HubText[] = [];
+
+  const areas = OWNER_CONFIRMED_AREAS[citySlug];
+  if (areas) {
+    paragraphs.push([`We serve all of ${city.name}, including ${areas.join(" and ")}, from our Yorba Linda base.`]);
+  }
 
   if (ON_COAST.has(citySlug) || NEAR_COAST.has(citySlug)) {
     paragraphs.push([

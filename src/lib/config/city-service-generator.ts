@@ -7,6 +7,7 @@
 import { getAllCities, type City } from "@/lib/config/locations";
 import type { CityServicePage } from "@/lib/config/city-service-pages";
 import { licenseOrHoursPoint } from "@/lib/config/credentials";
+import { SITE } from "@/lib/config/site";
 
 function urgencyNote(city: City): string {
   switch (city.countySlug) {
@@ -88,7 +89,9 @@ function faqs(city: City, serviceSlug: string): { question: string; answer: stri
           answer:
             "No emergency surcharges. Emergency calls are priced the same as regular service — same pricing 7 days a week.",
         },
-        speedFaq,
+        city.countySlug === "orange-county"
+          ? { question: `How quickly can you get to ${city.name} in an emergency?`, answer: SITE.emergencyArrivalOC }
+          : speedFaq,
         {
           question: "What should I do while waiting for emergency AC repair?",
           answer:
