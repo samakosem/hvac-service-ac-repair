@@ -72,6 +72,15 @@ Costa Mesa is already in the nearby-city lists of every served city that borders
 | Pages whose content changed | Exactly the 12 OC AC repair pages above (new H2 plus paragraphs) |
 | `scripts/verify-preview.mjs` | 9/9 pass |
 
+## 6. Review fixes (pre-merge)
+
+- Removed two pre-existing neighbourhood claims on Yorba Linda pages that the owner hasn't verified: the AC repair urgency note ("Serving Weir Canyon, Fairmont, and all Yorba Linda neighborhoods") and the `/hvac-repair/yorba-linda` FAQ answer naming Weir Canyon, Fairmont and Vista Del Verde.
+- Still pending owner review, left unchanged:
+  - `/laguna-niguel-ac-repair` (Ads page) names Bear Brand Ranch in visible copy.
+  - The city hub pages embed each city's config object, including the hidden `localContext`, in the client-component data payload. It isn't visible text, and it was already like this before this PR.
+- Permit links: each official page was confirmed in read-only checks. Placentia, Costa Mesa and Yorba Linda in Phase 2.3 P1 (2026-10-19). The other 9 in Phase 2.3 P4 (run 39407508306, 2026-10-20): HTTP 200, with the title naming the city's building or permit office.
+- Mobile (390 px): the 12 pages, the 3 priority hubs and `/hvac-repair/yorba-linda` return 200, with no overflow, no JS errors, and call links and forms present.
+
 ## Next step
 
 The owner reviews the table in section 1. They correct or confirm each paragraph and supply the hub facts in section 3. Each confirmed paragraph then gets `localContextVerified: true`, and each fact goes into `OWNER_CONTENT`, one PR per city.
