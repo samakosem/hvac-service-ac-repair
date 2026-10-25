@@ -1,0 +1,81 @@
+# Phase 7 (PR #11) live verification. Read-only.
+# Waits for Vercel's production deployment of the PR #11 merge, confirms the domain serves it
+# (furnace and heating guides, Yorba Linda heating H1), then crawls every
+# sitemap URL and runs scripts/verify-preview.mjs (canonicals, robots, sitemap, schema, GTM, forms).
+name: SEO phase 7 production verification
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase7-production.yml]
+
+permissions:
+  contents: read
+  deployments: read
+
+env:
+  MERGE_SHA: fa6785cf81b7386f515065737ba919d13843b262
+  PRODUCTION_URL: https://www.hvacserviceacrepair.com
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ci
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.MERGE_SHA }}
+          path: site
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Wait for the Vercel production deployment to be READY
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          deadline=$(( $(date +%s) + 1800 ))
+          while :; do
+            dep=$(gh api "repos/${GITHUB_REPOSITORY}/deployments?sha=${MERGE_SHA}&environment=Production&per_page=20" --jq '[.[] | select(.creator.login == "vercel[bot]")] | first')
+            if [ -n "$dep" ] && [ "$dep" != "null" ]; then
+              id=$(jq -r .id <<<"$dep")
+              state=$(gh api "repos/${GITHUB_REPOSITORY}/deployments/${id}/statuses?per_page=1" --jq 'first.state // "pending"')
+              echo "Production deployment $id: $state"
+              case "$state" in
+                success) break ;;
+                failure|error|inactive) echo "::error::Vercel production deployment ended in '$state'"; exit 1 ;;
+              esac
+            else
+              echo "No Vercel production deployment for $MERGE_SHA yet"
+            fi
+            [ "$(date +%s)" -ge "$deadline" ] && { echo "::error::Timed out"; exit 1; }
+            sleep 20
+          done
+
+      - name: Production domain serves the Phase 7 build
+        run: |
+          for i in $(seq 1 12); do
+            if curl -sS "$PRODUCTION_URL/heating/furnace-repair" | grep -q 'How a Furnace Starts, and Where It Fails'; then
+              echo "Furnace guide live"
+              curl -sS "$PRODUCTION_URL/heating" | grep -q 'Common Heating Problems' || { echo "::error::heating guide missing"; exit 1; }
+              curl -sS "$PRODUCTION_URL/heating/heating-repair/yorba-linda" | grep -q 'Heating &amp; Furnace Repair in Yorba Linda' || { echo "::error::YL H1 not updated"; exit 1; }
+              curl -sS "$PRODUCTION_URL/heating/heating-repair/yorba-linda" | grep -q 'Heating Repair Notes for Yorba Linda' || { echo "::error::YL notes missing"; exit 1; }
+              echo "Heating guide, YL H1 and notes live"; exit 0
+            fi
+            echo "Domain not updated yet, retrying"; sleep 15
+          done
+          echo "::error::Production domain does not serve the Phase 7 build"; exit 1
+
+      - name: Crawl every sitemap URL
+        run: |
+          python3 ci/.github/seo-checks/crawl.py "$PRODUCTION_URL" after
+          awk '{print $1}' after/status.txt | sort | uniq -c
+          if grep -v '^200 ' after/status.txt; then echo "::error::non-200 sitemap URLs"; exit 1; fi
+
+      - name: SEO checks (verify-preview.mjs)
+        run: node site/scripts/verify-preview.mjs --preview "$PRODUCTION_URL" --concurrency 6
