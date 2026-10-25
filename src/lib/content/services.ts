@@ -321,7 +321,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
         heading: "How an AC Repair Diagnosis Works",
         paragraphs: [
           [
-            "A diagnosis starts with the basics: thermostat settings, the breaker and the outdoor disconnect, and the air filter. A technician then tests electrical parts such as the capacitor and contactor, measures the temperature drop across the indoor coil, and checks refrigerant pressures against the manufacturer's specifications. Coils, the condensate drain and airflow are inspected as well. Measuring before replacing parts is what separates a repair from guesswork. Under federal rules, anyone who handles refrigerant must hold EPA Section 608 certification.",
+            "A diagnosis starts with the basics: thermostat settings, the breaker and the outdoor disconnect, and the air filter. A technician then tests electrical parts such as the capacitor and contactor, measures the temperature drop across the indoor coil, and checks refrigerant pressures against the manufacturer's specifications. Coils, the condensate drain and airflow are inspected as well. Measuring before replacing parts is what separates a repair from guesswork. Under federal rules, technicians who service equipment containing refrigerant must hold EPA Section 608 certification.",
           ],
         ],
       },
@@ -353,7 +353,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
         heading: "AC Safety",
         paragraphs: [
           [
-            "If the indoor coil or refrigerant lines are covered in ice, turn the system off at the thermostat and let it thaw before it runs again. Turn off power at the breaker and the outdoor disconnect before cleaning around the outdoor unit. Don't open electrical panels: capacitors can hold a dangerous charge even with the power off. If you smell burning or see smoke, shut the system off at the breaker and call for service. For a breakdown that can't wait, see ",
+            "If the indoor coil or refrigerant lines are covered in ice, turn cooling off at the thermostat and let the ice melt before running it again; setting the fan to on can speed thawing. Turn off power at the breaker and the outdoor disconnect before cleaning around the outdoor unit. Don't open electrical panels: capacitors can hold a dangerous charge even with the power off. If you smell burning or see smoke, shut the system off at the breaker and call for service. For a breakdown that can't wait, see ",
             { href: "/air-conditioning/emergency-ac-repair", label: "emergency AC repair" },
             ".",
           ],
@@ -1317,7 +1317,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
           [
             "A gas smell or a carbon monoxide alarm is an emergency: leave the house and call your gas utility or 911 from outside first. Call for service for repeated lockouts or fault codes, a breaker that trips when the heat runs, a burning or electrical smell that lasts, water pooling around the furnace, or any fix that means opening the furnace cabinet. For urgent problems, see ",
             { href: "/emergency-hvac-service", label: "emergency HVAC service" },
-            ". Our shop is in Yorba Linda; see ",
+            ". We are based in Yorba Linda; see ",
             { href: "/heating/heating-repair/yorba-linda", label: "heating repair in Yorba Linda" },
             " or choose your city below.",
           ],

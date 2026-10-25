@@ -61,9 +61,9 @@ export function getCityServiceLocalNotes(serviceSlug: string, citySlug: string):
   const paragraphs: HubText[] = [];
 
   if (citySlug === "yorba-linda") {
-    // Home base (owner-confirmed; address from site data). Phase 8.
+    // Operational base (owner-confirmed, Phase 6). No storefront implied. Phase 8.
     paragraphs.push([
-      "Yorba Linda is our home base: our shop is on Yorba Linda Blvd. For heating, tune-ups and replacement in the city, see ",
+      "Yorba Linda is our operational base. For heating, tune-ups and replacement in the city, see ",
       { href: "/service-areas/orange-county/yorba-linda", label: "HVAC service in Yorba Linda" },
       ". Our ",
       { href: "/air-conditioning/ac-repair", label: "AC repair guide" },
