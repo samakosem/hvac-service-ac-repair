@@ -35,7 +35,6 @@ export const REDIRECT_MAP = [
 
   // Legacy marketing URLs
   { source: "/hvac-installation/", destination: "/air-conditioning/ac-installation",    permanent: true },
-  { source: "/hvac-repair/",       destination: "/air-conditioning/ac-repair",          permanent: true },
   { source: "/hvac-cleaning/",     destination: "/air-duct-services/air-duct-cleaning", permanent: true },
 
   // ── Legacy /{city}-ac-repair PPC pages (from GSC 404 report) → canonical ──────

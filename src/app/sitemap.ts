@@ -76,6 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Standalone service pages
     url("/ac-not-cooling",         0.8, "monthly"),
     url("/emergency-hvac-service", 0.9, "monthly"),
+    url("/hvac-repair",            0.9, "monthly"),
   ];
 
   // ── 4. Calculators ───────────────────────────────────────────────────────────
