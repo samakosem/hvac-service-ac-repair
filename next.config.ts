@@ -49,7 +49,6 @@ const nextConfig: NextConfig = {
       // ── Additional WordPress-style trailing-slash variants not in REDIRECT_MAP ──
       // These cover /hvac-installation (no trailing slash) in case WP sent both
       { source: "/hvac-installation",   destination: "/air-conditioning/ac-installation",    permanent: true },
-      { source: "/hvac-repair",         destination: "/air-conditioning/ac-repair",          permanent: true },
       { source: "/hvac-cleaning",       destination: "/air-duct-services/air-duct-cleaning", permanent: true },
     ];
   },

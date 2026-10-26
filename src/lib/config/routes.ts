@@ -14,6 +14,8 @@
  *   /maintenance/[slug]
  */
 export const SERVICE_ROUTES: Record<string, string> = {
+  // Cross-system repair hub (Phase 11)
+  "hvac-repair":              "/hvac-repair",
   // Air Conditioning silo
   "air-conditioning":         "/air-conditioning",
   "ac-services":              "/air-conditioning/ac-services",

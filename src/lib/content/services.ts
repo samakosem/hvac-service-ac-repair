@@ -27,7 +27,7 @@ export type ServiceContent = {
   relatedSlugs: string[];
   ctaHeadline: string;
   ctaSubtext: string;
-  category: "cooling" | "heating" | "ductwork" | "commercial" | "maintenance";
+  category: "cooling" | "heating" | "ductwork" | "commercial" | "maintenance" | "general";
   /** Optional explanatory sections (general technical guidance, no business claims). */
   guideSections?: { heading: string; paragraphs: HubText[] }[];
 };
@@ -1320,6 +1320,153 @@ export const SERVICE_CONTENT: ServiceContent[] = [
             ". We are based in Yorba Linda; see ",
             { href: "/heating/heating-repair/yorba-linda", label: "heating repair in Yorba Linda" },
             " or choose your city below.",
+          ],
+        ],
+      },
+    ],
+  },
+
+  // ─── HVAC REPAIR (hub across heating and cooling, Phase 11) ──────────────
+  {
+    slug: "hvac-repair",
+    seoTitle: "HVAC Repair in Orange County, CA",
+    metaDescription:
+      "HVAC repair in Orange County, CA for air conditioners, furnaces, heat pumps and airflow problems. Open 24/7, same-day service available. Call (714) 410-2784.",
+    h1: "HVAC Repair for Heating and Cooling Systems",
+    primaryKeyword: "HVAC repair Orange County",
+    secondaryKeywords: ["heating and cooling repair Orange County", "HVAC repair Yorba Linda", "HVAC system repair"],
+    heroHeadline: "Heating or Cooling Not Working? Start with the Right Diagnosis.",
+    heroSubtext:
+      "We repair air conditioners, furnaces, heat pumps and the airflow problems between them across Orange County, from our Yorba Linda base.",
+    whatItIncludes: [
+      "Air conditioner and heat pump cooling repair",
+      "Gas furnace and heat pump heating repair",
+      "Thermostat and control wiring diagnosis",
+      "Blower motor and capacitor service",
+      "Airflow, filter and return-air problems",
+      "Condensate drain and float switch problems",
+      "Electrical faults: breakers, disconnects, contactors",
+      "Repair-or-replace assessment with a written estimate",
+    ],
+    signsYouNeedThis: [
+      "No heating or cooling at all, or the system won't turn on",
+      "Air from the vents is the wrong temperature",
+      "Some rooms stay hot or cold while others are fine",
+      "The system turns on and off every few minutes",
+      "New noises: grinding, squealing, banging or loud humming",
+      "Water around the indoor unit or furnace",
+      "A breaker trips when the system starts",
+    ],
+    processSteps: [
+      {
+        title: "Tell Us What the System Is Doing",
+        description:
+          "Heating, cooling or both? Does anything run at all? The symptom and the type of system narrow down where to look first.",
+      },
+      {
+        title: "Diagnose the Whole System",
+        description:
+          "Thermostat and controls, power, airflow, then the heating or cooling equipment itself. Faults in shared parts often show up in both seasons.",
+      },
+      {
+        title: "Written Estimate",
+        description: "We explain what failed, what it takes to fix it and the cost before any work begins.",
+      },
+      {
+        title: "Repair and Test",
+        description: "After the repair we run the system through full cycles to confirm it heats or cools as it should.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the difference between HVAC repair and AC repair?",
+        answer:
+          "AC repair covers the cooling side: the outdoor condenser, refrigerant circuit and indoor coil. HVAC repair covers the whole system, including furnaces and heat pumps, the blower and ducts that move air in every season, and the thermostat and controls. If you are not sure which part has failed, an HVAC diagnosis starts with the whole system.",
+      },
+      {
+        question: "Why would heating and cooling both stop working?",
+        answer:
+          "Look for something the two share: a thermostat that has lost power or has dead batteries, a tripped breaker or switch at the air handler or furnace, a failed blower motor or capacitor, a float switch that cut power because of a clogged condensate drain, or a control board fault.",
+      },
+      {
+        question: "Can a dirty air filter cause heating and cooling problems?",
+        answer:
+          "Yes. A clogged filter restricts airflow through the system. In cooling mode that can freeze the indoor coil; in heating mode it can overheat a furnace until its high-limit switch shuts the burners off. Checking the filter is one of the first things to do before calling.",
+      },
+      {
+        question: "How do I know if the problem is my ducts?",
+        answer:
+          "If the equipment runs and the air at the vents nearest the unit is the right temperature, but some rooms stay uncomfortable or airflow is weak in parts of the house, leaky, crushed or undersized ducts and blocked returns are likely causes.",
+      },
+      {
+        question: "Do you offer emergency HVAC repair?",
+        answer: `Yes. We are open 24 hours a day, 7 days a week, and same-day service is available. ${SITE.emergencyArrivalOC}`,
+      },
+    ],
+    relatedSlugs: ["ac-repair", "furnace-repair", "heat-pump-repair", "air-duct-services"],
+    ctaHeadline: "Heating or Cooling Down? We Repair Both.",
+    ctaSubtext: "Open 24/7 across Orange County, with same-day service available. Call (714) 410-2784.",
+    category: "general",
+    guideSections: [
+      {
+        heading: "Which Part of the System Is the Problem?",
+        paragraphs: [
+          [
+            "A home HVAC system is several pieces of equipment sharing one set of controls and ducts, so the first step is narrowing the symptom to the right part:",
+          ],
+          [
+            "Warm air in cooling mode, an outdoor unit that won't start, or ice on the refrigerant lines point to the cooling side; see ",
+            { href: "/air-conditioning/ac-repair", label: "AC repair" },
+            ". A gas furnace that won't light, lights and shuts off, or locks out points to the burner and ignition side; see ",
+            { href: "/heating/furnace-repair", label: "furnace repair" },
+            ". A heat pump does both jobs with one outdoor unit, so problems in either season start at ",
+            { href: "/heat-pumps/heat-pump-repair", label: "heat pump repair" },
+            ". Rooms that are too hot or cold while others are fine usually trace to airflow and ducts; see ",
+            { href: "/air-duct-services", label: "air duct services" },
+            ".",
+          ],
+        ],
+      },
+      {
+        heading: "Problems That Affect Heating and Cooling",
+        paragraphs: [
+          [
+            "Some parts work in every season, so one failure can stop both heating and cooling. The thermostat and its low-voltage wiring tell the equipment when to run. The blower in the furnace or air handler moves air across both the heat exchanger and the cooling coil, and a failed blower motor or capacitor stops airflow entirely. A clogged filter or blocked return restricts that airflow. Air conditioners and high-efficiency furnaces both produce condensate, and a clogged drain can trip a float switch that cuts power to the system. Tripped breakers and service switches are the simplest causes and the first things to check.",
+          ],
+        ],
+      },
+      {
+        heading: "How an HVAC Repair Visit Works",
+        paragraphs: [
+          [
+            "A diagnosis works from the controls toward the equipment: confirm the thermostat is calling for heat or cooling and that the control signal reaches the equipment, check power and safety switches, measure airflow and the temperature change across the system, then test the equipment in question. For air conditioners and heat pumps that means refrigerant pressures and electrical parts; for gas furnaces, the ignition sequence, flame sensing and venting. Finding the failed part before replacing anything keeps the repair to what the system actually needs.",
+          ],
+        ],
+      },
+      {
+        heading: "Repair or Replace the System?",
+        paragraphs: [
+          [
+            "A single failed part on equipment in good condition is usually worth repairing. Replacement deserves a comparison when a major component fails on an older system, such as an air conditioner's compressor or a furnace's heat exchanger, when repairs keep recurring, or when the system uses phased-out R-22 refrigerant. Indoor and outdoor equipment are rated as matched pairs, so replacing one half of a split system can affect the other. See ",
+            { href: "/air-conditioning/ac-replacement", label: "AC replacement" },
+            ", ",
+            { href: "/heating/furnace-installation", label: "furnace installation" },
+            " and ",
+            { href: "/heat-pumps/heat-pump-installation", label: "heat pump installation" },
+            ".",
+          ],
+        ],
+      },
+      {
+        heading: "Emergency HVAC Service and Safety",
+        paragraphs: [
+          [
+            `We are open 24 hours a day, 7 days a week, and same-day service is available. ${SITE.emergencyArrivalOC} See `,
+            { href: "/emergency-hvac-service", label: "emergency HVAC service" },
+            " for what to do while you wait.",
+          ],
+          [
+            "If you smell gas or a carbon monoxide alarm sounds, leave the house and call your gas utility or 911 from outside before anything else. Shut the system off at the breaker if you smell burning or a breaker keeps tripping, and don't open equipment panels: furnaces and outdoor units contain high voltage, and capacitors can hold a charge after the power is off.",
           ],
         ],
       },

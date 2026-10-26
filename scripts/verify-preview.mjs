@@ -359,7 +359,7 @@ async function runChecks(base, label) {
       { source: "/ductless", destination: "/ductless/ductless-mini-split" },
       { source: "/faq", destination: "/", status: 307 },
       { source: "/hvac-installation", destination: "/air-conditioning/ac-installation" },
-      { source: "/hvac-repair", destination: "/air-conditioning/ac-repair" },
+      // /hvac-repair is a page since Phase 11 (no longer redirects to AC repair).
       { source: "/hvac-cleaning", destination: "/air-duct-services/air-duct-cleaning" },
     ];
     await pool(cases, async (c) => {
