@@ -1,0 +1,90 @@
+# Phase 11 (PR #14) live verification. Read-only.
+# Waits for Vercel's production deployment of the PR #14 merge, confirms the domain serves it
+# (/hvac-repair page), then crawls every
+# sitemap URL and runs scripts/verify-preview.mjs (canonicals, robots, sitemap, schema, GTM, forms).
+name: SEO phase 11 production verification
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase11-production.yml]
+
+permissions:
+  contents: read
+  deployments: read
+
+env:
+  MERGE_SHA: 0c3678edce44e526e3eed479d510f649a270ace8
+  PRODUCTION_URL: https://www.hvacserviceacrepair.com
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ci
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.MERGE_SHA }}
+          path: site
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Wait for the Vercel production deployment to be READY
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          deadline=$(( $(date +%s) + 1800 ))
+          while :; do
+            dep=$(gh api "repos/${GITHUB_REPOSITORY}/deployments?sha=${MERGE_SHA}&environment=Production&per_page=20" --jq '[.[] | select(.creator.login == "vercel[bot]")] | first')
+            if [ -n "$dep" ] && [ "$dep" != "null" ]; then
+              id=$(jq -r .id <<<"$dep")
+              state=$(gh api "repos/${GITHUB_REPOSITORY}/deployments/${id}/statuses?per_page=1" --jq 'first.state // "pending"')
+              echo "Production deployment $id: $state"
+              case "$state" in
+                success) break ;;
+                failure|error|inactive) echo "::error::Vercel production deployment ended in '$state'"; exit 1 ;;
+              esac
+            else
+              echo "No Vercel production deployment for $MERGE_SHA yet"
+            fi
+            [ "$(date +%s)" -ge "$deadline" ] && { echo "::error::Timed out"; exit 1; }
+            sleep 20
+          done
+
+      - name: Production domain serves the Phase 11 build
+        run: |
+          for i in $(seq 1 12); do
+            code=$(curl -sS -o /tmp/h -w '%{http_code}' "$PRODUCTION_URL/hvac-repair")
+            if [ "$code" = 200 ]; then
+              echo "/hvac-repair 200"
+              grep -q '<link rel="canonical" href="https://www.hvacserviceacrepair.com/hvac-repair"' /tmp/h || { echo "::error::canonical"; exit 1; }
+              grep -q '<h1[^>]*>HVAC Repair for Heating and Cooling Systems</h1>' /tmp/h || { echo "::error::H1"; exit 1; }
+              grep -q '"@type":"Service"[^}]*"url":"https://www.hvacserviceacrepair.com/hvac-repair"' /tmp/h || { echo "::error::Service schema"; exit 1; }
+              grep -q '"@type":"FAQPage"' /tmp/h || { echo "::error::FAQ schema"; exit 1; }
+              grep -q 'GTM-TRVN8GDR' /tmp/h && grep -q 'href="tel:' /tmp/h || { echo "::error::GTM/tel"; exit 1; }
+              for l in /air-conditioning/ac-repair /heating/furnace-repair /heat-pumps/heat-pump-repair /air-duct-services /emergency-hvac-service /hvac-repair/yorba-linda; do
+                grep -q "href=\"$l\"" /tmp/h || { echo "::error::missing link $l"; exit 1; }
+                c=$(curl -sS -o /dev/null -w '%{http_code}' "$PRODUCTION_URL$l"); [ "$c" = 200 ] || { echo "::error::$l $c"; exit 1; }
+              done
+              echo "trailing slash: $(curl -sS -o /dev/null -w '%{http_code} %{redirect_url}' "$PRODUCTION_URL/hvac-repair/")"
+              curl -sS "$PRODUCTION_URL/sitemap.xml" | grep -q '<loc>https://www.hvacserviceacrepair.com/hvac-repair</loc>' || { echo "::error::not in sitemap"; exit 1; }
+              echo "canonical, H1, Service+FAQ schema, GTM, tel, 6 key links, sitemap entry OK"; exit 0
+            fi
+            echo "/hvac-repair returned $code, retrying"; sleep 15
+          done
+          echo "::error::/hvac-repair not live"; exit 1
+
+      - name: Crawl every sitemap URL
+        run: |
+          python3 ci/.github/seo-checks/crawl.py "$PRODUCTION_URL" after
+          awk '{print $1}' after/status.txt | sort | uniq -c
+          if grep -v '^200 ' after/status.txt; then echo "::error::non-200 sitemap URLs"; exit 1; fi
+
+      - name: SEO checks (verify-preview.mjs)
+        run: node site/scripts/verify-preview.mjs --preview "$PRODUCTION_URL" --concurrency 6
