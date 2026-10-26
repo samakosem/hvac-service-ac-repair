@@ -513,7 +513,12 @@ function buildHub(countySlug: string, slug: string, f: HubFacts): CityHubContent
           [
             "See ",
             { href: heating, label: `heating repair in ${c}` },
-            " for what a repair visit covers. If you smell gas, leave the house first and call your gas utility or 911 from outside.",
+            " for what a repair visit covers.",
+            // Phase 10: OC hubs point to the furnace guide (furnace queries in GSC; the guide had few contextual links).
+            ...(countySlug === "orange-county"
+              ? [" Our ", { href: "/heating/furnace-repair", label: "furnace repair guide" }, " explains common failures and how a diagnosis works."]
+              : []),
+            " If you smell gas, leave the house first and call your gas utility or 911 from outside.",
           ],
         ],
       },
