@@ -1,0 +1,23 @@
+# Phase 11 (PR #14): read-only check that the Vercel preview serves /hvac-repair as 200.
+name: SEO phase 11 preview check
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase11-preview.yml]
+permissions:
+  contents: read
+env:
+  PREVIEW: https://hvac-service-ac-repair-fp9bwg4ep-sams-projects-4743330d.vercel.app
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: |
+          for p in /hvac-repair /hvac-repair/ /hvac-repair/yorba-linda /air-conditioning/ac-repair; do
+            echo "$p $(curl -sS -o /tmp/b -w '%{http_code} %{redirect_url}' "$PREVIEW$p")"
+          done
+          code=$(curl -sS -o /tmp/h -w '%{http_code}' "$PREVIEW/hvac-repair")
+          grep -o '<title>[^<]*' /tmp/h | head -1; grep -o '<link rel="canonical"[^>]*>' /tmp/h | head -1
+          if grep -qi 'vercel.com/login\|Authentication Required' /tmp/h; then echo "::warning::preview is behind Vercel deployment protection"; fi
+          [ "$code" = 200 ] || exit 1
