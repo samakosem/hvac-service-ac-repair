@@ -613,12 +613,12 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
     serviceSlug: "heating-repair",
     serviceName: "Heating Repair",
     urlBase: "/heating/heating-repair",
-    metaTitle: "Heating Repair in Yorba Linda, CA | AC & Heating | (714) 410-2784",
+    metaTitle: "Furnace & Heating Repair in Yorba Linda, CA",
     metaDescription:
-      "AC and heating repair in Yorba Linda, CA. Same-day furnace and HVAC service — free diagnostic with repair. Call (714) 410-2784.",
+      "Furnace and heating repair in Yorba Linda, CA: no heat, a furnace that won't light, or weak airflow. Open 24/7, same-day service available. Call (714) 410-2784.",
     h1: "Heating & Furnace Repair in Yorba Linda — Same-Day Service",
     heroSubheadline:
-      "One local team handles your AC and heating — from summer emergencies to winter tune-ups.",
+      "No heat, or a furnace that won't light or stay lit? We diagnose furnaces and heating systems in Yorba Linda, with same-day service available.",
     localContext:
       "Yorba Linda winters drop to 40°F overnight — don't wait until your heater fails in January. Most Yorba Linda homes have split systems that handle both heating and cooling. One service call covers both. We're based on Yorba Linda Blvd and stock furnace parts for the brands most common in local homes.",
     urgencyNote: "Same-day heating service available. Don't wait for winter to discover a failed furnace.",
@@ -630,6 +630,11 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
       { name: "Orange", slug: "orange", urlBase: "/heating/heating-repair" },
     ],
     faqs: [
+      {
+        question: "Do you repair gas furnaces in Yorba Linda?",
+        answer:
+          "Yes. We repair gas and electric furnaces and heat pumps in Yorba Linda, including igniters, flame sensors, blower motors and controls. Call (714) 410-2784 or request service online.",
+      },
       {
         question: "Do you repair both AC and heating systems in Yorba Linda?",
         answer:
@@ -652,7 +657,7 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
       },
     ],
     pricingNote: "Free diagnostic · Most furnace repairs: $150–$400 · Annual tune-up: from $99 · New system installation: free estimate",
-    whyUsHeadline: "Why Yorba Linda Homeowners Trust Us with Heating & AC",
+    whyUsHeadline: "Why Yorba Linda Homeowners Call Us for Furnace & Heating Repair",
     whyUsPoints: [
       {
         heading: "One Company, Both Systems",
@@ -671,7 +676,7 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
         body: "Written quote before any work. Free diagnostic — no charge to identify the problem.",
       },
     ],
-    servicesListHeadline: "Heating Services We Offer in Yorba Linda",
+    servicesListHeadline: "Furnace & Heating Services We Offer in Yorba Linda",
     servicesList: [
       "Furnace repair and tune-up",
       "Heat pump service and repair",

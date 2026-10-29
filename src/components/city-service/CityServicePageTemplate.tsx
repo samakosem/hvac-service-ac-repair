@@ -6,7 +6,8 @@ import PhoneLink from "@/components/ui/PhoneLink";
 import { SITE } from "@/lib/config/site";
 import { CREDENTIALS, credentialBadges, licenseNumberLabel } from "@/lib/config/credentials";
 import { IMG_HERO } from "@/lib/config/images";
-import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
+import { schemaService, schemaFaqPage } from "@/lib/seo/schema";
+import Breadcrumbs from "@/components/layout/Breadcrumbs";
 import type { CityServicePage } from "@/lib/config/city-service-pages";
 import { QuickChecksGrid, QuickChecksHeader, quickChecksKind } from "@/components/ui/QuickChecks";
 import { cityHubHref, cityServiceLinks } from "@/lib/config/city-service-links";
@@ -63,7 +64,7 @@ function ArrowIcon({ className }: { className?: string }) {
 // breadcrumb at the real parent page instead of a redirecting URL.
 const BREADCRUMB_HUBS: Record<string, { name: string; href: string }> = {
   "/heating/heating-repair": { name: "Heating", href: "/heating" },
-  "/hvac-repair": { name: "HVAC Services", href: "/services" },
+  "/hvac-repair": { name: "HVAC Repair", href: "/hvac-repair" },
 };
 
 type Props = {
@@ -80,13 +81,10 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
   // localContext stays hidden until the owner has confirmed every claim in it.
   const localContext = page.localContextVerified ? page.localContext : undefined;
 
-  const breadcrumbItems = [
-    { name: "Home", href: "/" },
-    hub,
-    { name: `${page.cityName}, CA`, href: pageUrl },
-  ];
+  // Home is prepended by <Breadcrumbs>, which also emits the BreadcrumbList JSON-LD,
+  // so the visible trail and the structured data come from one source.
+  const breadcrumbItems = [hub, { name: `${page.cityName}, CA`, href: pageUrl }];
 
-  const breadcrumbSchema = schemaBreadcrumb(breadcrumbItems);
   const serviceSchema = schemaService({
     name: `${page.serviceName} in ${page.cityName}, CA`,
     description: page.metaDescription,
@@ -102,7 +100,6 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
   return (
     <>
       {/* Schema */}
-      <JsonLd data={breadcrumbSchema} />
       <JsonLd data={serviceSchema} />
       <JsonLd data={faqSchema} />
 
@@ -132,6 +129,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
         </div>
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12 lg:pt-28 lg:pb-16">
+          <Breadcrumbs items={breadcrumbItems} tone="dark" className="mb-5" />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start">
 
             {/* LEFT — Copy */}

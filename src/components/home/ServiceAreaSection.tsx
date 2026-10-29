@@ -26,6 +26,21 @@ export default function ServiceAreaSection() {
               Same-day appointments are available across Orange County, and we take emergency calls
               24/7 from anywhere in the county.
             </p>
+            <p className="text-slate-600 leading-relaxed">
+              In Yorba Linda, start with{" "}
+              <Link href="/air-conditioning/ac-repair/yorba-linda" className="text-hvac-blue-600 font-semibold hover:underline">
+                AC repair in Yorba Linda
+              </Link>{" "}
+              or{" "}
+              <Link href="/heating/heating-repair/yorba-linda" className="text-hvac-blue-600 font-semibold hover:underline">
+                furnace and heating repair in Yorba Linda
+              </Link>
+              , or see everything we do on the{" "}
+              <Link href="/service-areas/orange-county/yorba-linda" className="text-hvac-blue-600 font-semibold hover:underline">
+                Yorba Linda service page
+              </Link>
+              .
+            </p>
 
             {/* Counties covered */}
             <div className="flex flex-wrap gap-2 mt-2">

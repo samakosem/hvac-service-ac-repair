@@ -15,10 +15,12 @@ const NAV_LINKS = [
     href: "/services",
     children: [
       { label: "AC Repair", href: "/air-conditioning/ac-repair" },
+      { label: "HVAC Repair", href: "/hvac-repair" },
+      { label: "Heating Services", href: "/heating" },
+      { label: "Furnace Repair", href: "/heating/furnace-repair" },
       { label: "AC Installation", href: "/air-conditioning/ac-installation" },
       { label: "Ductless Mini-Split", href: "/ductless/ductless-mini-split" },
       { label: "Air Duct Cleaning", href: "/air-duct-services/air-duct-cleaning" },
-      { label: "Heating Services", href: "/heating" },
       { label: "Commercial HVAC", href: "/commercial-hvac" },
       { label: "All Services →", href: "/services" },
     ],
@@ -234,6 +236,7 @@ export default function Header() {
                 onClick={() => setMobileOpen(!mobileOpen)}
                 className="flex items-center justify-center w-11 h-11 -mx-1 sm:-mx-0.5 rounded-lg text-slate-200 hover:text-white hover:bg-white/8 transition-colors"
                 aria-expanded={mobileOpen}
+                aria-controls="mobile-menu"
                 aria-label="Toggle navigation menu"
               >
                 <span className="sr-only">Menu</span>
@@ -251,9 +254,13 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        {mobileOpen && (
-          <div className="xl:hidden relative bg-header-nav border-t border-white/10 px-4 pb-6 pt-4 space-y-1 max-h-[80vh] overflow-y-auto">
+        {/* Mobile Menu. Always rendered (hidden while closed) so its links are in the crawlable
+            HTML without a click; `hidden` keeps it out of the layout and the tab order. */}
+        <div
+            id="mobile-menu"
+            hidden={!mobileOpen}
+            className="xl:hidden relative bg-header-nav border-t border-white/10 px-4 pb-6 pt-4 space-y-1 max-h-[80vh] overflow-y-auto"
+          >
             {NAV_LINKS.map((link) =>
               link.children ? (
                 <div key={link.label}>
@@ -292,7 +299,6 @@ export default function Header() {
               </Link>
             </div>
           </div>
-        )}
       </header>
     </>
   );
