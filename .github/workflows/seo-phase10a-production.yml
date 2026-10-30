@@ -1,4 +1,4 @@
-# Phase 10A (PR #15) production verification. Read-only; /api/contact is intercepted in the browser (no lead submitted).
+# Phase 10A (PR #15, rerun) production verification. Read-only; /api/contact is intercepted in the browser (no lead submitted).
 name: SEO phase 10A production verification
 
 on:
