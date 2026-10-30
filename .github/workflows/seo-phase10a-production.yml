@@ -1,0 +1,95 @@
+# Phase 10A (PR #15) production verification. Read-only; /api/contact is intercepted in the browser (no lead submitted).
+name: SEO phase 10A production verification
+
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase10a-production.yml]
+
+permissions:
+  contents: read
+  deployments: read
+
+env:
+  MERGE_SHA: 8f9aa15adc2015082e94ff2430ea242650a3346a
+  PRODUCTION_URL: https://www.hvacserviceacrepair.com
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ci
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.MERGE_SHA }}
+          path: site
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Wait for the Vercel production deployment to be READY
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          deadline=$(( $(date +%s) + 1800 ))
+          while :; do
+            dep=$(gh api "repos/${GITHUB_REPOSITORY}/deployments?sha=${MERGE_SHA}&environment=Production&per_page=20" --jq '[.[] | select(.creator.login == "vercel[bot]")] | first')
+            if [ -n "$dep" ] && [ "$dep" != "null" ]; then
+              id=$(jq -r .id <<<"$dep")
+              state=$(gh api "repos/${GITHUB_REPOSITORY}/deployments/${id}/statuses?per_page=1" --jq 'first.state // "pending"')
+              echo "Production deployment $id: $state"
+              case "$state" in
+                success) break ;;
+                failure|error|inactive) echo "::error::Vercel production deployment ended in '$state'"; exit 1 ;;
+              esac
+            else
+              echo "No Vercel production deployment for $MERGE_SHA yet"
+            fi
+            [ "$(date +%s)" -ge "$deadline" ] && { echo "::error::Timed out"; exit 1; }
+            sleep 20
+          done
+
+      - name: Production domain serves the Phase 10A build
+        run: |
+          for i in $(seq 1 12); do
+            if curl -sS "$PRODUCTION_URL/" | grep -q 'href="/air-conditioning/ac-repair/yorba-linda"'; then echo "homepage has the Yorba Linda AC repair link"; exit 0; fi
+            echo "Domain not updated yet, retrying"; sleep 15
+          done
+          echo "::error::Production domain does not serve the Phase 10A build"; exit 1
+
+      - name: Crawl every sitemap URL
+        run: |
+          python3 ci/.github/seo-checks/crawl.py "$PRODUCTION_URL" after
+          awk '{print $1}' after/status.txt | sort | uniq -c
+          wc -l < after/paths.txt
+          if grep -v '^200 ' after/status.txt; then echo "::error::non-200 sitemap URLs"; exit 1; fi
+
+      - name: Phase 10A content checks (breadcrumbs, links, canonicals, GTM, tel)
+        run: python3 ci/.github/seo-checks/p10a_prod.py after
+
+      - name: SEO checks (verify-preview.mjs)
+        run: node site/scripts/verify-preview.mjs --preview "$PRODUCTION_URL" --concurrency 6
+
+      - name: Redirects, robots
+        run: |
+          curl -sS "$PRODUCTION_URL/robots.txt" | head -20
+          for p in /ac-repair/yorba-linda /hvac-repair/ /services; do echo "$p -> $(curl -sS -o /dev/null -w '%{http_code} %{redirect_url}' "$PRODUCTION_URL$p")"; done
+
+      - name: Browser smoke (nav, breadcrumbs, phone links, form)
+        run: |
+          mkdir pw && cd pw && npm init -y >/dev/null && npm i playwright-core@1.56.1 --no-audit --no-fund >/dev/null
+          cp ../ci/.github/seo-checks/p3_browser.cjs ../ci/.github/seo-checks/p10a_nav.cjs . && mkdir shots
+          sed -i 's#^const PAGES = \[.*#const PAGES = ["/", "/hvac-repair", "/air-conditioning/ac-repair/yorba-linda", "/heating/heating-repair/yorba-linda", "/hvac-repair/yorba-linda", "/air-conditioning/emergency-ac-repair/anaheim", "/emergency-hvac-service", "/contact"];#; /^  "\/about-us"/d' p3_browser.cjs
+          export CHROME_PATH=$(command -v google-chrome)
+          node p3_browser.cjs shots "$PRODUCTION_URL" | tee out.txt
+          echo "== failing requests"; grep -o '"failed":\[[^]]*\]' out.txt | sort | uniq -c
+          echo "== console errors"; grep -o '"errs":\[[^]]*\]' out.txt | sort | uniq -c
+          echo "== overflow"; grep -o '"overflow":[0-9]*' out.txt | sort | uniq -c
+          echo "== statuses"; grep -o '"status":[0-9]*' out.txt | sort | uniq -c
+          echo "== form"; grep -o '"form":{[^}]*}' out.txt | sort | uniq -c
+          node p10a_nav.cjs "$PRODUCTION_URL" | tee nav.txt; ! grep -q '^FAIL' nav.txt
