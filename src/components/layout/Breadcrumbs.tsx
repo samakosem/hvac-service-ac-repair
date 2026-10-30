@@ -14,6 +14,9 @@ type BreadcrumbsProps = {
   tone?: "light" | "dark";
 };
 
+/** Enlarges the touch target to 44px on small screens; negative margins keep the layout unchanged. */
+const TAP_TARGET = "inline-block py-3 -my-3 px-1 -mx-1 md:py-0 md:my-0 md:px-0 md:mx-0";
+
 const TONES = {
   light: {
     link: "text-hvac-blue-600 hover:text-hvac-blue-500 transition-colors",
@@ -59,7 +62,7 @@ export default function Breadcrumbs({ items, className = "", tone = "light" }: B
               ) : (
                 <Link
                   href={item.href}
-                  className={colors.link}
+                  className={`${TAP_TARGET} ${colors.link}`}
                 >
                   {item.name}
                 </Link>
