@@ -3,7 +3,7 @@
 // components as props rather than importing this module there.
 
 import { getCityServicePage } from "./city-service-pages";
-import { getCityBySlug } from "./locations";
+import { COUNTIES, getCityBySlug } from "./locations";
 
 export type CityServiceLink = { serviceSlug: string; href: string; label: string };
 
@@ -25,6 +25,13 @@ export function cityServiceLinks(citySlug: string): CityServiceLink[] {
     const page = getCityServicePage(serviceSlug, citySlug);
     return page ? [{ serviceSlug, href: `${page.urlBase}/${page.citySlug}`, label: `${label} in ${page.cityName}` }] : [];
   });
+}
+
+/** One service's pages for every city of a county that has one (e.g. /hvac-repair/{city} for Orange County). */
+export function countyCityLinks(serviceSlug: string, countySlug: string): CityServiceLink[] {
+  const county = COUNTIES.find((c) => c.slug === countySlug);
+  if (!county) return [];
+  return county.cities.flatMap((city) => cityServiceLinks(city.slug).filter((l) => l.serviceSlug === serviceSlug));
 }
 
 /** The city's service-area hub, e.g. /service-areas/orange-county/yorba-linda. */

@@ -10,10 +10,27 @@ type BreadcrumbItem = {
 type BreadcrumbsProps = {
   items: BreadcrumbItem[];
   className?: string;
+  /** "dark" for dark hero backgrounds (higher-contrast link and current-page colors). */
+  tone?: "light" | "dark";
 };
 
-export default function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
+/** Enlarges the touch target to 44px on small screens; negative margins keep the layout unchanged. */
+const TAP_TARGET = "inline-block py-3 -my-3 px-1 -mx-1 md:py-0 md:my-0 md:px-0 md:mx-0";
+
+const TONES = {
+  light: {
+    link: "text-hvac-blue-600 hover:text-hvac-blue-500 transition-colors",
+    current: "text-slate-600 font-medium",
+  },
+  dark: {
+    link: "text-slate-200 hover:text-white underline underline-offset-2 decoration-white/30 transition-colors",
+    current: "text-white font-medium",
+  },
+} as const;
+
+export default function Breadcrumbs({ items, className = "", tone = "light" }: BreadcrumbsProps) {
   const allItems = [{ name: "Home", href: "/" }, ...items];
+  const colors = TONES[tone];
 
   return (
     <>
@@ -39,13 +56,13 @@ export default function Breadcrumbs({ items, className = "" }: BreadcrumbsProps)
                 </svg>
               )}
               {isLast ? (
-                <span className="text-slate-600 font-medium" aria-current="page">
+                <span className={colors.current} aria-current="page">
                   {item.name}
                 </span>
               ) : (
                 <Link
                   href={item.href}
-                  className="text-hvac-blue-600 hover:text-hvac-blue-500 transition-colors"
+                  className={`${TAP_TARGET} ${colors.link}`}
                 >
                   {item.name}
                 </Link>

@@ -42,9 +42,13 @@ export default function ServicesGrid() {
           </svg>
         </Link>
         <p className="text-slate-500 text-sm">
-          Not sure what you need?{" "}
+          Not sure what you need? See{" "}
+          <Link href="/hvac-repair" className="text-hvac-blue-600 font-semibold hover:underline">
+            HVAC repair
+          </Link>{" "}
+          for help telling AC, furnace and duct problems apart, or{" "}
           <Link href="/contact" className="text-hvac-blue-600 font-semibold hover:underline">
-            Describe your issue
+            describe your issue
           </Link>{" "}
           and we&rsquo;ll diagnose it.
         </p>

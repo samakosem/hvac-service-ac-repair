@@ -14,6 +14,7 @@ const CREDENTIAL_BADGES = [
 const FOOTER_SERVICE_LINKS = [
   { label: "Air Conditioning",     href: "/air-conditioning" },
   { label: "AC Repair",            href: "/air-conditioning/ac-repair" },
+  { label: "HVAC Repair",          href: "/hvac-repair" },
   { label: "Emergency HVAC Service", href: "/emergency-hvac-service" },
   { label: "AC Installation",      href: "/air-conditioning/ac-installation" },
   { label: "Ductless Mini-Split",  href: "/ductless/ductless-mini-split" },

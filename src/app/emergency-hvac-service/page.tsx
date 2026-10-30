@@ -313,6 +313,10 @@ export default function EmergencyHvacPage() {
             Don&rsquo;t see your city?{" "}
             <PhoneLink className="text-red-600 font-semibold hover:underline" label="Call us" /> — we serve all of Orange County.
           </p>
+          <p className="text-center text-slate-400 text-sm mt-2">
+            Not sure whether it&rsquo;s your AC, furnace or ducts? See{" "}
+            <Link href="/hvac-repair" className="text-red-600 font-semibold hover:underline">HVAC repair</Link>.
+          </p>
         </div>
       </section>
 
