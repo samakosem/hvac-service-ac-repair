@@ -3,6 +3,9 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import JsonLd from "@/components/ui/JsonLd";
 import SingleStepQuoteForm from "@/components/ui/SingleStepQuoteForm";
 import PhoneLink from "@/components/ui/PhoneLink";
+import Link from "next/link";
+import RichText from "@/components/ui/RichText";
+import type { HubText } from "@/lib/content/city-hubs";
 import { SITE } from "@/lib/config/site";
 import { licenseNumberLabel } from "@/lib/config/credentials";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
@@ -29,6 +32,36 @@ const REPAIR_REPLACE_TABLE = [
   { age: "8–12 years", repair: "Repair or evaluate", reason: "Compare repair cost vs. age — if repair > 50% of new system, consider replacement" },
   { age: "12–18 years", repair: "Lean toward replace", reason: "System is past midpoint; efficiency gains from replacement often offset cost" },
   { age: "Over 18 years", repair: "Replace", reason: "System is past expected lifespan; replacement is almost always more economical" },
+];
+
+
+const SIZING_PARAGRAPHS: HubText[] = [
+  [
+    "A bigger air conditioner is not a better one. The U.S. Department of Energy advises that central air conditioners be sized from a load calculation (ACCA Manual J) rather than a rule of thumb such as one ton per 400 to 500 square feet, and that an oversized unit runs less efficiently and effectively than a properly sized one (",
+    { href: "https://www1.eere.energy.gov/buildings/publications/pdfs/building_america/strategy_guide_hvac_sizing.pdf", label: "DOE sizing guideline" },
+    "; ",
+    { href: "https://www.energy.gov/sites/default/files/2022-08/energy-saver-guide-2022.pdf", label: "DOE Energy Saver guide" },
+    ").",
+  ],
+  [
+    "Replacing a system with one of the same capacity can carry an old sizing mistake forward. Added insulation, air sealing or duct repairs can lower a home's load, so the right size for a replacement may be smaller than the old unit. Ducts matter as well: leaky or undersized ducts limit what any new equipment can deliver.",
+  ],
+  [
+    "Try the ",
+    { href: "/calculators/ac-size-calculator", label: "AC size calculator" },
+    " for a rough starting point, and read ",
+    { href: "/blog/what-size-ac-unit-do-i-need", label: "what size AC unit do I need" },
+    " for the factors a proper calculation considers.",
+  ],
+];
+
+const QUOTE_QUESTIONS: HubText[] = [
+  ["Is the system size based on a written load calculation for my home, not just the size of the old unit?"],
+  ["What are the make, model and SEER2 rating of the equipment in the quote?"],
+  ["Which refrigerant does the new system use?"],
+  ["What does the price include: ductwork changes, thermostat, line set, pad, and removal of the old equipment?"],
+  ["What are the equipment and labor warranty terms, in writing?"],
+  ["What will the installation day look like, and who will be home?"],
 ];
 
 const FAQS = [
@@ -225,6 +258,62 @@ export default function AcInstallationPage() {
             <a href="#estimate-form" className="text-hvac-blue-600 font-semibold hover:underline">Schedule a free estimate</a>{" "}
             and we&rsquo;ll give you a straight answer.
           </p>
+        </div>
+      </section>
+
+
+      {/* ── SIZING + QUOTE QUESTIONS ─────────────────────────────────────────── */}
+      <section className="py-16 lg:py-20 bg-white" aria-labelledby="sizing-heading">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
+          <div>
+            <h2 id="sizing-heading" className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-4">
+              Why Sizing Matters for a Replacement AC
+            </h2>
+            <div className="flex flex-col gap-4">
+              {SIZING_PARAGRAPHS.map((para, i) => (
+                <p key={i} className="text-slate-700 leading-relaxed"><RichText text={para} /></p>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-4">
+              Questions to Ask About Any AC Replacement Quote
+            </h2>
+            <p className="text-slate-700 leading-relaxed mb-4">
+              Quotes are easier to compare when each one answers the same questions.
+            </p>
+            <ul className="flex flex-col gap-2 list-disc pl-5 marker:text-slate-400">
+              {QUOTE_QUESTIONS.map((q, i) => (
+                <li key={i} className="text-slate-700 leading-relaxed"><RichText text={q} /></li>
+              ))}
+            </ul>
+            <p className="text-slate-700 leading-relaxed mt-4">
+              Federal refrigerant rules for new residential air conditioners and heat pumps have been changing, so ask which refrigerant a quoted system uses and check EPA&rsquo;s summary for current dates (
+              <a href="https://www.epa.gov/hfcs/technology-transitions-hfc-restrictions-sector" rel="noopener" className="text-hvac-blue-700 font-medium underline underline-offset-2 hover:text-hvac-blue-800">EPA Technology Transitions</a>
+              ).
+            </p>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-warm-white p-5">
+            <h3 className="font-bold text-slate-900 mb-3">Related pages</h3>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 list-none p-0 text-sm">
+              {[
+                { href: "/air-conditioning/ac-replacement", label: "AC replacement" },
+                { href: "/air-conditioning/ac-repair", label: "AC repair" },
+                { href: "/calculators/repair-vs-replace-calculator", label: "Repair vs. replace calculator" },
+                { href: "/calculators/seer2-savings-calculator", label: "SEER2 savings calculator" },
+                { href: "/blog/ac-repair-vs-replacement", label: "AC repair vs. replacement" },
+                { href: "/ductless/ductless-mini-split", label: "Ductless mini-split systems" },
+                { href: "/heat-pumps/heat-pump-installation", label: "Heat pump installation" },
+                { href: "/financing", label: "Financing" },
+              ].map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="inline-flex items-center min-h-11 text-hvac-blue-700 font-medium underline underline-offset-2 hover:text-hvac-blue-800">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 

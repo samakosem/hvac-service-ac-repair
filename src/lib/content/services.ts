@@ -29,7 +29,21 @@ export type ServiceContent = {
   ctaSubtext: string;
   category: "cooling" | "heating" | "ductwork" | "commercial" | "maintenance" | "general";
   /** Optional explanatory sections (general technical guidance, no business claims). */
-  guideSections?: { heading: string; paragraphs: HubText[] }[];
+  guideSections?: GuideSection[];
+};
+
+export type GuideSymptom = { symptom: string; causes: string; check: string };
+export type GuideList = { title: string; tone?: "alert" | "neutral"; items: HubText[] };
+
+export type GuideSection = {
+  heading: string;
+  paragraphs: HubText[];
+  /** Symptom cards: what it looks like, common causes, what a homeowner can safely check. */
+  symptoms?: GuideSymptom[];
+  /** Bulleted lists such as "stop and get safe first" or "what to have ready". */
+  lists?: GuideList[];
+  /** Show the call and request-service buttons after the section. */
+  cta?: boolean;
 };
 
 export const SERVICE_CONTENT: ServiceContent[] = [
@@ -320,6 +334,58 @@ export const SERVICE_CONTENT: ServiceContent[] = [
         ],
       },
       {
+        heading: "Match the Symptom to the Likely Cause",
+        paragraphs: [
+          [
+            "The same few parts cause most AC problems, and what the system is doing usually points to which one. Use the cards below to narrow it down and to see what is safe to check yourself. If the system runs but doesn't cool, ",
+            { href: "/blog/ac-blowing-warm-air", label: "why an AC blows warm air" },
+            " goes deeper on the causes.",
+          ],
+        ],
+        symptoms: [
+          {
+            symptom: "Blows warm or room-temperature air",
+            causes: "Thermostat not set to cool, a clogged filter or dirty coil, a tripped breaker or outdoor disconnect, a weak capacitor or worn contactor, or low refrigerant from a leak.",
+            check: "Thermostat set to cool and below the room temperature, a clean filter, breaker and outdoor disconnect on, and the outdoor fan spinning.",
+          },
+          {
+            symptom: "Outdoor unit hums but the fan or compressor won't start",
+            causes: "A weak or failed capacitor, a failed fan motor, or a seized compressor.",
+            check: "Turn cooling off at the thermostat. Don't open the electrical panel: capacitors can hold a charge even with the power off.",
+          },
+          {
+            symptom: "Ice on the indoor coil or refrigerant line",
+            causes: "Restricted airflow from a dirty filter, closed vents or a weak blower, or low refrigerant.",
+            check: "Turn cooling off and run the fan to thaw the ice, replace a dirty filter, and make sure supply and return vents are open. Don't chip the ice.",
+          },
+          {
+            symptom: "Water around the indoor unit",
+            causes: "A clogged condensate drain, a coil that iced up and is melting, or a cracked drain pan.",
+            check: "Turn the system off so it stops making water, and keep the water away from electrical parts. A float switch may have shut the system off on purpose.",
+          },
+          {
+            symptom: "Turns on and off every few minutes",
+            causes: "Restricted airflow, a dirty outdoor coil, a thermostat problem, or a refrigerant charge problem.",
+            check: "A clean filter, an outdoor unit free of leaves and debris, and fresh thermostat batteries.",
+          },
+          {
+            symptom: "Breaker trips when the AC starts",
+            causes: "A failed capacitor, a shorted fan or compressor motor, or damaged wiring.",
+            check: "Leave the system off. Repeatedly resetting a breaker that keeps tripping can make the damage worse.",
+          },
+          {
+            symptom: "Weak airflow from the vents",
+            causes: "A clogged filter, blocked registers or return grille, a failing blower motor, an iced coil, or duct problems.",
+            check: "A clean filter, open and unblocked vents, and whether the airflow is weak in every room or only some.",
+          },
+          {
+            symptom: "Rattling, squealing or grinding",
+            causes: "A loose panel, debris near the outdoor fan, worn fan motor bearings, or a failing compressor.",
+            check: "Look for debris around the outdoor unit. Turn the system off if the noise is grinding or squealing.",
+          },
+        ],
+      },
+      {
         heading: "How an AC Repair Diagnosis Works",
         paragraphs: [
           [
@@ -336,6 +402,15 @@ export const SERVICE_CONTENT: ServiceContent[] = [
             " page covers what a replacement involves, and the ",
             { href: "/calculators/seer2-savings-calculator", label: "SEER2 savings calculator" },
             " estimates running-cost differences.",
+          ],
+          [
+            "For a closer look at the decision, read ",
+            { href: "/blog/ac-repair-vs-replacement", label: "AC repair vs. replacement" },
+            " or try the ",
+            { href: "/calculators/repair-vs-replace-calculator", label: "repair vs. replace calculator" },
+            ". If replacement is on the table, ",
+            { href: "/air-conditioning/ac-installation", label: "AC installation" },
+            " explains how to compare systems and what sizing involves.",
           ],
         ],
       },
@@ -359,6 +434,61 @@ export const SERVICE_CONTENT: ServiceContent[] = [
             { href: "/air-conditioning/emergency-ac-repair", label: "emergency AC repair" },
             ".",
           ],
+        ],
+      },
+      {
+        heading: "Emergency, or Can It Wait?",
+        paragraphs: [
+          [
+            "Most AC problems are uncomfortable rather than dangerous, but a few are not. If you aren't sure, call and describe what you see. For after-hours or heating problems, see ",
+            { href: "/emergency-hvac-service", label: "emergency HVAC service" },
+            ".",
+          ],
+        ],
+        lists: [
+          {
+            title: "Shut the system off at the breaker and call right away",
+            tone: "alert",
+            items: [
+              ["A burning smell, smoke, or sparks from the indoor or outdoor unit."],
+              ["Water leaking near the electrical panel, the disconnect, or the air handler's wiring."],
+              ["A breaker that trips every time the system starts."],
+            ],
+          },
+          {
+            title: "Treat as urgent",
+            items: [
+              ["No cooling when someone in the home is especially vulnerable to heat, such as an infant, an older adult, or a person with a health condition."],
+              ["Active water leaking from the indoor unit."],
+            ],
+          },
+          {
+            title: "Usually fine to schedule",
+            items: [
+              ["Weaker cooling in one room while the rest of the house is comfortable."],
+              ["A thermostat display or battery problem with the system otherwise working."],
+            ],
+          },
+        ],
+        cta: true,
+      },
+      {
+        heading: "What to Have Ready When You Call",
+        paragraphs: [
+          ["A few details speed up the call and help narrow down the problem before anyone arrives."],
+        ],
+        lists: [
+          {
+            title: "Helpful to have on hand",
+            items: [
+              ["The make, model and age from the data plate on the outdoor unit. A photo of it works."],
+              ["What the system is doing, when it started, and anything that changed just before, such as a power outage."],
+              ["What you've already checked: thermostat setting and batteries, filter, breaker and outdoor disconnect."],
+              ["Any blinking lights or error codes on the indoor unit."],
+              ["Whether you have a heat pump or a separate furnace."],
+              ["Access details: gate codes, pets, and who will be home."],
+            ],
+          },
         ],
       },
     ],
@@ -1432,6 +1562,44 @@ export const SERVICE_CONTENT: ServiceContent[] = [
         ],
       },
       {
+        heading: "Which System Matches Your Symptom?",
+        paragraphs: [
+          ["If you can't tell whether the problem is the air conditioner, the furnace or the ducts, start with what is and isn't working."],
+        ],
+        symptoms: [
+          {
+            symptom: "Nothing runs, in heating or in cooling",
+            causes: "Something both modes share: thermostat power or settings, a tripped breaker or switch at the furnace or air handler, a failed blower motor or capacitor, or a float switch that cut power.",
+            check: "Thermostat mode and batteries, breakers, the switch on the furnace or air handler, and the filter.",
+          },
+          {
+            symptom: "Cooling works, heating doesn't",
+            causes: "A furnace ignition, gas or safety-switch problem, or a heat pump that isn't switching to heating.",
+            check: "Thermostat set to heat. Go to furnace repair or heat pump repair.",
+          },
+          {
+            symptom: "Heating works, cooling doesn't",
+            causes: "An outdoor unit problem such as a capacitor, contactor or refrigerant leak, a frozen indoor coil, or a clogged condensate drain.",
+            check: "Thermostat set to cool, outdoor disconnect on, and a clean filter. Go to AC repair.",
+          },
+          {
+            symptom: "Weak airflow, or some rooms stay hot or cold",
+            causes: "A clogged filter, blocked returns, a failing blower, or leaky, crushed or undersized ducts.",
+            check: "A clean filter, open and unblocked vents, and whether the weak airflow is in every room or only some.",
+          },
+          {
+            symptom: "Water near the indoor unit or furnace",
+            causes: "A clogged condensate drain or trap, a frozen coil melting, or a failed drain pan.",
+            check: "Turn the system off and keep the water away from electrical parts.",
+          },
+          {
+            symptom: "Burning smell, smoke or a breaker that keeps tripping",
+            causes: "An electrical fault or a failing motor.",
+            check: "Shut the system off at the breaker and call for service. For gas smell or a carbon monoxide alarm, leave the house and call 911.",
+          },
+        ],
+      },
+      {
         heading: "Problems That Affect Heating and Cooling",
         paragraphs: [
           [
@@ -1446,6 +1614,29 @@ export const SERVICE_CONTENT: ServiceContent[] = [
             "A diagnosis works from the controls toward the equipment: confirm the thermostat is calling for heat or cooling and that the control signal reaches the equipment, check power and safety switches, measure airflow and the temperature change across the system, then test the equipment in question. For air conditioners and heat pumps that means refrigerant pressures and electrical parts; for gas furnaces, the ignition sequence, flame sensing and venting. Finding the failed part before replacing anything keeps the repair to what the system actually needs.",
           ],
         ],
+      },
+      {
+        heading: "Quick Checks Before You Call",
+        paragraphs: [
+          [
+            "A few minutes of checking can rule out the simple causes. For cooling-specific checks see the ",
+            { href: "/ac-not-cooling", label: "AC not cooling guide" },
+            ".",
+          ],
+        ],
+        lists: [
+          {
+            title: "Safe checks for any system",
+            items: [
+              ["Thermostat set to heat or cool as needed, with working batteries and the fan on auto."],
+              ["A clean air filter. A clogged filter can freeze the coil in cooling mode or overheat a furnace."],
+              ["The breaker, and the switch on the furnace or air handler."],
+              ["Supply and return vents open and unblocked."],
+              ["Water around the indoor unit. If you see it, turn the system off."],
+            ],
+          },
+        ],
+        cta: true,
       },
       {
         heading: "Repair or Replace the System?",
@@ -1565,7 +1756,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["furnace-installation", "heating-services", "hvac-repair", "furnace-maintenance"],
-    ctaHeadline: "Furnace Down in Southern California? Same-Day Repair Available.",
+    ctaHeadline: "Furnace Down in Orange County? Same-Day Repair Available.",
     ctaSubtext: "Same-day furnace repair available. Gas and electric systems serviced. Call (714) 410-2784.",
     category: "heating",
     guideSections: [
@@ -1589,6 +1780,104 @@ export const SERVICE_CONTENT: ServiceContent[] = [
           [
             "Many furnaces lock out after a set number of failed ignition attempts. Turning the power off and on can reset the lockout, but if the furnace keeps locking out, the underlying fault is still there and needs diagnosis.",
           ],
+          [
+            "Many Orange County furnaces sit idle through the long warm season, so the first cold stretch is often when a worn igniter, a dirty flame sensor or a clogged filter shows up. A ",
+            { href: "/heating/furnace-maintenance", label: "furnace maintenance" },
+            " visit before heating season checks those parts while there is no urgency.",
+          ],
+        ],
+      },
+      {
+        heading: "Match the Symptom to the Likely Cause",
+        paragraphs: [
+          ["What the furnace does, and when it stops, points to the failing part. The cards below show the usual causes and what is safe to check."],
+        ],
+        symptoms: [
+          {
+            symptom: "Nothing happens when the thermostat calls for heat",
+            causes: "Dead thermostat batteries or the wrong mode, a tripped breaker or furnace switch, a blown fuse or failed control board, or a door switch that isn't pressed.",
+            check: "Thermostat set to heat and above the room temperature, fresh batteries, the breaker, the furnace power switch, and that the blower door is closed fully.",
+          },
+          {
+            symptom: "Clicks but doesn't ignite",
+            causes: "A cracked or worn igniter, a gas valve that isn't opening, or a dirty flame sensor.",
+            check: "Make sure the gas supply valve to the furnace is open. Don't try to light a gas furnace manually.",
+          },
+          {
+            symptom: "Starts, then shuts off within a minute",
+            causes: "A dirty flame sensor, a pressure switch or inducer problem, or the high-limit switch tripping from restricted airflow.",
+            check: "Replace a dirty filter and open any closed vents. Fault codes on the control board narrow the cause down, so note any blinking pattern.",
+          },
+          {
+            symptom: "Blower runs but the air is cool",
+            causes: "An ignition or gas problem, a lockout, or a thermostat fan setting on \"on\" instead of \"auto\".",
+            check: "Thermostat set to heat with the fan on auto.",
+          },
+          {
+            symptom: "Heat runs in short bursts",
+            causes: "Restricted airflow overheating the heat exchanger, a failing blower, or a thermostat problem.",
+            check: "A clean filter, open supply and return vents, and no furniture blocking them.",
+          },
+          {
+            symptom: "Banging, rattling or squealing",
+            causes: "Loose panels, a failing blower motor bearing or belt, or delayed ignition.",
+            check: "Turn the furnace off if the noise is loud, repeats on every start, or comes with a burning smell.",
+          },
+        ],
+      },
+      {
+        heading: "When Is a Heating Problem an Emergency?",
+        paragraphs: [
+          [
+            "Most furnace problems mean a cold house rather than danger, but gas and carbon monoxide are different. Treat these as emergencies before you think about repair. For heating or cooling that can't wait, see ",
+            { href: "/emergency-hvac-service", label: "emergency HVAC service" },
+            ".",
+          ],
+        ],
+        lists: [
+          {
+            title: "Get safe first",
+            tone: "alert",
+            items: [
+              [
+                "If you smell gas, leave the house right away without switching anything on or off, then call 911 and your gas utility from a safe place. SoCalGas customers can reach its 24-hour emergency line at 1-800-427-2200 (",
+                { href: "https://www.socalgas.com/safety/emergency-information/emergency-response", label: "SoCalGas emergency information" },
+                ").",
+              ],
+              [
+                "If a carbon monoxide alarm sounds, or anyone feels dizzy, light-headed or nauseated and you suspect carbon monoxide, leave the home and call 911 (",
+                { href: "https://blogs.cdc.gov/yourhealthyourenvironment/2016/10/31/carbon-monoxide-co-poisoning-prevention-5/", label: "CDC carbon monoxide guidance" },
+                ").",
+              ],
+              ["If you see smoke or smell burning, turn the furnace off at the breaker and call for help."],
+            ],
+          },
+          {
+            title: "Treat as urgent",
+            items: [
+              ["No heat on a cold night when an infant, an older adult, or someone with a health condition is in the home."],
+              ["A furnace that keeps locking out, or one you've had to switch off because of a smell or noise."],
+            ],
+          },
+        ],
+        cta: true,
+      },
+      {
+        heading: "What to Have Ready When You Call",
+        paragraphs: [
+          ["A few details help narrow the problem before anyone arrives."],
+        ],
+        lists: [
+          {
+            title: "Helpful to have on hand",
+            items: [
+              ["The furnace make, model and age from the rating plate inside the cabinet, or a photo of it."],
+              ["Whether it is gas or electric, and whether you have a separate AC or a heat pump."],
+              ["What it does when the thermostat calls for heat, and any blinking light pattern on the control board."],
+              ["What you've checked: thermostat setting, filter, breaker and furnace power switch."],
+              ["When the furnace was last serviced, if you know."],
+            ],
+          },
         ],
       },
       {
@@ -1618,6 +1907,13 @@ export const SERVICE_CONTENT: ServiceContent[] = [
         paragraphs: [
           [
             "If you smell gas, leave the house without switching anything on or off, and call your gas utility or 911 from outside. Carbon monoxide has no smell, so working CO alarms matter in any home with gas appliances; California law requires them in homes with fuel-burning appliances. Never bypass a safety switch or run a furnace with its burner door off. A brief dusty smell the first time the heat runs each season is normal; a burning or electrical smell that lasts is a reason to turn the furnace off and call for service.",
+          ],
+          [
+            "Heat pump owners can start with ",
+            { href: "/heat-pumps/heat-pump-repair", label: "heat pump repair" },
+            ". If cooling is the problem instead, see ",
+            { href: "/air-conditioning/ac-repair", label: "AC repair" },
+            ".",
           ],
           [
             "We repair furnaces across Orange County from our Yorba Linda base; see ",

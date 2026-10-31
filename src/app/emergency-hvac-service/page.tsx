@@ -7,6 +7,8 @@ import PhoneLink from "@/components/ui/PhoneLink";
 import { SITE } from "@/lib/config/site";
 import { credentialBadges, licenseNumberLabel } from "@/lib/config/credentials";
 import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema";
+import RichText from "@/components/ui/RichText";
+import type { HubText } from "@/lib/content/city-hubs";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
@@ -51,6 +53,66 @@ const EMERGENCY_SITUATIONS = [
   "AC burning smell",
   "Heater not working",
   "Complete system failure",
+];
+
+
+type TriageList = { title: string; tone: "alert" | "urgent" | "wait"; items: HubText[] };
+
+const TRIAGE: TriageList[] = [
+  {
+    title: "Get safe first, then call",
+    tone: "alert",
+    items: [
+      [
+        "Gas smell: leave the house right away without switching anything on or off, then call 911 and your gas utility from a safe place. SoCalGas customers can reach its 24-hour emergency line at 1-800-427-2200 (",
+        { href: "https://www.socalgas.com/safety/emergency-information/emergency-response", label: "SoCalGas emergency information" },
+        ").",
+      ],
+      [
+        "Carbon monoxide alarm sounding, or anyone dizzy, light-headed or nauseated: leave the home and call 911 (",
+        { href: "https://blogs.cdc.gov/yourhealthyourenvironment/2016/10/31/carbon-monoxide-co-poisoning-prevention-5/", label: "CDC carbon monoxide guidance" },
+        ").",
+      ],
+      ["Smoke, sparks or a burning smell from the equipment: switch the system off at the breaker and call for help. Call 911 if you see flames."],
+      ["Water leaking near the electrical panel or the equipment's wiring: switch the system off at the breaker."],
+    ],
+  },
+  {
+    title: "Urgent: call us now",
+    tone: "urgent",
+    items: [
+      ["No cooling when an infant, an older adult, or someone with a health condition is in the home."],
+      ["No heat on a cold night with someone vulnerable in the home."],
+      ["A breaker that trips every time the system starts."],
+      ["A furnace that keeps locking out, or a system you had to switch off because of a smell or noise."],
+      ["Water actively leaking from the indoor unit."],
+    ],
+  },
+  {
+    title: "Usually fine to schedule",
+    tone: "wait",
+    items: [
+      ["One room that is cooler or warmer than the rest while the system otherwise works."],
+      ["A thermostat display or battery problem."],
+      ["A new but quiet noise with normal heating or cooling."],
+    ],
+  },
+];
+
+const WHILE_YOU_WAIT: HubText[] = [
+  ["Set the thermostat to off so the system stops trying to run, and don't keep resetting a breaker that trips again."],
+  ["Replace a visibly clogged filter and open any closed supply and return vents."],
+  ["If the AC has failed, close blinds on sun-facing windows, use fans, and move vulnerable people to the coolest room. If the heat has failed, close doors to unused rooms and add layers."],
+  ["Don't open electrical panels or equipment cabinets, and don't bypass safety switches."],
+  ["Keep pets and children away from the equipment and from any water."],
+];
+
+const READY_BEFORE_CALL: HubText[] = [
+  ["Whether the problem is heating, cooling or both, what the system is doing, and when it started."],
+  ["The make, model and age from the rating plate on the outdoor unit or furnace, or a photo of it."],
+  ["What you've already checked: thermostat setting and batteries, filter, breaker and switch at the equipment."],
+  ["Any blinking lights or error codes on the equipment."],
+  ["The service address, plus gate or access codes and who will be home."],
 ];
 
 const FAQS = [
@@ -260,6 +322,104 @@ export default function EmergencyHvacPage() {
               label={`Call ${SITE.phoneDisplay} Now`}
             />
           </div>
+        </div>
+      </section>
+
+
+      {/* ── EMERGENCY TRIAGE ─────────────────────────────────────────────────── */}
+      <section className="py-16 bg-white" aria-labelledby="triage-heading">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <div className="section-label section-label-blue w-fit mx-auto mb-3">Is It an Emergency?</div>
+            <h2 id="triage-heading" className="text-3xl font-bold text-slate-900">Which HVAC Problems Can&rsquo;t Wait</h2>
+            <p className="text-slate-600 mt-3 max-w-2xl mx-auto">
+              Most breakdowns are uncomfortable rather than dangerous. A few involve gas, carbon monoxide, fire or electrical risk, and those come first.
+            </p>
+          </div>
+          <div className="flex flex-col gap-5">
+            {TRIAGE.map((group) => (
+              <div
+                key={group.title}
+                className={`rounded-xl border p-5 ${
+                  group.tone === "alert" ? "border-red-200 bg-red-50" : group.tone === "urgent" ? "border-amber-200 bg-amber-50" : "border-slate-200 bg-warm-white"
+                }`}
+              >
+                <h3 className={`font-bold mb-3 ${group.tone === "alert" ? "text-red-800" : "text-slate-900"}`}>{group.title}</h3>
+                <ul className="flex flex-col gap-2 list-disc pl-5 marker:text-slate-400">
+                  {group.items.map((item, i) => (
+                    <li key={i} className="text-sm text-slate-700 leading-relaxed">
+                      <RichText text={item} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8">
+            <PhoneLink
+              className="inline-flex items-center justify-center gap-2.5 min-h-12 px-8 py-4 bg-red-500 text-white font-bold rounded-xl shadow-lg hover:bg-red-600 active:scale-[0.98] transition-all text-base"
+              showIcon
+              label={`Call ${SITE.phoneDisplay} Now`}
+            />
+            <a href="#emergency-form" className="hidden lg:inline-flex items-center justify-center min-h-12 px-8 py-4 rounded-xl border border-slate-300 text-slate-800 font-semibold hover:bg-slate-50 transition-colors text-base">
+              Request Service Online
+            </a>
+            <a href="#emergency-form-mobile" className="lg:hidden inline-flex items-center justify-center min-h-12 px-8 py-4 rounded-xl border border-slate-300 text-slate-800 font-semibold hover:bg-slate-50 transition-colors text-base">
+              Request Service Online
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── WAIT + PREPARE ───────────────────────────────────────────────────── */}
+      <section className="py-16 bg-warm-white" aria-labelledby="prepare-heading">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 id="prepare-heading" className="sr-only">While You Wait and What to Have Ready</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="rounded-xl border border-slate-200 bg-white p-6">
+              <h3 className="font-bold text-slate-900 mb-3">While you wait</h3>
+              <ul className="flex flex-col gap-2 list-disc pl-5 marker:text-slate-400">
+                {WHILE_YOU_WAIT.map((item, i) => (
+                  <li key={i} className="text-sm text-slate-700 leading-relaxed"><RichText text={item} /></li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-xl border border-slate-200 bg-white p-6">
+              <h3 className="font-bold text-slate-900 mb-3">What to have ready when you call</h3>
+              <ul className="flex flex-col gap-2 list-disc pl-5 marker:text-slate-400">
+                {READY_BEFORE_CALL.map((item, i) => (
+                  <li key={i} className="text-sm text-slate-700 leading-relaxed"><RichText text={item} /></li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CHOOSE THE RIGHT PAGE ────────────────────────────────────────────── */}
+      <section className="py-16 bg-white" aria-labelledby="which-heading">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 id="which-heading" className="text-3xl font-bold text-slate-900 text-center mb-3">Heating, Cooling or Both?</h2>
+          <p className="text-slate-600 text-center mb-8 max-w-2xl mx-auto">
+            Emergency service covers heating and cooling. These pages go deeper on each system.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {[
+              { href: "/air-conditioning/emergency-ac-repair", h: "AC stopped working", b: "Emergency AC repair: what to do when cooling fails, by city." },
+              { href: "/heating/furnace-repair", h: "No heat or furnace trouble", b: "Furnace repair: symptoms, causes and safety for gas and electric furnaces." },
+              { href: "/hvac-repair", h: "Not sure which system", b: "HVAC repair: match what you're seeing to AC, furnace, heat pump or ducts." },
+            ].map((c) => (
+              <Link key={c.href} href={c.href} className="rounded-xl border border-slate-200 bg-warm-white p-5 hover:border-red-300 transition-colors">
+                <span className="block font-bold text-slate-900 mb-1">{c.h}</span>
+                <span className="block text-sm text-slate-600 leading-relaxed">{c.b}</span>
+              </Link>
+            ))}
+          </div>
+          <p className="text-center text-sm text-slate-600 mt-6">
+            Also see <Link href="/air-conditioning/ac-repair" className="text-hvac-blue-700 font-medium underline underline-offset-2">AC repair</Link>,{" "}
+            <Link href="/heat-pumps/heat-pump-repair" className="text-hvac-blue-700 font-medium underline underline-offset-2">heat pump repair</Link> and{" "}
+            <Link href="/ac-not-cooling" className="text-hvac-blue-700 font-medium underline underline-offset-2">why an AC runs but doesn&rsquo;t cool</Link>.
+          </p>
         </div>
       </section>
 
