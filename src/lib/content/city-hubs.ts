@@ -61,15 +61,16 @@ const REFRIGERANT_PARAGRAPH: HubText = [
   ".",
 ];
 
+const EPA_TT_SECTOR = "https://www.epa.gov/hfcs/technology-transitions-hfc-restrictions-sector";
 const EPA_R22_SCHEDULE = "https://www.epa.gov/ods-phaseout/phaseout-class-ii-ozone-depleting-substances";
 
 /** Placentia and Costa Mesa wording (Phase 11A): does not suggest every R-22 system can be recharged or repaired. */
 const REFRIGERANT_PARAGRAPH_PILOT: HubText = [
   "If your system still runs on R-22, you can keep using it. The ",
   { href: EPA_R22_SCHEDULE, label: "EPA ended U.S. production and import of R-22" },
-  " on January 1, 2020, so whether a repair that needs refrigerant is practical depends on the condition of the system and the remaining supply of previously produced or reclaimed R-22. New central air conditioners and heat pumps made since January 1, 2025 use lower-GWP refrigerants under the EPA's ",
-  { href: EPA_TT, label: "Technology Transitions rules" },
-  ".",
+  " on January 1, 2020, so whether a repair that needs refrigerant is practical depends on the condition of the system and the remaining supply of previously produced or reclaimed R-22. EPA rules are changing which refrigerants can be used in new air-conditioning and heat-pump equipment, and the requirements depend on the equipment type and on the applicable manufacturing or installation rules. See the EPA's ",
+  { href: EPA_TT_SECTOR, label: "Technology Transitions guidance" },
+  " for current details.",
 ];
 
 const R22_FAQ_PILOT = {
