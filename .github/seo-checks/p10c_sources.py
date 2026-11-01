@@ -2,16 +2,13 @@
 import re, subprocess, sys, urllib.request, tempfile, os
 UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36", "Accept": "text/html,application/pdf,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.9"}
 S = [
- ("https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/carbon-monoxide-poisoning.html", [r"911", r"evacuate|outside|fresh air", r"alarm", r"symptom|dizz|nause", r"Do not go back|stay out|safe"]),
- ("https://www.nfpa.org/education-and-research/home-fire-safety/carbon-monoxide", [r"911|call for help|emergency", r"fresh air|outdoors", r"alarm", r"symptom|dizz|nause"]),
- ("https://www.epa.gov/sites/default/files/2014-08/documents/co_factsheet_en.pdf", [r"911|fire department", r"fresh air|get out|outside", r"alarm|detector", r"symptom|dizz|nause"]),
- ("https://blogs.cdc.gov/yourhealthyourenvironment/2016/10/31/carbon-monoxide-co-poisoning-prevention-5/", [r"911", r"leave", r"detector|alarm"]),
- ("https://www.cdc.gov/carbon-monoxide/about/index.html", [r"911", r"leave|outside|fresh air", r"alarm|detector"]),
- ("https://www.socalgas.com/safety/emergency-information/emergency-response", [r"1-800-427-2200", r"\b911\b", r"evacuat"]),
- ("https://www.epa.gov/hfcs/regulatory-actions-technology-transitions", [r"residential and light commercial", r"Reconsideration"]),
- ("https://www.energy.gov/sites/default/files/2021-08/ES-HomeHeatingandCooling_081221.pdf", [r"Manual J", r"400 to 500", r"fails to take|climate"]),
- ("https://www1.eere.energy.gov/buildings/publications/pdfs/building_america/hvac_load_calc.pdf", [r"400 square feet per ton", r"rules of thumb", r"windows"]),
- ("https://www.energy.gov/sites/default/files/2022-08/energy-saver-guide-2022.pdf", [r"oversized air conditioner"]),
+ ("https://www.usfa.fema.gov/prevention/home-fires/prevent-fires/appliance-and-electrical/", [r"electrician", r"spark|smoke|burning|smell", r"get out|911|fire department", r"water|wet"]),
+ ("https://www.esfi.org/water-damaged-electrical-equipment/", [r"water", r"electrician|qualified", r"power|electric", r"fire|shock"]),
+ ("https://content.nfpa.org/-/media/project/storefront/catalog/files/home-fire-safety/electrical/electrical_safety_checklist.pdf", [r"burning|rubbery", r"electrician", r"spark", r"breaker|trip"]),
+ ("https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-from-electrical-hazards.html", [r"standing water", r"electrician", r"911", r"spark|burning"]),
+ ("https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/fire.html", [r"get out", r"911", r"stay out"]),
+ ("https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/carbon-monoxide-poisoning.html", [r"911"]),
+ ("https://www.socalgas.com/safety/emergency-information/emergency-response", [r"1-800-427-2200"]),
 ]
 def text_of(data, ctype, url):
     if "pdf" in ctype or url.lower().endswith(".pdf"):
