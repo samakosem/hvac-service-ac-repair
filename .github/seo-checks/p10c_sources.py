@@ -2,10 +2,8 @@
 import re, subprocess, sys, urllib.request, tempfile, os
 UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36", "Accept": "text/html,application/pdf,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.9"}
 S = [
- ("https://www.epa.gov/ods-phaseout/residential-air-conditioning-and-phaseout-hcfc-22-what-you-need-know", [r"January 1, 2020", r"label|nameplate|name plate|tag|identify", r"2010", r"R-410A", r"reclaim", r"production|import", r"contractor|technician", r"replace"]),
- ("https://www.epa.gov/ods-phaseout/phaseout-class-ii-ozone-depleting-substances", [r"January 1, 2020", r"2010", r"R-22|HCFC-22"]),
- ("https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/fire.html", [r"get out", r"stay out", r"call"]),
- ("https://content.nfpa.org/-/media/project/storefront/catalog/files/home-fire-safety/electrical/electrical_safety_checklist.pdf", [r"circuit breakers", r"qualified electrician"]),
+ ("https://www.epa.gov/hfcs/technology-transitions-hfc-restrictions-sector", [r"Residential and light commercial air.conditioning.{0,500}", r"installation.{0,200}", r"manufactur.{0,200}", r"component.{0,250}", r"2026.{0,200}", r"reconsider.{0,250}"]),
+ ("https://www.epa.gov/hfcs/regulatory-actions-technology-transitions", [r"May 2026.{0,600}", r"residential and light commercial.{0,300}", r"component.{0,250}", r"installation.{0,250}"]),
 ]
 def text_of(data, ctype, url):
     if "pdf" in ctype or url.lower().endswith(".pdf"):
@@ -30,5 +28,5 @@ for url, pats in S:
     if m: print("  title:", re.sub(r"\s+", " ", m.group(1)).strip()[:150])
     for p in pats:
         ms = list(re.finditer(p, t, re.I))
-        ctx = t[max(0, ms[0].start() - 90): ms[0].end() + 110] if ms else ""
+        ctx = " ## ".join(t[max(0, m.start() - 40): m.end() + 60] for m in ms[:3]) if ms else ""
         print(f"  [{'FOUND' if ms else 'absent'}] /{p}/ x{len(ms)} {('... ' + ctx) if ctx else ''}")
