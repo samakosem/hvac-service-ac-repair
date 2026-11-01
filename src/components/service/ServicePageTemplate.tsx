@@ -215,7 +215,7 @@ export default function ServicePageTemplate({ service, image, cityLinks, areaLab
                 <div className="mt-6 pt-6 border-t border-slate-100">
                   <p className="text-sm text-slate-500 mb-3">Not sure what you need? We can help.</p>
                   <PhoneLink
-                    className="inline-flex items-center gap-1.5 text-hvac-blue-600 font-semibold text-sm hover:underline"
+                    className="inline-flex items-center gap-1.5 min-h-11 text-hvac-blue-600 font-semibold text-sm hover:underline"
                     showIcon
                     iconSize="sm"
                     label={`Call ${SITE.phoneDisplay}`}
@@ -227,7 +227,7 @@ export default function ServicePageTemplate({ service, image, cityLinks, areaLab
               <EmergencyCallout variant="card" />
 
               {/* Financing teaser */}
-              <FinancingTeaser variant="inline" />
+              <FinancingTeaser variant="inline" linkClassName="min-h-11" />
             </div>
           </div>
         </div>
@@ -345,7 +345,7 @@ export default function ServicePageTemplate({ service, image, cityLinks, areaLab
               </p>
               <div className="mt-2">
                 <PhoneLink
-                  className="inline-flex items-center gap-1.5 text-hvac-blue-600 font-semibold text-sm hover:underline"
+                  className="inline-flex items-center gap-1.5 min-h-11 text-hvac-blue-600 font-semibold text-sm hover:underline"
                   showIcon
                   iconSize="sm"
                   label="Still have questions? Call us"
@@ -372,7 +372,7 @@ export default function ServicePageTemplate({ service, image, cityLinks, areaLab
                 <Link
                   key={slug}
                   href={serviceHref(slug)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm text-slate-700 font-medium hover:border-hvac-blue-300 hover:text-hvac-blue-700 transition-colors shadow-sm"
+                  className="inline-flex items-center gap-1.5 min-h-11 px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm text-slate-700 font-medium hover:border-hvac-blue-300 hover:text-hvac-blue-700 transition-colors shadow-sm"
                 >
                   {slug
                     .split("-")
@@ -411,11 +411,11 @@ export default function ServicePageTemplate({ service, image, cityLinks, areaLab
               Request a Free Estimate
             </Link>
           </div>
-          <div className="mt-8 flex flex-wrap justify-center gap-4 text-xs text-slate-400">
-            <Link href="/" className="hover:text-slate-300 transition-colors">Home</Link>
-            <Link href="/services" className="hover:text-slate-300 transition-colors">All Services</Link>
-            <Link href="/contact" className="hover:text-slate-300 transition-colors">Contact</Link>
-            <Link href="/service-areas" className="hover:text-slate-300 transition-colors">Service Areas</Link>
+          <div className="mt-6 flex flex-wrap justify-center gap-x-2 text-xs text-slate-400">
+            <Link href="/" className="inline-flex items-center min-h-11 px-2 hover:text-slate-300 transition-colors">Home</Link>
+            <Link href="/services" className="inline-flex items-center min-h-11 px-2 hover:text-slate-300 transition-colors">All Services</Link>
+            <Link href="/contact" className="inline-flex items-center min-h-11 px-2 hover:text-slate-300 transition-colors">Contact</Link>
+            <Link href="/service-areas" className="inline-flex items-center min-h-11 px-2 hover:text-slate-300 transition-colors">Service Areas</Link>
           </div>
         </div>
       </section>
