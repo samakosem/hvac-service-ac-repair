@@ -1,4 +1,4 @@
-# Phase 10D (PR #17) production verification. Read-only; /api/contact is intercepted in the browser (no lead submitted).
+# Phase 10D (PR #17, rerun) production verification. Read-only; /api/contact is intercepted in the browser (no lead submitted).
 name: SEO phase 10D production verification
 
 on:

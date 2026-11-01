@@ -16,7 +16,7 @@ if changed: fails.append(f"text differs: {changed}")
 if set(exp) != set(paths): fails.append("path set differs")
 P = "/air-conditioning/emergency-ac-repair"
 h = raw(P); t = norm(h)
-for s in ["Safety First: When to Leave and Call 911", "get out, stay out and call for help", "HVAC service doesn’t replace 911", "Don't open the unit or electrical panels", "If there are flames, smoke or sparks, leave the home and call 911 before calling us."]:
+for s in ["Safety First: When to Leave and Call 911", "get out, stay out and call for help", "HVAC service doesn’t replace 911"]:
     s2 = s.replace("’", "'")
     ok = s in t or s2 in t or s2 in t.replace("’", "'")
     print(("OK  " if ok else "MISSING "), s)
@@ -36,7 +36,10 @@ if not faq: fails.append("FAQPage missing")
 else:
     q = faq["mainEntity"]; print("FAQPage questions:", len(q))
     if len(q) != 5 or not all(i.get("acceptedAnswer", {}).get("text") for i in q): fails.append("FAQ structure")
-    if "safety hazards first" not in json.dumps(q): fails.append("FAQ answer not updated")
+    fj = json.dumps(q)
+    for s3 in ["safety hazards first", "leave the home and call 911 before calling us", "Don't open the unit or electrical panels"]:
+        ok3 = s3 in fj; print(("OK  " if ok3 else "MISSING "), "FAQ JSON-LD:", s3)
+        if not ok3: fails.append(f"FAQ JSON-LD missing: {s3}")
 if len(re.findall(r"<h1[ >]", h)) != 1: fails.append("h1 count")
 for p in paths:
     hh = raw(p)
