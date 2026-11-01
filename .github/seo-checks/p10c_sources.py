@@ -1,22 +1,22 @@
 """Phase 10C: read-only check of external sources cited on the pilot pages. Prints status, final URL and supporting phrases."""
 import re, subprocess, sys, urllib.request, tempfile, os
-UA = {"User-Agent": "Mozilla/5.0 (compatible; hvac-seo-verify/1.0)"}
+UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36", "Accept": "text/html,application/pdf,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.9"}
 S = [
- ("https://www.socalgas.com/safety/emergency-information/emergency-response", [r"1-800-427-2200", r"\b911\b", r"evacuat", r"leak", r"24"]),
- ("https://www.socalgas.com/sustainability/benefits-of-natural-gas/safe", [r"1-800-427-2200", r"\b911\b", r"evacuat", r"leak"]),
- ("https://www.socalgas.com/residential-natural-gas-detector", [r"1-800-427-2200", r"\b911\b", r"evacuat"]),
- ("https://www.socalgas.com/sites/default/files/2023-09/Safety_Bill_Onsert_April%202023_Final_English_Remediated.pdf", [r"1-800-427-2200", r"\b911\b", r"evacuat|leave", r"spark|light"]),
- ("https://www.socalgas.com/1443740978582/HomeEnergy_SafetyGuide_English.pdf", [r"1-800-427-2200", r"\b911\b", r"evacuat|leave"]),
- ("https://blogs.cdc.gov/yourhealthyourenvironment/2016/10/31/carbon-monoxide-co-poisoning-prevention-5/", [r"\b911\b", r"leave", r"detector|alarm"]),
- ("https://blogs.cdc.gov/yourhealthyourenvironment/2023/01/30/carbon-monoxide-poisoning-can-be-deadly/", [r"\b911\b", r"leave", r"detector|alarm"]),
- ("https://www.cdc.gov/carbon-monoxide/about/index.html", [r"\b911\b", r"leave", r"alarm|detector"]),
- ("https://www.cdc.gov/carbon-monoxide/prevention/index.html", [r"\b911\b", r"leave", r"alarm|detector"]),
- ("https://www.epa.gov/hfcs/technology-transitions-hfc-restrictions-sector", [r"residential", r"air.conditioning", r"heat pump", r"Technology Transitions"]),
- ("https://www.epa.gov/hfcs/regulatory-actions-technology-transitions", [r"residential", r"air.conditioning", r"Technology Transitions"]),
- ("https://www1.eere.energy.gov/buildings/publications/pdfs/building_america/strategy_guide_hvac_sizing.pdf", [r"Manual J", r"rules? of thumb", r"square f", r"oversiz", r"load"]),
- ("https://www.energy.gov/sites/default/files/2022-08/energy-saver-guide-2022.pdf", [r"oversiz", r"properly sized|right size|sizing", r"Manual J"]),
- ("https://www.energy.gov/energysaver/central-air-conditioners", [r"Manual J", r"size|sizing", r"oversiz"]),
- ("https://www.energy.gov/energysaver/central-air-conditioning", [r"Manual J", r"size|sizing", r"oversiz"]),
+ ("https://www.socalgas.com/safety/emergency-information/emergency-response", [r"24[- ]hour|24 hours|24/7", r"1-800-427-2200", r"\b911\b", r"evacuat", r"light a match|flame|spark", r"turn|switch", r"repair|fix|control"]),
+ ("https://www.socalgas.com/sites/default/files/2023-09/Safety_Bill_Onsert_April%202023_Final_English_Remediated.pdf", [r"turn|switch|appliance", r"repair|fix|control", r"match|flame|spark", r"1-800-427-2200"]),
+ ("https://www.socalgas.com/residential-natural-gas-detector", [r"24[- ]hour|24 hours|24/7", r"evacuate immediately", r"911"]),
+ ("https://www.cpsc.gov/safety-education/safety-guides/carbon-monoxide/carbon-monoxide-fact-sheet", [r"911", r"outside|fresh air", r"alarm", r"do not|don.t", r"symptom|dizz|nause"]),
+ ("https://www.cpsc.gov/Safety-Education/Safety-Education-Centers/Carbon-Monoxide-Information-Center/Carbon-Monoxide-Questions-and-Answers", [r"911", r"outside|fresh air", r"alarm"]),
+ ("https://www.cdc.gov/carbon-monoxide/index.html", [r"911", r"leave|outside|fresh air", r"alarm|detector"]),
+ ("https://www.cdc.gov/carbon-monoxide/about/index.html", [r"911", r"leave|outside|fresh air", r"alarm|detector"]),
+ ("https://blogs.cdc.gov/yourhealthyourenvironment/2016/10/31/carbon-monoxide-co-poisoning-prevention-5/", [r"911", r"leave", r"detector|alarm"]),
+ ("https://www.epa.gov/hfcs/technology-transitions-hfc-restrictions-sector", [r"residential", r"air.conditioning", r"heat pump", r"installation date|date"]),
+ ("https://www.epa.gov/hfcs/regulatory-actions-technology-transitions", [r"residential and light commercial", r"extension|extend|delay|interim final|reconsider", r"Technology Transitions"]),
+ ("https://www1.eere.energy.gov/buildings/publications/pdfs/building_america/strategy_guide_hvac_sizing.pdf", [r"Manual J", r"Manual S", r"insulation", r"window", r"infiltration|air leakage|air tightness", r"duct", r"occupant", r"oversiz"]),
+ ("https://www1.eere.energy.gov/buildings/publications/pdfs/building_america/hvac_load_calc.pdf", [r"rules? of thumb", r"Manual J", r"square f", r"insulation", r"window", r"oversiz"]),
+ ("https://www.energy.gov/sites/default/files/2021-08/ES-HomeHeatingandCooling_081221.pdf", [r"Manual J", r"Manual S", r"oversiz|properly sized|sizing", r"rules? of thumb|square f"]),
+ ("https://www.energy.gov/sites/default/files/2022-08/energy-saver-guide-2022.pdf", [r"oversized", r"less efficiently", r"sizing"]),
+ ("https://www1.eere.energy.gov/buildings/publications/pdfs/building_america/measure_guide_air_cond_diagnostics.pdf", [r"rules? of thumb|square f", r"Manual J", r"improvement"]),
 ]
 def text_of(data, ctype, url):
     if "pdf" in ctype or url.lower().endswith(".pdf"):

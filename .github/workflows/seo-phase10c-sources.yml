@@ -1,4 +1,4 @@
-# Phase 10C: read-only check that external sources cited on PR #16 resolve and support the statements.
+# Phase 10C (run 2): read-only check that external sources cited on PR #16 resolve and support the statements.
 name: SEO phase 10C source check
 on:
   push:
