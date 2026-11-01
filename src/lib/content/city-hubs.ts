@@ -80,7 +80,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
       description:
         "Heating and air conditioning service in Placentia, CA: furnace and heating repair, AC repair, tune-ups and new system installation. Call (714) 410-2784.",
     },
-    blurb: "Heating and air conditioning service for Placentia homes and businesses, from our shop in neighboring Yorba Linda.",
+    blurb: "Heating and air conditioning service for Placentia homes and businesses, from our base in neighboring Yorba Linda.",
     localContext:
       "We repair and maintain furnaces, heat pumps and central air conditioners in Placentia, and replace systems that have reached the end of their life. Start with the service you need below, or send a request and we will contact you to schedule.",
     serviceCards: [
@@ -93,7 +93,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
         heading: "Furnace and Heating Repair in Placentia",
         paragraphs: [
           [
-            "We repair gas and electric furnaces and heat pumps. Signs that a heating system needs attention include no heat or weak airflow, a furnace that starts and stops repeatedly, a burning smell that lasts beyond the first run of the season, and an ignition that will not stay lit.",
+            "We repair gas and electric furnaces and heat pumps. Signs that a heating system needs attention include no heat or weak airflow, a furnace that starts and stops repeatedly, and an ignition that will not stay lit. A burning smell is a reason to turn the thermostat off and call for service; if you see smoke or flames, leave the house and call 911.",
           ],
           [
             "See ",
@@ -173,7 +173,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
       },
     ],
     ...SHARED,
-    ctaNote: "Call us or send a request online. Our shop is in neighboring Yorba Linda.",
+    ctaNote: "Call us or send a request online. We're based in neighboring Yorba Linda.",
   },
 
   "orange-county/costa-mesa": {
@@ -195,7 +195,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
         heading: "Furnace and Heating Repair in Costa Mesa",
         paragraphs: [
           [
-            "We repair gas and electric furnaces and heat pumps. Signs that a heating system needs attention include no heat or weak airflow, a furnace that starts and stops repeatedly, a burning smell that lasts beyond the first run of the season, and an ignition that will not stay lit.",
+            "We repair gas and electric furnaces and heat pumps. Signs that a heating system needs attention include no heat or weak airflow, a furnace that starts and stops repeatedly, and an ignition that will not stay lit. A burning smell is a reason to turn the thermostat off and call for service; if you see smoke or flames, leave the house and call 911.",
           ],
           [
             "See ",
