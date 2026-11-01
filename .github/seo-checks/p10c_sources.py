@@ -2,13 +2,10 @@
 import re, subprocess, sys, urllib.request, tempfile, os
 UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36", "Accept": "text/html,application/pdf,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.9"}
 S = [
- ("https://www.usfa.fema.gov/prevention/home-fires/prevent-fires/appliance-and-electrical/", [r"electrician", r"spark|smoke|burning|smell", r"get out|911|fire department", r"water|wet"]),
- ("https://www.esfi.org/water-damaged-electrical-equipment/", [r"water", r"electrician|qualified", r"power|electric", r"fire|shock"]),
- ("https://content.nfpa.org/-/media/project/storefront/catalog/files/home-fire-safety/electrical/electrical_safety_checklist.pdf", [r"burning|rubbery", r"electrician", r"spark", r"breaker|trip"]),
- ("https://www.cdc.gov/natural-disasters/response/what-to-do-protect-yourself-from-electrical-hazards.html", [r"standing water", r"electrician", r"911", r"spark|burning"]),
- ("https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/fire.html", [r"get out", r"911", r"stay out"]),
- ("https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/carbon-monoxide-poisoning.html", [r"911"]),
- ("https://www.socalgas.com/safety/emergency-information/emergency-response", [r"1-800-427-2200"]),
+ ("https://www.epa.gov/ods-phaseout/residential-air-conditioning-and-phaseout-hcfc-22-what-you-need-know", [r"January 1, 2020", r"label|nameplate|name plate|tag|identify", r"2010", r"R-410A", r"reclaim", r"production|import", r"contractor|technician", r"replace"]),
+ ("https://www.epa.gov/ods-phaseout/phaseout-class-ii-ozone-depleting-substances", [r"January 1, 2020", r"2010", r"R-22|HCFC-22"]),
+ ("https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/fire.html", [r"get out", r"stay out", r"call"]),
+ ("https://content.nfpa.org/-/media/project/storefront/catalog/files/home-fire-safety/electrical/electrical_safety_checklist.pdf", [r"circuit breakers", r"qualified electrician"]),
 ]
 def text_of(data, ctype, url):
     if "pdf" in ctype or url.lower().endswith(".pdf"):
