@@ -15,7 +15,7 @@ import { serviceHref, SILO_PARENTS } from "@/lib/config/routes";
 import type { ServiceContent } from "@/lib/content/services";
 import { IMG_HERO, type SiteImage } from "@/lib/config/images";
 import type { CityServiceLink } from "@/lib/config/city-service-links";
-import RichText from "@/components/ui/RichText";
+import { GuideSections } from "@/components/service/GuideExtras";
 
 // ─── FAQ Accordion (client interaction only) ─────────────────────────────────
 
@@ -70,9 +70,11 @@ type Props = {
   image?: SiteImage;
   /** Optional links to this service's city pages, e.g. for the priority cities. */
   cityLinks?: { heading: string; links: CityServiceLink[] };
+  /** Wording for the service area in the hero note and FAQ intro. Defaults to "Southern California". */
+  areaLabel?: string;
 };
 
-export default function ServicePageTemplate({ service, image, cityLinks }: Props) {
+export default function ServicePageTemplate({ service, image, cityLinks, areaLabel = "Southern California" }: Props) {
   const canonicalPath = serviceHref(service.slug);
 
   // Build breadcrumb trail: Home > [Silo Parent?] > Current Page
@@ -153,7 +155,7 @@ export default function ServicePageTemplate({ service, image, cityLinks }: Props
             </div>
 
             <p className="mt-4 text-slate-500 text-xs">
-              Same-day appointments available · Serving Southern California
+              Same-day appointments available · Serving {areaLabel}
             </p>
           </div>
         </div>
@@ -297,22 +299,7 @@ export default function ServicePageTemplate({ service, image, cityLinks }: Props
 
       {/* ── Guide sections ─────────────────────────────────────────────────── */}
       {service.guideSections && service.guideSections.length > 0 && (
-        <section className="py-14 lg:py-20 bg-white" aria-label={`${service.h1} guide`}>
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
-            {service.guideSections.map((section) => (
-              <div key={section.heading}>
-                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-4">{section.heading}</h2>
-                <div className="flex flex-col gap-4">
-                  {section.paragraphs.map((paragraph, i) => (
-                    <p key={i} className="text-slate-700 leading-relaxed">
-                      <RichText text={paragraph} />
-                    </p>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <GuideSections sections={service.guideSections} label={`${service.h1} guide`} />
       )}
 
       {/* ── City pages ─────────────────────────────────────────────────────── */}
@@ -354,7 +341,7 @@ export default function ServicePageTemplate({ service, image, cityLinks }: Props
                 Common Questions
               </h2>
               <p className="text-slate-600 text-sm leading-relaxed">
-                Answers to the questions we hear most from Southern California homeowners and business owners.
+                Answers to the questions we hear most from {areaLabel} homeowners and business owners.
               </p>
               <div className="mt-2">
                 <PhoneLink

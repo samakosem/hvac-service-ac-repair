@@ -11,13 +11,13 @@ import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema
 import { resolveService } from "@/lib/seo/buildServicePage";
 import { IMG_HERO } from "@/lib/config/images";
 import { QuickChecksGrid, QuickChecksHeader } from "@/components/ui/QuickChecks";
-import RichText from "@/components/ui/RichText";
+import { GuideSections } from "@/components/service/GuideExtras";
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "Same-Day AC Repair in Orange County, CA",
     description:
-      "Same-day AC repair throughout Southern California. Free diagnostic with repair, written quote before any work. Call (714) 410-2784.",
+      "Same-day AC repair in Orange County, CA. Based in Yorba Linda, serving local homeowners with AC diagnostics and repairs. Call (714) 410-2784.",
     path: "/air-conditioning/ac-repair",
   });
 }
@@ -142,7 +142,7 @@ export default function AcRepairPage() {
 
               {/* H1 */}
               <h1 className="text-4xl sm:text-5xl lg:text-[3.1rem] font-bold text-white leading-[1.1] tracking-tight">
-                AC Repair — Same-Day Service, Southern California
+                AC Repair in Orange County — Same-Day Service
               </h1>
 
               <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
@@ -366,22 +366,7 @@ export default function AcRepairPage() {
 
       {/* ── GUIDE ────────────────────────────────────────────────────────────── */}
       {service.guideSections && service.guideSections.length > 0 && (
-        <section className="py-16 lg:py-20 bg-white" aria-label="AC repair guide">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10">
-            {service.guideSections.map((section) => (
-              <div key={section.heading}>
-                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight mb-4">{section.heading}</h2>
-                <div className="flex flex-col gap-4">
-                  {section.paragraphs.map((paragraph, i) => (
-                    <p key={i} className="text-slate-700 leading-relaxed">
-                      <RichText text={paragraph} />
-                    </p>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <GuideSections sections={service.guideSections} label="AC repair guide" />
       )}
 
       {/* ── QUICK CHECKS (replaces unverified testimonials) ───────────────────── */}

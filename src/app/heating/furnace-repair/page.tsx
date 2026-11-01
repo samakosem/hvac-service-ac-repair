@@ -9,5 +9,5 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Page() {
   const service = resolveService("furnace-repair");
-  return <ServicePageTemplate service={service} image={IMG_FURNACE} />;
+  return <ServicePageTemplate service={service} image={IMG_FURNACE} areaLabel="Orange County" />;
 }

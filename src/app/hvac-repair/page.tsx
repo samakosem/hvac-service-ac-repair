@@ -10,5 +10,5 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function Page() {
   const service = resolveService("hvac-repair");
-  return <ServicePageTemplate service={service} cityLinks={{ heading: "HVAC Repair in Orange County Cities", links: countyCityLinks("hvac-repair", "orange-county") }} image={IMG_AC_REPAIR} />;
+  return <ServicePageTemplate service={service} cityLinks={{ heading: "HVAC Repair in Orange County Cities", links: countyCityLinks("hvac-repair", "orange-county") }} image={IMG_AC_REPAIR} areaLabel="Orange County" />;
 }
