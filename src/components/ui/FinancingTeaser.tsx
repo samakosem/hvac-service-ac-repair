@@ -3,9 +3,11 @@ import PhoneLink from "@/components/ui/PhoneLink";
 
 type Props = {
   variant?: "full" | "inline";
+  /** Extra classes for the inline "Learn More" link, e.g. a minimum touch-target height. */
+  linkClassName?: string;
 };
 
-export default function FinancingTeaser({ variant = "inline" }: Props) {
+export default function FinancingTeaser({ variant = "inline", linkClassName = "" }: Props) {
   if (variant === "full") {
     return (
       <section
@@ -76,7 +78,7 @@ export default function FinancingTeaser({ variant = "inline" }: Props) {
       </div>
       <Link
         href="/financing"
-        className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-hvac-blue-200 text-hvac-blue-700 font-semibold text-xs rounded-lg hover:border-hvac-blue-400 hover:bg-hvac-blue-50 transition-colors whitespace-nowrap shrink-0"
+        className={`inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-hvac-blue-200 text-hvac-blue-700 font-semibold text-xs rounded-lg hover:border-hvac-blue-400 hover:bg-hvac-blue-50 transition-colors whitespace-nowrap shrink-0${linkClassName ? ` ${linkClassName}` : ""}`}
       >
         Learn More
         <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">

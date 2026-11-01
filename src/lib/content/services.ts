@@ -557,7 +557,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         question: "What counts as an AC emergency?",
         answer:
-          "An AC emergency is when your system stops cooling completely during hot weather, especially if children, elderly family members, or anyone with a medical condition is in the home. Burning smells, water flooding, and breakers tripping are also emergency situations.",
+          "An AC emergency is when your system stops cooling completely during hot weather, especially if children, elderly family members, or anyone with a medical condition is in the home. A burning smell, smoke, sparks, a breaker that keeps tripping, and water leaking near electrical equipment are also reasons to act right away, and some of them are safety hazards first. If there are flames, smoke or sparks, leave the home and call 911 before calling us.",
       },
       {
         question: "Are you available on weekends for emergency calls?",
@@ -571,7 +571,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       {
         question: "What should I do while waiting for emergency AC repair?",
         answer:
-          "Turn off the system completely at the thermostat to prevent further damage. Move to lower floors where it's cooler. Use fans to circulate air. Close blinds on sun-facing windows. If anyone in the home is at risk from heat, consider going to a cooled public space until we arrive.",
+          "Turn off the system completely at the thermostat to prevent further damage. Move to lower floors where it's cooler. Use fans to circulate air. Close blinds on sun-facing windows. If anyone in the home is at risk from heat, consider going to a cooled public space until we arrive. Don't open the unit or electrical panels, and keep away from any water around electrical equipment.",
       },
       {
         question: "Can you fix my AC on the first emergency visit?",
@@ -580,6 +580,50 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       },
     ],
     relatedSlugs: ["ac-repair", "ac-services", "air-conditioning"],
+    guideSections: [
+      {
+        heading: "Safety First: When to Leave and Call 911",
+        paragraphs: [
+          [
+            "Most AC failures are uncomfortable rather than dangerous, but a few signs are safety hazards. HVAC service doesn't replace 911 or your gas utility: if there is immediate danger, get out and call them first, then call us. For heating problems and gas or carbon monoxide hazards, see ",
+            { href: "/emergency-hvac-service", label: "emergency HVAC service" },
+            ".",
+          ],
+        ],
+        lists: [
+          {
+            title: "Get out and call 911",
+            tone: "alert",
+            items: [
+              [
+                "Flames, smoke, or sparks from the unit or its wiring: get out, stay out and call for help. Don't go back inside, and don't try to shut the equipment off or check it first (",
+                { href: "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/fire.html", label: "American Red Cross fire safety" },
+                ").",
+              ],
+              [
+                "A gas smell: leave the home, then call 911 and your gas utility from a safe place. A carbon monoxide alarm: leave the home and call 911 from outside (",
+                { href: "https://www.socalgas.com/safety/emergency-information/emergency-response", label: "SoCalGas emergency information" },
+                "; ",
+                { href: "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/carbon-monoxide-poisoning.html", label: "American Red Cross carbon monoxide safety" },
+                ").",
+              ],
+            ],
+          },
+          {
+            title: "Turn the system off at the thermostat and call for service",
+            items: [
+              [
+                "A burning or rubbery smell without smoke, or a breaker that keeps tripping: leave the system off, and don't keep resetting the breaker. These are reasons to call a qualified professional (",
+                { href: "https://content.nfpa.org/-/media/project/storefront/catalog/files/home-fire-safety/electrical/electrical_safety_checklist.pdf", label: "NFPA electrical safety checklist" },
+                ").",
+              ],
+              ["Water leaking from the air handler or indoor unit: turn the system off at the thermostat, and stay away from the equipment and from any water near wiring or the electrical panel."],
+            ],
+          },
+        ],
+        cta: true,
+      },
+    ],
     ctaHeadline: "AC Emergency in Southern California? Call Now.",
     ctaSubtext: "We're based in Yorba Linda and dispatch fast. Available 7 days — call (714) 410-2784 right now.",
     category: "cooling",
