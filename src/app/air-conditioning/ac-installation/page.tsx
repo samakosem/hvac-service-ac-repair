@@ -12,9 +12,9 @@ import { schemaBreadcrumb, schemaService, schemaFaqPage } from "@/lib/seo/schema
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
-    title: "AC Installation & Replacement — Free In-Home Estimate | (714) 410-2784",
+    title: "AC Installation & Replacement in Orange County, CA",
     description:
-      "New AC system installation throughout Southern California. Free in-home estimates, 0% financing, all major brands. Call (714) 410-2784.",
+      "AC installation and replacement in Orange County, CA. Professional system sizing, free in-home estimates and installation services. Call (714) 410-2784.",
     path: "/air-conditioning/ac-installation",
   });
 }
@@ -37,21 +37,23 @@ const REPAIR_REPLACE_TABLE = [
 
 const SIZING_PARAGRAPHS: HubText[] = [
   [
-    "A bigger air conditioner is not a better one. The U.S. Department of Energy advises that central air conditioners be sized from a load calculation (ACCA Manual J) rather than a rule of thumb such as one ton per 400 to 500 square feet, and that an oversized unit runs less efficiently and effectively than a properly sized one (",
-    { href: "https://www1.eere.energy.gov/buildings/publications/pdfs/building_america/strategy_guide_hvac_sizing.pdf", label: "DOE sizing guideline" },
+    "A bigger air conditioner is not a better one. U.S. Department of Energy guidance tells homeowners to have the contractor use ACCA Manual J to calculate the cooling load, instead of a rule of thumb such as one ton of cooling per 400 to 500 square feet, which ignores local climate and how efficient the house is. DOE also notes that an oversized air conditioner performs less efficiently and effectively than a smaller, properly sized unit (",
+    { href: "https://www.energy.gov/sites/default/files/2021-08/ES-HomeHeatingandCooling_081221.pdf", label: "DOE heating and cooling guide" },
     "; ",
     { href: "https://www.energy.gov/sites/default/files/2022-08/energy-saver-guide-2022.pdf", label: "DOE Energy Saver guide" },
     ").",
   ],
   [
-    "Replacing a system with one of the same capacity can carry an old sizing mistake forward. Added insulation, air sealing or duct repairs can lower a home's load, so the right size for a replacement may be smaller than the old unit. Ducts matter as well: leaky or undersized ducts limit what any new equipment can deliver.",
+    "Square footage alone doesn't set the right size. Local climate and the home's insulation, windows and air tightness all change the load, which is why the calculation is done for the specific building. DOE's load calculation guideline notes that sizing rules of thumb were developed for older construction, and that improvements such as better windows, air tightness and added insulation should be taken into account (",
+    { href: "https://www1.eere.energy.gov/buildings/publications/pdfs/building_america/hvac_load_calc.pdf", label: "DOE load calculation guideline" },
+    "). If you've made improvements since the old system went in, the right size for a replacement may be smaller than the old unit.",
   ],
   [
-    "Try the ",
+    "Our ",
     { href: "/calculators/ac-size-calculator", label: "AC size calculator" },
-    " for a rough starting point, and read ",
+    " gives only a rough idea and is not a substitute for a professional load calculation. For more on the factors involved, read ",
     { href: "/blog/what-size-ac-unit-do-i-need", label: "what size AC unit do I need" },
-    " for the factors a proper calculation considers.",
+    ".",
   ],
 ];
 
@@ -150,7 +152,7 @@ export default function AcInstallationPage() {
             <div className="flex flex-col gap-5">
               <div className="section-label section-label-white w-fit">New System Installation</div>
               <h1 className="text-4xl sm:text-5xl font-bold text-white leading-[1.1] tracking-tight">
-                New AC System Installation — Free In-Home Estimate
+                AC Installation & Replacement in Orange County
               </h1>
               <p className="text-lg text-slate-300 leading-relaxed max-w-lg">
                 Not sure if you need repair or replacement? We&rsquo;ll give you an honest recommendation — not a sales pitch. Free estimate, no obligation.
@@ -288,8 +290,10 @@ export default function AcInstallationPage() {
               ))}
             </ul>
             <p className="text-slate-700 leading-relaxed mt-4">
-              Federal refrigerant rules for new residential air conditioners and heat pumps have been changing, so ask which refrigerant a quoted system uses and check EPA&rsquo;s summary for current dates (
-              <a href="https://www.epa.gov/hfcs/technology-transitions-hfc-restrictions-sector" rel="noopener" className="text-hvac-blue-700 font-medium underline underline-offset-2 hover:text-hvac-blue-800">EPA Technology Transitions</a>
+              Federal refrigerant rules for new residential and light commercial air conditioners and heat pumps are set under EPA&rsquo;s Technology Transitions program and have been revised, so ask which refrigerant a quoted system uses and check EPA&rsquo;s pages for current requirements (
+              <a href="https://www.epa.gov/hfcs/regulatory-actions-technology-transitions" rel="noopener" className="text-hvac-blue-700 font-medium underline underline-offset-2 hover:text-hvac-blue-800">EPA regulatory actions</a>
+              ;{" "}
+              <a href="https://www.epa.gov/hfcs/technology-transitions-hfc-restrictions-sector" rel="noopener" className="text-hvac-blue-700 font-medium underline underline-offset-2 hover:text-hvac-blue-800">EPA restrictions by sector</a>
               ).
             </p>
           </div>

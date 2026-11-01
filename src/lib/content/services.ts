@@ -229,7 +229,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
       "same-day AC repair Orange County",
       "emergency AC repair Orange County",
     ],
-    heroHeadline: "Fast AC Repair Across Southern California",
+    heroHeadline: "Fast & Reliable AC Repair Across Orange County",
     heroSubtext:
       "Your AC stopped working. We diagnose the real problem, give you a written price, and fix it. No guesswork, no upsells.",
     whatItIncludes: [
@@ -430,7 +430,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
         heading: "AC Safety",
         paragraphs: [
           [
-            "If the indoor coil or refrigerant lines are covered in ice, turn cooling off at the thermostat and let the ice melt before running it again; setting the fan to on can speed thawing. Turn off power at the breaker and the outdoor disconnect before cleaning around the outdoor unit. Don't open electrical panels: capacitors can hold a dangerous charge even with the power off. If you smell burning or see smoke, shut the system off at the breaker and call for service. For a breakdown that can't wait, see ",
+            "If the indoor coil or refrigerant lines are covered in ice, turn cooling off at the thermostat and let the ice melt before running it again; setting the fan to on can speed thawing. Turn off power at the breaker and the outdoor disconnect before cleaning around the outdoor unit. Don't open electrical panels: capacitors can hold a dangerous charge even with the power off. If you smell burning, turn cooling off at the thermostat and call for service; if you see smoke or flames, leave the home and call 911. For a breakdown that can't wait, see ",
             { href: "/air-conditioning/emergency-ac-repair", label: "emergency AC repair" },
             ".",
           ],
@@ -440,26 +440,27 @@ export const SERVICE_CONTENT: ServiceContent[] = [
         heading: "Emergency, or Can It Wait?",
         paragraphs: [
           [
-            "Most AC problems are uncomfortable rather than dangerous, but a few are not. If you aren't sure, call and describe what you see. For after-hours or heating problems, see ",
+            "Most AC problems are uncomfortable rather than dangerous, but a few are not. If you aren't sure, call and describe what you see. HVAC service doesn't replace 911 or your gas utility: if there is immediate danger, get out and call them first. For after-hours or heating problems, see ",
             { href: "/emergency-hvac-service", label: "emergency HVAC service" },
             ".",
           ],
         ],
         lists: [
           {
-            title: "Shut the system off at the breaker and call right away",
+            title: "Get away from the equipment and call for help",
             tone: "alert",
             items: [
-              ["A burning smell, smoke, or sparks from the indoor or outdoor unit."],
-              ["Water leaking near the electrical panel, the disconnect, or the air handler's wiring."],
-              ["A breaker that trips every time the system starts."],
+              ["Flames, heavy smoke or sparks from the equipment or its wiring: leave the home and call 911."],
+              ["Water near the electrical panel or wiring: stay out of the water and away from the area, and call 911 if there are sparks or smoke."],
+              ["A burning smell: turn cooling off at the thermostat. If the smell continues or you see smoke, leave and call 911."],
             ],
           },
           {
             title: "Treat as urgent",
             items: [
-              ["No cooling when someone in the home is especially vulnerable to heat, such as an infant, an older adult, or a person with a health condition."],
-              ["Active water leaking from the indoor unit."],
+              ["No cooling when someone in the home is especially vulnerable to heat, such as an infant, an older adult, or a person with a health condition. If anyone shows signs of heat illness, call 911 or seek medical help."],
+              ["Active water leaking from the indoor unit: turn the system off at the thermostat and keep the water away from outlets and electrical parts."],
+              ["A breaker that trips when the system starts: leave it off and don't keep resetting it."],
             ],
           },
           {
@@ -1595,7 +1596,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
           {
             symptom: "Burning smell, smoke or a breaker that keeps tripping",
             causes: "An electrical fault or a failing motor.",
-            check: "Shut the system off at the breaker and call for service. For gas smell or a carbon monoxide alarm, leave the house and call 911.",
+            check: "Turn the system off at the thermostat and call for service. If you see smoke, flames or sparks, or smell gas, or a carbon monoxide alarm sounds, leave the house and call 911.",
           },
         ],
       },
@@ -1661,7 +1662,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
             " for what to do while you wait.",
           ],
           [
-            "If you smell gas or a carbon monoxide alarm sounds, leave the house and call your gas utility or 911 from outside before anything else. Shut the system off at the breaker if you smell burning or a breaker keeps tripping, and don't open equipment panels: furnaces and outdoor units contain high voltage, and capacitors can hold a charge after the power is off.",
+            "If you smell gas or a carbon monoxide alarm sounds, leave the house and call your gas utility or 911 from outside before anything else. Turn the system off at the thermostat if you smell burning, and leave the house and call 911 if you see smoke or flames. If a breaker keeps tripping, leave it off rather than resetting it again, and don't open equipment panels: furnaces and outdoor units contain high voltage, and capacitors can hold a charge after the power is off.",
           ],
         ],
       },
@@ -1801,7 +1802,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
           {
             symptom: "Clicks but doesn't ignite",
             causes: "A cracked or worn igniter, a gas valve that isn't opening, or a dirty flame sensor.",
-            check: "Make sure the gas supply valve to the furnace is open. Don't try to light a gas furnace manually.",
+            check: "If you don't smell gas, confirm the furnace's gas shutoff valve is open. Never try to light a gas furnace manually, and if you smell gas, leave the house instead of checking anything.",
           },
           {
             symptom: "Starts, then shuts off within a minute",
@@ -1829,7 +1830,7 @@ export const SERVICE_CONTENT: ServiceContent[] = [
         heading: "When Is a Heating Problem an Emergency?",
         paragraphs: [
           [
-            "Most furnace problems mean a cold house rather than danger, but gas and carbon monoxide are different. Treat these as emergencies before you think about repair. For heating or cooling that can't wait, see ",
+            "Most furnace problems mean a cold house rather than danger, but gas and carbon monoxide are different. Treat these as emergencies before you think about repair, and remember that HVAC service doesn't replace 911 or your gas utility. For heating or cooling that can't wait, see ",
             { href: "/emergency-hvac-service", label: "emergency HVAC service" },
             ".",
           ],
@@ -1840,16 +1841,16 @@ export const SERVICE_CONTENT: ServiceContent[] = [
             tone: "alert",
             items: [
               [
-                "If you smell gas, leave the house right away without switching anything on or off, then call 911 and your gas utility from a safe place. SoCalGas customers can reach its 24-hour emergency line at 1-800-427-2200 (",
+                "If you smell gas, leave the house right away, then call 911 and your gas utility from a safe place. SoCalGas customers can reach SoCalGas at 1-800-427-2200 (",
                 { href: "https://www.socalgas.com/safety/emergency-information/emergency-response", label: "SoCalGas emergency information" },
                 ").",
               ],
               [
-                "If a carbon monoxide alarm sounds, or anyone feels dizzy, light-headed or nauseated and you suspect carbon monoxide, leave the home and call 911 (",
-                { href: "https://blogs.cdc.gov/yourhealthyourenvironment/2016/10/31/carbon-monoxide-co-poisoning-prevention-5/", label: "CDC carbon monoxide guidance" },
+                "If a carbon monoxide alarm sounds, or anyone has symptoms such as dizziness or nausea, leave the home right away and call 911 from outside (",
+                { href: "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/carbon-monoxide-poisoning.html", label: "American Red Cross carbon monoxide safety" },
                 ").",
               ],
-              ["If you see smoke or smell burning, turn the furnace off at the breaker and call for help."],
+              ["If you see smoke, flames or sparks, leave the home and call 911. For a burning smell without smoke, turn the thermostat off and call for service."],
             ],
           },
           {

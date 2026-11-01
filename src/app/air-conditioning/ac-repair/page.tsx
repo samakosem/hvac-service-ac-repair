@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildMetadata({
     title: "Same-Day AC Repair in Orange County, CA",
     description:
-      "Same-day AC repair throughout Southern California. Free diagnostic with repair, written quote before any work. Call (714) 410-2784.",
+      "Same-day AC repair in Orange County, CA. Based in Yorba Linda, serving local homeowners with AC diagnostics and repairs. Call (714) 410-2784.",
     path: "/air-conditioning/ac-repair",
   });
 }
@@ -142,7 +142,7 @@ export default function AcRepairPage() {
 
               {/* H1 */}
               <h1 className="text-4xl sm:text-5xl lg:text-[3.1rem] font-bold text-white leading-[1.1] tracking-tight">
-                AC Repair — Same-Day Service, Southern California
+                AC Repair in Orange County — Same-Day Service
               </h1>
 
               <p className="text-lg text-slate-300 leading-relaxed max-w-lg">

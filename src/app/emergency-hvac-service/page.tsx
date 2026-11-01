@@ -60,32 +60,32 @@ type TriageList = { title: string; tone: "alert" | "urgent" | "wait"; items: Hub
 
 const TRIAGE: TriageList[] = [
   {
-    title: "Get safe first, then call",
+    title: "Get out and call for help first",
     tone: "alert",
     items: [
       [
-        "Gas smell: leave the house right away without switching anything on or off, then call 911 and your gas utility from a safe place. SoCalGas customers can reach its 24-hour emergency line at 1-800-427-2200 (",
+        "Gas smell: leave the house right away. From a safe place, call 911 and your gas utility. SoCalGas customers can reach SoCalGas at 1-800-427-2200 (",
         { href: "https://www.socalgas.com/safety/emergency-information/emergency-response", label: "SoCalGas emergency information" },
         ").",
       ],
       [
-        "Carbon monoxide alarm sounding, or anyone dizzy, light-headed or nauseated: leave the home and call 911 (",
-        { href: "https://blogs.cdc.gov/yourhealthyourenvironment/2016/10/31/carbon-monoxide-co-poisoning-prevention-5/", label: "CDC carbon monoxide guidance" },
+        "Carbon monoxide alarm sounding, or anyone with symptoms such as dizziness or nausea: leave the home right away and call 911 from outside (",
+        { href: "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/carbon-monoxide-poisoning.html", label: "American Red Cross carbon monoxide safety" },
         ").",
       ],
-      ["Smoke, sparks or a burning smell from the equipment: switch the system off at the breaker and call for help. Call 911 if you see flames."],
-      ["Water leaking near the electrical panel or the equipment's wiring: switch the system off at the breaker."],
+      ["Flames, heavy smoke or sparks from HVAC equipment or its wiring: leave the home and call 911. Don't go near the equipment."],
+      ["Water near the electrical panel, outlets or equipment wiring: stay out of the water and away from the area. Call 911 if there are sparks, smoke or a burning smell."],
     ],
   },
   {
-    title: "Urgent: call us now",
+    title: "Urgent, but not an immediate danger: call us",
     tone: "urgent",
     items: [
-      ["No cooling when an infant, an older adult, or someone with a health condition is in the home."],
-      ["No heat on a cold night with someone vulnerable in the home."],
-      ["A breaker that trips every time the system starts."],
-      ["A furnace that keeps locking out, or a system you had to switch off because of a smell or noise."],
-      ["Water actively leaking from the indoor unit."],
+      ["No cooling or no heat when an infant, an older adult, or someone with a health condition is in the home. If anyone shows signs of heat illness or cold exposure, call 911 or seek medical help, and move them somewhere safer in the meantime."],
+      ["A burning smell without smoke: turn the thermostat off. If the smell continues or you see smoke, treat it as an emergency above."],
+      ["A breaker that trips when the system starts: leave it off and don't keep resetting it."],
+      ["A furnace that keeps locking out, or a system you switched off because of a smell or noise."],
+      ["Water actively leaking from the indoor unit: turn the system off at the thermostat and keep the water away from electrical parts."],
     ],
   },
   {
@@ -100,10 +100,10 @@ const TRIAGE: TriageList[] = [
 ];
 
 const WHILE_YOU_WAIT: HubText[] = [
-  ["Set the thermostat to off so the system stops trying to run, and don't keep resetting a breaker that trips again."],
+  ["Set the thermostat to off so the system stops trying to run. If a breaker has tripped, leave it off and don't keep resetting it."],
   ["Replace a visibly clogged filter and open any closed supply and return vents."],
   ["If the AC has failed, close blinds on sun-facing windows, use fans, and move vulnerable people to the coolest room. If the heat has failed, close doors to unused rooms and add layers."],
-  ["Don't open electrical panels or equipment cabinets, and don't bypass safety switches."],
+  ["Don't open electrical panels or equipment cabinets, don't bypass safety switches, and stay away from equipment that is sparking, smoking or sitting in water."],
   ["Keep pets and children away from the equipment and from any water."],
 ];
 
@@ -333,7 +333,7 @@ export default function EmergencyHvacPage() {
             <div className="section-label section-label-blue w-fit mx-auto mb-3">Is It an Emergency?</div>
             <h2 id="triage-heading" className="text-3xl font-bold text-slate-900">Which HVAC Problems Can&rsquo;t Wait</h2>
             <p className="text-slate-600 mt-3 max-w-2xl mx-auto">
-              Most breakdowns are uncomfortable rather than dangerous. A few involve gas, carbon monoxide, fire or electrical risk, and those come first.
+              Most breakdowns are uncomfortable rather than dangerous. A few involve gas, carbon monoxide, fire or electrical risk, and those come first. HVAC service is not a substitute for 911 or your gas utility: if there is immediate danger, get out and call them first, then call us.
             </p>
           </div>
           <div className="flex flex-col gap-5">
