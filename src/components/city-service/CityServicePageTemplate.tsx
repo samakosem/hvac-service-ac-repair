@@ -245,10 +245,10 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
             {[
               ...(licenseNumberLabel() ? [{ icon: <ShieldIcon className="w-4 h-4 text-copper-400" />, text: licenseNumberLabel() as string }] : []),
               ...(CREDENTIALS.epaCertified ? [{ icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "EPA Certified" }] : []),
-              { icon: <BoltIcon className="w-4 h-4 text-copper-400" />, text: "Same-Day Availability" },
+              { icon: <BoltIcon className="w-4 h-4 text-copper-400" />, text: page.neutralHeroBadges ? "Same-Day Service Available" : "Same-Day Availability" },
               { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "Free Estimates" },
               { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "0% Financing Available" },
-              { icon: <PhoneIcon className="w-4 h-4 text-copper-400" />, text: "Real People Answer" },
+              { icon: <PhoneIcon className="w-4 h-4 text-copper-400" />, text: page.neutralHeroBadges ? "Open 24/7" : "Real People Answer" },
             ].map((item) => (
               <div key={item.text} className="flex items-center gap-2">
                 {item.icon}
@@ -388,7 +388,7 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
           </div>
 
           <QuickChecksGrid kind={quickChecksKind(page.serviceSlug)} refined={page.refinedSafety} />
-          {page.refinedSafety && isEmergency && (
+          {page.refinedSafety && (
             <p className="mt-6 text-center text-xs text-slate-500">
               Safety sources:{" "}
               <a href="https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/fire.html" rel="noopener" className="underline underline-offset-2">American Red Cross fire safety</a>,{" "}

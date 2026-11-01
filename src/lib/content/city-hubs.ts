@@ -61,6 +61,23 @@ const REFRIGERANT_PARAGRAPH: HubText = [
   ".",
 ];
 
+const EPA_R22_SCHEDULE = "https://www.epa.gov/ods-phaseout/phaseout-class-ii-ozone-depleting-substances";
+
+/** Placentia and Costa Mesa wording (Phase 11A): does not suggest every R-22 system can be recharged or repaired. */
+const REFRIGERANT_PARAGRAPH_PILOT: HubText = [
+  "If your system still runs on R-22, you can keep using it. The ",
+  { href: EPA_R22_SCHEDULE, label: "EPA ended U.S. production and import of R-22" },
+  " on January 1, 2020, so whether a repair that needs refrigerant is practical depends on the condition of the system and the remaining supply of previously produced or reclaimed R-22. New central air conditioners and heat pumps made since January 1, 2025 use lower-GWP refrigerants under the EPA's ",
+  { href: EPA_TT, label: "Technology Transitions rules" },
+  ".",
+];
+
+const R22_FAQ_PILOT = {
+  question: "My air conditioner uses R-22. Do I have to replace it?",
+  answer:
+    "No. The EPA ended U.S. production and import of R-22 on January 1, 2020, but you can keep using an existing R-22 system. Whether a repair that needs more refrigerant is practical depends on the system's condition and the remaining supply of previously produced or reclaimed R-22, so when a major part such as the compressor fails, it is worth comparing the repair quote with the cost of a new system.",
+};
+
 const R22_FAQ = {
   question: "My air conditioner uses R-22. Do I have to replace it?",
   answer:
@@ -93,7 +110,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
         heading: "Furnace and Heating Repair in Placentia",
         paragraphs: [
           [
-            "We repair gas and electric furnaces and heat pumps. Signs that a heating system needs attention include no heat or weak airflow, a furnace that starts and stops repeatedly, and an ignition that will not stay lit. A burning smell is a reason to turn the thermostat off and call for service; if you see smoke or flames, leave the house and call 911.",
+            "We repair gas and electric furnaces and heat pumps. Signs that a heating system needs attention include no heat or weak airflow, a furnace that starts and stops repeatedly, and an ignition that will not stay lit. A burning smell is a reason to stop using the furnace and call for service; if the smell is strong or you see smoke, flames or sparks, leave the house and call 911.",
           ],
           [
             "See ",
@@ -129,7 +146,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
             { href: "https://placentia.org/58/Building-and-Safety", label: "Building and Safety Division" },
             " handles mechanical permits, the permit type that covers HVAC equipment, and you can look up permits already issued for a property through the city's online records. For questions about a specific project, the division's number is (714) 993-8124.",
           ],
-          REFRIGERANT_PARAGRAPH,
+          REFRIGERANT_PARAGRAPH_PILOT,
           [
             "Our ",
             { href: "/air-conditioning/ac-installation", label: "AC installation" },
@@ -156,7 +173,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
         answer:
           "Placentia's Building and Safety Division handles mechanical permits, which cover HVAC equipment. Ask your contractor whether your replacement needs one, or call the division at (714) 993-8124.",
       },
-      R22_FAQ,
+      R22_FAQ_PILOT,
       {
         question: "Do you work on heat pumps and ductless mini-splits?",
         answer:
@@ -195,7 +212,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
         heading: "Furnace and Heating Repair in Costa Mesa",
         paragraphs: [
           [
-            "We repair gas and electric furnaces and heat pumps. Signs that a heating system needs attention include no heat or weak airflow, a furnace that starts and stops repeatedly, and an ignition that will not stay lit. A burning smell is a reason to turn the thermostat off and call for service; if you see smoke or flames, leave the house and call 911.",
+            "We repair gas and electric furnaces and heat pumps. Signs that a heating system needs attention include no heat or weak airflow, a furnace that starts and stops repeatedly, and an ignition that will not stay lit. A burning smell is a reason to stop using the furnace and call for service; if the smell is strong or you see smoke, flames or sparks, leave the house and call 911.",
           ],
           [
             "See ",
@@ -228,7 +245,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
             },
             ", which takes permit applications online.",
           ],
-          REFRIGERANT_PARAGRAPH,
+          REFRIGERANT_PARAGRAPH_PILOT,
         ],
       },
       {
@@ -267,7 +284,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
         answer:
           "Over time, yes. Salt-laden coastal air speeds up corrosion on condenser coils and copper refrigerant lines. Regular coil cleaning and inspection catch this before it becomes a refrigerant leak or a compressor failure.",
       },
-      R22_FAQ,
+      R22_FAQ_PILOT,
       {
         question: "Do you offer emergency HVAC service in Costa Mesa?",
         answer: `Yes. We are open 24 hours a day, 7 days a week, and same-day service is available in Costa Mesa. ${SITE.emergencyArrivalOC}`,

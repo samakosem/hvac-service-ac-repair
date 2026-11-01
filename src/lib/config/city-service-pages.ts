@@ -49,7 +49,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     heroSubheadline:
       "Your AC stopped working? We diagnose, quote, and fix it, with same-day service available. No guesswork, no upsells.",
     localContext:
-      "Yorba Linda's hillside tract homes and 1970s–2000s construction mean we frequently work on both older R-22 systems due for replacement and newer R-410A equipment needing maintenance. Summer temperatures regularly push above 95°F in inland neighborhoods near Weir Canyon, making a functioning AC non-negotiable from June through September. Our shop is on Yorba Linda Blvd — we're literally your neighbors.",
+      "We serve Yorba Linda and the rest of Orange County from our base in Yorba Linda.",
     urgencyNote: "Serving Yorba Linda and surrounding neighborhoods. Same-day service available.",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/air-conditioning/ac-repair" },
@@ -72,7 +72,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "Do you work on older R-22 systems?",
         answer:
-          "Yes, we can look at older systems and explain your repair and replacement options. R-22 systems are older equipment: since 2010 the EPA has limited R-22 to servicing equipment manufactured before that year, and it ended U.S. production and import of R-22 on January 1, 2020, so repairs that need refrigerant depend on reclaimed supply. A technician can confirm which refrigerant your system uses.",
+          "Yes, we can look at older systems and explain your repair and replacement options. R-22 systems are older equipment: since 2010 the EPA has limited R-22 to servicing equipment manufactured before that year, and it ended U.S. production and import of R-22 on January 1, 2020. Whether a system can be repaired or recharged depends on its condition and on the remaining supply of previously produced or reclaimed R-22, so a technician can confirm which refrigerant your system uses and what your options are.",
       },
       {
         question: "Do you offer financing?",
@@ -461,12 +461,12 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/emergency-ac-repair",
     metaTitle: "Emergency AC Repair in Yorba Linda, CA | Available Today | (714) 410-2784",
     metaDescription:
-      "AC broke down in Yorba Linda? Same-day emergency HVAC service — real people answer, no voicemail. Free diagnostic, no emergency surcharge. Call (714) 410-2784.",
+      "AC broke down in Yorba Linda? Same-day emergency HVAC service is available. Free diagnostic, no emergency surcharge. Call (714) 410-2784.",
     h1: "AC Broke Down in Yorba Linda? We're Available Today.",
     heroSubheadline:
-      "Real people answer — no voicemail. Same-day emergency HVAC service, 7 days a week.",
+      "Open 24 hours a day, 7 days a week. Same-day emergency HVAC service is available.",
     localContext:
-      "Our shop is on Yorba Linda Blvd — we have the shortest drive time of any HVAC company serving this city. When temperatures hit 95–100°F in inland neighborhoods near Weir Canyon, we treat every AC outage as an emergency and prioritize Yorba Linda calls.",
+      "We serve Yorba Linda and the rest of the Orange County service area from our base in Yorba Linda.",
     urgencyNote: "Open 24/7, including emergency service. We're based in Yorba Linda.",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/air-conditioning/emergency-ac-repair" },
@@ -489,7 +489,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       {
         question: "What if you can't fix it today?",
         answer:
-          "We explain all options and provide a temporary solution where possible. We never leave you without a clear plan.",
+          "We explain your options and the next steps clearly.",
       },
       {
         question: "Do you service all AC brands?",
@@ -501,8 +501,8 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
     whyUsHeadline: "Why Yorba Linda Homeowners Call Us First",
     whyUsPoints: [
       {
-        heading: "Real People Answer",
-        body: "Call any time during service hours and a real person picks up. No voicemail trees, no call centers.",
+        heading: "Clear Next Step",
+        body: "Call or send a request and we'll confirm a time with you.",
       },
       {
         heading: "No Emergency Surcharge",
@@ -528,7 +528,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       "AC burning smell (see the safety steps on this page)",
       "Complete system failure in extreme heat",
     ],
-    ctaBannerText: "Don't Suffer Through the Heat. We Answer Live in Yorba Linda.",
+    ctaBannerText: "Don't Suffer Through the Heat. Call Us Any Time in Yorba Linda.",
     neutralHeroBadges: true,
     refinedSafety: true,
   },
@@ -628,7 +628,7 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
     heroSubheadline:
       "No heat, or a furnace that won't light or stay lit? We diagnose furnaces and heating systems in Yorba Linda, with same-day service available.",
     localContext:
-      "Yorba Linda winters drop to 40°F overnight — don't wait until your heater fails in January. Most Yorba Linda homes have split systems that handle both heating and cooling. One service call covers both. We're based on Yorba Linda Blvd and stock furnace parts for the brands most common in local homes.",
+      "We serve Yorba Linda and the rest of Orange County from our base in Yorba Linda.",
     urgencyNote: "Same-day heating service available. Don't wait for winter to discover a failed furnace.",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/heating/heating-repair" },
@@ -656,7 +656,7 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "What should I do if my furnace stops working at night?",
         answer:
-          "If you smell gas, or a carbon monoxide alarm sounds, leave the home and call 911 from outside. If you smell burning or see smoke, turn the thermostat off, and leave and call 911 if there are flames or heavy smoke. Otherwise, check that the thermostat is set to heat and that the filter is not clogged, and call us at (714) 410-2784. We're open 24 hours a day, 7 days a week.",
+          "If you smell gas, see flames, smoke or sparks, or a carbon monoxide alarm sounds, leave the home right away and call 911 from a safe place (for gas, also your gas utility). Don't go back inside, and don't try to shut the furnace off or check it. A burning smell is a reason to stop using the furnace and call for service; if the smell is strong or you see smoke, leave and call 911. If there is no sign of danger, check that the thermostat is set to heat and that the filter is not clogged, then call us at (714) 410-2784. We're open 24 hours a day, 7 days a week.",
       },
       {
         question: "Should I service my heating system before winter?",

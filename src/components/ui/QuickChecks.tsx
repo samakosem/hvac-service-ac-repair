@@ -140,11 +140,14 @@ const REFINED: Partial<Record<QuickChecksKind, Check[]>> = {
   ],
   "heating-repair": [
     CONTENT["heating-repair"].checks[0],
-    CONTENT["heating-repair"].checks[1],
+    {
+      heading: "Check power to the furnace",
+      body: "If there is no gas or burning smell and you see no smoke or sparks, check the switch near the furnace and the breaker, and make sure the furnace access panel is fully closed. If anything seems unsafe, don't touch them: leave and call 911.",
+    },
     {
       heading: "If you smell gas, leave first",
       alert: true,
-      body: "Leave the home right away, then call 911 and your gas utility from a safe place. If a carbon monoxide alarm sounds, leave the home and call 911 from outside.",
+      body: "For a gas smell, flames, smoke, sparks or a carbon monoxide alarm, leave the home right away and call 911 from a safe place (for gas, also your gas utility). Don't go back inside, and don't try to shut the furnace off or check it.",
     },
   ],
 };
