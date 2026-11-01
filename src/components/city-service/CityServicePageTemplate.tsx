@@ -139,13 +139,15 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
               <div className="flex items-center gap-2 flex-wrap">
                 <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-xs font-bold uppercase tracking-wider ${heroAccent}`}>
                   <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0" />
-                  Open Now — Accepting {isEmergency ? "Emergency" : "Same-Day"} Calls
+                  {page.neutralHeroBadges ? "Open 24/7 — Call Any Time" : <>Open Now — Accepting {isEmergency ? "Emergency" : "Same-Day"} Calls</>}
                 </span>
-                {/* Tech available badge */}
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/25 text-emerald-300 text-xs font-bold uppercase tracking-wider">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse" />
-                  Tech Available in Your Area
-                </span>
+                {/* Tech available badge (replaced by a neutral 24/7 badge on pages that opt in) */}
+                {!page.neutralHeroBadges && (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-400/25 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 animate-pulse" />
+                    Tech Available in Your Area
+                  </span>
+                )}
                 {isEmergency && (
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-red-500/15 border border-red-400/25 text-red-300 text-xs font-bold uppercase tracking-wider">
                     <BoltIcon className="w-3 h-3" />
@@ -243,10 +245,10 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
             {[
               ...(licenseNumberLabel() ? [{ icon: <ShieldIcon className="w-4 h-4 text-copper-400" />, text: licenseNumberLabel() as string }] : []),
               ...(CREDENTIALS.epaCertified ? [{ icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "EPA Certified" }] : []),
-              { icon: <BoltIcon className="w-4 h-4 text-copper-400" />, text: "Same-Day Availability" },
+              { icon: <BoltIcon className="w-4 h-4 text-copper-400" />, text: page.neutralHeroBadges ? "Same-Day Service Available" : "Same-Day Availability" },
               { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "Free Estimates" },
               { icon: <CheckIcon className="w-4 h-4 text-emerald-400" />, text: "0% Financing Available" },
-              { icon: <PhoneIcon className="w-4 h-4 text-copper-400" />, text: "Real People Answer" },
+              { icon: <PhoneIcon className="w-4 h-4 text-copper-400" />, text: page.neutralHeroBadges ? "Open 24/7" : "Real People Answer" },
             ].map((item) => (
               <div key={item.text} className="flex items-center gap-2">
                 {item.icon}
@@ -385,7 +387,16 @@ export default function CityServicePageTemplate({ page, isEmergency = false }: P
             <QuickChecksHeader kind={quickChecksKind(page.serviceSlug)} />
           </div>
 
-          <QuickChecksGrid kind={quickChecksKind(page.serviceSlug)} />
+          <QuickChecksGrid kind={quickChecksKind(page.serviceSlug)} refined={page.refinedSafety} />
+          {page.refinedSafety && (
+            <p className="mt-6 text-center text-xs text-slate-500">
+              Safety sources:{" "}
+              <a href="https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/fire.html" rel="noopener" className="underline underline-offset-2">American Red Cross fire safety</a>,{" "}
+              <a href="https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/carbon-monoxide-poisoning.html" rel="noopener" className="underline underline-offset-2">carbon monoxide safety</a>,{" "}
+              <a href="https://www.socalgas.com/safety/emergency-information/emergency-response" rel="noopener" className="underline underline-offset-2">SoCalGas emergency information</a> and the{" "}
+              <a href="https://content.nfpa.org/-/media/project/storefront/catalog/files/home-fire-safety/electrical/electrical_safety_checklist.pdf" rel="noopener" className="underline underline-offset-2">NFPA electrical safety checklist</a>.
+            </p>
+          )}
         </div>
       </section>
 

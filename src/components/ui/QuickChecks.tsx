@@ -109,6 +109,49 @@ const CONTENT: Record<QuickChecksKind, { label: string; heading: string; intro: 
   },
 };
 
+/**
+ * Safer wording for pages that opt in (Phase 11A pilot pages): no breaker operation when the panel or area may be
+ * unsafe, evacuation first for flames, smoke, sparks, gas and carbon monoxide. Other pages keep CONTENT unchanged.
+ */
+const REFINED: Partial<Record<QuickChecksKind, Check[]>> = {
+  "ac-repair": [
+    CONTENT["ac-repair"].checks[0],
+    {
+      heading: "Check the breaker and outdoor switch",
+      body: "Central AC runs on a breaker in the main panel and usually a disconnect switch next to the outdoor unit. If the panel is dry and undamaged and there are no sparks, smoke or burning smell, you can check whether a breaker has tripped and reset it once. If it trips again, leave it off and call a qualified professional. If the panel or the area around it is wet, damaged or smells of burning, stay away from it and call for help.",
+    },
+    CONTENT["ac-repair"].checks[2],
+  ],
+  "emergency-ac-repair": [
+    {
+      heading: "Leave first if there is immediate danger",
+      alert: true,
+      body: "Flames, heavy smoke or sparks from the equipment or its wiring, a gas smell, or a carbon monoxide alarm: leave the home and call 911 from a safe place (for gas, also your gas utility). Don't go back inside, and don't try to shut the equipment off or check it first.",
+    },
+    {
+      heading: "If something seems wrong, but there is no smoke or fire",
+      alert: true,
+      body: "For a burning smell without smoke, grinding or banging, or water leaking from the indoor unit, set the thermostat to Off and stay away from the equipment and any water near wiring or the electrical panel. If a breaker trips again, leave it off rather than resetting it, and call us.",
+    },
+    {
+      heading: "Stay cool safely",
+      body: "Close blinds on sunny windows, run ceiling or portable fans, and drink water. Move children, older adults and pets to the coolest room, or to a cooled public place if the house gets too hot. If anyone shows signs of heat illness, call 911 or seek medical help.",
+    },
+  ],
+  "heating-repair": [
+    CONTENT["heating-repair"].checks[0],
+    {
+      heading: "Check power to the furnace",
+      body: "If there is no gas or burning smell and you see no smoke or sparks, check the switch near the furnace and the breaker, and make sure the furnace access panel is fully closed. If anything seems unsafe, don't touch them: leave and call 911.",
+    },
+    {
+      heading: "If you smell gas, leave first",
+      alert: true,
+      body: "For a gas smell, flames, smoke, sparks or a carbon monoxide alarm, leave the home right away and call 911 from a safe place (for gas, also your gas utility). Don't go back inside, and don't try to shut the furnace off or check it.",
+    },
+  ],
+};
+
 export function quickChecksKind(serviceSlug: string): QuickChecksKind {
   return serviceSlug in CONTENT ? (serviceSlug as QuickChecksKind) : "hvac-repair";
 }
@@ -126,11 +169,12 @@ export function QuickChecksHeader({ kind, tone = "light" }: { kind: QuickChecksK
   );
 }
 
-export function QuickChecksGrid({ kind, tone = "light" }: { kind: QuickChecksKind; tone?: "light" | "dark" }) {
+export function QuickChecksGrid({ kind, tone = "light", refined = false }: { kind: QuickChecksKind; tone?: "light" | "dark"; refined?: boolean }) {
   const dark = tone === "dark";
+  const checks = (refined && REFINED[kind]) || CONTENT[kind].checks;
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-      {CONTENT[kind].checks.map((check) => (
+      {checks.map((check) => (
         <div
           key={check.heading}
           className={

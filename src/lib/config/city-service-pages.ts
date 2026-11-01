@@ -26,6 +26,10 @@ export type CityServicePage = {
   servicesListHeadline: string;
   servicesList: string[];
   ctaBannerText: string;
+  /** Replace the generic "Open Now" and "Tech Available" hero badges with a neutral 24/7 badge. */
+  neutralHeroBadges?: boolean;
+  /** Use the refined breaker and hazard wording in the quick-checks cards (Phase 11A pilot pages). */
+  refinedSafety?: boolean;
 };
 
 // ─── PROMPT SET A — AC Repair × Cities ──────────────────────────────────────
@@ -45,7 +49,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     heroSubheadline:
       "Your AC stopped working? We diagnose, quote, and fix it, with same-day service available. No guesswork, no upsells.",
     localContext:
-      "Yorba Linda's hillside tract homes and 1970s–2000s construction mean we frequently work on both older R-22 systems due for replacement and newer R-410A equipment needing maintenance. Summer temperatures regularly push above 95°F in inland neighborhoods near Weir Canyon, making a functioning AC non-negotiable from June through September. Our shop is on Yorba Linda Blvd — we're literally your neighbors.",
+      "We serve Yorba Linda and the rest of Orange County from our base in Yorba Linda.",
     urgencyNote: "Serving Yorba Linda and surrounding neighborhoods. Same-day service available.",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/air-conditioning/ac-repair" },
@@ -58,7 +62,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "How fast can you get to Yorba Linda for an AC repair?",
         answer:
-          "Our shop is on Yorba Linda Blvd, and we're open 24/7. Call us and we'll give you an arrival window when you book.",
+          "We're based in Yorba Linda and open 24/7. Call us and we'll give you an arrival window when you book.",
       },
       {
         question: "Do you charge a diagnostic fee?",
@@ -68,7 +72,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "Do you work on older R-22 systems?",
         answer:
-          "Yes. Many Yorba Linda homes built in the 1970s–1990s still run R-22 systems, and we can service, recharge, or help you transition to a modern R-410A system.",
+          "Yes, we can look at older systems and explain your repair and replacement options. R-22 systems are older equipment: since 2010 the EPA has limited R-22 to servicing equipment manufactured before that year, and it ended U.S. production and import of R-22 on January 1, 2020. Whether a system can be repaired or recharged depends on its condition and on the remaining supply of previously produced or reclaimed R-22, so a technician can confirm which refrigerant your system uses and what your options are.",
       },
       {
         question: "Do you offer financing?",
@@ -78,7 +82,7 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       {
         question: "Are you available on weekends?",
         answer:
-          "Yes. We offer service 7 days a week, including Saturday and emergency availability on Sunday.",
+          "Yes. We're open 24 hours a day, 7 days a week, including weekends.",
       },
     ],
     pricingNote: "Free diagnostic · Most common repairs: $150–$450 · Full system replacement: free estimate · 0% financing on repairs over $500",
@@ -86,12 +90,12 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
     whyUsPoints: [
       {
         heading: "We're Based Here",
-        body: "Our shop is on Yorba Linda Blvd, close to homes across the city.",
+        body: "We're based in Yorba Linda and serve homes across the city and the rest of Orange County.",
       },
       licenseOrHoursPoint(),
       {
-        heading: "Same Technician Start to Finish",
-        body: "You deal with one person — not a rotating cast. Your tech diagnoses, quotes, and fixes the problem.",
+        heading: "Clear Explanation First",
+        body: "Your technician explains what they found and what it takes to fix it before any work begins.",
       },
       {
         heading: "Written Quote Before Any Work",
@@ -109,7 +113,9 @@ export const AC_REPAIR_CITIES: CityServicePage[] = [
       "Evaporator coil cleaning & service",
       "Drain line clearing & condensate repair",
     ],
-    ctaBannerText: "AC Not Cooling? We're Available Today in Yorba Linda.",
+    ctaBannerText: "AC Not Cooling in Yorba Linda? Call Us 24/7.",
+    neutralHeroBadges: true,
+    refinedSafety: true,
   },
 
   // A2 — Anaheim
@@ -455,13 +461,13 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
     urlBase: "/air-conditioning/emergency-ac-repair",
     metaTitle: "Emergency AC Repair in Yorba Linda, CA | Available Today | (714) 410-2784",
     metaDescription:
-      "AC broke down in Yorba Linda? Same-day emergency HVAC service — real people answer, no voicemail. Free diagnostic, no emergency surcharge. Call (714) 410-2784.",
+      "AC broke down in Yorba Linda? Same-day emergency HVAC service is available. Free diagnostic, no emergency surcharge. Call (714) 410-2784.",
     h1: "AC Broke Down in Yorba Linda? We're Available Today.",
     heroSubheadline:
-      "Real people answer — no voicemail. Same-day emergency HVAC service, 7 days a week.",
+      "Open 24 hours a day, 7 days a week. Same-day emergency HVAC service is available.",
     localContext:
-      "Our shop is on Yorba Linda Blvd — we have the shortest drive time of any HVAC company serving this city. When temperatures hit 95–100°F in inland neighborhoods near Weir Canyon, we treat every AC outage as an emergency and prioritize Yorba Linda calls.",
-    urgencyNote: "Open 24/7, including emergency service. We dispatch from Yorba Linda Blvd.",
+      "We serve Yorba Linda and the rest of the Orange County service area from our base in Yorba Linda.",
+    urgencyNote: "Open 24/7, including emergency service. We're based in Yorba Linda.",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/air-conditioning/emergency-ac-repair" },
       { name: "Placentia", slug: "placentia", urlBase: "/air-conditioning/emergency-ac-repair" },
@@ -478,12 +484,12 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       {
         question: "How fast can you get to Yorba Linda for an emergency?",
         answer:
-          `Same-day emergency service is available 24/7, and our shop is on Yorba Linda Blvd. ${SITE.emergencyArrivalOC}`,
+          `Same-day emergency service is available 24/7, and we're based in Yorba Linda. ${SITE.emergencyArrivalOC}`,
       },
       {
         question: "What if you can't fix it today?",
         answer:
-          "We explain all options and provide a temporary solution where possible. We never leave you without a clear plan.",
+          "We explain your options and the next steps clearly.",
       },
       {
         question: "Do you service all AC brands?",
@@ -495,8 +501,8 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
     whyUsHeadline: "Why Yorba Linda Homeowners Call Us First",
     whyUsPoints: [
       {
-        heading: "Real People Answer",
-        body: "Call any time during service hours and a real person picks up. No voicemail trees, no call centers.",
+        heading: "Clear Next Step",
+        body: "Call or send a request and we'll confirm a time with you.",
       },
       {
         heading: "No Emergency Surcharge",
@@ -504,7 +510,7 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       },
       {
         heading: "Based in Yorba Linda",
-        body: "Our shop is on Yorba Linda Blvd, close to homes across the city.",
+        body: "We're based in Yorba Linda and serve homes across the city and the rest of Orange County.",
       },
       {
         heading: "Open 24 Hours, 7 Days a Week",
@@ -519,10 +525,12 @@ export const EMERGENCY_AC_CITIES: CityServicePage[] = [
       "AC running but house not cooling",
       "AC tripping the breaker",
       "Water leaking from AC unit",
-      "AC burning smell — immediate safety check",
+      "AC burning smell (see the safety steps on this page)",
       "Complete system failure in extreme heat",
     ],
-    ctaBannerText: "Don't Suffer Through the Heat. We Answer Live in Yorba Linda.",
+    ctaBannerText: "Don't Suffer Through the Heat. Call Us Any Time in Yorba Linda.",
+    neutralHeroBadges: true,
+    refinedSafety: true,
   },
 
   // B2 — Anaheim
@@ -620,7 +628,7 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
     heroSubheadline:
       "No heat, or a furnace that won't light or stay lit? We diagnose furnaces and heating systems in Yorba Linda, with same-day service available.",
     localContext:
-      "Yorba Linda winters drop to 40°F overnight — don't wait until your heater fails in January. Most Yorba Linda homes have split systems that handle both heating and cooling. One service call covers both. We're based on Yorba Linda Blvd and stock furnace parts for the brands most common in local homes.",
+      "We serve Yorba Linda and the rest of Orange County from our base in Yorba Linda.",
     urgencyNote: "Same-day heating service available. Don't wait for winter to discover a failed furnace.",
     nearbyCities: [
       { name: "Anaheim Hills", slug: "anaheim-hills", urlBase: "/heating/heating-repair" },
@@ -646,9 +654,9 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
           "Furnace repair and tune-up, heat pump service, thermostat replacement, heating system diagnostic, duct inspection and sealing, and new heating system installation.",
       },
       {
-        question: "How cold does Yorba Linda get in winter?",
+        question: "What should I do if my furnace stops working at night?",
         answer:
-          "Yorba Linda winters regularly drop to the mid-30s–40s°F overnight, especially in elevated neighborhoods. A working heater isn't optional — it's essential for comfort and safety.",
+          "If you smell gas, see flames, smoke or sparks, or a carbon monoxide alarm sounds, leave the home right away and call 911 from a safe place (for gas, also your gas utility). Don't go back inside, and don't try to shut the furnace off or check it. A burning smell is a reason to stop using the furnace and call for service; if the smell is strong or you see smoke, leave and call 911. If there is no sign of danger, check that the thermostat is set to heat and that the filter is not clogged, then call us at (714) 410-2784. We're open 24 hours a day, 7 days a week.",
       },
       {
         question: "Should I service my heating system before winter?",
@@ -665,11 +673,11 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
       },
       {
         heading: "Based in Yorba Linda",
-        body: "We're on Yorba Linda Blvd, not commuting from another county.",
+        body: "We're based in Yorba Linda and serve homes across the city and the rest of Orange County.",
       },
       {
-        heading: "Seasonal Tune-Up Specialists",
-        body: "Fall heating tune-up + spring AC tune-up = a system that runs reliably year-round.",
+        heading: "Seasonal Maintenance",
+        body: "A fall heating tune-up and a spring AC tune-up let each system be checked before its season.",
       },
       {
         heading: "Transparent Pricing",
@@ -687,7 +695,9 @@ export const HEATING_REPAIR_CITIES: CityServicePage[] = [
       "New heating system installation (free estimate)",
       "Annual AC + heating maintenance plan",
     ],
-    ctaBannerText: "Heater Not Working in Yorba Linda? We're Available Today.",
+    ctaBannerText: "Heater Not Working in Yorba Linda? Call Us 24/7.",
+    neutralHeroBadges: true,
+    refinedSafety: true,
   },
 ];
 
