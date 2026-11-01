@@ -1,0 +1,18 @@
+# Phase 10C (run 6, EPA wording): read-only check that external sources cited on PR #18 resolve and support the statements.
+name: SEO phase 10C source check
+on:
+  push:
+    branches: [ci/seo-live-verify]
+    paths: [.github/workflows/seo-phase10c-sources.yml]
+permissions:
+  contents: read
+jobs:
+  sources:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: sudo apt-get install -y poppler-utils >/dev/null 2>&1 || true
+      - run: python3 .github/seo-checks/p10c_sources.py
