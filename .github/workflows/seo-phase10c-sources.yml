@@ -1,4 +1,4 @@
-# Phase 10C (run 6, EPA wording): read-only check that external sources cited on PR #18 resolve and support the statements.
+# Phase 10C (run 7, Costa Mesa sources): read-only check that external sources cited on the Costa Mesa PR resolve and support the statements.
 name: SEO phase 10C source check
 on:
   push:

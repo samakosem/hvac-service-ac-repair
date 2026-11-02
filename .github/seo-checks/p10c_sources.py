@@ -2,8 +2,15 @@
 import re, subprocess, sys, urllib.request, tempfile, os
 UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36", "Accept": "text/html,application/pdf,*/*;q=0.8", "Accept-Language": "en-US,en;q=0.9"}
 S = [
- ("https://www.epa.gov/hfcs/technology-transitions-hfc-restrictions-sector", [r"Residential and light commercial air.conditioning.{0,500}", r"installation.{0,200}", r"manufactur.{0,200}", r"component.{0,250}", r"2026.{0,200}", r"reconsider.{0,250}"]),
- ("https://www.epa.gov/hfcs/regulatory-actions-technology-transitions", [r"May 2026.{0,600}", r"residential and light commercial.{0,300}", r"component.{0,250}", r"installation.{0,250}"]),
+ ("https://www.costamesaca.gov/community/about", [r"one mile.{0,120}", r"Pacific.{0,120}"]),
+ ("https://www.costamesaca.gov/government/departments-and-divisions/economic-and-development-services/building-safety/submittal-requirements", [r"Insta-Permit.{0,160}", r"HVAC.{0,200}", r"Mechanical.{0,160}", r"TESSA.{0,120}"]),
+ ("https://www.costamesaca.gov/trending/insta-permit", [r"HVAC.{0,300}", r"visible.{0,120}", r"standard plans.{0,120}"]),
+ ("https://www.costamesaca.gov/government/departments-and-divisions/economic-and-development-services/building-safety", [r"754-5273", r"Building Safety.{0,100}", r"permit.{0,120}"]),
+ ("https://www.carrier.com/us/en/residential/hvac-resources/coastal-heating-and-air/", [r"salt.{0,200}", r"corros.{0,200}", r"coil.{0,200}", r"inspect.{0,160}|clean.{0,160}"]),
+ ("https://www.lennox.com/dA/59d64ade9d/507167-03.pdf", [r"coastal.{0,260}", r"rinse.{0,200}|rinsed.{0,200}", r"potable.{0,160}"]),
+ ("https://www.energy.gov/sites/default/files/2016/11/f34/HomeCooling101.pdf", [r"filter.{0,200}", r"evaporator coil.{0,200}", r"fin comb.{0,100}", r"outdoor.{0,160}", r"professional.{0,160}|technician.{0,160}"]),
+ ("https://www.energy.gov/articles/pump-your-savings-heat-pumps", [r"heat pump.{0,240}", r"cool.{0,200}", r"move.{0,160}|transfer.{0,160}", r"ductless.{0,200}|mini-split.{0,200}"]),
+ ("https://www.energy.gov/sites/default/files/2022-08/energy-saver-guide-2022.pdf", [r"heat pump.{0,200}", r"ductless.{0,200}|mini-split.{0,200}", r"maintenance.{0,200}"]),
 ]
 def text_of(data, ctype, url):
     if "pdf" in ctype or url.lower().endswith(".pdf"):
