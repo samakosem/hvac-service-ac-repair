@@ -326,7 +326,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
     },
     blurb: "Heating and air conditioning service for Costa Mesa homes and businesses: repairs, maintenance and new system installation.",
     localContext:
-      "Costa Mesa's coastal climate is mild for much of the year, but salt-laden air wears on outdoor condenser coils and copper refrigerant lines over time. Regular coil cleaning and inspection help catch corrosion before it turns into a refrigerant leak.",
+      "We repair and maintain furnaces, heat pumps and central air conditioners in Costa Mesa, and install replacements. Start with the system or problem that matches yours below, or send a request and we will contact you to schedule.",
     serviceCards: [
       { slug: "heating-repair", href: "/heating/heating-repair/costa-mesa", label: "Heating Repair in Costa Mesa" },
       { slug: "ac-repair", href: "/air-conditioning/ac-repair/costa-mesa", label: "AC Repair in Costa Mesa" },
@@ -334,17 +334,100 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
     ],
     sections: [
       {
+        heading: "Heating, Cooling or Both? Know Your System",
+        paragraphs: [
+          ["Knowing which kind of system you have makes it easier to describe a problem and find the right page. Most homes have one of three setups."],
+        ],
+        bullets: [
+          [
+            "Central AC with a furnace: an outdoor condenser cools, a furnace or air handler heats, and both share the same blower and ducts. Cooling problems start with ",
+            { href: "/air-conditioning/ac-repair/costa-mesa", label: "AC repair in Costa Mesa" },
+            "; no-heat problems start with ",
+            { href: "/heating/heating-repair/costa-mesa", label: "heating repair in Costa Mesa" },
+            ".",
+          ],
+          [
+            "Heat pump: one system that heats and cools. The U.S. Department of Energy explains that heat pumps move heat from the outdoors into the home in cold seasons and from the home to the outdoors in warm seasons (",
+            { href: "https://www.energy.gov/articles/pump-your-savings-heat-pumps", label: "DOE heat pump overview" },
+            "). Problems in either season start with ",
+            { href: "/heat-pumps/heat-pump-repair", label: "heat pump repair" },
+            ".",
+          ],
+          [
+            "Ductless mini-split: an air-source heat pump that can serve a home or addition without ducts, according to DOE. See the ",
+            { href: "/ductless/ductless-mini-split", label: "ductless mini-split overview" },
+            " or ",
+            { href: "/ductless/mini-split-installation", label: "mini-split installation" },
+            ".",
+          ],
+        ],
+        afterBullets: [
+          [
+            "If heating and cooling are both affected, or you are not sure which applies, ",
+            { href: "/hvac-repair/costa-mesa", label: "HVAC repair in Costa Mesa" },
+            " is the place to start.",
+          ],
+        ],
+      },
+      {
         heading: "Furnace and Heating Repair in Costa Mesa",
         paragraphs: [
           [
             "We repair gas and electric furnaces and heat pumps. Signs that a heating system needs attention include no heat or weak airflow, a furnace that starts and stops repeatedly, and an ignition that will not stay lit. A burning smell is a reason to stop using the furnace and call for service; if the smell is strong or you see smoke, flames or sparks, leave the house and call 911.",
           ],
           [
-            "See ",
-            { href: "/heating/heating-repair/costa-mesa", label: "heating repair in Costa Mesa" },
-            " for what a repair visit covers, or ",
-            { href: "/heating/furnace-repair", label: "furnace repair" },
-            " for gas and electric furnaces. If you smell gas, leave the house first and call your gas utility or 911 from outside.",
+            "The ",
+            { href: "/heating/furnace-repair", label: "furnace repair guide" },
+            " explains how gas and electric furnaces fail and what a diagnosis involves. If you smell gas, leave the house first and call your gas utility or 911 from outside.",
+          ],
+        ],
+      },
+      {
+        heading: "Maintenance That Prevents Breakdowns",
+        paragraphs: [
+          [
+            "Routine care catches small problems before they stop the system. The U.S. Department of Energy advises cleaning or replacing filters monthly during seasons of peak use, and checking the evaporator coil every year and cleaning it as necessary (",
+            { href: "https://www.energy.gov/sites/default/files/2021-08/ES-HomeHeatingandCooling_081221.pdf", label: "DOE heating and cooling guide" },
+            "; ",
+            { href: "https://www.energy.gov/sites/default/files/2016/11/f34/HomeCooling101.pdf", label: "DOE home cooling guide" },
+            ").",
+          ],
+          [
+            "Keep leaves, grass and other debris away from the outdoor unit, and look at it from time to time for visible buildup or damage. A yearly ",
+            { href: "/air-conditioning/ac-tune-up/costa-mesa", label: "AC tune-up in Costa Mesa" },
+            " includes cleaning and inspecting the outdoor coil, and a ",
+            { href: "/maintenance-plans", label: "maintenance plan" },
+            " keeps those visits on schedule.",
+          ],
+          [
+            "Equipment makers add a few steps for homes near the coast. Carrier notes that salt and other airborne contaminants can build up on outdoor components, and advises periodically inspecting the outdoor coil and cabinet for buildup or corrosion (",
+            { href: "https://www.carrier.com/us/en/residential/hvac-resources/coastal-heating-and-air/", label: "Carrier coastal guidance" },
+            "). One Lennox service manual says coils in coastal areas should be cleaned with potable water several times a year (",
+            { href: "https://www.lennox.com/dA/59d64ade9d/507167-03.pdf", label: "Lennox service manual" },
+            "). How much this matters depends on your equipment and how exposed your home is, so ask your technician what is right for your system.",
+          ],
+        ],
+      },
+      {
+        heading: "When to Consider Replacing Your System",
+        paragraphs: [
+          [
+            "Repair and replacement are rarely decided by one factor. The U.S. Department of Energy says to consider replacing heating and cooling equipment if any of these are true (",
+            { href: "https://www.energy.gov/sites/default/files/2022-08/energy-saver-guide-2022.pdf", label: "DOE Energy Saver guide" },
+            "):",
+          ],
+        ],
+        bullets: [
+          ["The heat pump or air conditioner is more than 10 years old."],
+          ["The furnace or boiler is more than 15 years old."],
+          ["The equipment needs frequent repairs and energy bills are going up."],
+          ["Some rooms in the home are too hot or too cold."],
+        ],
+        afterBullets: [
+          [
+            "These are reasons to compare a replacement quote with the repair quote, not an automatic answer. DOE adds that your contractor should explain the safety and cost-effectiveness of repair versus replacement and the system options available. Our ",
+            { href: "/air-conditioning/ac-installation", label: "guide to AC replacement quotes" },
+            " covers sizing and the questions worth asking.",
           ],
         ],
       },
@@ -374,18 +457,39 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
         ],
       },
       {
-        heading: "AC Maintenance Near the Coast",
+        heading: "What to Have Ready When You Call",
+        paragraphs: [
+          ["A few details help narrow down the problem on the first call."],
+        ],
+        bullets: [
+          ["What the system is doing, when it started, and whether heating, cooling or both are affected."],
+          ["The make, model and age from the data plate on the outdoor unit or furnace, or a photo of it."],
+          ["Whether you have a heat pump, a furnace with a separate AC, or a ductless system."],
+          ["What you have already checked, such as the thermostat setting and batteries and the air filter."],
+          ["Any blinking lights, error codes, unusual noises or smells."],
+          ["Access details, such as gate or parking instructions and who will be home."],
+        ],
+        cta: true,
+      },
+      {
+        heading: "Emergency or Routine Service?",
         paragraphs: [
           [
-            "Salt air makes outdoor condensers near the coast corrode faster than inland ones. A yearly ",
-            { href: "/air-conditioning/ac-tune-up/costa-mesa", label: "AC tune-up in Costa Mesa" },
-            " includes cleaning and inspecting the outdoor coil, and a ",
-            { href: "/maintenance-plans", label: "maintenance plan" },
-            " keeps those visits on schedule. For repairs, see ",
-            { href: "/air-conditioning/ac-repair/costa-mesa", label: "AC repair in Costa Mesa" },
-            ".",
+            "Routine service can be scheduled: weak cooling or heating, a noisy blower, or a maintenance visit. A system that has stopped completely, with no sign of danger, is urgent. Call us, and see ",
+            { href: "/air-conditioning/emergency-ac-repair/costa-mesa", label: "emergency AC repair in Costa Mesa" },
+            " or ",
+            { href: "/emergency-hvac-service", label: "emergency HVAC service" },
+            ". We are open 24 hours a day, 7 days a week, including emergency service.",
+          ],
+          [
+            "Some situations are safety hazards, not service calls. If you smell gas, see flames, smoke or sparks, or a carbon monoxide alarm sounds, leave the home and call 911 from a safe place; for gas, also call your gas utility (",
+            { href: "https://www.socalgas.com/safety/emergency-information/emergency-response", label: "SoCalGas emergency information" },
+            "; ",
+            { href: "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/carbon-monoxide-poisoning.html", label: "American Red Cross carbon monoxide safety" },
+            "). HVAC service does not replace 911 or your gas utility.",
           ],
         ],
+        cta: true,
       },
     ],
     faqs: [
@@ -405,9 +509,9 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
           "HVAC replacements in Costa Mesa are permitted as mechanical work through the city's Building Safety Division, which takes applications online. Ask your contractor to confirm the permit for your job.",
       },
       {
-        question: "Does coastal air affect my AC system in Costa Mesa?",
+        question: "Can coastal air affect my AC system?",
         answer:
-          "Over time, yes. Salt-laden coastal air speeds up corrosion on condenser coils and copper refrigerant lines. Regular coil cleaning and inspection catch this before it becomes a refrigerant leak or a compressor failure.",
+          "Equipment makers say salt and other airborne contaminants can build up on outdoor components in coastal areas, and they recommend periodically inspecting the outdoor coil and cabinet for buildup or corrosion. How much it matters depends on your equipment and how exposed your home is, so ask your technician what is right for your system.",
       },
       R22_FAQ_PILOT,
       {
@@ -415,9 +519,24 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
         answer: `Yes. We are open 24 hours a day, 7 days a week, and same-day service is available in Costa Mesa. ${SITE.emergencyArrivalOC}`,
       },
       {
+        question: "What is the difference between a heat pump and an AC with a furnace?",
+        answer:
+          "A heat pump is one system that heats and cools by moving heat: from the outdoors into the home in cold seasons and from the home to the outdoors in warm seasons, according to the U.S. Department of Energy. A central AC cools and a furnace heats, and they usually share the same ducts and blower. Which one you have decides which repair page to start with.",
+      },
+      {
+        question: "How often should I change my air filter?",
+        answer:
+          "Follow the filter maker's guidance. The U.S. Department of Energy advises cleaning or replacing filters monthly during seasons of peak use, because clean filters help the system run efficiently and last longer.",
+      },
+      {
+        question: "When should I consider replacing my AC or furnace?",
+        answer:
+          "The U.S. Department of Energy says to consider replacement if a heat pump or air conditioner is more than 10 years old, a furnace or boiler is more than 15 years old, the equipment needs frequent repairs while energy bills rise, or some rooms are too hot or too cold. Treat these as reasons to compare quotes, not an automatic answer.",
+      },
+      {
         question: "Can a Costa Mesa home without ducts get air conditioning?",
         answer:
-          "Yes. Ductless mini-split systems cool and heat individual rooms without ductwork, which suits older homes and room additions.",
+          "Yes. Ductless mini-split heat pumps can be installed in homes or additions without ducts, according to the U.S. Department of Energy, and they can heat and cool individual rooms.",
       },
     ],
     ...SHARED,
