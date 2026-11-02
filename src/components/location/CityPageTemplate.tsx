@@ -319,6 +319,35 @@ export default function CityPageTemplate({ city, county, serviceLinks, hub }: Pr
                           <RichText text={paragraph} />
                         </p>
                       ))}
+                      {section.bullets && section.bullets.length > 0 && (
+                        <ul className="flex flex-col gap-2.5 list-disc pl-5 marker:text-slate-400">
+                          {section.bullets.map((item, i) => (
+                            <li key={i} className="text-slate-700 leading-relaxed">
+                              <RichText text={item} />
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                      {section.afterBullets?.map((paragraph, i) => (
+                        <p key={`after-${i}`} className="text-slate-700 leading-relaxed">
+                          <RichText text={paragraph} />
+                        </p>
+                      ))}
+                      {section.cta && (
+                        <div className="flex flex-col sm:flex-row gap-3 pt-1">
+                          <PhoneLink
+                            className="inline-flex items-center justify-center gap-2.5 min-h-12 px-6 py-3 bg-copper-gradient text-white font-bold rounded-xl shadow-md hover:opacity-90 active:scale-[0.98] transition-all text-base"
+                            showIcon
+                            label={`Call ${SITE.phoneDisplay}`}
+                          />
+                          <a
+                            href="#request-service"
+                            className="inline-flex items-center justify-center min-h-12 px-6 py-3 rounded-xl border border-slate-300 text-slate-800 font-semibold hover:bg-slate-50 transition-colors text-base"
+                          >
+                            Request Service Online
+                          </a>
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}

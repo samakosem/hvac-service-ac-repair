@@ -26,7 +26,16 @@ export type CityHubContent = {
   localContext: string;
   /** "What {City} residents call us for" cards, pointing at the city's own service pages. */
   serviceCards: { slug: string; href: string; label: string }[];
-  sections: { heading: string; paragraphs: HubText[] }[];
+  sections: {
+    heading: string;
+    paragraphs: HubText[];
+    /** Optional bulleted list shown after the paragraphs. */
+    bullets?: HubText[];
+    /** Optional paragraphs shown after the bullets. */
+    afterBullets?: HubText[];
+    /** Show the call and request-service buttons after the section. */
+    cta?: boolean;
+  }[];
   faqs: { question: string; answer: string }[];
   sidebarNote: string;
   formNote: string;
@@ -108,6 +117,73 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
     ],
     sections: [
       {
+        heading: "Which Service Do You Need in Placentia?",
+        paragraphs: [
+          ["Pick the situation that matches what you are seeing. Each link goes to a page with more detail."],
+        ],
+        bullets: [
+          [
+            "The AC runs but the house is not cooling: start with ",
+            { href: "/air-conditioning/ac-repair/placentia", label: "AC repair in Placentia" },
+            " or the ",
+            { href: "/ac-not-cooling", label: "AC not cooling guide" },
+            ".",
+          ],
+          [
+            "No heat, or a furnace that will not stay lit: see ",
+            { href: "/heating/heating-repair/placentia", label: "heating repair in Placentia" },
+            ".",
+          ],
+          [
+            "Heating and cooling are both affected, or you are not sure which system is at fault: ",
+            { href: "/hvac-repair/placentia", label: "HVAC repair in Placentia" },
+            " explains how to tell.",
+          ],
+          [
+            "The system has stopped completely: ",
+            { href: "/air-conditioning/emergency-ac-repair/placentia", label: "emergency AC repair in Placentia" },
+            ", or ",
+            { href: "/emergency-hvac-service", label: "emergency HVAC service" },
+            " for heating problems and safety hazards.",
+          ],
+          [
+            "An older system keeps failing: compare repair and replacement with the ",
+            { href: "/calculators/repair-vs-replace-calculator", label: "repair vs. replace calculator" },
+            " and the guide to ",
+            { href: "/air-conditioning/ac-installation", label: "AC installation and replacement" },
+            ".",
+          ],
+        ],
+        cta: true,
+      },
+      {
+        heading: "AC Repair and Tune-Ups in Placentia",
+        paragraphs: [
+          [
+            "These are the most common AC complaints. The checks are safe for a homeowner; anything involving electrical parts, refrigerant or the inside of the unit is work for a technician.",
+          ],
+        ],
+        bullets: [
+          ["Blowing warm air: check that the thermostat is set to Cool and the filter is clean. Other causes include a dirty coil, a failed capacitor or contactor, or low refrigerant from a leak, and those need a technician."],
+          ["Weak airflow: a clogged filter and closed or blocked vents are the usual first suspects. A failing blower motor, an iced coil or duct problems can also be the cause."],
+          ["Will not turn on: check the thermostat settings and batteries. A clogged condensate drain can trip a safety switch that shuts the system off. If a breaker keeps tripping, leave it off, do not open the unit or any panel, and call for service."],
+          ["Turning on and off every few minutes: restricted airflow, a dirty outdoor coil, a thermostat problem or a refrigerant charge problem can all cause short cycling."],
+          ["Water leaking: turn the system off at the thermostat and keep the water away from electrical parts. A clogged condensate drain, or an iced coil that is melting, is the common cause."],
+          ["Unusual noises: rattling can come from a loose panel or debris near the outdoor fan. Grinding or squealing points to a worn motor or another failing part, so turn the system off and call."],
+        ],
+        afterBullets: [
+          [
+            "See ",
+            { href: "/air-conditioning/ac-repair/placentia", label: "what an AC repair visit covers" },
+            " in Placentia, and the ",
+            { href: "/air-conditioning/ac-repair", label: "AC repair guide" },
+            " for more on each problem. A yearly ",
+            { href: "/air-conditioning/ac-tune-up/placentia", label: "AC tune-up" },
+            " before summer is a good time to catch worn capacitors, dirty coils and restricted airflow before they cause a breakdown.",
+          ],
+        ],
+      },
+      {
         heading: "Furnace and Heating Repair in Placentia",
         paragraphs: [
           [
@@ -118,30 +194,65 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
             { href: "/heating/heating-repair/placentia", label: "heating repair in Placentia" },
             " for what a repair visit covers, or ",
             { href: "/heating/furnace-repair", label: "furnace repair" },
-            " for gas and electric furnaces. If you smell gas, leave the house first and call your gas utility or 911 from outside.",
+            " for gas and electric furnaces. Heat pump owners can start with ",
+            { href: "/heat-pumps/heat-pump-repair", label: "heat pump repair" },
+            ". If you smell gas, leave the house first and call your gas utility or 911 from outside.",
           ],
         ],
       },
       {
-        heading: "Air Conditioning Repair and Tune-Ups in Placentia",
+        heading: "Emergency or Breakdown? Know the Difference",
         paragraphs: [
           [
-            "If your AC runs but does not cool, keeps cycling on and off, or is leaking water indoors, start with ",
-            { href: "/air-conditioning/ac-repair/placentia", label: "air conditioning repair in Placentia" },
-            ". If it has stopped completely, ",
+            "Most HVAC failures are uncomfortable rather than dangerous, but a few signs are safety hazards. HVAC service does not replace 911 or your gas utility: if there is immediate danger, get out and call them first, then call us.",
+          ],
+        ],
+        bullets: [
+          [
+            "Gas smell: leave the house right away. From a safe place, call 911 and your gas utility; SoCalGas customers can reach SoCalGas at 1-800-427-2200 (",
+            { href: "https://www.socalgas.com/safety/emergency-information/emergency-response", label: "SoCalGas emergency information" },
+            ").",
+          ],
+          [
+            "Carbon monoxide alarm sounding, or anyone with symptoms such as dizziness or nausea: leave the home right away and call 911 from outside (",
+            { href: "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/carbon-monoxide-poisoning.html", label: "American Red Cross carbon monoxide safety" },
+            ").",
+          ],
+          [
+            "Flames, heavy smoke or sparks from the equipment or its wiring: get out, stay out and call for help; do not go back inside to check on it (",
+            { href: "https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/fire.html", label: "American Red Cross fire safety" },
+            ").",
+          ],
+          [
+            "A breaker that keeps tripping, or a burning or rubbery smell without smoke: leave the system off and call a qualified professional (",
+            { href: "https://content.nfpa.org/-/media/project/storefront/catalog/files/home-fire-safety/electrical/electrical_safety_checklist.pdf", label: "NFPA electrical safety checklist" },
+            ").",
+          ],
+        ],
+        afterBullets: [
+          [
+            "If none of these apply but the system has stopped working, see ",
             { href: "/air-conditioning/emergency-ac-repair/placentia", label: "emergency AC repair in Placentia" },
-            " lists what to do while you wait for a technician.",
-          ],
-          [
-            "A yearly ",
-            { href: "/air-conditioning/ac-tune-up/placentia", label: "AC tune-up" },
-            " before summer is a good time to catch worn capacitors, dirty coils and restricted airflow before they cause a breakdown.",
+            " or call us. We are open 24 hours a day, 7 days a week, including emergency service.",
           ],
         ],
+        cta: true,
       },
       {
-        heading: "Replacing an AC or Furnace in Placentia",
+        heading: "Repair or Replace? AC and Furnace Replacement in Placentia",
         paragraphs: [
+          [
+            "A single failed part on a system in good condition is usually worth repairing. Replacement is worth comparing when a major component such as the compressor fails on an older system, repairs keep recurring, or the system uses R-22. Ask for a written quote for the repair and compare it with a replacement quote.",
+          ],
+          [
+            "A replacement system should be sized from a load calculation (ACCA Manual J) for your specific home, not from square footage alone, according to U.S. Department of Energy guidance (",
+            { href: "https://www.energy.gov/sites/default/files/2021-08/ES-HomeHeatingandCooling_081221.pdf", label: "DOE heating and cooling guide" },
+            "). Our ",
+            { href: "/air-conditioning/ac-installation", label: "questions to ask about any replacement quote" },
+            " help you compare contractors, and the ",
+            { href: "/calculators/ac-size-calculator", label: "AC size calculator" },
+            " gives only a rough idea.",
+          ],
           [
             "Placentia's ",
             { href: "https://placentia.org/58/Building-and-Safety", label: "Building and Safety Division" },
@@ -183,6 +294,21 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
       {
         question: "Do you offer emergency HVAC service in Placentia?",
         answer: `Yes. We are open 24 hours a day, 7 days a week, and same-day service is available in Placentia. ${SITE.emergencyArrivalOC}`,
+      },
+      {
+        question: "Why is my AC blowing warm air?",
+        answer:
+          "Common causes are a thermostat not set to Cool, a dirty filter or coil, a tripped breaker, a failed capacitor or contactor, or low refrigerant from a leak. Check the thermostat and filter first. If it still blows warm air, call for service, since refrigerant and electrical parts need a technician.",
+      },
+      {
+        question: "How do I know if my HVAC problem is an emergency?",
+        answer:
+          "If there are flames, smoke, sparks, a gas smell or a carbon monoxide alarm, leave the home and call 911 from a safe place (for gas, also your gas utility). Those are safety hazards, not service calls. If the system has stopped working without any of those signs, call us at (714) 410-2784. We are open 24 hours a day, 7 days a week.",
+      },
+      {
+        question: "Should I repair or replace my air conditioner?",
+        answer:
+          "A single failed part on a system in good condition is usually worth repairing. Replacement is worth comparing when a major component such as the compressor fails on an older system, repairs keep recurring, or the system uses R-22. A technician can explain the options for your system.",
       },
       {
         question: "How do I schedule HVAC service in Placentia?",
