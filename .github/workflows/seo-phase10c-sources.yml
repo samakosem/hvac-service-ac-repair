@@ -1,4 +1,4 @@
-# Phase 10C (run 7, Costa Mesa sources): read-only check that external sources cited on the Costa Mesa PR resolve and support the statements.
+# Phase 10C (run 8, Costa Mesa DOE replacement context): read-only source check.
 name: SEO phase 10C source check
 on:
   push:
