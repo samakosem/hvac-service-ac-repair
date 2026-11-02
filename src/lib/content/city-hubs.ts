@@ -320,9 +320,9 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
 
   "orange-county/costa-mesa": {
     meta: {
-      title: "Costa Mesa HVAC Repair & Installation",
+      title: "HVAC Repair & Service in Costa Mesa, CA",
       description:
-        "HVAC service in Costa Mesa, CA: furnace and heating repair, AC and HVAC installation, and maintenance for coastal homes. Call (714) 410-2784.",
+        "HVAC service in Costa Mesa, CA: AC and furnace repair, heat pump and ductless guidance, maintenance and replacement help. Call (714) 410-2784 or request service online.",
     },
     blurb: "Heating and air conditioning service for Costa Mesa homes and businesses: repairs, maintenance and new system installation.",
     localContext:
@@ -336,7 +336,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
       {
         heading: "Heating, Cooling or Both? Know Your System",
         paragraphs: [
-          ["Knowing which kind of system you have makes it easier to describe a problem and find the right page. Most homes have one of three setups."],
+          ["Knowing which kind of system you have makes it easier to describe a problem and find the right page. Here are three common heating and cooling system configurations."],
         ],
         bullets: [
           [
@@ -373,7 +373,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
         heading: "Furnace and Heating Repair in Costa Mesa",
         paragraphs: [
           [
-            "We repair gas and electric furnaces and heat pumps. Signs that a heating system needs attention include no heat or weak airflow, a furnace that starts and stops repeatedly, and an ignition that will not stay lit. A burning smell is a reason to stop using the furnace and call for service; if the smell is strong or you see smoke, flames or sparks, leave the house and call 911.",
+            "We repair gas furnaces, electric furnaces and heat pumps in heating mode. Warning signs include little or no heat, weak airflow from the vents, a furnace that shuts off soon after starting, or a burner that will not light. A burning smell is a reason to stop using the furnace and call for service; if the smell is strong or you see smoke, flames or sparks, leave the house and call 911.",
           ],
           [
             "The ",
@@ -383,10 +383,10 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
         ],
       },
       {
-        heading: "Maintenance That Prevents Breakdowns",
+        heading: "HVAC Maintenance to Help Reduce Breakdowns",
         paragraphs: [
           [
-            "Routine care catches small problems before they stop the system. The U.S. Department of Energy advises cleaning or replacing filters monthly during seasons of peak use, and checking the evaporator coil every year and cleaning it as necessary (",
+            "Routine care can help catch small problems before they stop the system, although no maintenance schedule can rule out a failure. The U.S. Department of Energy advises cleaning or replacing filters monthly during seasons of peak use, and checking the evaporator coil every year and cleaning it as necessary (",
             { href: "https://www.energy.gov/sites/default/files/2021-08/ES-HomeHeatingandCooling_081221.pdf", label: "DOE heating and cooling guide" },
             "; ",
             { href: "https://www.energy.gov/sites/default/files/2016/11/f34/HomeCooling101.pdf", label: "DOE home cooling guide" },
