@@ -103,9 +103,9 @@ const SHARED = {
 export const CITY_HUBS: Record<string, CityHubContent> = {
   "orange-county/placentia": {
     meta: {
-      title: "Placentia HVAC: Furnace & AC Service",
+      title: "HVAC Repair & Service in Placentia, CA",
       description:
-        "Heating and air conditioning service in Placentia, CA: furnace and heating repair, AC repair, tune-ups and new system installation. Call (714) 410-2784.",
+        "HVAC service in Placentia, CA: AC repair, furnace and heating repair, emergency help and replacement guidance. Call (714) 410-2784 or request service online.",
     },
     blurb: "Heating and air conditioning service for Placentia homes and businesses, from our base in neighboring Yorba Linda.",
     localContext:
@@ -135,9 +135,11 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
             ".",
           ],
           [
-            "Heating and cooling are both affected, or you are not sure which system is at fault: ",
+            "Heating and cooling are both affected, or you are not sure which system is at fault: start with ",
             { href: "/hvac-repair/placentia", label: "HVAC repair in Placentia" },
-            " explains how to tell.",
+            ", and see the ",
+            { href: "/hvac-repair", label: "HVAC repair overview" },
+            " for how to tell which system is the problem.",
           ],
           [
             "The system has stopped completely: ",
@@ -160,24 +162,22 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
         heading: "AC Repair and Tune-Ups in Placentia",
         paragraphs: [
           [
-            "These are the most common AC complaints. The checks are safe for a homeowner; anything involving electrical parts, refrigerant or the inside of the unit is work for a technician.",
+            "These are common AC complaints. The checks below are low-risk for a homeowner; anything involving electrical parts, refrigerant or the inside of the unit is work for a technician.",
           ],
         ],
         bullets: [
           ["Blowing warm air: check that the thermostat is set to Cool and the filter is clean. Other causes include a dirty coil, a failed capacitor or contactor, or low refrigerant from a leak, and those need a technician."],
-          ["Weak airflow: a clogged filter and closed or blocked vents are the usual first suspects. A failing blower motor, an iced coil or duct problems can also be the cause."],
+          ["Weak airflow: a clogged filter and closed or blocked vents are common first suspects. A failing blower motor, an iced coil or duct problems can also be the cause."],
           ["Will not turn on: check the thermostat settings and batteries. A clogged condensate drain can trip a safety switch that shuts the system off. If a breaker keeps tripping, leave it off, do not open the unit or any panel, and call for service."],
           ["Turning on and off every few minutes: restricted airflow, a dirty outdoor coil, a thermostat problem or a refrigerant charge problem can all cause short cycling."],
-          ["Water leaking: turn the system off at the thermostat and keep the water away from electrical parts. A clogged condensate drain, or an iced coil that is melting, is the common cause."],
-          ["Unusual noises: rattling can come from a loose panel or debris near the outdoor fan. Grinding or squealing points to a worn motor or another failing part, so turn the system off and call."],
+          ["Water leaking: turn the system off at the thermostat and keep the water away from electrical parts. A clogged condensate drain, or an iced coil that is melting, is a common cause."],
+          ["Unusual noises: rattling can come from a loose panel or debris near the outdoor fan. Grinding or squealing can point to a worn motor or another failing part, so turn the system off and call."],
         ],
         afterBullets: [
           [
-            "See ",
-            { href: "/air-conditioning/ac-repair/placentia", label: "what an AC repair visit covers" },
-            " in Placentia, and the ",
+            "The ",
             { href: "/air-conditioning/ac-repair", label: "AC repair guide" },
-            " for more on each problem. A yearly ",
+            " covers each problem in more detail. A yearly ",
             { href: "/air-conditioning/ac-tune-up/placentia", label: "AC tune-up" },
             " before summer is a good time to catch worn capacitors, dirty coils and restricted airflow before they cause a breakdown.",
           ],
@@ -242,7 +242,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
         heading: "Repair or Replace? AC and Furnace Replacement in Placentia",
         paragraphs: [
           [
-            "A single failed part on a system in good condition is usually worth repairing. Replacement is worth comparing when a major component such as the compressor fails on an older system, repairs keep recurring, or the system uses R-22. Ask for a written quote for the repair and compare it with a replacement quote.",
+            "Repair may be a practical option when the system is otherwise in good condition. Compare the repair cost, equipment age, system condition and expected remaining service life before deciding whether replacement makes more sense. A major component failure on an older system, repairs that keep recurring, or an R-22 system are reasons to get a replacement quote to compare, not an automatic answer.",
           ],
           [
             "A replacement system should be sized from a load calculation (ACCA Manual J) for your specific home, not from square footage alone, according to U.S. Department of Energy guidance (",
@@ -260,11 +260,9 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
           ],
           REFRIGERANT_PARAGRAPH_PILOT,
           [
-            "Our ",
-            { href: "/air-conditioning/ac-installation", label: "AC installation" },
-            " and ",
+            "The ",
             { href: "/heating/furnace-installation", label: "furnace installation" },
-            " pages explain what a replacement involves.",
+            " page explains what a furnace replacement involves.",
           ],
         ],
       },
@@ -308,7 +306,7 @@ export const CITY_HUBS: Record<string, CityHubContent> = {
       {
         question: "Should I repair or replace my air conditioner?",
         answer:
-          "A single failed part on a system in good condition is usually worth repairing. Replacement is worth comparing when a major component such as the compressor fails on an older system, repairs keep recurring, or the system uses R-22. A technician can explain the options for your system.",
+          "Repair may be a practical option when the system is otherwise in good condition. Compare the repair cost, equipment age, system condition and expected remaining service life before deciding whether replacement makes more sense. A major component failure on an older system, repairs that keep recurring, or an R-22 system are reasons to get a replacement quote to compare, not an automatic answer. A technician can explain the options for your system.",
       },
       {
         question: "How do I schedule HVAC service in Placentia?",
